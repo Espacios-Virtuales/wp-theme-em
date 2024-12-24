@@ -7,21 +7,21 @@ function send_custom_email_response($user_email, $subscribe)
     // Asunto del correo
     $subject = '¡Gracias por contactarte con nosotros!';
 
-    // Encabezados de correo para enviar HTML y asegurar compatibilidad con Gmail
+    // Encabezados de correo
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'From: Escuela Mistica <info@escuelamistica.cl>';
     $headers[] = 'Reply-To: Escuela Mistica <info@escuelamistica.cl>';
 
-    // Mensaje adicional si la casilla de suscripción está marcada
+    // Mensaje adicional para suscripciones
     $subscription_message = '';
     if ($subscribe === 'yes') {
         $subscription_message = '
             <p style="color: #003366; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
-                Además, como te has suscrito a nuestras actualizaciones, recibirás promociones exclusivas y contenido relevante en tu correo.
+                Gracias por suscribirte. Pronto recibirás actualizaciones exclusivas, promociones y contenido místico en tu correo.
             </p>';
     }
 
-    // Cuerpo del mensaje utilizando estructura de tablas
+    // Cuerpo del mensaje
     $message = '
     <html>
     <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 0; margin: 0;">
@@ -29,9 +29,8 @@ function send_custom_email_response($user_email, $subscribe)
         <!-- Header -->
         <tr>
             <td style="background-color: #003366; padding: 20px; text-align: center;">
-                <h1 style="color: #FFD700; margin: 0; font-size: 24px; font-weight: bold;">
-                    ¡Gracias por contactarnos en Escuela Mistica!
-                </h1>
+                <img src="https://escuelamistica.cl/wp-content/uploads/logo.png" alt="Escuela Mística" style="width: 150px; margin-bottom: 10px;">
+                <h1 style="color: #FFD700; margin: 0; font-size: 24px; font-weight: bold;">¡Gracias por contactarnos en Escuela Mística!</h1>
             </td>
         </tr>
         
@@ -43,7 +42,7 @@ function send_custom_email_response($user_email, $subscribe)
                 </p>
                 ' . $subscription_message . '
                 <p style="color: #003366; font-size: 16px; line-height: 1.5;">
-                    Mientras tanto, te invitamos a explorar y conectar a través de nuestras redes sociales. ¡Te esperamos!
+                    Mientras tanto, te invitamos a explorar nuestra comunidad y conectar con nosotros en nuestras redes sociales.
                 </p>
             </td>
         </tr>
@@ -61,23 +60,30 @@ function send_custom_email_response($user_email, $subscribe)
         <tr>
             <td style="padding: 20px; background-color: #003366; text-align: center;">
                 <p style="color: #fff; font-size: 14px; margin-bottom: 10px;">Síguenos en nuestras redes sociales</p>
-                <a href="https://instagram.com/momistica" style="margin: 0 10px;">Instagram</a>
-                <a href="https://wa.me/56956412047?text=Maureen,%20Me%20gustaria%20recibir%20información%20sobre%20los%20Servicios%20%20de%20Ecuela%20Mistica" style="margin: 0 10px;">WhatsApp</a>
-                <a href="https://www.facebook.com/momistica" style="margin: 0 10px;">Facebook</a>
+                <a href="https://instagram.com/momistica" style="margin: 0 10px; color: #FFD700; text-decoration: none;">
+                    <img src="https://escuelamistica.cl/wp-content/uploads/instagram-icon.png" alt="Instagram" style="width: 30px;">
+                </a>
+                <a href="https://wa.me/56956412047?text=Maureen,%20Me%20gustaria%20recibir%20información%20sobre%20los%20Servicios%20%20de%20Escuela%20Mística" style="margin: 0 10px; color: #FFD700; text-decoration: none;">
+                    <img src="https://escuelamistica.cl/wp-content/uploads/whatsapp-icon.png" alt="WhatsApp" style="width: 30px;">
+                </a>
+                <a href="https://www.facebook.com/momistica" style="margin: 0 10px; color: #FFD700; text-decoration: none;">
+                    <img src="https://escuelamistica.cl/wp-content/uploads/facebook-icon.png" alt="Facebook" style="width: 30px;">
+                </a>
             </td>
         </tr>
 
         <!-- Footer -->
         <tr>
             <td style="padding: 10px; text-align: center; font-size: 12px; color: #999;">
-                Este es un correo automático. Por favor, no respondas a este mensaje.
+                Este es un correo automático. Por favor, no respondas a este mensaje. 
+                <br>¿Deseas dejar de recibir correos? <a href="https://escuelamistica.cl/unsubscribe" style="color: #003366;">Cancela tu suscripción aquí.</a>
             </td>
         </tr>
     </table>
     </body>
     </html>';
 
-    // Envío del correo
+    // Enviar correo
     wp_mail($user_email, $subject, $message, $headers);
 }
 
