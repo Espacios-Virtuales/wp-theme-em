@@ -5,9 +5,10 @@
  */
 
 
- function hero_slider_shortcode() {
+function hero_slider_shortcode()
+{
     ob_start();
-    ?>
+?>
     <div id="hero" class="carousel slide" data-bs-ride="carousel">
         <!-- Indicadores de la presentación -->
         <div class="carousel-indicators">
@@ -31,7 +32,7 @@
 
                         if ($image) {
                             $image_url = wp_get_attachment_image_src($image, 'full')[0];
-                            ?>
+            ?>
                             <div class="carousel-item <?php echo esc_attr($active_class); ?>">
                                 <div class="position-relative w-100 h-100">
                                     <img src="<?php echo esc_url($image_url); ?>" class="d-block w-100 h-100" style="object-fit: cover;" alt="Slide <?php echo esc_attr($i); ?>">
@@ -42,14 +43,14 @@
                                             <!-- Descripción interactiva que invita a la introspección -->
                                             <p class="lead text-white"><?php echo esc_html($body); ?></p>
                                             <!-- Botón hacia Spotify con efecto visual -->
-                                                <button type="button" class="btn btn-em-gold btn-lg shadow-lg" data-bs-toggle="modal" data-bs-target="#subscribeModal">
-                                                    Suscribete <i class="bi bi-person-hearts me-2 text-white"></i> 
-                                                </button>
+                                            <button type="button" class="btn btn-em-gold btn-lg shadow-lg" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                                                Suscribete <i class="bi bi-person-hearts me-2 text-white"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <?php
+            <?php
                         }
                     }
                 }
@@ -74,11 +75,12 @@ add_shortcode('ev-hero', 'hero_slider_shortcode');
 
 
 // About Section con imágenes, Lightbox y Modal adaptado
-function ev_about_shortcode() {
+function ev_about_shortcode()
+{
     $data = blog_get_page(array('sobre-nosotros'));
     while ($data->have_posts()) {
         $data->the_post(); ?>
-        
+
         <section id="about" class="mb-5 py-5">
             <div class="container shadow-custom rounded p-4 text-center">
                 <?php $intro = get_field('introductions'); ?>
@@ -119,7 +121,7 @@ function ev_about_shortcode() {
 
                 <!-- Galería de imágenes con Lightbox -->
                 <div class="row">
-                    <?php 
+                    <?php
                     $images = get_field("images");
                     for ($j = 1; $j <= 3; $j++) {
                         $image = $images["image_$j"];
@@ -148,43 +150,43 @@ add_shortcode('ev-sobre_nosotros', 'ev_about_shortcode');
 
 function ev_subscribe_modal()
 { ?>
-        <!-- Modal de Bootstrap -->
-        <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="subscribeModalLabel">Suscríbete a Nuevas Aventuras</h5> <!-- Texto en negro -->
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Formulario de contacto -->
-                        <form id="modalContactForm" class="needs-validation mt-4" novalidate>
-                            <div class="mb-3">
-                                <label for="modalName" class="form-label text-dark">Nombre:</label> <!-- Texto en negro -->
-                                <input type="text" class="form-control text-dark" id="modalName" name="contact_name" required minlength="3" placeholder="Ingresa tu nombre">
-                                <div class="invalid-feedback">Por favor ingrese un nombre con al menos 3 caracteres</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="modalEmail" class="form-label text-dark">Correo Electrónico:</label> <!-- Texto en negro -->
-                                <input type="email" class="form-control text-dark" id="modalEmail" name="contact_email" required placeholder="email@ejemplo.cl">
-                                <div class="invalid-feedback">Por favor ingrese un correo electrónico válido</div>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input type="checkbox" id="subscribeCheck" name="contact_subscribe" value="yes" checked="checked">
-                                <label class="form-check-label text-dark" for="subscribeCheck">
-                                    Deseo recibir actualizaciones y promociones
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-gold w-100">Enviar</button> <!-- Botón con color amarillo oro -->
-                        </form>
-                    </div>
+    <!-- Modal de Bootstrap -->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="subscribeModalLabel">Suscríbete a Nuevas Aventuras</h5> <!-- Texto en negro -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario de contacto -->
+                    <form id="modalContactForm" class="needs-validation mt-4" novalidate>
+                        <div class="mb-3">
+                            <label for="modalName" class="form-label text-dark">Nombre:</label> <!-- Texto en negro -->
+                            <input type="text" class="form-control text-dark" id="modalName" name="contact_name" required minlength="3" placeholder="Ingresa tu nombre">
+                            <div class="invalid-feedback">Por favor ingrese un nombre con al menos 3 caracteres</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalEmail" class="form-label text-dark">Correo Electrónico:</label> <!-- Texto en negro -->
+                            <input type="email" class="form-control text-dark" id="modalEmail" name="contact_email" required placeholder="email@ejemplo.cl">
+                            <div class="invalid-feedback">Por favor ingrese un correo electrónico válido</div>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" id="subscribeCheck" name="contact_subscribe" value="yes" checked="checked">
+                            <label class="form-check-label text-dark" for="subscribeCheck">
+                                Deseo recibir actualizaciones y promociones
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-gold w-100">Enviar</button> <!-- Botón con color amarillo oro -->
+                    </form>
                 </div>
             </div>
         </div>
-        <?php
-    }
+    </div>
+    <?php
+}
 
-    add_action('ev_modal_subscribe', 'blog_subscribe_modal');
+add_action('ev_modal_subscribe', 'blog_subscribe_modal');
 
 // Servicios & Programas adaptado para Escuela Mística
 function ev_servicios_shortcode()
@@ -252,7 +254,7 @@ function ev_servicios_shortcode()
                 </div>
             </div>
         </section>
-    <?php
+        <?php
     }
 
     wp_reset_postdata();
@@ -260,7 +262,8 @@ function ev_servicios_shortcode()
 add_shortcode('ev-servicios', 'ev_servicios_shortcode');
 
 // Función para crear el shortcode de comunidad y membresia
-function community_membership_gallery_shortcode() {
+function community_membership_gallery_shortcode()
+{
     // Obtener datos de la página con el slug 'membresia-comunidad'
     $data = blog_get_page(array('membresia-comunidad'));
 
@@ -278,7 +281,7 @@ function community_membership_gallery_shortcode() {
             // Obtener el grupo de la galería
             $community_gallery_group = get_field('community_gallery_group'); // Grupo principal de la galería
 
-            ?>
+        ?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
                     <!-- Sección de Maureen -->
@@ -304,11 +307,11 @@ function community_membership_gallery_shortcode() {
                             <p class="text-muted">Explora los beneficios de unirte a nuestra comunidad y disfruta de contenido exclusivo.</p>
                         </div>
                         <div class="row g-4">
-                            <?php foreach ($community_gallery_group as $item_key => $item): 
+                            <?php foreach ($community_gallery_group as $item_key => $item):
                                 $title = $item['title']; // Título del beneficio
                                 $image = $item['image']; // Imagen asociada
                                 $description = $item['description']; // Breve descripción
-                                ?>
+                            ?>
                                 <div class="col-md-4">
                                     <div class="gallery-item shadow-sm">
                                         <a href="<?php echo esc_url($image['url']); ?>" data-lightbox="community-gallery" data-title="<?php echo esc_attr($title); ?>">
@@ -325,7 +328,7 @@ function community_membership_gallery_shortcode() {
                     <?php endif; ?>
                 </div>
             </section>
-            <?php
+    <?php
         }
 
         wp_reset_postdata(); // Restablecer la consulta de posts
@@ -337,16 +340,17 @@ function community_membership_gallery_shortcode() {
 add_shortcode('ev-community_member', 'community_membership_gallery_shortcode');
 
 // Función para crear el shortcode de calendario con eventos de ACF y modales
-function blog_calendar_events_shortcode() {
+function blog_calendar_events_shortcode()
+{
     $calendar = new Calendar(date('Y-m-d'));
 
-    $data = blog_get_custom_post_type(array('evento'));        
+    $data = blog_get_custom_post_type(array('evento'));
     $posts = $data->posts;
 
     foreach ($posts as $post) {
-        $on = get_field('on', $post); 
+        $on = get_field('on', $post);
         $date = get_field('date', $post);
-        
+
         if ($on && $date) {
             $calendar->add_event($post->post_title, $date, 1, $post->ID);
         }
@@ -365,7 +369,7 @@ function blog_calendar_events_shortcode() {
 
         if ($on && $date) {
             $modal_id = 'modal_' . $post->ID;
-            ?>
+    ?>
             <div class="modal fade" id="<?= $modal_id ?>" tabindex="-1" aria-labelledby="<?= $modal_id ?>Label" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -384,14 +388,15 @@ function blog_calendar_events_shortcode() {
                     </div>
                 </div>
             </div>
-            <?php
+        <?php
         }
     }
 
     return ob_get_clean();
 }
 add_shortcode('ev-calendar_eventos', 'blog_calendar_events_shortcode');
-function blog_page_testimonials_shortcode() {
+function blog_page_testimonials_shortcode()
+{
     // Obtener los testimonios
     $data = blog_get_custom_post_type('testimonial', 9);
 
@@ -405,9 +410,9 @@ function blog_page_testimonials_shortcode() {
 
                 <div id="testimonials-carousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <?php 
+                        <?php
                         $total_slides = ceil($data->post_count / 3);
-                        for ($i = 0; $i < $total_slides; $i++) { 
+                        for ($i = 0; $i < $total_slides; $i++) {
                         ?>
                             <button type="button" data-bs-target="#testimonials-carousel" data-bs-slide-to="<?php echo $i; ?>" <?php if ($i === 0) echo 'class="active"'; ?> aria-label="Slide <?php echo $i + 1; ?>"></button>
                         <?php } ?>
@@ -423,7 +428,7 @@ function blog_page_testimonials_shortcode() {
                             $data->the_post();
                             $testimonial_link = get_post_meta(get_the_ID(), '_testimonial_link', true);
 
-                            ?>
+                        ?>
                             <div class="col-md-4 mb-4">
                                 <div class="video-container">
                                     <?php if (!empty($testimonial_link)): ?>
@@ -433,7 +438,7 @@ function blog_page_testimonials_shortcode() {
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            <?php
+                        <?php
 
                             $counter++;
 
@@ -458,16 +463,16 @@ function blog_page_testimonials_shortcode() {
                 </div>
             </div>
         </section>
-        <?php
+    <?php
         wp_reset_postdata();
     } else {
-        ?>
+    ?>
         <section class="testimonials-section py-5" id="testimonios">
             <div class="container text-center">
                 <p class="text-muted">No hay testimonios disponibles.</p>
             </div>
         </section>
-        <?php
+    <?php
     }
 }
 
@@ -495,13 +500,14 @@ function ev_intro_video_modal_shortcode()
             </div>
         </div>
     </div>
-<?php
+    <?php
     return ob_get_clean();
 }
 add_shortcode('ev-intro_video_modal', 'ev_intro_video_modal_shortcode');
 
 
-function free_resources_shortcode() {
+function  ev_free_resources_shortcode()
+{
     // Obtener datos de la página con el slug 'recursos-gratuitos'
     $data = blog_get_page(array('recursos-gratuitos'));
 
@@ -519,7 +525,7 @@ function free_resources_shortcode() {
             $ebook_button_text = $free_resources['ebook_button_text'];
             $calendly_link = $free_resources['calendly_link']; // Link a Calendly
 
-            ?>
+    ?>
             <section class="free-resources py-5" id="free-resources">
                 <div class="container">
                     <div class="title text-center mb-4">
@@ -529,49 +535,49 @@ function free_resources_shortcode() {
                     <div class="row g-4">
                         <!-- YouTube -->
                         <?php if ($youtube_link): ?>
-                        <div class="col-md-4 text-center">
-                            <div class="resource-item shadow-sm">
-                                <div class="resource-icon mb-3">
-                                    <i class="bi bi-youtube text-white display-4"></i>
+                            <div class="col-md-4 text-center">
+                                <div class="resource-item shadow-sm">
+                                    <div class="resource-icon mb-3">
+                                        <i class="bi bi-youtube text-white display-4"></i>
+                                    </div>
+                                    <h5 class="text-gold">Canal de YouTube</h5>
+                                    <p class="text-muted">Accede a nuestro contenido exclusivo en video.</p>
+                                    <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="btn btn-primary">Ver en YouTube</a>
                                 </div>
-                                <h5 class="text-gold">Canal de YouTube</h5>
-                                <p class="text-muted">Accede a nuestro contenido exclusivo en video.</p>
-                                <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="btn btn-primary">Ver en YouTube</a>
                             </div>
-                        </div>
                         <?php endif; ?>
 
                         <!-- Podcast -->
                         <?php if ($podcast_link): ?>
-                        <div class="col-md-4 text-center">
-                            <div class="resource-item shadow-sm">
-                                <div class="resource-icon mb-3">
-                                    <i class="bi bi-mic-fill text-white display-4"></i>
+                            <div class="col-md-4 text-center">
+                                <div class="resource-item shadow-sm">
+                                    <div class="resource-icon mb-3">
+                                        <i class="bi bi-mic-fill text-white display-4"></i>
+                                    </div>
+                                    <h5 class="text-gold">Podcast</h5>
+                                    <p class="text-muted">Escucha nuestras reflexiones y conocimientos.</p>
+                                    <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="btn btn-primary">Escuchar Podcast</a>
                                 </div>
-                                <h5 class="text-gold">Podcast</h5>
-                                <p class="text-muted">Escucha nuestras reflexiones y conocimientos.</p>
-                                <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="btn btn-primary">Escuchar Podcast</a>
                             </div>
-                        </div>
                         <?php endif; ?>
 
                         <!-- Ebook + Calendly -->
                         <?php if ($ebook_description && $calendly_link): ?>
-                        <div class="col-md-4 text-center">
-                            <div class="resource-item shadow-sm">
-                                <div class="resource-icon mb-3">
-                                    <i class="bi bi-book-fill text-white display-4"></i>
+                            <div class="col-md-4 text-center">
+                                <div class="resource-item shadow-sm">
+                                    <div class="resource-icon mb-3">
+                                        <i class="bi bi-book-fill text-white display-4"></i>
+                                    </div>
+                                    <h5 class="text-gold">Ebook Gratuito</h5>
+                                    <p class="text-muted"><?php echo esc_html($ebook_description); ?></p>
+                                    <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="btn btn-primary"><?php echo esc_html($ebook_button_text); ?></a>
                                 </div>
-                                <h5 class="text-gold">Ebook Gratuito</h5>
-                                <p class="text-muted"><?php echo esc_html($ebook_description); ?></p>
-                                <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="btn btn-primary"><?php echo esc_html($ebook_button_text); ?></a>
                             </div>
-                        </div>
                         <?php endif; ?>
                     </div>
                 </div>
             </section>
-            <?php
+        <?php
         }
 
         wp_reset_postdata(); // Restablecer la consulta de posts
@@ -580,4 +586,60 @@ function free_resources_shortcode() {
         return '<p class="text-muted text-center">No se encontró contenido para esta sección.</p>';
     }
 }
-add_shortcode('ev-free_resources', 'free_resources_shortcode');
+add_shortcode('ev-free_resources', ' ev_free_resources_shortcode');
+
+
+
+// Contacto
+function  ev_contact_shortcode()
+{
+    $data = blog_get_page(array('contacto'));
+    while ($data->have_posts()) {
+        $data->the_post();
+        ?>
+        <section id="contact" class="bg-primary text-light py-5">
+            <div class="container"> <!-- Cambiado a container para ajustar el tamaño -->
+                <div class="title text-center mb-5">
+                    <h1 class="h1_tsn text-white">¡Únete a este viaje!</h1>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-md-5 order-md-2 mb-4 mb-md-0"> <!-- Imagen a la derecha en pantallas grandes -->
+                        <div class="image-container">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="card-img-top rounded-circle mx-auto d-block shadow-lg" alt="<?php the_title(); ?>">
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 order-md-1">
+                        <div class="p-4 bg-dark rounded shadow-lg">
+                            <h2 class="text-center text-primary mb-4">Contacto</h2>
+                            <form id="registerForm" class="needs-validation mt-4" novalidate>
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Nombre:</label>
+                                    <input type="text" class="form-control" id="username" required minlength="3" placeholder="Ingresa tu nombre">
+                                    <div class="invalid-feedback">Por favor ingrese un nombre con al menos 3 caracteres</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email" required placeholder="Ingresa tu email">
+                                    <div class="invalid-feedback">Por favor ingresa un email válido</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="msj" class="form-label">Mensaje:</label>
+                                    <textarea class="form-control" id="msj" required rows="4" placeholder="Escribe tu mensaje"></textarea>
+                                    <div class="invalid-feedback">Por favor ingresa un mensaje válido</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<?php
+    }
+}
+add_shortcode('ev-contacto', 'ev_contact_shortcode');
