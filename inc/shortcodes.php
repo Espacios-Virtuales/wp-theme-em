@@ -585,7 +585,7 @@ function ev_free_resources_shortcode() {
         return '<p class="text-muted text-center">No se encontró contenido para esta sección.</p>';
     }
 }
-add_shortcode('ev_free_resources', 'ev_free_resources_shortcode');
+add_shortcode('ev-free_resources', 'ev_free_resources_shortcode');
 
 
 // Contacto
