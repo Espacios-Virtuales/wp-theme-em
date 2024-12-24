@@ -590,9 +590,10 @@ add_shortcode('ev-free_resources', 'ev_free_resources_shortcode');
 
 
 // Contacto
-function  ev_contact_shortcode()
-{
+function ev_contact_shortcode() {
     $data = blog_get_page(array('contacto'));
+    ob_start(); // Inicia la captura de salida
+
     while ($data->have_posts()) {
         $data->the_post();
         ?>
@@ -632,14 +633,17 @@ function  ev_contact_shortcode()
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100">Enviar</button>
                             </form>
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-<?php
+        <?php
     }
+
+    $output = ob_get_clean(); // Captura y limpia la salida
+    return $output; // Devuelve el contenido capturado
 }
+
 add_shortcode('ev-contacto', 'ev_contact_shortcode');
+
