@@ -506,8 +506,7 @@ function ev_intro_video_modal_shortcode()
 add_shortcode('ev-intro_video_modal', 'ev_intro_video_modal_shortcode');
 
 
-function  ev_free_resources_shortcode()
-{
+function ev_free_resources_shortcode() {
     // Obtener datos de la página con el slug 'recursos-gratuitos'
     $data = blog_get_page(array('recursos-gratuitos'));
 
@@ -586,8 +585,7 @@ function  ev_free_resources_shortcode()
         return '<p class="text-muted text-center">No se encontró contenido para esta sección.</p>';
     }
 }
-add_shortcode('ev-free_resources', ' ev_free_resources_shortcode');
-
+add_shortcode('ev_free_resources', 'ev_free_resources_shortcode');
 
 
 // Contacto
