@@ -506,7 +506,8 @@ function ev_intro_video_modal_shortcode()
 add_shortcode('ev-intro_video_modal', 'ev_intro_video_modal_shortcode');
 
 
-function ev_free_resources_shortcode() {
+function ev_free_resources_shortcode()
+{
     // Obtener datos de la página con el slug 'recursos-gratuitos'
     $data = blog_get_page(array('recursos-gratuitos'));
 
@@ -613,24 +614,25 @@ function  ev_contact_shortcode()
                     <div class="col-md-7 order-md-1">
                         <div class="p-4 rounded shadow-lg">
                             <h2 class="text-center text-white mb-4">Contacto</h2>
-                            <form id="registerForm" class="needs-validation mt-4" novalidate>
+                            <form id="registerForm" class="needs-validation mt-4" action="#" method="post" novalidate>
                                 <div class="mb-3">
                                     <label for="username" class="form-label text-white">Nombre:</label>
-                                    <input type="text" class="form-control" id="username" required minlength="3" placeholder="Ingresa tu nombre">
+                                    <input type="text" class="form-control" id="username" name="username" required minlength="3" placeholder="Ingresa tu nombre" aria-label="Nombre">
                                     <div class="invalid-feedback">Por favor ingrese un nombre con al menos 3 caracteres</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label text-white">Email:</label>
-                                    <input type="email" class="form-control" id="email" required placeholder="Ingresa tu email">
+                                    <input type="email" class="form-control" id="email" name="email" required placeholder="Ingresa tu email" aria-label="Email">
                                     <div class="invalid-feedback">Por favor ingresa un email válido</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="msj" class="form-label text-white">Mensaje:</label>
-                                    <textarea class="form-control" id="msj" required rows="4" placeholder="Escribe tu mensaje"></textarea>
+                                    <textarea class="form-control" id="msj" name="message" required rows="4" placeholder="Escribe tu mensaje" aria-label="Mensaje"></textarea>
                                     <div class="invalid-feedback">Por favor ingresa un mensaje válido</div>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100">Enviar</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
