@@ -607,7 +607,7 @@ function  ev_contact_shortcode()
                     <div class="col-md-5 order-md-2 mb-4 mb-md-0"> <!-- Imagen a la derecha en pantallas grandes -->
                         <div class="image-container">
                             <?php if (has_post_thumbnail()) : ?>
-                                <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="card-img-top rounded-circle mx-auto d-block shadow-lg" alt="<?php the_title(); ?>">
+                                <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="card-img-top mx-auto d-block shadow-lg" alt="<?php the_title(); ?>">
                             <?php endif; ?>
                         </div>
                     </div>
