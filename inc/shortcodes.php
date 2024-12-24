@@ -613,21 +613,21 @@ function  ev_contact_shortcode()
                     </div>
 
                     <div class="col-md-7 order-md-1">
-                        <div class="p-4 bg-dark rounded shadow-lg">
-                            <h2 class="text-center text-primary mb-4">Contacto</h2>
+                        <div class="p-4 rounded shadow-lg">
+                            <h2 class="text-center text-white mb-4">Contacto</h2>
                             <form id="registerForm" class="needs-validation mt-4" novalidate>
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Nombre:</label>
+                                    <label for="username" class="form-label text-white">Nombre:</label>
                                     <input type="text" class="form-control" id="username" required minlength="3" placeholder="Ingresa tu nombre">
                                     <div class="invalid-feedback">Por favor ingrese un nombre con al menos 3 caracteres</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email:</label>
+                                    <label for="email" class="form-label text-white">Email:</label>
                                     <input type="email" class="form-control" id="email" required placeholder="Ingresa tu email">
                                     <div class="invalid-feedback">Por favor ingresa un email válido</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="msj" class="form-label">Mensaje:</label>
+                                    <label for="msj" class="form-label text-white">Mensaje:</label>
                                     <textarea class="form-control" id="msj" required rows="4" placeholder="Escribe tu mensaje"></textarea>
                                     <div class="invalid-feedback">Por favor ingresa un mensaje válido</div>
                                 </div>
