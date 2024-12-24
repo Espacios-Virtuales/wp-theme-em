@@ -600,7 +600,7 @@ function  ev_contact_shortcode()
         <section id="contact" class="bg-primary text-light py-5">
             <div class="container"> <!-- Cambiado a container para ajustar el tamaño -->
                 <div class="title text-center mb-5">
-                    <h1 class="h1_tsn text-white">¡Únete a este viaje!</h1>
+                    <h1 class="h1_tsn text-gold">¡Únete a este viaje!</h1>
                 </div>
 
                 <div class="row align-items-center">
