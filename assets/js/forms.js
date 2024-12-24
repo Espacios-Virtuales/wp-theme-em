@@ -280,7 +280,6 @@ jQuery(document).ready(function ($) {
           contact_email: email,
           contact_message: message,
           contact_subscribe: subscribe,
-
         };
 
         $.ajax({

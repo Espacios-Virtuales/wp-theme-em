@@ -9,14 +9,14 @@ function send_custom_email_response($user_email, $subscribe)
 
     // Encabezados de correo
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'From: Escuela Mistica <info@escuelamistica.cl>';
-    $headers[] = 'Reply-To: Escuela Mistica <info@escuelamistica.cl>';
+    $headers[] = 'From: Escuela Mística <info@escuelamistica.cl>';
+    $headers[] = 'Reply-To: Escuela Mística <info@escuelamistica.cl>';
 
     // Mensaje adicional para suscripciones
     $subscription_message = '';
     if ($subscribe === 'yes') {
         $subscription_message = '
-            <p style="color: #003366; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
+            <p style="color: rgb(72, 61, 139); font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
                 Gracias por suscribirte. Pronto recibirás actualizaciones exclusivas, promociones y contenido místico en tu correo.
             </p>';
     }
@@ -24,12 +24,12 @@ function send_custom_email_response($user_email, $subscribe)
     // Cuerpo del mensaje
     $message = '
     <html>
-    <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 0; margin: 0;">
-    <table style="width: 100%; max-width: 600px; margin: 0 auto; border-collapse: collapse; background-color: #f4f4f4;">
+    <body style="font-family: Arial, sans-serif; background-color: rgb(75, 0, 130, 0.5); padding: 0; margin: 0;">
+    <table style="width: 100%; max-width: 600px; margin: 0 auto; border-collapse: collapse; background-color: rgb(75, 0, 130, 0.5);">
         <!-- Header -->
         <tr>
-            <td style="background-color: #003366; padding: 20px; text-align: center;">
-                <img src="https://escuelamistica.cl/wp-content/uploads/logo.png" alt="Escuela Mística" style="width: 150px; margin-bottom: 10px;">
+            <td style="background-color: rgb(72, 61, 139); padding: 20px; text-align: center;">
+                <img src="https://escuelamistica.cl/em/wp-content/uploads/logo.png" alt="Escuela Mística" style="width: 150px; margin-bottom: 10px;">
                 <h1 style="color: #FFD700; margin: 0; font-size: 24px; font-weight: bold;">¡Gracias por contactarnos en Escuela Mística!</h1>
             </td>
         </tr>
@@ -37,11 +37,11 @@ function send_custom_email_response($user_email, $subscribe)
         <!-- Message Section -->
         <tr>
             <td style="padding: 20px; background-color: #ffffff;">
-                <p style="color: #003366; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
+                <p style="color: rgb(72, 61, 139); font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
                     ¡Hola! Agradecemos mucho que te hayas tomado el tiempo para contactarnos. Hemos recibido tu mensaje y te responderemos lo antes posible.
                 </p>
                 ' . $subscription_message . '
-                <p style="color: #003366; font-size: 16px; line-height: 1.5;">
+                <p style="color: rgb(72, 61, 139); font-size: 16px; line-height: 1.5;">
                     Mientras tanto, te invitamos a explorar nuestra comunidad y conectar con nosotros en nuestras redes sociales.
                 </p>
             </td>
@@ -49,8 +49,8 @@ function send_custom_email_response($user_email, $subscribe)
         
         <!-- Call to Action -->
         <tr>
-            <td style="background-color: #f8f9fa; padding: 20px; text-align: center;">
-                <a href="https://escuelamistica.cl" style="display: inline-block; padding: 15px 30px; background-color: #FFD700; color: #003366; text-decoration: none; font-size: 16px; font-weight: bold; border-radius: 5px;">
+            <td style="background-color: rgb(75, 0, 130, 0.5); padding: 20px; text-align: center;">
+                <a href="https://escuelamistica.cl" style="display: inline-block; padding: 15px 30px; background-color: #FFD700; color: rgb(72, 61, 139); text-decoration: none; font-size: 16px; font-weight: bold; border-radius: 5px;">
                     Visita nuestro sitio
                 </a>
             </td>
@@ -58,16 +58,16 @@ function send_custom_email_response($user_email, $subscribe)
         
         <!-- Social Media Links -->
         <tr>
-            <td style="padding: 20px; background-color: #003366; text-align: center;">
+            <td style="padding: 20px; background-color: rgb(72, 61, 139); text-align: center;">
                 <p style="color: #fff; font-size: 14px; margin-bottom: 10px;">Síguenos en nuestras redes sociales</p>
                 <a href="https://instagram.com/momistica" style="margin: 0 10px; color: #FFD700; text-decoration: none;">
-                    <img src="https://escuelamistica.cl/wp-content/uploads/instagram-icon.png" alt="Instagram" style="width: 30px;">
+                    <img src="https://escuelamistica.cl/em/wp-content/uploads/instagram-icon.png" alt="Instagram" style="width: 30px;">
                 </a>
                 <a href="https://wa.me/56956412047?text=Maureen,%20Me%20gustaria%20recibir%20información%20sobre%20los%20Servicios%20%20de%20Escuela%20Mística" style="margin: 0 10px; color: #FFD700; text-decoration: none;">
-                    <img src="https://escuelamistica.cl/wp-content/uploads/whatsapp-icon.png" alt="WhatsApp" style="width: 30px;">
+                    <img src="https://escuelamistica.cl/em/wp-content/uploads/whatsapp-icon.png" alt="WhatsApp" style="width: 30px;">
                 </a>
                 <a href="https://www.facebook.com/momistica" style="margin: 0 10px; color: #FFD700; text-decoration: none;">
-                    <img src="https://escuelamistica.cl/wp-content/uploads/facebook-icon.png" alt="Facebook" style="width: 30px;">
+                    <img src="https://escuelamistica.cl/em/wp-content/uploads/facebook-icon.png" alt="Facebook" style="width: 30px;">
                 </a>
             </td>
         </tr>
@@ -76,7 +76,7 @@ function send_custom_email_response($user_email, $subscribe)
         <tr>
             <td style="padding: 10px; text-align: center; font-size: 12px; color: #999;">
                 Este es un correo automático. Por favor, no respondas a este mensaje. 
-                <br>¿Deseas dejar de recibir correos? <a href="https://escuelamistica.cl/unsubscribe" style="color: #003366;">Cancela tu suscripción aquí.</a>
+                <br>¿Deseas dejar de recibir correos? <a href="https://escuelamistica.cl/unsubscribe" style="color: rgb(72, 61, 139);">Cancela tu suscripción aquí.</a>
             </td>
         </tr>
     </table>
