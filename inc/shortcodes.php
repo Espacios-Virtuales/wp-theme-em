@@ -632,6 +632,12 @@ function ev_contact_shortcode()
                                     <textarea class="form-control" id="msj" name="message" required rows="4" placeholder="Escribe tu mensaje" aria-label="Mensaje"></textarea>
                                     <div class="invalid-feedback">Por favor ingresa un mensaje válido</div>
                                 </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="subscribeContact" name="subscribe" value="yes" checked="checked">
+                                    <label class="form-check-label text-dark" for="subscribeContact">
+                                        Deseo recibir actualizaciones y promociones
+                                    </label>
+                                </div>
                                 <button type="submit" class="btn btn-primary w-100">Enviar</button>
                             </form>
                         </div>
