@@ -716,7 +716,7 @@ function ev_about_values_shortcode() {
     ?>
     <div class="values-section py-5">
         <div class="row">
-            <?php foreach ($values_group['values_items'] as $value): ?>
+            <?php foreach ($values_group as $value): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg">
                         <div class="card-body">
