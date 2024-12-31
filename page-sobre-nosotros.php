@@ -11,6 +11,11 @@ get_header();
     <section class="intro-section py-5 text-center">
         <div class="container">
             <h1 class="text-gold">Sobre Nosotros</h1>
+            <?php if (has_post_thumbnail()) { ?>
+                <div class="text-center p-5">
+                    <?php the_post_thumbnail('full', array('class' => 'img-ajust')); ?>
+                </div>
+            <?php } ?>
             <p class="lead">Conoce nuestra historia, misión, valores y el propósito que nos inspira cada día.</p>
         </div>
     </section>
