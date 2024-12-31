@@ -711,7 +711,7 @@ add_shortcode('ev-about-mission-vision', 'ev_about_mission_vision_shortcode');
 
 // Valores
 function ev_about_values_shortcode() {
-    $values_group = get_field('values_group');
+    $values_group = get_field('values_items');
     ob_start();
     ?>
     <div class="values-section py-5">
