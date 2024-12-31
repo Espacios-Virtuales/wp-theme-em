@@ -43,7 +43,7 @@ get_header(); ?>
         <div class="container text-center">
             <h2 class="h3 mb-4">¿Listo para transformar tu vida?</h2>
             <p class="mb-4">Reserva una consulta gratuita y descubre cómo podemos acompañarte en tu viaje espiritual.</p>
-            <a href="https://calendly.com/escuelamistica" class="btn btn-secondary btn-lg text-white">Agenda tu Consulta</a>
+            <a href="https://calendly.com/momistica" class="btn btn-secondary btn-lg text-white">Agenda tu Consulta</a>
         </div>
     </section>
 </div>

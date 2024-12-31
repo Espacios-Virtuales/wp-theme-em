@@ -834,7 +834,7 @@ function ev_services_list_shortcode() {
                             <i class="<?php echo esc_attr($service['item_icon']); ?> text-primary display-4 mb-3"></i>
                             <h5 class="text-primary"><?php echo esc_html($service['item_title']); ?></h5>
                             <p class="text-muted"><?php echo esc_html($service['item_description']); ?></p>
-                            <a href="<?php echo esc_url($service['service_link']); ?>" class="btn btn-outline-primary mt-3">Saber Más</a>
+                            <a href="<?php echo esc_url($service['item_link']); ?>" class="btn btn-outline-primary mt-3">Saber Más</a>
                         </div>
                     </div>
                 </div>
