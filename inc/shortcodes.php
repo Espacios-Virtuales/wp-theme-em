@@ -793,13 +793,13 @@ function ev_services_hero_shortcode() {
 add_shortcode('ev-services-hero', 'ev_services_hero_shortcode');
 
 function ev_services_value_shortcode() {
-    $value_group = get_field('value_group'); // Group: value_group
+    $values = get_field('value_items'); // Group: value_group
     ob_start();
     ?>
     <div class="value-section py-5">
         <h2 class="text-center text-primary mb-4">Nuestra Propuesta de Valor</h2>
         <div class="row">
-            <?php foreach ($value_group['value_items'] as $item): ?>
+            <?php foreach ($values as $item): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg border-0 h-100">
                         <div class="card-body text-center">
