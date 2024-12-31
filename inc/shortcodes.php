@@ -740,10 +740,11 @@ function ev_about_identity_shortcode() {
     ?>
     <div class="identity-section py-5">
         <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro']); ?></p>
+        
         <div class="row">
-            <?php foreach ($identity_group['identity_items'] as $item): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-lg">
+            <?php foreach ($identity_group['identity_items'] as $index => $item): ?>
+                <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
+                    <div class="card shadow-lg <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
                         <div class="card-body">
                             <h5 class="text-primary"><?php echo esc_html($item['archetype_title']); ?></h5>
                             <p><?php echo esc_html($item['archetype_description']); ?></p>
@@ -757,3 +758,4 @@ function ev_about_identity_shortcode() {
     return ob_get_clean();
 }
 add_shortcode('ev-about-identity', 'ev_about_identity_shortcode');
+
