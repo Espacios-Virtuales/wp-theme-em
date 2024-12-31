@@ -9,7 +9,7 @@ get_header();
 <main id="sobre-nosotros" class="bg-light text-dark">
     <!-- Sección de Introducción -->
     <section class="intro-section py-5 text-center">
-        <div class="container">
+        <div class="container-fluid">
             <h1 class="text-gold">Sobre Nosotros</h1>
             <?php if (has_post_thumbnail()) { ?>
                 <div class="text-center p-5">
