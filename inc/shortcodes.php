@@ -653,13 +653,13 @@ function ev_contact_shortcode()
 }
 
 add_shortcode('ev-contacto', 'ev_contact_shortcode');
+
 // Propósito
 function ev_about_purpose_shortcode() {
     $purpose_group = get_field('purpose_group');
     ob_start();
     ?>
     <div class="purpose-section py-5">
-        <h2 class="text-center text-primary mb-4">Propósito de Escuela Mística</h2>
         <p class="text-center text-muted mb-5"><?php echo esc_html($purpose_group['purpose_intro']); ?></p>
         <div class="row">
             <?php foreach ($purpose_group['purpose_items'] as $item): ?>
@@ -685,7 +685,6 @@ function ev_about_mission_vision_shortcode() {
     ob_start();
     ?>
     <div class="mission-vision-section py-5">
-        <h2 class="text-center text-primary mb-4">Misión y Visión</h2>
         <div class="row">
             <div class="col-md-6 mb-4">
                 <div class="card shadow-lg">
@@ -716,7 +715,6 @@ function ev_about_values_shortcode() {
     ob_start();
     ?>
     <div class="values-section py-5">
-        <h2 class="text-center text-primary mb-4">Nuestros Valores</h2>
         <div class="row">
             <?php foreach ($values_group['values_items'] as $value): ?>
                 <div class="col-md-4 mb-4">
@@ -741,7 +739,6 @@ function ev_about_identity_shortcode() {
     ob_start();
     ?>
     <div class="identity-section py-5">
-        <h2 class="text-center text-primary mb-4">Identidad de Escuela Mística</h2>
         <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro']); ?></p>
         <div class="row">
             <?php foreach ($identity_group['identity_items'] as $item): ?>

@@ -18,7 +18,6 @@ get_header();
     <!-- Shortcode: Propósito -->
     <section class="purpose-section py-5">
         <div class="container">
-            <h2 class="text-center text-primary mb-4">Nuestro Propósito</h2>
             <?php echo do_shortcode('[ev-about-purpose]'); ?>
         </div>
     </section>
