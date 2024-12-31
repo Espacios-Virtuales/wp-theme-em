@@ -825,17 +825,20 @@ function ev_services_list_shortcode() {
     <div class="services-list py-5">
         <h2 class="text-center text-primary mb-4">Nuestros Servicios</h2>
         <div class="row">
+            <?php $index = 0; // Inicializar el índice manualmente ?>
+
             <?php foreach ($services_group['services'] as $service): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card service-card shadow-lg border-0 h-100">
+                <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
+                    <div class="card service-card shadow-lg border-0 h-100  <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
                         <div class="card-body text-center">
-                            <i class="<?php echo esc_attr($service['service_icon']); ?> text-primary display-4 mb-3"></i>
-                            <h5 class="text-primary"><?php echo esc_html($service['service_title']); ?></h5>
-                            <p class="text-muted"><?php echo esc_html($service['service_description']); ?></p>
+                            <i class="<?php echo esc_attr($service['item_icon']); ?> text-primary display-4 mb-3"></i>
+                            <h5 class="text-primary"><?php echo esc_html($service['item_title']); ?></h5>
+                            <p class="text-muted"><?php echo esc_html($service['item_description']); ?></p>
                             <a href="<?php echo esc_url($service['service_link']); ?>" class="btn btn-outline-primary mt-3">Saber Más</a>
                         </div>
                     </div>
                 </div>
+                <?php $index++; // Incrementar el índice manualmente ?>
             <?php endforeach; ?>
         </div>
     </div>
