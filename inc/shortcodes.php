@@ -806,7 +806,7 @@ function ev_services_value_shortcode() {
                         <div class="card-body text-center">
                             <i class="<?php echo esc_attr($item['value_icon']); ?> text-primary display-4 mb-3"></i>
                             <h5 class="text-primary"><?php echo esc_html($item['value_title']); ?></h5>
-                            <p class="text-muted"><?php echo esc_html($item['value_description']); ?></p>
+                            <p class="text-muted"><?php echo esc_html($item['value_text']); ?></p>
                         </div>
                     </div>
                 </div>
