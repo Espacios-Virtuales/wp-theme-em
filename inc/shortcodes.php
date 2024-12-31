@@ -762,3 +762,83 @@ function ev_about_identity_shortcode() {
 }
 add_shortcode('ev-about-identity', 'ev_about_identity_shortcode');
 
+// Landing Servicios 
+
+function ev_services_hero_shortcode() {
+    ob_start();
+    ?>
+    <section class="services-hero py-5 text-center text-light" style="background: linear-gradient(135deg, rgba(75,0,130,0.9), rgba(72,61,139,0.9));">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Descubre Nuestros Servicios</h1>
+            <p class="lead mb-4">Sanación, aprendizaje y transformación espiritual en un solo lugar.</p>
+            <div class="row justify-content-center">
+                <div class="col-4 col-md-2">
+                    <i class="bi bi-heart-fill text-warning display-4"></i>
+                    <p class="mt-2">Terapias</p>
+                </div>
+                <div class="col-4 col-md-2">
+                    <i class="bi bi-mortarboard-fill text-warning display-4"></i>
+                    <p class="mt-2">Cursos</p>
+                </div>
+                <div class="col-4 col-md-2">
+                    <i class="bi bi-lightning-fill text-warning display-4"></i>
+                    <p class="mt-2">Desafíos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('ev-services-hero', 'ev_services_hero_shortcode');
+
+function ev_services_value_shortcode() {
+    $value_group = get_field('value_group'); // Group: value_group
+    ob_start();
+    ?>
+    <div class="value-section py-5">
+        <h2 class="text-center text-primary mb-4">Nuestra Propuesta de Valor</h2>
+        <div class="row">
+            <?php foreach ($value_group['value_items'] as $item): ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-lg border-0 h-100">
+                        <div class="card-body text-center">
+                            <i class="<?php echo esc_attr($item['value_icon']); ?> text-primary display-4 mb-3"></i>
+                            <h5 class="text-primary"><?php echo esc_html($item['value_title']); ?></h5>
+                            <p class="text-muted"><?php echo esc_html($item['value_description']); ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('ev-services-value', 'ev_services_value_shortcode');
+
+function ev_services_list_shortcode() {
+    $services_group = get_field('services_group'); // Group: services_group
+    ob_start();
+    ?>
+    <div class="services-list py-5">
+        <h2 class="text-center text-primary mb-4">Nuestros Servicios</h2>
+        <div class="row">
+            <?php foreach ($services_group['services'] as $service): ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card service-card shadow-lg border-0 h-100">
+                        <div class="card-body text-center">
+                            <i class="<?php echo esc_attr($service['service_icon']); ?> text-primary display-4 mb-3"></i>
+                            <h5 class="text-primary"><?php echo esc_html($service['service_title']); ?></h5>
+                            <p class="text-muted"><?php echo esc_html($service['service_description']); ?></p>
+                            <a href="<?php echo esc_url($service['service_link']); ?>" class="btn btn-outline-primary mt-3">Saber Más</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('ev-services-list', 'ev_services_list_shortcode');

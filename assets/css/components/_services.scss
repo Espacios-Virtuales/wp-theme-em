@@ -1,0 +1,328 @@
+#servicios-programas {
+    background-color: var(--bs-primary);  // Fondo morado oscuro
+    color: #f5f5f5; // Texto claro
+    padding: 60px 0;
+
+    /* Encabezado de la sección */
+    h2 {
+        font-size: 2.5rem;
+        color: #FFD700; // Título dorado
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); // Sombra suave para el texto
+        font-family: 'Cinzel', serif; // Tipografía temática
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #dcdcdc; // Texto secundario claro
+        font-family: 'Lora', serif; // Elegancia en los párrafos
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    /* Estilo del Carousel */
+    .carousel {
+        .carousel-item {
+
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; // Transiciones suaves
+            position: relative;
+
+            .card{
+                background-color: var(--bs-primary);
+            }
+
+            img {
+                border-radius: 15px; // Bordes redondeados para las imágenes
+                box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); // Sombras profundas para las imágenes
+                width: 100%;
+                height: auto;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.05); // Zoom suave en hover
+                    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.7); // Sombra más pronunciada en hover
+                }
+            }
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.6); // Fondo semi-transparente oscuro
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-top: 20px;
+
+            h3 {
+                font-size: 1.5rem;
+                color: #FFD700; // Texto dorado
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+                font-family: 'Cinzel', serif;
+            }
+
+            p {
+                font-size: 1rem;
+                color: #dcdcdc;
+                font-family: 'Lora', serif;
+            }
+        }
+    }
+
+    /* Botones de navegación del carousel */
+    .carousel-control-prev,
+    .carousel-control-next {
+        filter: brightness(0.8); // Oscurecer un poco los íconos
+        transition: filter 0.3s ease;
+
+        &:hover {
+            filter: brightness(1); // Brillo en hover
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #FFD700; // Color dorado
+            border-radius: 50%; // Íconos redondeados
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5); // Sombra en los íconos
+        }
+    }
+
+    /* Contenedor adicional de información */
+    .info-container {
+        margin-top: 40px;
+        text-align: center;
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #f5f5f5;
+            font-family: 'Lora', serif;
+        }
+    }
+
+    /* Indicadores del Carousel */
+    .carousel-indicators button {
+        width: 12px;
+        height: 12px;
+        background-color: #FFD700; // Indicadores dorados
+        border: none;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.2); // Aumenta el tamaño en hover
+        }
+
+        &.active {
+            background-color: #DAA520; // Indicador activo con un dorado más oscuro
+        }
+    }
+}
+
+
+// Global Variables
+$primary: var(--bs-primary);
+$primary-light: rgba(72, 61, 139, 0.7);
+$secondary:var(--bs-secondary);
+$accent: #FFD700; // Gold
+$shadow-color: rgba(0, 0, 0, 0.3);
+
+// Hero Section
+.services-hero {
+    background: linear-gradient(135deg, $primary-light, $secondary);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+
+    // Decorative Shapes
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        background: $accent;
+        opacity: 0.15;
+        animation: float 6s infinite ease-in-out;
+    }
+
+    &:before {
+        width: 300px;
+        height: 300px;
+        top: -50px;
+        left: -50px;
+    }
+
+    &:after {
+        width: 200px;
+        height: 200px;
+        bottom: -30px;
+        right: -30px;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-shadow: 2px 2px $shadow-color;
+    }
+
+    i {
+        font-size: 2.5rem;
+        transition: transform 0.3s ease, color 0.3s ease;
+
+        &:hover {
+            transform: scale(1.2);
+            color: $accent;
+        }
+    }
+
+    p {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+}
+
+// Value Section
+.value-section {
+    background: #f8f9fa; // Light Gray
+    padding: 60px 20px;
+
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 8px 20px $shadow-color;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        i {
+            color: $primary;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+
+            &:hover {
+                color: $accent;
+            }
+        }
+
+        h5 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: $primary;
+        }
+
+        p {
+            color: $secondary;
+        }
+    }
+}
+
+// Services List
+.services-list {
+    background: #fff;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+
+    // Decorative Shapes
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        background: $primary-light;
+        opacity: 0.1;
+        animation: float 8s infinite ease-in-out;
+    }
+
+    &:before {
+        width: 250px;
+        height: 250px;
+        top: -80px;
+        left: -80px;
+    }
+
+    &:after {
+        width: 200px;
+        height: 200px;
+        bottom: -60px;
+        right: -60px;
+    }
+
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 8px 20px $shadow-color;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        i {
+            color: $secondary;
+            font-size: 2.5rem;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.2);
+                color: $accent;
+            }
+        }
+
+        h5 {
+            font-size: 1.5rem;
+            color: $primary;
+            font-weight: bold;
+        }
+
+        p {
+            color: $secondary;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            background: $primary;
+            color: #fff;
+            border: none;
+            transition: background 0.3s ease;
+
+            &:hover {
+                background: $secondary;
+                color: $accent;
+            }
+        }
+    }
+}
+
+// Animations
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+// Media Queries for Responsiveness
+@media (max-width: 768px) {
+    .services-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .value-section h5, .services-list h5 {
+        font-size: 1.2rem;
+    }
+
+    .value-section p, .services-list p {
+        font-size: 0.9rem;
+    }
+}
