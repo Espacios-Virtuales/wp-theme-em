@@ -767,7 +767,7 @@ add_shortcode('ev-about-identity', 'ev_about_identity_shortcode');
 function ev_services_hero_shortcode() {
     ob_start();
     ?>
-    <section class="services-hero py-5 text-center text-light" style="background: linear-gradient(135deg, rgba(75,0,130,0.9), rgba(72,61,139,0.9));">
+    <section class="services-hero py-5 text-center text-light">
         <div class="container">
             <h1 class="display-4 fw-bold mb-3 text-gold">Descubre Nuestros Servicios</h1>
             <p class="lead mb-4">Sanación, aprendizaje y transformación espiritual en un solo lugar.</p>
