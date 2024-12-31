@@ -720,7 +720,7 @@ function ev_about_values_shortcode() {
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg">
                         <div class="card-body">
-                            <h5 class="text-primary"><?php echo esc_html($value['value_title']); ?></h5>
+                            <h5 class="text-primary text-center"><?php echo esc_html($value['value_title']); ?></h5>
                             <p><?php echo esc_html($value['value_text']); ?></p>
                         </div>
                     </div>
