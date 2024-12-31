@@ -21,7 +21,7 @@ get_header(); ?>
                     <?php if (has_post_thumbnail()): ?>
                         <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>" class="img-fluid shadow-lg rounded mb-4">
                     <?php endif; ?>
-                    <div class="page-content">
+                    <div class="page-content text-center text-gray">
                         <?php while (have_posts()): the_post(); ?>
                             <?php the_content(); ?>
                         <?php endwhile; ?>
