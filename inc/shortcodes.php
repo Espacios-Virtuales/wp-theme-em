@@ -742,7 +742,9 @@ function ev_about_identity_shortcode() {
         <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro']); ?></p>
         
         <div class="row">
-            <?php foreach ($identity_group['identity_items'] as $index => $item): ?>
+            <?php 
+            $index = 0; // Inicializar el índice manualmente
+            foreach ($identity_group['identity_items'] as $item): ?>
                 <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
                     <div class="card shadow-lg <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
                         <div class="card-body">
@@ -751,6 +753,7 @@ function ev_about_identity_shortcode() {
                         </div>
                     </div>
                 </div>
+                <?php $index++; // Incrementar el índice manualmente ?>
             <?php endforeach; ?>
         </div>
     </div>
