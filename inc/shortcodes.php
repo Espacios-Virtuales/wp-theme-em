@@ -769,7 +769,7 @@ function ev_services_hero_shortcode() {
     ?>
     <section class="services-hero py-5 text-center text-light" style="background: linear-gradient(135deg, rgba(75,0,130,0.9), rgba(72,61,139,0.9));">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-3">Descubre Nuestros Servicios</h1>
+            <h1 class="display-4 fw-bold mb-3 text-gold">Descubre Nuestros Servicios</h1>
             <p class="lead mb-4">Sanación, aprendizaje y transformación espiritual en un solo lugar.</p>
             <div class="row justify-content-center">
                 <div class="col-4 col-md-2">
@@ -797,7 +797,7 @@ function ev_services_value_shortcode() {
     ob_start();
     ?>
     <div class="value-section py-5">
-        <h2 class="text-center text-gold mb-4">Nuestra Propuesta de Valor</h2>
+        <h2 class="text-center text-primary mb-4">Nuestra Propuesta de Valor</h2>
         <div class="row">
             <?php foreach ($values as $item): ?>
                 <div class="col-md-4 mb-4">
