@@ -797,7 +797,7 @@ function ev_services_value_shortcode() {
     ob_start();
     ?>
     <div class="value-section py-5">
-        <h2 class="text-center text-primary mb-4">Nuestra Propuesta de Valor</h2>
+        <h2 class="text-center text-gold mb-4">Nuestra Propuesta de Valor</h2>
         <div class="row">
             <?php foreach ($values as $item): ?>
                 <div class="col-md-4 mb-4">
