@@ -22167,7 +22167,7 @@ textarea.form-control-lg {
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 150px;
+  min-height: 200px !important;
 }
 .section-about .purpose-section .card:hover {
   transform: translateY(-10px);
@@ -22195,7 +22195,7 @@ textarea.form-control-lg {
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 200px;
+  min-height: 300px;
 }
 .section-about .mission-vision-section .card:hover {
   transform: translateY(-10px);

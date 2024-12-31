@@ -115,7 +115,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            min-height: 150px;
+            min-height: 200px !important;
     
             &:hover {
                 transform: translateY(-10px); // Efecto de elevación al pasar el ratón
@@ -152,7 +152,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            min-height: 200px;
+            min-height: 300px;
     
             &:hover {
                 transform: translateY(-10px); // Efecto de elevación al pasar el ratón
