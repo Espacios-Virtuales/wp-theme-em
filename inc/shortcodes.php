@@ -656,14 +656,16 @@ add_shortcode('ev-contacto', 'ev_contact_shortcode');
 
 // Landing - Sobre Nosotros
 function ev_about_purpose_shortcode() {
+    $purpose = get_field('purpose'); // Obtener el grupo 'purpose'
     ob_start();
     ?>
-    <div class="row align-items-center">
-        <div class="col-md-6">
-            <img src="<?php echo get_field('purpose_image'); ?>" class="img-fluid rounded shadow-lg" alt="Propósito">
+    <div class="row align-items-center purpose-section">
+        <div class="col-md-6 text-center">
+            <img src="<?php echo esc_url($purpose['purpose_image']); ?>" class="img-fluid rounded shadow-lg purpose-img" alt="Propósito">
         </div>
         <div class="col-md-6">
-            <p class="lead"><?php echo get_field('purpose_text'); ?></p>
+            <h3 class="text-primary">Nuestro Propósito</h3>
+            <p class="lead"><?php echo esc_html($purpose['purpose_text']); ?></p>
         </div>
     </div>
     <?php
@@ -672,16 +674,27 @@ function ev_about_purpose_shortcode() {
 add_shortcode('ev-about-purpose', 'ev_about_purpose_shortcode');
 
 function ev_about_mission_vision_shortcode() {
+    $mission_vision = get_field('mission_vision'); // Obtener el grupo 'mission_vision'
     ob_start();
     ?>
-    <div class="row">
-        <div class="col-md-6">
-            <h3 class="text-primary">Misión</h3>
-            <p><?php echo get_field('mission_text'); ?></p>
+    <div class="row mission-vision-section">
+        <div class="col-md-6 text-center">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <i class="bi bi-eye-fill text-primary display-4"></i>
+                    <h3 class="text-primary">Misión</h3>
+                    <p><?php echo esc_html($mission_vision['mission_text']); ?></p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <h3 class="text-primary">Visión</h3>
-            <p><?php echo get_field('vision_text'); ?></p>
+        <div class="col-md-6 text-center">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <i class="bi bi-lightbulb-fill text-primary display-4"></i>
+                    <h3 class="text-primary">Visión</h3>
+                    <p><?php echo esc_html($mission_vision['vision_text']); ?></p>
+                </div>
+            </div>
         </div>
     </div>
     <?php
@@ -690,38 +703,41 @@ function ev_about_mission_vision_shortcode() {
 add_shortcode('ev-about-mission-vision', 'ev_about_mission_vision_shortcode');
 
 function ev_about_values_shortcode() {
+    $values = get_field('values'); // Obtener el grupo 'values'
     ob_start();
     ?>
-    <ul class="list-inline text-center">
-        <?php if (have_rows('values_list')): ?>
-            <?php while (have_rows('values_list')): the_row(); ?>
-                <li class="list-inline-item mx-3">
-                    <div class="value-item text-center">
-                        <i class="<?php the_sub_field('icon'); ?> text-gold display-4"></i>
-                        <p class="mt-2"><?php the_sub_field('value_text'); ?></p>
+    <div class="row text-center values-section">
+        <?php if (!empty($values['values_list'])): ?>
+            <?php foreach ($values['values_list'] as $value): ?>
+                <div class="col-md-4">
+                    <div class="value-item shadow-lg p-4">
+                        <i class="<?php echo esc_attr($value['icon']); ?> text-gold display-4"></i>
+                        <h4 class="text-primary mt-3"><?php echo esc_html($value['value_title']); ?></h4>
+                        <p><?php echo esc_html($value['value_text']); ?></p>
                     </div>
-                </li>
-            <?php endwhile; ?>
+                </div>
+            <?php endforeach; ?>
         <?php endif; ?>
-    </ul>
+    </div>
     <?php
     return ob_get_clean();
 }
 add_shortcode('ev-about-values', 'ev_about_values_shortcode');
 
 function ev_about_identity_shortcode() {
+    $identity = get_field('identity'); // Obtener el grupo 'identity'
     ob_start();
     ?>
-    <div class="row align-items-center">
+    <div class="row align-items-center identity-section">
         <div class="col-md-6">
-            <p class="lead"><?php echo get_field('identity_text'); ?></p>
+            <h3 class="text-gold">Nuestra Identidad</h3>
+            <p class="lead"><?php echo esc_html($identity['identity_text']); ?></p>
         </div>
-        <div class="col-md-6">
-            <img src="<?php echo get_field('identity_image'); ?>" class="img-fluid rounded shadow-lg" alt="Identidad">
+        <div class="col-md-6 text-center">
+            <img src="<?php echo esc_url($identity['identity_image']); ?>" class="img-fluid rounded-circle shadow-lg identity-img" alt="Identidad">
         </div>
     </div>
     <?php
     return ob_get_clean();
 }
 add_shortcode('ev-about-identity', 'ev_about_identity_shortcode');
-
