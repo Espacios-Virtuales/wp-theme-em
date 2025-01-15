@@ -69,12 +69,33 @@
         }
     }
 
-    .aws-search-field {
-        font-size: 0.9rem ;
-        padding-left: 1.4rem !important;
-        border-radius: 20px !important;
+    .aws-search-btn,
+    .aws-form-btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem; // Ajusta el tamaño del botón
+        border-radius: 50px; // Botón redondeado
+        background-color: #4b0082; // Color de fondo
+        color: #fff; // Color del texto
+        font-size: 1rem; // Tamaño de fuente
+        font-weight: bold;
+        border: none; // Sin bordes
+        cursor: pointer;
+        margin: 0.5rem; // Espaciado entre botones y elementos cercanos
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); // Sombra suave
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    
+        &:hover {
+            background-color: #6a5acd; // Color más claro al pasar el ratón
+            transform: translateY(-2px); // Efecto de elevación
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); // Sombra más pronunciada
+        }
+    
+        &:active {
+            transform: translateY(1px); // Efecto de pulsación
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2); // Sombra reducida
+        }
     }
-
+    
     /* Menú de navegación principal */
     .main-navigation {
         background-color: transparent; /* Fondo transparente */

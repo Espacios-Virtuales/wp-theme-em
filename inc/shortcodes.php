@@ -284,6 +284,10 @@ function community_membership_gallery_shortcode()
         ?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
+                    <div class="text-center mb-4">
+                        <h2 class="text-gold display-6"><?php echo esc_html($intro["intro_1"]); ?></h2> <!-- Título principal -->
+                        <p class="lead text-muted"> <?php echo esc_html($intro["intro_2"]); ?></p>
+                    </div>
                     <!-- Sección de Maureen -->
                     <?php if ($description_group): ?>
                         <div class="row align-items-center mb-5">
