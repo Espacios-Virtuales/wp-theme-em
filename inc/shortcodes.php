@@ -280,7 +280,7 @@ function community_membership_gallery_shortcode()
 
             // Desglose de los elementos
             $item_1 = $community_items['item_1'];
-            $item_2 = $community_items['item_1'];
+            $item_2 = $community_items['item_2'];
         ?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
