@@ -279,8 +279,8 @@ function community_membership_gallery_shortcode()
             $community_items = get_field('community_comunity_group'); // Items de la comunidad
 
             // Desglose de los elementos
-            $item_1 = $community_items[0];
-            $item_2 = $community_items[1];
+            $item_1 = $community_items['item_1'];
+            $item_2 = $community_items['item_1'];
         ?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
