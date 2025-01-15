@@ -261,7 +261,7 @@ function ev_servicios_shortcode()
 }
 add_shortcode('ev-servicios', 'ev_servicios_shortcode');
 
-// Función para crear el shortcode de comunidad y membresia
+// Función para crear el shortcode de comunidad y membresía
 function community_membership_gallery_shortcode()
 {
     // Obtener datos de la página con el slug 'membresia-comunidad'
@@ -278,8 +278,8 @@ function community_membership_gallery_shortcode()
             $maureen_thought = $description_group['maureen_thought'];
             $maureen_image = $description_group['maureen_image'];
 
-            // Obtener el grupo de la galería
-            $community_gallery_group = get_field('community_gallery_group'); // Grupo principal de la galería
+            // Obtener el grupo de la comunidad
+            $community_group = get_field('community_comunity_group'); // Grupo principal de la comunidad
 
         ?>
             <section class="community-membership py-5" id="community">
@@ -300,27 +300,29 @@ function community_membership_gallery_shortcode()
                         </div>
                     <?php endif; ?>
 
-                    <!-- Galería -->
-                    <?php if ($community_gallery_group): ?>
+                    <!-- Comunidad -->
+                    <?php if ($community_group): ?>
                         <div class="title text-center mb-4">
                             <h2 class="text-gold">Comunidad y Membresía</h2>
                             <p class="text-muted">Explora los beneficios de unirte a nuestra comunidad y disfruta de contenido exclusivo.</p>
                         </div>
                         <div class="row g-4">
-                            <?php foreach ($community_gallery_group as $item_key => $item):
-                                $title = $item['title']; // Título del beneficio
-                                $image = $item['image']; // Imagen asociada
+                            <?php foreach ($community_group as $item_key => $item):
+                                $title = $item['title']; // Título del ítem
                                 $description = $item['description']; // Breve descripción
+                                $link = $item['link']; // Enlace al grupo (Telegram o WhatsApp)
+                                $icon_class = ($item_key < 2) ? 'bi bi-chat-dots-fill' : 'bi bi-people-fill'; // Iconos diferentes
                             ?>
                                 <div class="col-md-4">
-                                    <div class="gallery-item shadow-sm">
-                                        <a href="<?php echo esc_url($image['url']); ?>" data-lightbox="community-gallery" data-title="<?php echo esc_attr($title); ?>">
-                                            <img src="<?php echo esc_url($image['sizes']['medium']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="img-fluid rounded">
-                                        </a>
-                                        <div class="gallery-info text-center mt-3">
-                                            <h5 class="text-gold"><?php echo esc_html($title); ?></h5>
-                                            <p class="text-muted"><?php echo esc_html($description); ?></p>
+                                    <div class="gallery-item shadow-sm text-center">
+                                        <div class="icon-container mb-3">
+                                            <i class="<?php echo esc_attr($icon_class); ?> text-gold display-4"></i>
                                         </div>
+                                        <h5 class="text-gold"><?php echo esc_html($title); ?></h5>
+                                        <p class="text-muted"><?php echo esc_html($description); ?></p>
+                                        <?php if ($link): ?>
+                                            <a href="<?php echo esc_url($link); ?>" class="btn btn-primary" target="_blank">Unirme</a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
