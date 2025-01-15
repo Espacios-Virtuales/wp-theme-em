@@ -262,6 +262,7 @@ function ev_servicios_shortcode()
 add_shortcode('ev-servicios', 'ev_servicios_shortcode');
 
 // Función para crear el shortcode de comunidad y membresía
+// Función para crear el shortcode de comunidad y membresía optimizado
 function community_membership_gallery_shortcode()
 {
     // Obtener datos de la página con el slug 'membresia-comunidad'
@@ -273,14 +274,13 @@ function community_membership_gallery_shortcode()
         while ($data->have_posts()) {
             $data->the_post();
 
-            // Obtener el grupo de descripción
-            $description_group = get_field('description_group'); // Grupo con la imagen y pensamiento
-            $maureen_thought = $description_group['maureen_thought'];
-            $maureen_image = $description_group['maureen_image'];
+            // Obtener los datos necesarios
+            $description_group = get_field('description_group'); // Imagen y pensamiento
+            $community_items = get_field('community_comunity_group'); // Items de la comunidad
 
-            // Obtener el grupo de la comunidad
-            $community_group = get_field('community_comunity_group'); // Grupo principal de la comunidad
-
+            // Desglose de los elementos
+            $item_1 = $community_items[0];
+            $item_2 = $community_items[1];
         ?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
@@ -288,49 +288,54 @@ function community_membership_gallery_shortcode()
                     <?php if ($description_group): ?>
                         <div class="row align-items-center mb-5">
                             <div class="col-md-4 text-center">
-                                <?php if ($maureen_image): ?>
-                                    <img src="<?php echo esc_url($maureen_image['url']); ?>" alt="<?php echo esc_attr($maureen_image['alt']); ?>" class="img-fluid rounded-circle maureen-photo">
+                                <?php if ($description_group['maureen_image']): ?>
+                                    <img src="<?php echo esc_url($description_group['maureen_image']['url']); ?>" alt="<?php echo esc_attr($description_group['maureen_image']['alt']); ?>" class="img-fluid rounded-circle maureen-photo">
                                 <?php endif; ?>
                             </div>
                             <div class="col-md-8">
                                 <blockquote class="maureen-thought text-center text-md-start">
-                                    <p class="fs-4 text-muted"><?php echo esc_html($maureen_thought); ?></p>
+                                    <p class="fs-4 text-muted"><?php echo esc_html($description_group['maureen_thought']); ?></p>
                                 </blockquote>
                             </div>
                         </div>
                     <?php endif; ?>
 
-                    <!-- Comunidad -->
-                    <?php if ($community_group): ?>
-                        <div class="title text-center mb-4">
-                            <h2 class="text-gold">Comunidad y Membresía</h2>
-                            <p class="text-muted">Explora los beneficios de unirte a nuestra comunidad y disfruta de contenido exclusivo.</p>
-                        </div>
-                        <div class="row g-4">
-                            <?php foreach ($community_group as $item_key => $item):
-                                $title = $item['title']; // Título del ítem
-                                $description = $item['description']; // Breve descripción
-                                $link = $item['link']; // Enlace al grupo (Telegram o WhatsApp)
-                                $icon_class = ($item_key < 2) ? 'bi bi-chat-dots-fill' : 'bi bi-people-fill'; // Iconos diferentes
-                            ?>
-                                <div class="col-md-4">
-                                    <div class="gallery-item shadow-sm text-center">
-                                        <div class="icon-container mb-3">
-                                            <i class="<?php echo esc_attr($icon_class); ?> text-gold display-4"></i>
-                                        </div>
-                                        <h5 class="text-gold"><?php echo esc_html($title); ?></h5>
-                                        <p class="text-muted"><?php echo esc_html($description); ?></p>
-                                        <?php if ($link): ?>
-                                            <a href="<?php echo esc_url($link); ?>" class="btn btn-primary" target="_blank">Unirme</a>
-                                        <?php endif; ?>
-                                    </div>
+                    <!-- Comunidad: Item 1 -->
+                    <?php if ($item_1): ?>
+                        <div class="community-item mb-5">
+                            <div class="text-center">
+                                <?php if ($item_1['image']): ?>
+                                    <img src="<?php echo esc_url($item_1['image']['url']); ?>" alt="<?php echo esc_attr($item_1['image']['alt']); ?>" class="img-fluid rounded community-icon">
+                                <?php endif; ?>
+                                <h5 class="text-gold mt-3"><?php echo esc_html($item_1['title']); ?></h5>
+                                <p class="text-muted"><?php echo esc_html($item_1['description']); ?></p>
+                                <div class="d-flex justify-content-center gap-3 mt-3">
+                                    <a href="<?php echo esc_url($item_1['link_whatsapp']); ?>" target="_blank" class="btn btn-primary">
+                                        <i class="bi bi-whatsapp"></i> WhatsApp
+                                    </a>
+                                    <a href="<?php echo esc_url($item_1['link_telegram']); ?>" target="_blank" class="btn btn-secondary">
+                                        <i class="bi bi-telegram"></i> Telegram
+                                    </a>
                                 </div>
-                            <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Comunidad: Item 2 -->
+                    <?php if ($item_2): ?>
+                        <div class="community-item mb-5">
+                            <div class="text-center">
+                                <h5 class="text-gold"><?php echo esc_html($item_2['title']); ?></h5>
+                                <p class="text-muted"><?php echo esc_html($item_2['description']); ?></p>
+                                <a href="<?php echo esc_url($item_2['link_whatsapp']); ?>" target="_blank" class="btn btn-primary">
+                                    <i class="bi bi-whatsapp"></i> WhatsApp
+                                </a>
+                            </div>
                         </div>
                     <?php endif; ?>
                 </div>
             </section>
-    <?php
+        <?php
         }
 
         wp_reset_postdata(); // Restablecer la consulta de posts
@@ -340,6 +345,7 @@ function community_membership_gallery_shortcode()
     }
 }
 add_shortcode('ev-community_member', 'community_membership_gallery_shortcode');
+
 
 // Función para crear el shortcode de calendario con eventos de ACF y modales
 function blog_calendar_events_shortcode()

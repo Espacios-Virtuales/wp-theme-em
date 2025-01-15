@@ -21487,6 +21487,11 @@ textarea.form-control-lg {
 .site-header__logo .custom-logo-link img:hover {
   filter: brightness(1); /* Restaurar brillo al pasar el ratón */
 }
+.site-header .aws-search-field {
+  font-size: 0.9rem;
+  padding-left: 1.4rem !important;
+  border-radius: 20px !important;
+}
 .site-header .main-navigation {
   background-color: transparent; /* Fondo transparente */
   text-align: center;
@@ -22796,71 +22801,79 @@ textarea.form-control-lg {
 }
 
 .community-membership {
-  background-color: var(--bs-primary);
+  background-color: var(--bs-primary-opacity-5);
   padding: 80px 0;
 }
 .community-membership .maureen-photo {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 4px solid #ffd700;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  border: 4px solid var(--bs-gold);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+.community-membership .maureen-photo:hover {
+  transform: scale(1.1);
 }
 .community-membership .maureen-thought {
   font-style: italic;
-  color: #666;
-  background-color: #f9f9f9;
-  border-left: 4px solid #ffd700;
-  padding: 1rem 2rem;
+  color: var(--bs-secondary);
+  background-color: #ffffff;
+  border-left: 4px solid var(--bs-gold);
+  padding: 1.5rem 2rem;
   border-radius: 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
-.community-membership .gallery-category {
-  margin-bottom: 2rem;
+.community-membership .maureen-thought:hover {
+  background-color: var(--bs-secondary-opacity-5);
 }
-.community-membership .gallery-category h5, .community-membership .gallery-category .h5 {
-  font-size: 1.2rem;
-  color: #ffd700;
+.community-membership .community-item {
+  text-align: center;
+}
+.community-membership .community-item .community-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.community-membership .community-item .community-icon:hover {
+  transform: scale(1.2);
+}
+.community-membership .community-item h5, .community-membership .community-item .h5 {
+  font-size: 1.5rem;
+  color: var(--bs-gold);
   font-family: "Cinzel", serif;
 }
-.community-membership .gallery-category p {
+.community-membership .community-item p {
   font-size: 1rem;
   color: #555;
 }
-.community-membership .gallery-category .row .col-6 img {
-  width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.community-membership .community-item .btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
-.community-membership .gallery-category .row .col-6 img:hover {
+.community-membership .community-item .btn:hover {
   transform: scale(1.05);
-  box-shadow: 0px 5px 20px rgba(255, 215, 0, 0.8);
 }
-.community-membership .gallery-category .row .col-6 .small {
-  color: #888;
-  text-align: center;
+.community-membership .community-item .btn.btn-primary {
+  background-color: var(--bs-secondary);
+  color: #fff;
 }
-.community-membership .gallery-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.community-membership .community-item .btn.btn-primary:hover {
+  background-color: var(--bs-gold);
+  color: var(--bs-secondary);
 }
-.community-membership .gallery-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 5px 20px rgba(255, 215, 0, 0.8);
+.community-membership .community-item .btn.btn-secondary {
+  background-color: var(--bs-gold);
+  color: #fff;
 }
-.community-membership .gallery-item img {
-  width: 33%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-  height: 300px; /* Establece una altura uniforme */
-  -o-object-fit: cover;
-     object-fit: cover; /* Recorta la imagen para que se ajuste al contenedor */
-  border-radius: 10px; /* Mantiene las esquinas redondeadas */
-  transition: filter 0.3s ease;
-}
-.community-membership .gallery-item img:hover {
-  filter: brightness(1.2);
+.community-membership .community-item .btn.btn-secondary:hover {
+  background-color: var(--bs-secondary);
+  color: var(--bs-gold);
 }
 
 /* Estilización personalizada para el Lightbox */
