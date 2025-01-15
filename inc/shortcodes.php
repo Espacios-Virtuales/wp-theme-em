@@ -267,6 +267,7 @@ function community_membership_gallery_shortcode()
 {
     // Obtener datos de la página con el slug 'membresia-comunidad'
     $data = blog_get_page(array('membresia-comunidad'));
+    
 
     if ($data->have_posts()) {
         ob_start(); // Captura de salida
@@ -275,6 +276,7 @@ function community_membership_gallery_shortcode()
             $data->the_post();
 
             // Obtener los datos necesarios
+            $intro = get_field('introductions');
             $description_group = get_field('description_group'); // Imagen y pensamiento
             $community_items = get_field('community_comunity_group'); // Items de la comunidad
 
