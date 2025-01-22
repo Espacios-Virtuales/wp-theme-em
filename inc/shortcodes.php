@@ -331,9 +331,9 @@ function community_membership_gallery_shortcode()
                     <?php if ($item_2): ?>
                         <div class="community-item mb-5">
                             <div class="text-center">
-                                <h5 class="text-gold"><?php echo esc_html($item_2['title']); ?></h5>
-                                <p class="text-muted"><?php echo esc_html($item_2['description']); ?></p>
-                                <a href="<?php echo esc_url($item_2['link_whatsapp']); ?>" target="_blank" class="btn btn-primary">
+                                <h5 class="text-gold"><?php echo esc_html($item_2['title_2']); ?></h5>
+                                <p class="text-muted"><?php echo esc_html($item_2['description_2']); ?></p>
+                                <a href="<?php echo esc_url($item_2['link_whatsapp_2']); ?>" target="_blank" class="btn btn-primary">
                                     <i class="bi bi-whatsapp"></i> WhatsApp
                                 </a>
                             </div>
