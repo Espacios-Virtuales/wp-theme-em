@@ -22604,11 +22604,11 @@ textarea.form-control-lg {
   overflow: hidden;
 }
 .services-hero h1, .services-hero .h1 {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: bold;
   line-height: 1.2;
   color: #fff;
-  text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 3px 3px 0px 6px 20px rgba(0, 0, 0, 0.3);
 }
 .services-hero p {
   font-size: 1.5rem;
@@ -22620,7 +22620,7 @@ textarea.form-control-lg {
 .services-hero i {
   font-size: 2rem;
   margin: 0 10px;
-  color: #FFD700;
+  color: #ffd700;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 .services-hero i:hover {
@@ -22644,7 +22644,7 @@ textarea.form-control-lg {
 }
 .value-section .card {
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px 0px 6px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .value-section .card:hover {
@@ -22657,7 +22657,7 @@ textarea.form-control-lg {
   animation: bounce 2s infinite;
 }
 .value-section .card i:hover {
-  color: #FFD700;
+  color: #ffd700;
 }
 .value-section .card h5, .value-section .card .h5 {
   font-size: 1.8rem;
@@ -22697,7 +22697,7 @@ textarea.form-control-lg {
 }
 .services-list .card {
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px 0px 6px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .services-list .card:hover {
@@ -22711,7 +22711,7 @@ textarea.form-control-lg {
 }
 .services-list .card i:hover {
   transform: scale(1.2);
-  color: #FFD700;
+  color: #ffd700;
 }
 .services-list .card h5, .services-list .card .h5 {
   font-size: 1.5rem;
@@ -22730,7 +22730,7 @@ textarea.form-control-lg {
 }
 .services-list .card .btn:hover {
   background: var(--bs-blue-dark);
-  color: #FFD700;
+  color: #ffd700;
 }
 
 @keyframes float {
@@ -22751,13 +22751,13 @@ textarea.form-control-lg {
 }
 @media (max-width: 768px) {
   .services-hero h1, .services-hero .h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
   .value-section h5, .value-section .h5, .services-list h5, .services-list .h5 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .value-section p, .services-list p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 .testimonials-section {

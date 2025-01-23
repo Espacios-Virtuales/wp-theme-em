@@ -88,7 +88,7 @@
 $primary: var(--bs-primary);
 $primary-light: rgba(72, 61, 139, 0.7);
 $blue-dark:var(--bs-blue-dark);
-$accent: var(--bs-gold);// Gold
+$accent: #ffd700;// Gold
 $shadow-color: $shadow-hover;
 
 // Hero Section
@@ -102,7 +102,7 @@ $shadow-color: $shadow-hover;
 
     // Heading Styles
     h1 {
-        font-size: 3.5rem; // Tamaño destacado
+        font-size: 2.5rem; // Tamaño destacado
         font-weight: bold;
         line-height: 1.2; // Espaciado entre líneas
         color: #fff;
@@ -281,14 +281,14 @@ $shadow-color: $shadow-hover;
 // Media Queries for Responsiveness
 @media (max-width: 768px) {
     .services-hero h1 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
 
     .value-section h5, .services-list h5 {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .value-section p, .services-list p {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }
