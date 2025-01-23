@@ -146,7 +146,6 @@ function blog_theme_scripts() {
 	// CSS de Lightbox minificado
     wp_enqueue_style('lightbox-css', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css', array(), '2.11.3');
 
-
     // Encolar jQuery correctamente (viene con WordPress)
     wp_enqueue_script('jquery');
     
@@ -165,6 +164,9 @@ function blog_theme_scripts() {
 	wp_localize_script('forms-script', 'formData', array(
 		'jsonUrl' => get_template_directory_uri() . '/assets/data/chile-regiones.json',
 	));
+
+	// Anime
+	wp_enqueue_script('anime', 'https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js', array('jquery'), '2.0.2', true);
 
 	// JS de Lightbox minificado
     wp_enqueue_script('lightbox-js', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js', array('jquery'), '2.11.3', true);

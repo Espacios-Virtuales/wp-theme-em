@@ -783,7 +783,11 @@ function ev_services_hero_shortcode() {
     ?>
     <section class="services-hero py-5 text-center text-light">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-3 text-gold">Descubre Nuestros Servicios</h1>
+            <h1 class="display-4 fw-bold mb-3 text-gold ml9">
+                <span class="text-wrapper">
+                    <span class="letters">Descubre Nuestros Servicios</span>
+                </span>    
+           </h1>
             <p class="lead mb-4">Sanación, aprendizaje y transformación espiritual en un solo lugar.</p>
             <div class="row justify-content-center">
                 <div class="col-4 col-md-2">

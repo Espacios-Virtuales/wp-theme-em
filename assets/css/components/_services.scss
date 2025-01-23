@@ -111,7 +111,7 @@ $shadow-color: $shadow-hover;
 
     // Paragraph Styles
     p {
-        font-size: 1.5rem; // Aumenta el tamaño del texto
+        font-size: 1.2rem; // Aumenta el tamaño del texto
         font-weight: 300;
         color: #f0f0f0; // Texto suave
         margin: 20px auto; // Espaciado alrededor del párrafo
@@ -120,7 +120,7 @@ $shadow-color: $shadow-hover;
 
     // Icons
     i {
-        font-size: 2rem; // Tamaño de los íconos
+        font-size: 1.5rem; // Tamaño de los íconos
         margin: 0 10px; // Espaciado entre íconos
         color: $accent; // Color dorado para destacar
         transition: transform 0.3s ease, color 0.3s ease;
