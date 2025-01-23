@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
   // Animación de texto
   function animateText() {
-    var $textWrapper = $(".ml3");
+    var $textWrapper = $(".ml9");
     if ($textWrapper.length) {
       $textWrapper.html(
         $textWrapper.text().replace(/\S/g, "<span class='letter'>$&</span>")
