@@ -88,8 +88,8 @@
 $primary: var(--bs-primary);
 $primary-light: rgba(72, 61, 139, 0.7);
 $blue-dark:var(--bs-blue-dark);
-$accent: #FFD700; // Gold
-$shadow-color: rgba(0, 0, 0, 0.3);
+$accent: var(--bs-gold);// Gold
+$shadow-color: $shadow-hover;
 
 // Hero Section
 .services-hero {
