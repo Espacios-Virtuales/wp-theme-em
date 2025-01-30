@@ -22376,7 +22376,7 @@ textarea.form-control-lg {
 }
 .mission-vision-section .carousel {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 .mission-vision-section .carousel .carousel-inner .carousel-item {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
