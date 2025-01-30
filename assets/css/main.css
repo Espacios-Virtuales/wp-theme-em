@@ -22244,6 +22244,53 @@ textarea.form-control-lg {
   color: #444;
 }
 
+.purpose-section {
+  background: linear-gradient(to right, #1c1c3c, #3b2c6d);
+  padding: 80px 0;
+  color: #fff;
+}
+.purpose-section p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #ccc;
+  text-align: center;
+}
+.purpose-section .carousel .carousel-control-prev-icon,
+.purpose-section .carousel .carousel-control-next-icon {
+  background-color: #FFD700;
+  border-radius: 50%;
+  padding: 15px;
+}
+.purpose-section .purpose-card {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+.purpose-section .purpose-card .card-header {
+  background: #FFD700;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid #fff;
+}
+.purpose-section .purpose-card .card-body {
+  padding: 20px;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+.purpose-section .purpose-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(255, 215, 0, 0.7);
+  background: rgba(255, 215, 0, 0.1);
+}
+@media (max-width: 768px) {
+  .purpose-section .purpose-card {
+    text-align: center;
+  }
+}
+
 .values-section .card {
   background-color: #fff;
   border: 1px solid var(--bs-primary-opacity-8);
