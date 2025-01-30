@@ -15,7 +15,6 @@ get_header();
     <?php echo do_shortcode('[ev-about-purpose]'); ?>
 
     <!-- Shortcode: Misión y Visión -->
-    <h2 class="text-center text-gold mb-4">Misión y Visión</h2>
     <?php echo do_shortcode('[ev-about-mission-vision]'); ?>
 
     <!-- Shortcode: Valores -->
