@@ -22268,7 +22268,7 @@ textarea.form-control-lg {
   overflow: hidden;
 }
 .purpose-section .purpose-card .card-header {
-  background: #FFD700;
+  background: var(--bs-blue-dark);
   font-size: 1.5rem;
   font-weight: 600;
   padding: 1rem;
