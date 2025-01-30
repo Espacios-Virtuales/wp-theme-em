@@ -668,24 +668,40 @@ function ev_contact_shortcode()
 
 add_shortcode('ev-contacto', 'ev_contact_shortcode');
 
-// Propósito
+// Propósito con slide y animaciones
 function ev_about_purpose_shortcode() {
     $purpose_group = get_field('purpose_group');
     ob_start();
     ?>
     <div class="purpose-section py-5">
-        <p class="text-center text-muted mb-5"><?php echo esc_html($purpose_group['purpose_intro']); ?></p>
-        <div class="row">
-            <?php foreach ($purpose_group['purpose_items'] as $item): ?>
-                <div class="col-md-6 mb-4">
-                    <div class="card shadow-lg">
-                        <div class="card-body">
-                            <h5 class="text-primary"><?php echo esc_html($item['item_title']); ?></h5>
-                            <p><?php echo esc_html($item['item_description']); ?></p>
+        <div class="container">
+            <p class="text-center text-muted mb-5"><?php echo esc_html($purpose_group['purpose_intro']); ?></p>
+
+            <div id="purpose-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <?php $index = 0; ?>
+                    <?php foreach ($purpose_group['purpose_items'] as $item): ?>
+                        <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                            <div class="card shadow-lg purpose-card">
+                                <div class="card-header text-white text-center">
+                                    <i class="bi bi-stars"></i> 
+                                    <h5 class="mb-0"><?php echo esc_html($item['item_title']); ?></h5>
+                                </div>
+                                <div class="card-body">
+                                    <p><?php echo esc_html($item['item_description']); ?></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <?php $index++; ?>
+                    <?php endforeach; ?>
                 </div>
-            <?php endforeach; ?>
+                <button class="carousel-control-prev" type="button" data-bs-target="#purpose-carousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#purpose-carousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
         </div>
     </div>
     <?php
