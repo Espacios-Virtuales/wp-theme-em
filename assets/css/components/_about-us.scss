@@ -260,7 +260,7 @@
     }
 
     .purpose-card {
-        background: rgba(0, 0, 0, 0.8);
+        background: var(--bs-primary);
         border-radius: 15px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         overflow: hidden;
@@ -282,8 +282,8 @@
 
         &:hover {
             transform: scale(1.05);
-            box-shadow: 0px 8px 20px rgba(255, 215, 0, 0.7);
-            background: rgba(255, 215, 0, 0.1);
+            box-shadow: var(--bs-secondary-opacity-5);
+            background: var(--bs-primary-opacity-8);
         }
     }
 
@@ -293,7 +293,6 @@
         }
     }
 }
-
 .mission-vision-section {
     background: linear-gradient(135deg, rgba(72, 61, 139, 0.8), rgba(75, 0, 130, 0.8));
     color: #fff;
@@ -304,13 +303,13 @@
     // Efecto de ondas en la parte inferior
     &:after {
         content: "";
-        display: block;
         position: absolute;
-        bottom: -2px;
+        bottom: -10px;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 120px; // Ajusta la altura según sea necesario
         background: url("https://escuelamistica.cl/em/wp-content/uploads/wave.svg") no-repeat bottom center / cover;
+        z-index: 0; // Se asegura que esté detrás del contenido
     }
 
     h2 {
@@ -320,9 +319,19 @@
         font-family: "Cinzel", serif;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         margin-bottom: 2rem;
+        position: relative;
+        z-index: 2; // Asegura que el título no quede oculto
+    }
+
+    .row {
+        position: relative;
+        z-index: 2; // Se asegura de que las tarjetas estén sobre la ola
     }
 
     .carousel {
+        position: relative;
+        z-index: 2;
+        
         .carousel-inner {
             .carousel-item {
                 transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
