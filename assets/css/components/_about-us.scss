@@ -299,6 +299,7 @@
     padding: 80px 0;
     position: relative;
     overflow: hidden;
+    z-index: 0; // Se asegura que esté detrás del contenido
 
     // Efecto de ondas en la parte inferior
     &:after {
@@ -307,9 +308,9 @@
         bottom: -10px;
         left: 0;
         width: 100%;
-        height: 120px; // Ajusta la altura según sea necesario
+        height: 100%;// Ajusta la altura según sea necesario
         background: url("https://escuelamistica.cl/em/wp-content/uploads/wave.svg") no-repeat bottom center / cover;
-        z-index: 0; // Se asegura que esté detrás del contenido
+        z-index: 1; // Se asegura que esté detrás del contenido
     }
 
     h2 {

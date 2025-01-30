@@ -715,7 +715,7 @@ function ev_about_purpose_shortcode()
 ?>
     <section class="purpose-section py-5">
         <div class="container">
-            <h2 class="text-center text-primary mb-4">Nuestro Propósito</h2>
+            <h2 class="text-center text-gold mb-4">Nuestro Propósito</h2>
             <p class="text-center text-muted mb-5"><?php echo esc_html($purpose_group['purpose_intro']); ?></p>
 
             <div id="purpose-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -724,9 +724,9 @@ function ev_about_purpose_shortcode()
                     <?php foreach ($purpose_group['purpose_items'] as $item): ?>
                         <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                             <div class="card shadow-lg purpose-card">
-                                <div class="card-header text-white text-center">
-                                    <i class="bi bi-stars"></i>
-                                    <h5 class="mb-0"><?php echo esc_html($item['item_title']); ?></h5>
+                                <div class="card-header text-center">
+                                    <i class="bi bi-stars text-gold"></i>
+                                    <h5 class="mb-0 text-white"><?php echo esc_html($item['item_title']); ?></h5>
                                 </div>
                                 <div class="card-body">
                                     <p><?php echo esc_html($item['item_description']); ?></p>
