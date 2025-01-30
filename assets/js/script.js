@@ -168,6 +168,25 @@ jQuery(document).ready(function ($) {
     }
   }
 
+  function animateMissionVision() {
+    anime.timeline()
+      .add({
+        targets: '.mission-card, .vision-card',
+        translateY: [20, 0],
+        opacity: [0, 1],
+        easing: 'easeOutExpo',
+        duration: 1000,
+      })
+      .add({
+        targets: '.mission-image, .vision-image',
+        scale: [0.8, 1],
+        opacity: [0, 1],
+        easing: 'easeOutElastic',
+        delay: 500,
+        duration: 1200,
+      }, '-=800');
+  }
+
   handleMenuNavigation();
   handleHeroCarousel();
   animateText(".ml9");
@@ -176,9 +195,12 @@ jQuery(document).ready(function ($) {
   if ($('#IntroVideoModal').length) {
     handleIntroVideoModal();
   }
-  
+
   if ($('.hero-about').length) {
     animateHeroAboutUs();
   }
 
+  if ($('.mission-vision-section').length) {
+    animateMissionVision();
+  }
 });

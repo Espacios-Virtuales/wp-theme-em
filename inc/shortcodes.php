@@ -261,7 +261,6 @@ function ev_servicios_shortcode()
 }
 add_shortcode('ev-servicios', 'ev_servicios_shortcode');
 
-// Función para crear el shortcode de comunidad y membresía
 // Función para crear el shortcode de comunidad y membresía optimizado
 function community_membership_gallery_shortcode()
 {
@@ -714,8 +713,9 @@ function ev_about_purpose_shortcode()
     $purpose_group = get_field('purpose_group');
     ob_start();
 ?>
-    <div class="purpose-section py-5">
+    <section class="purpose-section py-5">
         <div class="container">
+            <h2 class="text-center text-primary mb-4">Nuestro Propósito</h2>
             <p class="text-center text-muted mb-5"><?php echo esc_html($purpose_group['purpose_intro']); ?></p>
 
             <div id="purpose-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -744,38 +744,69 @@ function ev_about_purpose_shortcode()
                 </button>
             </div>
         </div>
-    </div>
+    </section>
 <?php
     return ob_get_clean();
 }
 add_shortcode('ev-about-purpose', 'ev_about_purpose_shortcode');
 
-// Misión y Visión
+// Misión y Visión con animaciones y slide responsivo
 function ev_about_mission_vision_shortcode()
 {
     $mission_vision_group = get_field('mission_vision_group');
     ob_start();
 ?>
-    <div class="mission-vision-section py-5">
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-lg">
-                    <div class="card-body">
-                        <h5 class="text-primary">Misión</h5>
-                        <p><?php echo esc_html($mission_vision_group['mission_text']); ?></p>
+    <section class="mission-vision-section py-5">
+        <h2 class="text-center text-gold mb-4">Misión y Visión</h2>
+
+        <div class="container">
+            <div id="missionVisionCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Misión -->
+                    <div class="carousel-item active">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="card shadow-lg mission-card">
+                                    <div class="card-body">
+                                        <h5 class="text-primary"><i class="bi bi-lightbulb"></i> Misión</h5>
+                                        <p><?php echo esc_html($mission_vision_group['mission_text']); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <img src="<?php echo esc_url($mission_vision_group['mission_image']['url']); ?>" class="img-fluid rounded mission-image" alt="Misión">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Visión -->
+                    <div class="carousel-item">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="card shadow-lg vision-card">
+                                    <div class="card-body">
+                                        <h5 class="text-primary"><i class="bi bi-eye"></i> Visión</h5>
+                                        <p><?php echo esc_html($mission_vision_group['vision_text']); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <img src="<?php echo esc_url($mission_vision_group['vision_image']['url']); ?>" class="img-fluid rounded vision-image" alt="Visión">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-lg">
-                    <div class="card-body">
-                        <h5 class="text-primary">Visión</h5>
-                        <p><?php echo esc_html($mission_vision_group['vision_text']); ?></p>
-                    </div>
-                </div>
+                <!-- Controles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#missionVisionCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#missionVisionCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
             </div>
         </div>
-    </div>
+    </section>
 <?php
     return ob_get_clean();
 }

@@ -8,24 +8,15 @@ get_header();
 
 <main id="sobre-nosotros" class="bg-light text-dark">
 
+    <!-- Shortcode: Hero -->
     <?php echo do_shortcode('[ev-about-hero]'); ?>
 
-
     <!-- Shortcode: Propósito -->
-    <section class="purpose-section py-5">
-        <div class="container">
-            <h2 class="text-center text-primary mb-4">Nuestro Propósito</h2>
-            <?php echo do_shortcode('[ev-about-purpose]'); ?>
-        </div>
-    </section>
+    <?php echo do_shortcode('[ev-about-purpose]'); ?>
 
     <!-- Shortcode: Misión y Visión -->
-    <section class="mission-vision-section py-5 bg-secondary text-light">
-        <div class="container">
-            <h2 class="text-center text-gold mb-4">Misión y Visión</h2>
-            <?php echo do_shortcode('[ev-about-mission-vision]'); ?>
-        </div>
-    </section>
+    <h2 class="text-center text-gold mb-4">Misión y Visión</h2>
+    <?php echo do_shortcode('[ev-about-mission-vision]'); ?>
 
     <!-- Shortcode: Valores -->
     <section class="values-section py-5">
