@@ -1,21 +1,23 @@
 jQuery(document).ready(function ($) {
   // Animación de texto
-  function animateText() {
-    var $textWrapper = $(".ml9");
+  function animateText(selector) {
+    var $textWrapper = $(selector);
     if ($textWrapper.length) {
-      $textWrapper.html(
-        $textWrapper.text().replace(/\S/g, "<span class='letter'>$&</span>")
-      );
+      $textWrapper.each(function () {
+        var $this = $(this);
+        $this.html($this.text().replace(/\S/g, "<span class='letter'>$&</span>"));
+      });
 
       anime.timeline({ loop: true })
         .add({
-          targets: '.ml9 .letter',
+          targets: selector + " .letter",
           scale: [0, 1],
           duration: 1500,
           elasticity: 600,
           delay: (el, i) => 45 * (i + 1)
-        }).add({
-          targets: '.ml9',
+        })
+        .add({
+          targets: selector,
           opacity: 0,
           duration: 1000,
           easing: "easeOutExpo",
@@ -23,6 +25,34 @@ jQuery(document).ready(function ($) {
         });
     }
   }
+
+  function animateHeroAboutUs() {
+    anime.timeline()
+      .add({
+        targets: '.hero-title',
+        translateY: [-20, 0],
+        opacity: [0, 1],
+        easing: 'easeOutExpo',
+        duration: 1000,
+      })
+      .add({
+        targets: '.hero-description',
+        translateX: [-50, 0],
+        opacity: [0, 1],
+        easing: 'easeOutExpo',
+        delay: 500,
+        duration: 1000,
+      }, '-=800') // Inicia antes de que termine la animación anterior
+      .add({
+        targets: '.hero-image',
+        scale: [0.8, 1],
+        opacity: [0, 1],
+        easing: 'easeOutElastic',
+        delay: 800,
+        duration: 1500,
+      }, '-=1000'); // Inicia mientras la anterior aún se ejecuta
+  }
+
 
   function handleMenuNavigation() {
     $(".menu-toggle").on("click", function () {
@@ -140,7 +170,12 @@ jQuery(document).ready(function ($) {
 
   handleMenuNavigation();
   handleHeroCarousel();
-  animateText();
+  animateText(".ml9");
   handleIntroVideoModal();
   /* handleSubscriptionForm(); */
+
+  if ($('.hero-about').length) {
+    animateHeroAboutUs();
+  }
+
 });

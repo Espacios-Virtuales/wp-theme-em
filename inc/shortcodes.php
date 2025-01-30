@@ -267,7 +267,7 @@ function community_membership_gallery_shortcode()
 {
     // Obtener datos de la página con el slug 'membresia-comunidad'
     $data = blog_get_page(array('membresia-comunidad'));
-    
+
 
     if ($data->have_posts()) {
         ob_start(); // Captura de salida
@@ -341,7 +341,7 @@ function community_membership_gallery_shortcode()
                     <?php endif; ?>
                 </div>
             </section>
-        <?php
+    <?php
         }
 
         wp_reset_postdata(); // Restablecer la consulta de posts
@@ -659,7 +659,7 @@ function ev_contact_shortcode()
                 </div>
             </div>
         </section>
-<?php
+    <?php
     }
 
     $output = ob_get_clean(); // Captura y limpia la salida
@@ -668,11 +668,52 @@ function ev_contact_shortcode()
 
 add_shortcode('ev-contacto', 'ev_contact_shortcode');
 
+/* About Us Landing Page */
+
+// Hero
+
+function ev_about_hero_shortcode()
+{
+    ?>
+    <!-- Hero - Sobre Nosotros -->
+    <section class="hero-about position-relative">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Texto de Introducción -->
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="text-gold hero-title">Sobre Nosotros</h1>
+                    <p class="lead hero-description">
+                        Conoce nuestra historia, misión, valores y el propósito que nos inspira cada día.
+                    </p>
+                </div>
+
+                <!-- Imagen -->
+                <div class="col-lg-6 text-center">
+                    <?php if (has_post_thumbnail()) { ?>
+                        <div class="hero-image-container">
+                            <?php the_post_thumbnail('full', array('class' => 'hero-image')); ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ola decorativa -->
+        <div class="hero-wave"></div>
+    </section>
+<?php
+
+}
+
+add_shortcode('ev-about-hero', 'ev_about_hero_shortcode');
+
+
 // Propósito con slide y animaciones
-function ev_about_purpose_shortcode() {
+function ev_about_purpose_shortcode()
+{
     $purpose_group = get_field('purpose_group');
     ob_start();
-    ?>
+?>
     <div class="purpose-section py-5">
         <div class="container">
             <p class="text-center text-muted mb-5"><?php echo esc_html($purpose_group['purpose_intro']); ?></p>
@@ -684,7 +725,7 @@ function ev_about_purpose_shortcode() {
                         <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                             <div class="card shadow-lg purpose-card">
                                 <div class="card-header text-white text-center">
-                                    <i class="bi bi-stars"></i> 
+                                    <i class="bi bi-stars"></i>
                                     <h5 class="mb-0"><?php echo esc_html($item['item_title']); ?></h5>
                                 </div>
                                 <div class="card-body">
@@ -704,16 +745,17 @@ function ev_about_purpose_shortcode() {
             </div>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('ev-about-purpose', 'ev_about_purpose_shortcode');
 
 // Misión y Visión
-function ev_about_mission_vision_shortcode() {
+function ev_about_mission_vision_shortcode()
+{
     $mission_vision_group = get_field('mission_vision_group');
     ob_start();
-    ?>
+?>
     <div class="mission-vision-section py-5">
         <div class="row">
             <div class="col-md-6 mb-4">
@@ -734,16 +776,17 @@ function ev_about_mission_vision_shortcode() {
             </div>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('ev-about-mission-vision', 'ev_about_mission_vision_shortcode');
 
 // Valores
-function ev_about_values_shortcode() {
+function ev_about_values_shortcode()
+{
     $values_group = get_field('values_items');
     ob_start();
-    ?>
+?>
     <div class="values-section py-5">
         <div class="row">
             <?php foreach ($values_group as $value): ?>
@@ -758,21 +801,22 @@ function ev_about_values_shortcode() {
             <?php endforeach; ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('ev-about-values', 'ev_about_values_shortcode');
 
 // Identidad
-function ev_about_identity_shortcode() {
+function ev_about_identity_shortcode()
+{
     $identity_group = get_field('identity_group');
     ob_start();
-    ?>
+?>
     <div class="identity-section py-5">
         <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro']); ?></p>
-        
+
         <div class="row">
-            <?php 
+            <?php
             $index = 0; // Inicializar el índice manualmente
             foreach ($identity_group['identity_items'] as $item): ?>
                 <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
@@ -783,27 +827,29 @@ function ev_about_identity_shortcode() {
                         </div>
                     </div>
                 </div>
-                <?php $index++; // Incrementar el índice manualmente ?>
+                <?php $index++; // Incrementar el índice manualmente 
+                ?>
             <?php endforeach; ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('ev-about-identity', 'ev_about_identity_shortcode');
 
 // Landing Servicios 
 
-function ev_services_hero_shortcode() {
+function ev_services_hero_shortcode()
+{
     ob_start();
-    ?>
+?>
     <section class="services-hero py-5 text-center text-light">
         <div class="container">
             <h1 class="display-4 fw-bold mb-3 text-gold ml9">
                 <span class="text-wrapper">
                     <span class="letters">Descubre Nuestros Servicios</span>
-                </span>    
-           </h1>
+                </span>
+            </h1>
             <p class="lead mb-4">Sanación, aprendizaje y transformación espiritual en un solo lugar.</p>
             <div class="row justify-content-center">
                 <div class="col-4 col-md-2">
@@ -821,15 +867,16 @@ function ev_services_hero_shortcode() {
             </div>
         </div>
     </section>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('ev-services-hero', 'ev_services_hero_shortcode');
 
-function ev_services_value_shortcode() {
+function ev_services_value_shortcode()
+{
     $values = get_field('values_group'); // Group: value_group
     ob_start();
-    ?>
+?>
     <div class="value-section py-5">
         <h2 class="text-center text-primary mb-4">Nuestra Propuesta de Valor</h2>
         <p class="text-center text-muted mb-5"><?php echo esc_html($values['values_descriptions']); ?></p>
@@ -847,19 +894,21 @@ function ev_services_value_shortcode() {
             <?php endforeach; ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('ev-services-value', 'ev_services_value_shortcode');
 
-function ev_services_list_shortcode() {
+function ev_services_list_shortcode()
+{
     $services_group = get_field('services_group'); // Group: services_group
     ob_start();
-    ?>
+?>
     <div class="services-list py-5">
         <h2 class="text-center text-primary mb-4">Nuestros Servicios</h2>
         <div class="row">
-            <?php $index = 0; // Inicializar el índice manualmente ?>
+            <?php $index = 0; // Inicializar el índice manualmente 
+            ?>
 
             <?php foreach ($services_group['services'] as $service): ?>
                 <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
@@ -872,11 +921,12 @@ function ev_services_list_shortcode() {
                         </div>
                     </div>
                 </div>
-                <?php $index++; // Incrementar el índice manualmente ?>
+                <?php $index++; // Incrementar el índice manualmente 
+                ?>
             <?php endforeach; ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('ev-services-list', 'ev_services_list_shortcode');
