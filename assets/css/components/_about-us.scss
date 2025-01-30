@@ -322,6 +322,9 @@
         z-index: 1; // Se asegura que esté detrás del contenido
     }
 
+    h2{
+        z-index: 2;
+    }
     .row {
         position: relative;
         z-index: 2; // Se asegura de que las tarjetas estén sobre la ola

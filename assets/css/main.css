@@ -22366,6 +22366,9 @@ textarea.form-control-lg {
   background: url("https://escuelamistica.cl/em/wp-content/uploads/wave-down.svg") no-repeat bottom center/cover;
   z-index: 1;
 }
+.mission-vision-section h2, .mission-vision-section .h2 {
+  z-index: 2;
+}
 .mission-vision-section .row {
   position: relative;
   z-index: 2;

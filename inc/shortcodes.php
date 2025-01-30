@@ -758,7 +758,7 @@ function ev_about_mission_vision_shortcode()
 ?>
     <section class="mission-vision-section py-5">
         <div class="container">
-            <h2 class="text-center text-gold mb-4">>Misión y Visión</h2>
+            <h2 class="text-center text-gold mb-4">Misión y Visión</h2>
 
             <div id="missionVisionCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
