@@ -22421,10 +22421,11 @@ textarea.form-control-lg {
 }
 .mission-vision-section .mission-card p,
 .mission-vision-section .vision-card p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.6;
-  color: #333;
-  text-align: justify;
+  font-weight: 600;
+  color: #b3b3b3;
+  text-align: center;
 }
 .mission-vision-section .mission-image,
 .mission-vision-section .vision-image {

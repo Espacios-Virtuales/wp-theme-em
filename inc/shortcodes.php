@@ -768,7 +768,7 @@ function ev_about_mission_vision_shortcode()
                             <div class="col-md-6">
                                 <div class="card shadow-lg mission-card">
                                     <div class="card-body">
-                                        <h5 class="text-primary"><i class="bi bi-lightbulb"></i> Misión</h5>
+                                        <h5 class="text-primary">Misión</h5>
                                         <p><?php echo esc_html($mission_vision_group['mission_text']); ?></p>
                                     </div>
                                 </div>
@@ -784,7 +784,7 @@ function ev_about_mission_vision_shortcode()
                             <div class="col-md-6">
                                 <div class="card shadow-lg vision-card">
                                     <div class="card-body">
-                                        <h5 class="text-primary"><i class="bi bi-eye"></i> Visión</h5>
+                                        <h5 class="text-primary">Visión</h5>
                                         <p><?php echo esc_html($mission_vision_group['vision_text']); ?></p>
                                     </div>
                                 </div>
