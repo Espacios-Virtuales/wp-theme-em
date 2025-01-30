@@ -178,7 +178,6 @@
     }
 }
 
-
 .hero-about {
     background: linear-gradient(to right, #1c1c3c, #3b2c6d); // Fondo degradado
     padding: 100px 0;
@@ -186,28 +185,42 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    z-index: 0; // Se asegura que esté detrás del contenido
 
+    // Ola decorativa en el fondo
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 150px; // Ajustar la altura de la ola
+        background: url("https://escuelamistica.cl/em/wp-content/uploads/wave-up.svg") no-repeat bottom center / cover;
+        z-index: 0; // Se asegura que esté detrás del contenido
+    }
+
+    // Sección de contenido asegurada sobre la ola
+    .hero-content {
+        position: relative;
+        z-index: 2; // Se asegura que los textos y la imagen estén sobre la ola
+    }
 
     .hero-title {
         font-size: 3rem;
         font-weight: bold;
         text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
-        z-index: 2;
     }
 
     .hero-description {
         font-size: 1.2rem;
         font-weight: 300;
         color: #ddd;
-        z-index: 2;
     }
 
     .hero-image-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 2;
+        margin-top: 20px;
     }
 
     .hero-image {
@@ -215,19 +228,6 @@
         height: auto;
         border-radius: 15px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        z-index: 2;
-    }
-
-    // Ola decorativa
-    &:after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 100%;
-        height: 100%;// Ajusta la altura según sea necesario
-        background: url("https://escuelamistica.cl/em/wp-content/uploads/wave-down.svg") no-repeat bottom center / cover;
-        z-index: 1; // Se asegura que esté detrás del contenido
     }
 
     @media (max-width: 768px) {
@@ -245,6 +245,7 @@
         }
     }
 }
+
 
 .purpose-section {
     background: linear-gradient(to right, #1c1c3c, #3b2c6d); // Gradiente oscuro
@@ -317,19 +318,8 @@
         left: 0;
         width: 100%;
         height: 100%;// Ajusta la altura según sea necesario
-        background: url("https://escuelamistica.cl/em/wp-content/uploads/wave-up.svg") no-repeat bottom center / cover;
+        background: url("https://escuelamistica.cl/em/wp-content/uploads/wave-down.svg") no-repeat bottom center / cover;
         z-index: 1; // Se asegura que esté detrás del contenido
-    }
-
-    h2 {
-        font-size: 2.8rem;
-        text-align: center;
-        color: #ffd700;
-        font-family: "Cinzel", serif;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        margin-bottom: 2rem;
-        position: relative;
-        z-index: 2; // Asegura que el título no quede oculto
     }
 
     .row {

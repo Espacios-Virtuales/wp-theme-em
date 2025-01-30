@@ -680,8 +680,8 @@ function ev_about_hero_shortcode()
             <div class="row align-items-center">
                 <!-- Texto de Introducción -->
                 <div class="col-lg-6 text-center text-lg-start">
-                    <h1 class="text-gold hero-title">Sobre Nosotros</h1>
-                    <p class="lead hero-description">
+                    <h1 class="text-gold hero-title text-gold">Sobre Nosotros</h1>
+                    <p class="lead hero-description text-muted">
                         Conoce nuestra historia, misión, valores y el propósito que nos inspira cada día.
                     </p>
                 </div>
@@ -757,7 +757,7 @@ function ev_about_mission_vision_shortcode()
     ob_start();
 ?>
     <section class="mission-vision-section py-5">
-        <h2 class="text-center text-gold mb-4">Misión y Visión</h2>
+    <h2 class="text-center text-gold mb-4">Misión y Visión</h2>
 
         <div class="container">
             <div id="missionVisionCarousel" class="carousel slide" data-bs-ride="carousel">
