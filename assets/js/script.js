@@ -171,9 +171,12 @@ jQuery(document).ready(function ($) {
   handleMenuNavigation();
   handleHeroCarousel();
   animateText(".ml9");
-  handleIntroVideoModal();
   /* handleSubscriptionForm(); */
 
+  if ($('#IntroVideoModal').length) {
+    handleIntroVideoModal();
+  }
+  
   if ($('.hero-about').length) {
     animateHeroAboutUs();
   }
