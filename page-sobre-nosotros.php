@@ -8,7 +8,7 @@ get_header();
 
 <main id="sobre-nosotros" class="bg-light text-dark">
 
-    <?php echo do_shortcode('[ev_about_hero_shortcode]'); ?>
+    <?php echo do_shortcode('[ev-about-hero]'); ?>
 
 
     <!-- Shortcode: Propósito -->
