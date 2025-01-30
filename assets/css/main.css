@@ -22367,6 +22367,7 @@ textarea.form-control-lg {
   z-index: 1;
 }
 .mission-vision-section h2, .mission-vision-section .h2 {
+  position: relative;
   z-index: 2;
 }
 .mission-vision-section .row {
