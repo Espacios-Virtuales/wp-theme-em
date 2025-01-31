@@ -22482,14 +22482,14 @@ textarea.form-control-lg {
 }
 
 .identity-section {
-  background: linear-gradient(135deg, rgba(72, 61, 139, 0.8), rgba(75, 0, 130, 0.9));
+  background: linear-gradient(135deg, rgba(0, 31, 63, 0.8), rgba(0, 31, 63, 0.9));
   color: #fff;
   padding: 80px 0;
   position: relative;
   overflow: hidden;
 }
 .identity-section .identity-hero {
-  background: linear-gradient(to right, rgba(255, 215, 0, 0.1), rgba(75, 0, 130, 0.6));
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.1), rgba(0, 31, 63, 0.6));
   padding: 100px 20px;
   text-align: center;
   border-radius: 10px;
@@ -22510,7 +22510,7 @@ textarea.form-control-lg {
 .identity-section .identity-hero .hero-description {
   font-size: 1.2rem;
   font-weight: 300;
-  color: #ddd;
+  color: #b3b3b3;
 }
 .identity-section .carousel {
   max-width: 600px;

@@ -870,7 +870,7 @@ function ev_about_identity_shortcode()
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                                 <div class="card identity-card mx-auto">
                                     <div class="card-body text-center">
-                                        <h5 class="text-gold"><?php echo esc_html($item['archetype_title']); ?></h5>
+                                        <h5 class="text-primary"><?php echo esc_html($item['archetype_title']); ?></h5>
                                         <p><?php echo esc_html($item['archetype_description']); ?></p>
                                     </div>
                                 </div>
