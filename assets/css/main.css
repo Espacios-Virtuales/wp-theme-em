@@ -22906,7 +22906,7 @@ textarea.form-control-lg {
 }
 
 .services-hero {
-  background: linear-gradient(135deg, var(--bs-primary), rgba(72, 61, 139, 0.7));
+  background: linear-gradient(to right, #1c1c3c, #3b2c6d);
   color: #fff;
   position: relative;
   padding: 100px 20px;

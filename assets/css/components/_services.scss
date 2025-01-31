@@ -93,7 +93,7 @@ $shadow-color: $shadow-hover;
 
 // Hero Section
 .services-hero {
-    background: linear-gradient(135deg, $primary, $primary-light); // Gradiente limpio y moderno
+    background: linear-gradient(to right, #1c1c3c, #3b2c6d); // Gradiente limpio y moderno
     color: #fff;
     position: relative;
     padding: 100px 20px; // Espaciado interno para destacar el contenido
