@@ -22464,7 +22464,7 @@ textarea.form-control-lg {
   background-color: #fff;
   border: 1px solid var(--bs-primary-opacity-8);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  min-height: 100px;
+  height: 100px;
 }
 .values-section .card:hover {
   background-color: var(--bs-secondary-opacity-5);
@@ -22474,7 +22474,7 @@ textarea.form-control-lg {
   color: var(--primary);
 }
 .values-section .card p {
-  color: #555;
+  color: #b3b3b3;
 }
 
 @media (max-width: 768px) {
