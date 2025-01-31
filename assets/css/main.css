@@ -22424,7 +22424,7 @@ textarea.form-control-lg {
   font-size: 1rem;
   line-height: 1.6;
   font-weight: 600;
-  color: #b3b3b3;
+  color: #333333;
   text-align: center;
 }
 .mission-vision-section .mission-image,
@@ -22477,19 +22477,19 @@ textarea.form-control-lg {
   font-size: 1.2rem;
   line-height: 1.2;
   font-weight: 600;
-  color: #b3b3b3;
+  color: #333333;
   text-align: center;
 }
 
 .identity-section {
-  background: linear-gradient(135deg, rgba(0, 31, 63, 0.8), rgba(0, 31, 63, 0.9));
+  background: linear-gradient(135deg, rgb(28, 28, 60), rgb(59, 44, 109));
   color: #fff;
   padding: 80px 0;
   position: relative;
   overflow: hidden;
 }
 .identity-section .identity-hero {
-  background: linear-gradient(to right, rgba(255, 215, 0, 0.1), rgba(0, 31, 63, 0.6));
+  background: linear-gradient(to right, rgba(28, 28, 60, 0.1), rgba(59, 44, 109, 0.6));
   padding: 100px 20px;
   text-align: center;
   border-radius: 10px;
@@ -22550,7 +22550,7 @@ textarea.form-control-lg {
 .identity-section .identity-card p {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #b3b3b3;
+  color: #333333;
   text-align: center;
 }
 @media (max-width: 768px) {

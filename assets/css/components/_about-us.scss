@@ -385,7 +385,7 @@
             font-size: 1.0rem;
             line-height: 1.6;
             font-weight: 600;
-            color: $text-muted;
+            color: #333333;
             text-align: center;
         }
     }
@@ -445,7 +445,7 @@
             font-size: 1.2rem;
             line-height: 1.2;
             font-weight: 600;
-            color: $text-muted;
+            color: #333333;
             text-align: center;
         }
     }
@@ -453,7 +453,7 @@
 
  
 .identity-section {
-    background: linear-gradient(135deg, rgb(0, 31, 63, 0.8) , rgba(0, 31, 63, 0.9));
+    background: linear-gradient(135deg, rgb(28, 28, 60), rgb(59, 44, 109));
     color: #fff;
     padding: 80px 0;
     position: relative;
@@ -461,7 +461,7 @@
 
     // Hero de Identidad
     .identity-hero {
-        background: linear-gradient(to right, rgba(255, 215, 0, 0.1), rgba(0, 31, 63, 0.6));
+        background: linear-gradient(to right, rgb(28, 28, 60, 0.1), rgb(59, 44, 109, 0.6));
         padding: 100px 20px;
         text-align: center;
         border-radius: 10px;
@@ -536,7 +536,7 @@
         p {
             font-size: 1.2rem;
             line-height: 1.6;
-            color: $text-muted;
+            color: #333333;
             text-align: center;
         }
     }
