@@ -765,9 +765,6 @@ function ev_about_mission_vision_shortcode()
                     <!-- Visión -->
                     <div class="carousel-item active">
                         <div class="row align-items-center">
-                            <div class="col-md-6 text-center">
-                                <img src="<?php echo esc_url($mission_vision_group['vision_image']['url']); ?>" class="img-fluid rounded vision-image" alt="Visión">
-                            </div>
                             <div class="col-md-6">
                                 <div class="card shadow-lg vision-card">
                                     <div class="card-body">
@@ -775,6 +772,9 @@ function ev_about_mission_vision_shortcode()
                                         <p><?php echo esc_html($mission_vision_group['vision_text']); ?></p>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <img src="<?php echo esc_url($mission_vision_group['vision_image']['url']); ?>" class="img-fluid rounded vision-image" alt="Visión">
                             </div>
                         </div>
                     </div>
