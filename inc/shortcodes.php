@@ -758,28 +758,12 @@ function ev_about_mission_vision_shortcode()
 ?>
     <section class="mission-vision-section py-5">
         <div class="container">
-            <h2 class="text-center text-gold mb-4">Misión y Visión</h2>
+            <h2 class="text-center text-gold mb-4">Visión & Misión</h2>
 
             <div id="missionVisionCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <!-- Misión -->
-                    <div class="carousel-item active">
-                        <div class="row align-items-center">
-                            <div class="col-md-6">
-                                <div class="card shadow-lg mission-card">
-                                    <div class="card-body">
-                                        <h5 class="text-primary">Misión</h5>
-                                        <p><?php echo esc_html($mission_vision_group['mission_text']); ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-center">
-                                <img src="<?php echo esc_url($mission_vision_group['mission_image']['url']); ?>" class="img-fluid rounded mission-image" alt="Misión">
-                            </div>
-                        </div>
-                    </div>
                     <!-- Visión -->
-                    <div class="carousel-item">
+                    <div class="carousel-item active">
                         <div class="row align-items-center">
                             <div class="col-md-6 text-center">
                                 <img src="<?php echo esc_url($mission_vision_group['vision_image']['url']); ?>" class="img-fluid rounded vision-image" alt="Visión">
@@ -791,6 +775,22 @@ function ev_about_mission_vision_shortcode()
                                         <p><?php echo esc_html($mission_vision_group['vision_text']); ?></p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Misión -->
+                    <div class="carousel-item">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="card shadow-lg mission-card">
+                                    <div class="card-body">
+                                        <h5 class="text-primary">Misión</h5>
+                                        <p><?php echo esc_html($mission_vision_group['mission_text']); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <img src="<?php echo esc_url($mission_vision_group['mission_image']['url']); ?>" class="img-fluid rounded mission-image" alt="Misión">
                             </div>
                         </div>
                     </div>
