@@ -22481,6 +22481,96 @@ textarea.form-control-lg {
   text-align: center;
 }
 
+.identity-section {
+  background: linear-gradient(135deg, rgba(72, 61, 139, 0.8), rgba(75, 0, 130, 0.9));
+  color: #fff;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.identity-section .identity-hero {
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.1), rgba(75, 0, 130, 0.6));
+  padding: 100px 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.identity-section .identity-hero:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 12px 25px rgba(255, 215, 0, 0.6);
+}
+.identity-section .identity-hero .hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  margin-bottom: 1rem;
+}
+.identity-section .identity-hero .hero-description {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #ddd;
+}
+.identity-section .carousel {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.identity-section .carousel .carousel-inner .carousel-item {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.identity-section .carousel .carousel-control-prev-icon,
+.identity-section .carousel .carousel-control-next-icon {
+  background-color: #ffd700;
+  border-radius: 50%;
+  padding: 10px;
+}
+.identity-section .carousel .carousel-control-prev,
+.identity-section .carousel .carousel-control-next {
+  width: 5%;
+}
+.identity-section .identity-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.identity-section .identity-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 25px rgba(255, 215, 0, 0.8);
+}
+.identity-section .identity-card h5, .identity-section .identity-card .h5 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4b0082;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.identity-section .identity-card p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #b3b3b3;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .identity-section .hero-title {
+    font-size: 2.5rem;
+  }
+  .identity-section .hero-description {
+    font-size: 1.1rem;
+  }
+  .identity-section .identity-card {
+    padding: 20px;
+  }
+  .identity-section .identity-card h5, .identity-section .identity-card .h5 {
+    font-size: 1.5rem;
+  }
+  .identity-section .identity-card p {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .section-about {
     padding: 40px 20px;

@@ -846,33 +846,56 @@ function ev_about_identity_shortcode()
     $identity_group = get_field('identity_group');
     ob_start();
 ?>
-    <section class="identity-section py-5 bg-dark text-light">
+    <section class="identity-section py-5">
         <div class="container">
             <h2 class="text-center text-gold mb-4">Nuestra Identidad</h2>
             <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro']); ?></p>
 
-            <div class="row">
-                <?php
-                $index = 0; // Inicializar el índice manualmente
-                foreach ($identity_group['identity_items'] as $item): ?>
-                    <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
-                        <div class="card shadow-lg <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
-                            <div class="card-body">
-                                <h5 class="text-primary"><?php echo esc_html($item['archetype_title']); ?></h5>
-                                <p><?php echo esc_html($item['archetype_description']); ?></p>
-                            </div>
-                        </div>
+            <?php if (!empty($identity_group['identity_items'])) : ?>
+                <?php $first_item = array_shift($identity_group['identity_items']); // Extraer el primer ítem ?>
+
+                <!-- Hero de Identidad -->
+                <div class="identity-hero text-center text-light py-5">
+                    <div class="hero-content">
+                        <h2 class="hero-title"><?php echo esc_html($first_item['archetype_title']); ?></h2>
+                        <p class="hero-description"><?php echo esc_html($first_item['archetype_description']); ?></p>
                     </div>
-                    <?php $index++; // Incrementar el índice manualmente 
-                    ?>
-                <?php endforeach; ?>
-            </div>
+                </div>
+
+                <!-- Slider de Identidad -->
+                <div id="identityCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <?php $index = 0; ?>
+                        <?php foreach ($identity_group['identity_items'] as $item) : ?>
+                            <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                                <div class="card identity-card mx-auto">
+                                    <div class="card-body text-center">
+                                        <h5 class="text-gold"><?php echo esc_html($item['archetype_title']); ?></h5>
+                                        <p><?php echo esc_html($item['archetype_description']); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php $index++; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- Controles del Slider -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#identityCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#identityCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
 <?php
     return ob_get_clean();
 }
 add_shortcode('ev-about-identity', 'ev_about_identity_shortcode');
+
 
 // Landing Servicios 
 
