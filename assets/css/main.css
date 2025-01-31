@@ -23312,4 +23312,19 @@ textarea.form-control-lg {
   transform-origin: 50% 100%;
   display: inline-block;
   line-height: 1em;
+}
+
+.cart-customlocation {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.cart-customlocation:hover {
+  color: #FFD700;
+  text-decoration: none;
+  transform: scale(1.05);
+}
+.cart-customlocation:active {
+  transform: scale(0.95);
 }/*# sourceMappingURL=main.css.map */
