@@ -774,7 +774,7 @@ function ev_about_mission_vision_shortcode()
                                 </div>
                             </div>
                             <div class="col-md-6 text-center">
-                                <img src="<?php echo esc_url($mission_vision_group['vision_image']['url']); ?>" class="img-fluid rounded vision-image" alt="Visión">
+                                <img src="<?php echo esc_url($mission_vision_group['vision_image']['url']); ?>" class="img-fluid rounded vision-image my-2" alt="Visión">
                             </div>
                         </div>
                     </div>
@@ -790,7 +790,7 @@ function ev_about_mission_vision_shortcode()
                                 </div>
                             </div>
                             <div class="col-md-6 text-center">
-                                <img src="<?php echo esc_url($mission_vision_group['mission_image']['url']); ?>" class="img-fluid rounded mission-image" alt="Misión">
+                                <img src="<?php echo esc_url($mission_vision_group['mission_image']['url']); ?>" class="img-fluid rounded mission-image my-2" alt="Misión">
                             </div>
                         </div>
                     </div>
