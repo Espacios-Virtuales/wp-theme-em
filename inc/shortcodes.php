@@ -818,20 +818,25 @@ function ev_about_values_shortcode()
     $values_group = get_field('values_items');
     ob_start();
 ?>
-    <div class="values-section py-5">
-        <div class="row">
-            <?php foreach ($values_group as $value): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-lg">
-                        <div class="card-body">
-                            <h5 class="text-primary text-center"><?php echo esc_html($value['value_title']); ?></h5>
-                            <p class="text-center"><?php echo esc_html($value['value_text']); ?></p>
+    <section class="values-section py-5">
+        <div class="container">
+            <h2 class="text-center text-primary mb-4">Nuestros Valores</h2>
+            <div class="values-section py-5">
+                <div class="row">
+                    <?php foreach ($values_group as $value): ?>
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-lg">
+                                <div class="card-body">
+                                    <h5 class="text-primary text-center"><?php echo esc_html($value['value_title']); ?></h5>
+                                    <p class="text-center"><?php echo esc_html($value['value_text']); ?></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-            <?php endforeach; ?>
+            </div>
         </div>
-    </div>
+    </section>
 <?php
     return ob_get_clean();
 }
@@ -843,26 +848,29 @@ function ev_about_identity_shortcode()
     $identity_group = get_field('identity_group');
     ob_start();
 ?>
-    <div class="identity-section py-5">
-        <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro']); ?></p>
+    <section class="identity-section py-5 bg-dark text-light">
+        <div class="container">
+            <h2 class="text-center text-gold mb-4">Nuestra Identidad</h2>
+            <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro']); ?></p>
 
-        <div class="row">
-            <?php
-            $index = 0; // Inicializar el índice manualmente
-            foreach ($identity_group['identity_items'] as $item): ?>
-                <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
-                    <div class="card shadow-lg <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
-                        <div class="card-body">
-                            <h5 class="text-primary"><?php echo esc_html($item['archetype_title']); ?></h5>
-                            <p><?php echo esc_html($item['archetype_description']); ?></p>
+            <div class="row">
+                <?php
+                $index = 0; // Inicializar el índice manualmente
+                foreach ($identity_group['identity_items'] as $item): ?>
+                    <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
+                        <div class="card shadow-lg <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
+                            <div class="card-body">
+                                <h5 class="text-primary"><?php echo esc_html($item['archetype_title']); ?></h5>
+                                <p><?php echo esc_html($item['archetype_description']); ?></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php $index++; // Incrementar el índice manualmente 
-                ?>
-            <?php endforeach; ?>
+                    <?php $index++; // Incrementar el índice manualmente 
+                    ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
+    </section>
 <?php
     return ob_get_clean();
 }

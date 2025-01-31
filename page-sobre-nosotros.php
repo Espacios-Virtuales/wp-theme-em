@@ -18,18 +18,25 @@ get_header();
     <?php echo do_shortcode('[ev-about-mission-vision]'); ?>
 
     <!-- Shortcode: Valores -->
-    <section class="values-section py-5">
-        <div class="container">
-            <h2 class="text-center text-primary mb-4">Nuestros Valores</h2>
-            <?php echo do_shortcode('[ev-about-values]'); ?>
-        </div>
-    </section>
+    <?php echo do_shortcode('[ev-about-values]'); ?>
+   
 
     <!-- Shortcode: Identidad -->
-    <section class="identity-section py-5 bg-dark text-light">
-        <div class="container">
-            <h2 class="text-center text-gold mb-4">Nuestra Identidad</h2>
-            <?php echo do_shortcode('[ev-about-identity]'); ?>
+    <?php echo do_shortcode('[ev-about-identity]'); ?>
+
+
+    <!-- Llamado a la Acción -->
+    <?php
+    $servicios_page = get_page_by_path('servicios'); 
+    $servicios_url = get_permalink($servicios_page->ID);
+    
+    ?>
+    
+    <section class="cta-section bg-primary text-white py-5">
+        <div class="container text-center">
+            <h2 class="h3 mb-4">¿Quieres saber más?</h2>
+            <p class="mb-4">Sigue explorando nuestros servicios y descubre la magia de Escuela Mistica</p>
+            <a href="<?php echo esc_url($servicios_url); ?>" class="btn btn-secondary btn-lg text-white">Servicios</a>
         </div>
     </section>
 </main>
