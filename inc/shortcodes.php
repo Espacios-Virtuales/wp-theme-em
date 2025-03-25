@@ -561,7 +561,7 @@ function ev_free_resources_shortcode()
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
                                 <div class="resource-item text-center shadow-sm">
                                     <h5 class="text-gold mt-3">Podcast</h5>
-                                    <p class="text-muted">Escucha nuestras reflexiones y conocimientos en Spotify.</p>
+                                    <p class="text-muted">Escucha nuestras reflexiones y conocimientos.</p>
                                     <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="resource-icon-btn">
                                         <i class="bi bi-mic-fill"></i>
                                     </a>
