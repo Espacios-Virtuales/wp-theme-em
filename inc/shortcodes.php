@@ -549,7 +549,7 @@ function ev_free_resources_shortcode()
                                 <div class="resource-item text-center shadow-sm">
                                     <h5 class="text-gold mt-3">Canal de YouTube</h5>
                                     <p class="text-muted">Accede contenido exclusivo en video.</p>
-                                    <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="text-white text-decoration-none">
+                                    <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="resource-icon-btn">
                                         <i class="bi bi-youtube"></i>
                                     </a>                                
                                 </div>
@@ -562,7 +562,7 @@ function ev_free_resources_shortcode()
                                 <div class="resource-item text-center shadow-sm">
                                     <h5 class="text-gold mt-3">Podcast</h5>
                                     <p class="text-muted">Escucha nuestras reflexiones y conocimientos.</p>
-                                    <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="text-white text-decoration-none">
+                                    <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="resource-icon-btn">
                                         <i class="bi bi-mic-fill"></i>
                                     </a>
                                 </div>
@@ -575,7 +575,7 @@ function ev_free_resources_shortcode()
                                 <div class="resource-item text-center shadow-sm">    
                                     <h5 class="text-gold mt-3">Ebook Gratuito</h5>
                                     <p class="text-muted"><?php echo esc_html($ebook_description); ?></p>
-                                    <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="text-white text-decoration-none">
+                                    <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="resource-icon-btn">
                                         <i class="bi bi-book-fill"></i>
                                     </a>
                                 </div>
