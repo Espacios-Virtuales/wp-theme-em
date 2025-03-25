@@ -160,6 +160,12 @@ body {
   outline: none; /* Quitar el contorno de enfoque */
 }
 
+.custom-rounded-btn {
+  border-radius: 50% !important;
+  width: 80px;
+  height: 80px;
+}
+
 /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

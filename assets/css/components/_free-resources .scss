@@ -47,8 +47,6 @@
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            width: 100px !important;
-            height: 100px !important;
             background-color: var(--bs-cyan) !important;
             border-radius: 50% !important;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -75,9 +73,6 @@
             padding: 20px;
 
             .resource-icon-btn {
-                width: 80px;
-                height: 80px;
-
                 i {
                     font-size: 2rem !important;
                 }
