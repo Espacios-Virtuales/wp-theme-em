@@ -533,7 +533,8 @@ function ev_free_resources_shortcode()
             $youtube_link = $free_resources['youtube_link'];
             $podcast_link = $free_resources['podcast_link'];
             $ebook_description = $free_resources['ebook_description'];
-            $ebook_button_text = $free_resources['ebook_button_text'];
+            $podcast_description = $free_resources['podcast_description'];
+            $youtube_description = $free_resources['youtube_description'];
             $calendly_link = $free_resources['calendly_link'];
     ?>
             <section class="free-resources py-5" id="free-resources">
@@ -548,7 +549,7 @@ function ev_free_resources_shortcode()
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
                                 <div class="resource-item text-center shadow-sm">
                                     <h5 class="text-gold mt-3">Canal de YouTube</h5>
-                                    <p class="text-muted">Accede a contenido exclusivo en video.</p>
+                                    <p class="text-muted"><?php echo esc_html($youtube_description); ?></p>
                                     <div class="resource-icon-btn bg-gold rounded-circle">
                                         <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="text-decoration-none" aria-label="Canal de YouTube">
                                             <i class="bi bi-youtube"></i>
@@ -563,7 +564,7 @@ function ev_free_resources_shortcode()
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
                                 <div class="resource-item text-center shadow-sm">
                                     <h5 class="text-gold mt-3">Podcast</h5>
-                                    <p class="text-muted">Escucha nuestras reflexiones y conocimientos.</p>
+                                    <p class="text-muted"><?php echo esc_html($podcast_description); ?></p>
                                     <div class="resource-icon-btn bg-gold rounded-circle">
                                         <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="text-decoration-none" aria-label="Canal de Spotify">
                                             <i class="bi bi-mic-fill"></i>
