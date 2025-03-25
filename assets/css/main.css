@@ -10829,7 +10829,7 @@ textarea.form-control-lg {
   background-color: var(--bs-cyan); /* Cambio de color al pasar el ratón */
   transform: scale(1.1); /* Efecto de crecimiento suave */
 }
-@media (max-width: 992px) {
+@media (max-width: 991.98px) {
   .announcement-bar {
     display: none; /* Ocultar en dispositivos móviles */
   }
@@ -10925,7 +10925,7 @@ textarea.form-control-lg {
   border-bottom: 2px solid var(--bs-selector); /* Subrayado para el ítem activo */
   transition: color 0.3s ease, border-bottom 0.3s ease; /* Transición para el activo */
 }
-@media (max-width: 768px) {
+@media (max-width: 767.98px) {
   .site-header .main-navigation {
     /* Mostrar el menú cuando se activa el toggle */
   }
@@ -10955,7 +10955,7 @@ textarea.form-control-lg {
 .site-header .menu-toggle:hover {
   color: var(--bs-secondary);
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .site-header .menu-toggle {
     display: none; /* Ocultar botón en pantallas más grandes */
   }

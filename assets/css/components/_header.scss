@@ -41,7 +41,7 @@
         }
     }
 
-    @media (max-width: $breakpoint-lg) {
+    @include media-breakpoint-down(lg) {
         display: none; /* Ocultar en dispositivos móviles */
     }
 }
@@ -153,7 +153,7 @@
         }
 
         /* Ocultar el menú en pantallas pequeñas y mostrar con el toggle */
-        @media (max-width: $breakpoint-md) {
+        @include media-breakpoint-down(md) {
             ul {
                 display: none; /* Ocultar el menú en móvil */
                 flex-direction: column; /* Colocar los ítems del menú en columna */
@@ -186,7 +186,7 @@
             color: var(--bs-secondary);
         }
 
-        @media (max-width: $breakpoint-md) {
+        @include media-breakpoint-up(md) {
             display: none; /* Ocultar botón en pantallas más grandes */
         }
     }
