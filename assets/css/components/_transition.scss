@@ -78,18 +78,18 @@
     transform: translateY(100px);
     animation: slideUp .8s ease forwards .5s;
   
-    @include media-breakpoint-up(sm) {
-      font-size: 30px; 
+    @media (max-width: $breakpoint-sm) {
+        font-size: 30px; 
     }
-    @include media-breakpoint-up(md) {
-      font-size: 35px; 
+    @media (max-width: $breakpoint-md) {
+        font-size: 35px; 
     }  
-    @include media-breakpoint-up(lg) {
-      font-size: 40px; 
+    @media (max-width: $breakpoint-lg) {
+        font-size: 40px; 
     }
   
-    @include media-breakpoint-up(xl) {
-      font-size: 45px;
+    @media (max-width: $breakpoint-xl) {
+        font-size: 45px;
     }
 }
 

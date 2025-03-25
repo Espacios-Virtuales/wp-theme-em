@@ -2,6 +2,9 @@
 // Utilidades y funciones
 @import 'utilities';
 
+// Importa el framework Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
 // Estilos generales
 @import 'components/header';
 @import 'components/carousel';
@@ -19,3 +22,4 @@
 @import 'components/contact';
 @import 'components/anime';
 @import 'components/woocommerce.scss';
+

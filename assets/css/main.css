@@ -1,4 +1,165 @@
 @charset "UTF-8";
+body {
+  font-family: "Cormorant Garamond", serif !important;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: "Libre Baskerville", serif !important;
+  font-weight: 700 !important;
+}
+
+p, a {
+  font-family: "Cormorant Garamond", serif !important;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  border-radius: 50%;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.whatsapp-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+}
+.whatsapp-button i {
+  font-size: 30px;
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .whatsapp-button {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+  }
+  .whatsapp-button i {
+    font-size: 24px;
+  }
+}
+.btn-em-dark-blue {
+  background-color: var(--bs-blue-dark);
+  border: 2px solid transparent;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+}
+.btn-em-dark-blue i {
+  font-size: 24px;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+.btn-em-dark-blue:hover {
+  background-color: var(--bs-cyan);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  transform: scale(1.07);
+  border-color: #ffffff;
+}
+.btn-em-dark-blue:hover i {
+  transform: rotate(10deg);
+}
+.btn-em-dark-blue:active {
+  transform: scale(0.98);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 576px) {
+  .btn-em-dark-blue {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  .btn-em-dark-blue i {
+    font-size: 20px;
+    margin-left: 8px;
+  }
+}
+@media (max-width: 768px) {
+  .btn-em-dark-blue {
+    font-size: 15px;
+    padding: 10px 25px;
+  }
+  .btn-em-dark-blue i {
+    font-size: 22px;
+    margin-left: 8px;
+  }
+}
+
+.btn-em-gold {
+  background-color: var(--bs-selector) !important;
+  color: #fff !important;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+.btn-em-gold:hover {
+  background-color: var(--bs-cyan) !important;
+  color: #fff;
+}
+.btn-em-gold:active {
+  background-color: #DAA520;
+  transform: scale(0.9);
+}
+
+.shadow-custom {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 3rem;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease;
+}
+.shadow-custom:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Text family */
+body {
+  font-family: "Cormorant Garamond", serif;
+  overflow-x: hidden;
+}
+
+/* Fondo para la página principal */
+body.home {
+  background-color: #001f3f; /* Azul oscurto */
+}
+
+/* Fondo blanco para el resto de las páginas (opcional si ya es blanco por defecto) */
+body {
+  background-color: #ffffff; /* Blanco */
+}
+
+/* Estilos adicionales para los enlaces (quitar marcas de haber sido utilizado) */
+.entry-content a {
+  text-decoration: none !important;
+}
+.entry-content a:visited {
+  color: var(--bs-white); /* Mantener el color blanco para los links visitados */
+}
+.entry-content a:focus {
+  outline: none; /* Quitar el contorno de enfoque */
+}
+
 /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10632,167 +10793,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-body {
-  font-family: "Cormorant Garamond", serif !important;
-  font-weight: 600;
-  line-height: 1.6;
-  color: #333;
-}
-
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  font-family: "Libre Baskerville", serif !important;
-  font-weight: 700 !important;
-}
-
-p, a {
-  font-family: "Cormorant Garamond", serif !important;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.whatsapp-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  width: 60px;
-  height: 60px;
-  background-color: #25D366;
-  border-radius: 50%;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-.whatsapp-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
-}
-.whatsapp-button i {
-  font-size: 30px;
-  color: white;
-}
-
-@media only screen and (max-width: 600px) {
-  .whatsapp-button {
-    width: 50px;
-    height: 50px;
-    bottom: 15px;
-    right: 15px;
-  }
-  .whatsapp-button i {
-    font-size: 24px;
-  }
-}
-.btn-em-dark-blue {
-  background-color: var(--bs-blue-dark);
-  border: 2px solid transparent;
-  color: #ffffff;
-  font-weight: bold;
-  padding: 12px 30px;
-  border-radius: 50px;
-  display: inline-flex;
-  align-items: center;
-  transition: all 0.3s ease;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  font-size: 16px;
-}
-.btn-em-dark-blue i {
-  font-size: 24px;
-  margin-left: 10px;
-  transition: all 0.3s ease;
-}
-.btn-em-dark-blue:hover {
-  background-color: var(--bs-cyan);
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
-  color: #ffffff;
-  transform: scale(1.07);
-  border-color: #ffffff;
-}
-.btn-em-dark-blue:hover i {
-  transform: rotate(10deg);
-}
-.btn-em-dark-blue:active {
-  transform: scale(0.98);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-@media (max-width: 576px) {
-  .btn-em-dark-blue {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-  .btn-em-dark-blue i {
-    font-size: 20px;
-    margin-left: 8px;
-  }
-}
-@media (max-width: 768px) {
-  .btn-em-dark-blue {
-    font-size: 15px;
-    padding: 10px 25px;
-  }
-  .btn-em-dark-blue i {
-    font-size: 22px;
-    margin-left: 8px;
-  }
-}
-
-.btn-em-gold {
-  background-color: var(--bs-selector) !important;
-  color: #fff !important;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-}
-.btn-em-gold:hover {
-  background-color: var(--bs-cyan) !important;
-  color: #fff;
-}
-.btn-em-gold:active {
-  background-color: #DAA520;
-  transform: scale(0.9);
-}
-
-.shadow-custom {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 3rem;
-  border-radius: 10px;
-  transition: box-shadow 0.3s ease;
-}
-.shadow-custom:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
-}
-
-/* Text family */
-body {
-  font-family: "Cormorant Garamond", serif;
-  overflow-x: hidden;
-}
-
-/* Fondo para la página principal */
-body.home {
-  background-color: #001f3f; /* Azul oscurto */
-}
-
-/* Fondo blanco para el resto de las páginas (opcional si ya es blanco por defecto) */
-body {
-  background-color: #ffffff; /* Blanco */
-}
-
-/* Estilos adicionales para los enlaces (quitar marcas de haber sido utilizado) */
-.entry-content a {
-  text-decoration: none !important;
-}
-.entry-content a:visited {
-  color: var(--bs-white); /* Mantener el color blanco para los links visitados */
-}
-.entry-content a:focus {
-  outline: none; /* Quitar el contorno de enfoque */
-}
-
 /*** Header ***/
 /* Barra de anuncios */
 .announcement-bar {
@@ -10829,7 +10829,7 @@ body {
   background-color: var(--bs-cyan); /* Cambio de color al pasar el ratón */
   transform: scale(1.1); /* Efecto de crecimiento suave */
 }
-@media (max-width: 991.98px) {
+@media (max-width: 576px) {
   .announcement-bar {
     display: none; /* Ocultar en dispositivos móviles */
   }
@@ -10925,7 +10925,7 @@ body {
   border-bottom: 2px solid var(--bs-selector); /* Subrayado para el ítem activo */
   transition: color 0.3s ease, border-bottom 0.3s ease; /* Transición para el activo */
 }
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
   .site-header .main-navigation {
     /* Mostrar el menú cuando se activa el toggle */
   }
@@ -10955,7 +10955,7 @@ body {
 .site-header .menu-toggle:hover {
   color: var(--bs-secondary);
 }
-@media (min-width: 768px) {
+@media (max-width: 576px) {
   .site-header .menu-toggle {
     display: none; /* Ocultar botón en pantallas más grandes */
   }
@@ -10982,12 +10982,12 @@ body {
   -o-object-position: center;
      object-position: center; /* Centrar la imagen */
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .carousel .carousel-item .carousel-img {
     height: 500px; /* Ajusta la altura para dispositivos medianos */
   }
 }
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .carousel .carousel-item .carousel-img {
     height: 300px; /* Ajusta la altura para dispositivos pequeños */
   }
@@ -11223,22 +11223,22 @@ body {
   transform: translateY(100px);
   animation: slideUp 0.8s ease forwards 0.5s;
 }
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .h1_tsn {
     font-size: 30px;
   }
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .h1_tsn {
     font-size: 35px;
   }
 }
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   .h1_tsn {
     font-size: 40px;
   }
 }
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
   .h1_tsn {
     font-size: 45px;
   }
