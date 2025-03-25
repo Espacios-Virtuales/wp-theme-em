@@ -42,29 +42,6 @@
             @extend .lh-sm;
             font-size: 1rem;
         }
-
-        .resource-icon-btn {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--bs-cyan) !important;
-            border-radius: 50% !important;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin: 0 auto 25px;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
-        
-            i {
-                font-size: 3rem !important;
-                color: var(--bs-white) !important;
-                transition: transform 0.3s ease;
-            }
-        
-            &:hover {
-                background-color: var(--bs-secondary) !important;
-                transform: scale(1.1);
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            }
-        }
         
     }
 
