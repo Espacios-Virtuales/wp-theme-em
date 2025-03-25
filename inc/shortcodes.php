@@ -548,9 +548,9 @@ function ev_free_resources_shortcode()
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
                                 <div class="resource-item text-center shadow-sm">
                                     <h5 class="text-gold mt-3">Canal de YouTube</h5>
-                                    <p class="text-muted">Accede contenido exclusivo en video.</p>
-                                    <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="resource-icon-btn" aria-label="Canal de YouTube">
-                                        <i class="bi bi-youtube"></i>
+                                    <p class="text-muted">Accede a contenido exclusivo en video.</p>
+                                    <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="resource-icon-btn bg-gold text-decoration-none" aria-label="Canal de YouTube">
+                                        <i class="bi bi-youtube rounded-circle"></i>
                                     </a>                                
                                 </div>
                             </div>
@@ -562,8 +562,8 @@ function ev_free_resources_shortcode()
                                 <div class="resource-item text-center shadow-sm">
                                     <h5 class="text-gold mt-3">Podcast</h5>
                                     <p class="text-muted">Escucha nuestras reflexiones y conocimientos.</p>
-                                    <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="resource-icon-btn" aria-label="Canal de Spotify">
-                                        <i class="bi bi-mic-fill"></i>
+                                    <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="resource-icon-btn bg-gold text-decoration-none" aria-label="Canal de Spotify">
+                                        <i class="bi bi-mic-spotify rounded-circle"></i>
                                     </a>
                                 </div>
                             </div>
@@ -575,8 +575,8 @@ function ev_free_resources_shortcode()
                                 <div class="resource-item text-center shadow-sm">    
                                     <h5 class="text-gold mt-3">Ebook Gratuito</h5>
                                     <p class="text-muted"><?php echo esc_html($ebook_description); ?></p>
-                                    <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="resource-icon-btn" aria-label="Agenda">
-                                        <i class="bi bi-book-fill"></i>
+                                    <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="resource-icon-btn bg-gold text-decoration-none" aria-label="Agenda">
+                                        <i class="bi bi-book-fill rounded-circle"></i>
                                     </a>
                                 </div>
                             </div>
