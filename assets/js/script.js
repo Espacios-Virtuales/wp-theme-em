@@ -83,7 +83,6 @@ jQuery(document).ready(function ($) {
   }
 
   /* function handleSubscriptionForm() {
-
         $('#registerForm').on('submit', function (event) {
             event.preventDefault();
             var isValid = true;
@@ -187,6 +186,20 @@ jQuery(document).ready(function ($) {
       }, '-=800');
   }
 
+  function initializeAOS() {
+    if (typeof AOS !== 'undefined') {
+      $(document).ready(function () {
+        AOS.init({
+          duration: 1000, // duración en milisegundos
+          once: true      // animar solo una vez
+        });
+      });
+    } else {
+      console.warn("AOS no está cargado.");
+    }
+  }
+  
+  initializeAOS();
   handleMenuNavigation();
   handleHeroCarousel();
   animateText(".ml9");
@@ -203,4 +216,7 @@ jQuery(document).ready(function ($) {
   if ($('.mission-vision-section').length) {
     animateMissionVision();
   }
+
+
+
 });

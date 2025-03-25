@@ -1,63 +1,103 @@
 .free-resources {
-    background-color: var(--bs-secondary-opacity-5); // Fondo suave
+    background-color: var(--bs-secondary-opacity-5);
     padding: 80px 0;
-
+  
     .title {
-        margin-bottom: 30px;
-
-        h2 {
-            font-size: 2.5rem;
-            color: #FFD700; // Dorado brillante
-            font-family: 'Cinzel', serif;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-        }
-
-        p {
-            font-size: 1.2rem;
-            color: #888;
-        }
+      margin-bottom: 30px;
+  
+      h2 {
+        font-size: 2.5rem;
+        color: #FFD700;
+        font-family: 'Cinzel', serif;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+      }
+  
+      p {
+        font-size: 1.2rem;
+        color: #888;
+      }
     }
-
+  
     .resource-item {
-        position: relative;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: #ffffff;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-
+      position: relative;
+      padding: 30px 20px;
+      border-radius: 15px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.3);
+      }
+  
+      .resource-icon-btn {
+        background-color: var(--bs-primary);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 20px;
+  
+        i {
+          color: #fff;
+          font-size: 2.5rem;
+        }
+  
         &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .resource-icon {
-            font-size: 3rem;
-        }
-
-        h5 {
-            font-size: 1.5rem;
-            color: #FFD700; // Dorado brillante
-            font-family: 'Cinzel', serif;
-        }
-
-        p {
-            font-size: 1rem;
-            color: #555;
-        }
-
-        .btn-gold {
-            background-color: #FFD700;
+          background-color: #FFD700;
+          transform: scale(1.1);
+          i {
             color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-
-            &:hover {
-                background-color: #FFC107; // Dorado más brillante
-            }
+          }
         }
+      }
+  
+      h5 {
+        font-size: 1.5rem;
+        color: #FFD700;
+        font-family: 'Cinzel', serif;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 20px;
+      }
+  
+      .btn-primary {
+        padding: 12px 24px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        background-color: #4b0082;
+        border: none;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #FFD700;
+          color: #000;
+        }
+      }
     }
-}
+  
+    @media (max-width: 768px) {
+      .resource-item {
+        padding: 20px 15px;
+  
+        .resource-icon-btn {
+          width: 70px;
+          height: 70px;
+  
+          i {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+  

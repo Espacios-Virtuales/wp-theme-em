@@ -146,6 +146,9 @@ function blog_theme_scripts() {
 	// CSS de Lightbox minificado
     wp_enqueue_style('lightbox-css', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css', array(), '2.11.3');
 
+	// AOS CSS
+	wp_enqueue_style('aos-css', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css', array(), '2.3.4');
+
     // Encolar jQuery correctamente (viene con WordPress)
     wp_enqueue_script('jquery');
     
@@ -170,6 +173,9 @@ function blog_theme_scripts() {
 
 	// JS de Lightbox minificado
     wp_enqueue_script('lightbox-js', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js', array('jquery'), '2.11.3', true);
+
+	// AOS CSS
+	wp_enqueue_script('aos-js', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', array('jquery'), '2.3.4', true);
 }
 add_action( 'wp_enqueue_scripts', 'blog_theme_scripts' );
 

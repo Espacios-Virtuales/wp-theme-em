@@ -521,23 +521,20 @@ add_shortcode('ev-intro_video_modal', 'ev_intro_video_modal_shortcode');
 
 function ev_free_resources_shortcode()
 {
-    // Obtener datos de la página con el slug 'recursos-gratuitos'
     $data = blog_get_page(array('recursos-gratuitos'));
 
     if ($data->have_posts()) {
-        ob_start(); // Captura de salida
+        ob_start();
 
         while ($data->have_posts()) {
             $data->the_post();
 
-            // Obtener campos personalizados
             $free_resources = get_field('free_resources_group');
             $youtube_link = $free_resources['youtube_link'];
             $podcast_link = $free_resources['podcast_link'];
             $ebook_description = $free_resources['ebook_description'];
             $ebook_button_text = $free_resources['ebook_button_text'];
-            $calendly_link = $free_resources['calendly_link']; // Link a Calendly
-
+            $calendly_link = $free_resources['calendly_link'];
     ?>
             <section class="free-resources py-5" id="free-resources">
                 <div class="container">
@@ -545,15 +542,15 @@ function ev_free_resources_shortcode()
                         <h2 class="text-gold">Recursos Gratuitos</h2>
                         <p class="text-muted">Explora una muestra de lo que podemos ofrecerte.</p>
                     </div>
-                    <div class="row g-4">
+                    <div class="row g-4 justify-content-center">
                         <!-- YouTube -->
                         <?php if ($youtube_link): ?>
-                            <div class="col-md-4 text-center">
-                                <div class="resource-item shadow-sm">
-                                    <div class="resource-icon mb-3">
-                                        <i class="bi bi-youtube text-white display-4"></i>
-                                    </div>
-                                    <h5 class="text-gold">Canal de YouTube</h5>
+                            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="resource-item text-center shadow-sm">
+                                    <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="resource-icon-btn">
+                                        <i class="bi bi-youtube"></i>
+                                    </a>
+                                    <h5 class="text-gold mt-3">Canal de YouTube</h5>
                                     <p class="text-muted">Accede a nuestro contenido exclusivo en video.</p>
                                     <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="btn btn-primary">Ver en YouTube</a>
                                 </div>
@@ -562,12 +559,12 @@ function ev_free_resources_shortcode()
 
                         <!-- Podcast -->
                         <?php if ($podcast_link): ?>
-                            <div class="col-md-4 text-center">
-                                <div class="resource-item shadow-sm">
-                                    <div class="resource-icon mb-3">
-                                        <i class="bi bi-mic-fill text-white display-4"></i>
-                                    </div>
-                                    <h5 class="text-gold">Podcast</h5>
+                            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="resource-item text-center shadow-sm">
+                                    <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="resource-icon-btn">
+                                        <i class="bi bi-mic-fill"></i>
+                                    </a>
+                                    <h5 class="text-gold mt-3">Podcast</h5>
                                     <p class="text-muted">Escucha nuestras reflexiones y conocimientos.</p>
                                     <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="btn btn-primary">Escuchar Podcast</a>
                                 </div>
@@ -576,12 +573,12 @@ function ev_free_resources_shortcode()
 
                         <!-- Ebook + Calendly -->
                         <?php if ($ebook_description && $calendly_link): ?>
-                            <div class="col-md-4 text-center">
-                                <div class="resource-item shadow-sm">
-                                    <div class="resource-icon mb-3">
-                                        <i class="bi bi-book-fill text-white display-4"></i>
-                                    </div>
-                                    <h5 class="text-gold">Ebook Gratuito</h5>
+                            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                                <div class="resource-item text-center shadow-sm">
+                                    <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="resource-icon-btn">
+                                        <i class="bi bi-book-fill"></i>
+                                    </a>
+                                    <h5 class="text-gold mt-3">Ebook Gratuito</h5>
                                     <p class="text-muted"><?php echo esc_html($ebook_description); ?></p>
                                     <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="btn btn-primary"><?php echo esc_html($ebook_button_text); ?></a>
                                 </div>
@@ -593,13 +590,14 @@ function ev_free_resources_shortcode()
         <?php
         }
 
-        wp_reset_postdata(); // Restablecer la consulta de posts
-        return ob_get_clean(); // Devolver el contenido capturado
+        wp_reset_postdata();
+        return ob_get_clean();
     } else {
         return '<p class="text-muted text-center">No se encontró contenido para esta sección.</p>';
     }
 }
 add_shortcode('ev-free_resources', 'ev_free_resources_shortcode');
+
 
 
 // Contacto
@@ -852,7 +850,8 @@ function ev_about_identity_shortcode()
             <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro']); ?></p>
 
             <?php if (!empty($identity_group['identity_items'])) : ?>
-                <?php $first_item = array_shift($identity_group['identity_items']); // Extraer el primer ítem ?>
+                <?php $first_item = array_shift($identity_group['identity_items']); // Extraer el primer ítem 
+                ?>
 
                 <!-- Hero de Identidad -->
                 <div class="identity-hero text-center text-light py-5">
