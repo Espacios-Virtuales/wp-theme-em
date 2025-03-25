@@ -6,9 +6,8 @@
         margin-bottom: 30px;
 
         h2 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             color: #ffd700;
-            font-family: "Cinzel", serif;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
         }
 
@@ -17,42 +16,45 @@
             color: #888;
         }
     }
+    .resource-item{
 
-    .resource-icon-btn {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 80px;
-        height: 80px;
-        background-color: var(--bs-cyan);
-        border-radius: 50%;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        margin: 0 auto 20px;
-    
-        i {
-            font-size: 2rem;
-            color: var(--bs-white);
-            transition: transform 0.3s ease;
+        .resource-icon-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            background-color: var(--bs-cyan) !important;
+            border-radius: 50%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 0 auto 20px;
+        
+            i {
+                font-size: 2rem !important;
+                color: var(--bs-white);
+                transition: transform 0.3s ease;
+            }
+        
+            &:hover {
+                background-color: var(--bs-secondary);
+                transform: scale(1.1);
+            }
         }
     
-        &:hover {
-            background-color: var(--bs-secondary);
-            transform: scale(1.1);
+        h5 {
+            font-size: 2.5rem !important;
+            color: #ffd700;
+            margin-bottom: 10px;
         }
-    }
+    
+        p {
+            font-size: 1rem !important;
+            color: #555;
+            margin-bottom: 20px;
+        }
 
-    h5 {
-        font-size: 1.5rem;
-        color: #ffd700;
-        font-family: "Cinzel", serif;
-        margin-bottom: 10px;
     }
-
-    p {
-        font-size: 1rem;
-        color: #555;
-        margin-bottom: 20px;
-    }
+   
 
     @media (max-width: 768px) {
         .resource-item {
