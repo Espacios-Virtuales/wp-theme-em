@@ -267,31 +267,28 @@ function community_membership_gallery_shortcode()
     // Obtener datos de la página con el slug 'membresia-comunidad'
     $data = blog_get_page(array('membresia-comunidad'));
 
-
     if ($data->have_posts()) {
-        ob_start(); // Captura de salida
+        ob_start();
 
         while ($data->have_posts()) {
             $data->the_post();
 
             // Obtener los datos necesarios
             $intro = get_field('introductions');
-            $description_group = get_field('description_group'); // Imagen y pensamiento
-            $community_items = get_field('community_comunity_group'); // Items de la comunidad
+            $description_group = get_field('description_group');
+            $community_items = get_field('community_comunity_group');
 
-            // Desglose de los elementos
             $item_1 = $community_items['item_1'];
             $item_2 = $community_items['item_2'];
-        ?>
+?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
                     <div class="text-center mb-4">
-                        <h2 class="text-gold display-6"><?php echo esc_html($intro["intro_1"]); ?></h2> <!-- Título principal -->
-                        <p class="lead text-muted"> <?php echo esc_html($intro["intro_2"]); ?></p>
+                        <h2 class="text-gold display-6" data-aos="fade-up"><?php echo esc_html($intro["intro_1"]); ?></h2>
+                        <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($intro["intro_2"]); ?></p>
                     </div>
-                    <!-- Sección de Maureen -->
                     <?php if ($description_group): ?>
-                        <div class="row align-items-center mb-5">
+                        <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="200">
                             <div class="col-md-4 text-center">
                                 <?php if ($description_group['maureen_image']): ?>
                                     <img src="<?php echo esc_url($description_group['maureen_image']['url']); ?>" alt="<?php echo esc_attr($description_group['maureen_image']['alt']); ?>" class="img-fluid rounded-circle maureen-photo">
@@ -305,58 +302,52 @@ function community_membership_gallery_shortcode()
                         </div>
                     <?php endif; ?>
 
-                    <!-- Comunidad: Item 1 -->
-                    <div class="row">
+                    <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
                         <?php if ($item_1): ?>
-                            <div class="col community-item mb-5">
+                            <div class="col" data-aos="fade-up" data-aos-delay="300">
                                 <div class="text-center">
                                     <?php if ($item_1['image']): ?>
-                                        <img src="<?php echo esc_url($item_1['image']['url']); ?>" alt="<?php echo esc_attr($item_1['image']['alt']); ?>" class="img-fluid rounded community-icon">
+                                        <img src="<?php echo esc_url($item_1['image']['url']); ?>" alt="<?php echo esc_attr($item_1['image']['alt']); ?>" class="img-fluid rounded community-icon mb-3">
                                     <?php endif; ?>
-                                    <h5 class="text-gold mt-3"><?php echo esc_html($item_1['title']); ?></h5>
+                                    <h5 class="text-gold"><?php echo esc_html($item_1['title']); ?></h5>
                                     <p class="text-muted"><?php echo esc_html($item_1['description']); ?></p>
                                     <div class="d-flex justify-content-center gap-3 mt-3">
                                         <div class="custom-rounded-btn bg-cyan">
-                                            <a href="<?php echo esc_url($item_1['link_whatsapp']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Tribu Mistica Telegram">
+                                            <a href="<?php echo esc_url($item_1['link_whatsapp']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Tribu Mistica WhatsApp">
                                                 <i class="bi bi-whatsapp"></i>
                                             </a>
                                         </div>
-                                
                                         <div class="custom-rounded-btn bg-cyan">
                                             <a href="<?php echo esc_url($item_1['link_telegram']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Tribu Mistica Telegram">
-                                                <i class="bi bi-telegram"></i> 
+                                                <i class="bi bi-telegram"></i>
                                             </a>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
                         <?php endif; ?>
 
-                        <!-- Comunidad: Item 2 -->
                         <?php if ($item_2): ?>
-                            <div class="col community-item mb-5">
+                            <div class="col" data-aos="fade-up" data-aos-delay="400">
                                 <div class="text-center">
                                     <h5 class="text-gold"><?php echo esc_html($item_2['title_2']); ?></h5>
                                     <p class="text-muted"><?php echo esc_html($item_2['description_2']); ?></p>
                                     <div class="custom-rounded-btn bg-cyan">
-                                        <a href="<?php echo esc_url($item_2['link_whatsapp_2']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Momistica Whatsapp">
-                                            <i class="bi bi-whatsapp"></i> 
+                                        <a href="<?php echo esc_url($item_2['link_whatsapp_2']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Momistica WhatsApp">
+                                            <i class="bi bi-whatsapp"></i>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         <?php endif; ?>
-                    
                     </div>
-                   
                 </div>
             </section>
-    <?php
+<?php
         }
 
-        wp_reset_postdata(); // Restablecer la consulta de posts
-        return ob_get_clean(); // Devolver el contenido capturado
+        wp_reset_postdata();
+        return ob_get_clean();
     } else {
         return '<p class="text-muted text-center">No se encontró contenido para esta sección.</p>';
     }
