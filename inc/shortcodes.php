@@ -540,19 +540,18 @@ function ev_free_resources_shortcode()
                 <div class="container">
                     <div class="title text-center mb-4">
                         <h2 class="text-gold">Recursos Gratuitos</h2>
-                        <p class="text-muted">Explora una muestra de lo que podemos ofrecerte.</p>
+                        <p class="text-muted">Explora lo que podemos ofrecerte.</p>
                     </div>
                     <div class="row g-4 justify-content-center">
                         <!-- YouTube -->
                         <?php if ($youtube_link): ?>
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
                                 <div class="resource-item text-center shadow-sm">
+                                    <h5 class="text-gold mt-3">Canal de YouTube</h5>
+                                    <p class="text-muted">Accede contenido exclusivo en video.</p>
                                     <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="resource-icon-btn">
                                         <i class="bi bi-youtube"></i>
-                                    </a>
-                                    <h5 class="text-gold mt-3">Canal de YouTube</h5>
-                                    <p class="text-muted">Accede a nuestro contenido exclusivo en video.</p>
-                                    <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="btn btn-primary">Ver en YouTube</a>
+                                    </a>                                
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -561,12 +560,11 @@ function ev_free_resources_shortcode()
                         <?php if ($podcast_link): ?>
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
                                 <div class="resource-item text-center shadow-sm">
+                                    <h5 class="text-gold mt-3">Podcast</h5>
+                                    <p class="text-muted">Escucha nuestras reflexiones y conocimientos en Spotify.</p>
                                     <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="resource-icon-btn">
                                         <i class="bi bi-mic-fill"></i>
                                     </a>
-                                    <h5 class="text-gold mt-3">Podcast</h5>
-                                    <p class="text-muted">Escucha nuestras reflexiones y conocimientos.</p>
-                                    <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="btn btn-primary">Escuchar Podcast</a>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -574,13 +572,12 @@ function ev_free_resources_shortcode()
                         <!-- Ebook + Calendly -->
                         <?php if ($ebook_description && $calendly_link): ?>
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-                                <div class="resource-item text-center shadow-sm">
+                                <div class="resource-item text-center shadow-sm">    
+                                    <h5 class="text-gold mt-3">Ebook Gratuito</h5>
+                                    <p class="text-muted"><?php echo esc_html($ebook_description); ?></p>
                                     <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="resource-icon-btn">
                                         <i class="bi bi-book-fill"></i>
                                     </a>
-                                    <h5 class="text-gold mt-3">Ebook Gratuito</h5>
-                                    <p class="text-muted"><?php echo esc_html($ebook_description); ?></p>
-                                    <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="btn btn-primary"><?php echo esc_html($ebook_button_text); ?></a>
                                 </div>
                             </div>
                         <?php endif; ?>
