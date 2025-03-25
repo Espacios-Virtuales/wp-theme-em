@@ -306,38 +306,50 @@ function community_membership_gallery_shortcode()
                     <?php endif; ?>
 
                     <!-- Comunidad: Item 1 -->
-                    <?php if ($item_1): ?>
-                        <div class="community-item mb-5">
-                            <div class="text-center">
-                                <?php if ($item_1['image']): ?>
-                                    <img src="<?php echo esc_url($item_1['image']['url']); ?>" alt="<?php echo esc_attr($item_1['image']['alt']); ?>" class="img-fluid rounded community-icon">
-                                <?php endif; ?>
-                                <h5 class="text-gold mt-3"><?php echo esc_html($item_1['title']); ?></h5>
-                                <p class="text-muted"><?php echo esc_html($item_1['description']); ?></p>
-                                <div class="d-flex justify-content-center gap-3 mt-3">
-                                    <a href="<?php echo esc_url($item_1['link_whatsapp']); ?>" target="_blank" class="btn btn-primary">
-                                        <i class="bi bi-whatsapp"></i> WhatsApp
-                                    </a>
-                                    <a href="<?php echo esc_url($item_1['link_telegram']); ?>" target="_blank" class="btn btn-secondary">
-                                        <i class="bi bi-telegram"></i> Telegram
-                                    </a>
+                    <div class="row">
+                        <?php if ($item_1): ?>
+                            <div class="col community-item mb-5">
+                                <div class="text-center">
+                                    <?php if ($item_1['image']): ?>
+                                        <img src="<?php echo esc_url($item_1['image']['url']); ?>" alt="<?php echo esc_attr($item_1['image']['alt']); ?>" class="img-fluid rounded community-icon">
+                                    <?php endif; ?>
+                                    <h5 class="text-gold mt-3"><?php echo esc_html($item_1['title']); ?></h5>
+                                    <p class="text-muted"><?php echo esc_html($item_1['description']); ?></p>
+                                    <div class="d-flex justify-content-center gap-3 mt-3">
+                                        <div class="custom-rounded-btn bg-cyan">
+                                            <a href="<?php echo esc_url($item_1['link_whatsapp']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Tribu Mistica Telegram">
+                                                <i class="bi bi-whatsapp"></i>
+                                            </a>
+                                        </div>
+                                
+                                        <div class="custom-rounded-btn bg-cyan">
+                                            <a href="<?php echo esc_url($item_1['link_telegram']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Tribu Mistica Telegram">
+                                                <i class="bi bi-telegram"></i> 
+                                            </a>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endif; ?>
+                        <?php endif; ?>
 
-                    <!-- Comunidad: Item 2 -->
-                    <?php if ($item_2): ?>
-                        <div class="community-item mb-5">
-                            <div class="text-center">
-                                <h5 class="text-gold"><?php echo esc_html($item_2['title_2']); ?></h5>
-                                <p class="text-muted"><?php echo esc_html($item_2['description_2']); ?></p>
-                                <a href="<?php echo esc_url($item_2['link_whatsapp_2']); ?>" target="_blank" class="btn btn-primary">
-                                    <i class="bi bi-whatsapp"></i> WhatsApp
-                                </a>
+                        <!-- Comunidad: Item 2 -->
+                        <?php if ($item_2): ?>
+                            <div class="col community-item mb-5">
+                                <div class="text-center">
+                                    <h5 class="text-gold"><?php echo esc_html($item_2['title_2']); ?></h5>
+                                    <p class="text-muted"><?php echo esc_html($item_2['description_2']); ?></p>
+                                    <div class="custom-rounded-btn bg-cyan">
+                                        <a href="<?php echo esc_url($item_2['link_whatsapp_2']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Momistica Whatsapp">
+                                            <i class="bi bi-whatsapp"></i> 
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    <?php endif; ?>
+                        <?php endif; ?>
+                    
+                    </div>
+                   
                 </div>
             </section>
     <?php
@@ -550,7 +562,7 @@ function ev_free_resources_shortcode()
                                 <div class="resource-item text-center shadow-sm">
                                     <h5 class="text-gold mt-3">Canal de YouTube</h5>
                                     <p class="text-muted"><?php echo esc_html($youtube_description); ?></p>
-                                    <div class="custom-rounded-btn bg-cyan custom-rounded-btn">
+                                    <div class="custom-rounded-btn bg-cyan">
                                         <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Canal de YouTube">
                                             <i class="bi bi-youtube"></i>
                                         </a> 
@@ -925,8 +937,8 @@ function ev_services_hero_shortcode()
                     <p class="mt-2">Cursos</p>
                 </div>
                 <div class="col-4 col-md-2">
-                    <i class="bi bi-lightning-fill text-warning display-4"></i>
-                    <p class="mt-2">Desafíos</p>
+                    <i class="bi bi-arrow-repeat text-warning display-4"></i>
+                    <p class="mt-2">Programas</p>
                 </div>
             </div>
         </div>

@@ -33,18 +33,6 @@
     .community-item {
         text-align: center;
 
-        .community-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-
-            &:hover {
-                transform: scale(1.2);
-            }
-        }
-
         h5 {
             font-size: 1.5rem;
             color: var(--bs-gold);
@@ -54,37 +42,6 @@
         p {
             font-size: 1rem;
             color: #555;
-        }
-
-        .btn {
-            font-size: 1rem;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-
-            &:hover {
-                transform: scale(1.05);
-            }
-
-            &.btn-primary {
-                background-color: var(--bs-secondary);
-                color: #fff;
-
-                &:hover {
-                    background-color: var(--bs-gold);
-                    color: var(--bs-secondary);
-                }
-            }
-
-            &.btn-secondary {
-                background-color: var(--bs-gold);
-                color: #fff;
-
-                &:hover {
-                    background-color: var(--bs-secondary);
-                    color: var(--bs-gold);
-                }
-            }
         }
     }
 }

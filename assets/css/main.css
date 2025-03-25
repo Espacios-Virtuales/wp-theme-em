@@ -12561,16 +12561,6 @@ textarea.form-control-lg {
 .community-membership .community-item {
   text-align: center;
 }
-.community-membership .community-item .community-icon {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-.community-membership .community-item .community-icon:hover {
-  transform: scale(1.2);
-}
 .community-membership .community-item h5, .community-membership .community-item .h5 {
   font-size: 1.5rem;
   color: var(--bs-gold);
@@ -12579,31 +12569,6 @@ textarea.form-control-lg {
 .community-membership .community-item p {
   font-size: 1rem;
   color: #555;
-}
-.community-membership .community-item .btn {
-  font-size: 1rem;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-.community-membership .community-item .btn:hover {
-  transform: scale(1.05);
-}
-.community-membership .community-item .btn.btn-primary {
-  background-color: var(--bs-secondary);
-  color: #fff;
-}
-.community-membership .community-item .btn.btn-primary:hover {
-  background-color: var(--bs-gold);
-  color: var(--bs-secondary);
-}
-.community-membership .community-item .btn.btn-secondary {
-  background-color: var(--bs-gold);
-  color: #fff;
-}
-.community-membership .community-item .btn.btn-secondary:hover {
-  background-color: var(--bs-secondary);
-  color: var(--bs-gold);
 }
 
 /* Estilización personalizada para el Lightbox */
