@@ -20,6 +20,12 @@
         text-align: center !important;
     }
 
+    #carousel-servicios {
+        @extend .container;
+        border-radius: 20px !important;
+        overflow: hidden;
+    }
+
     .carousel-inner {
         border-radius: 15px !important;
         overflow: hidden !important;
@@ -35,13 +41,24 @@
     }
 
     .carousel-caption {
-        background-color: rgba(0, 0, 0, 0.5) !important;
-        border-radius: 10px !important;
-        padding: 20px !important;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
-        backdrop-filter: blur(4px) !important;
-        max-width: 90% !important;
-        margin: 0 auto !important;
+        bottom: 30px !important; // antes era quizás 0 o 15px
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        padding: 1rem 1.5rem;
+        border-radius: 15px;
+        max-width: 80%;
+        margin: 0 auto;
+
+        h3 {
+            font-size: 1.6rem !important;
+            font-weight: 700;
+            color: #ffd700 !important;
+        }
+
+        p {
+            font-size: 1rem !important;
+            color: #eee !important;
+        }
     }
 
     .card {

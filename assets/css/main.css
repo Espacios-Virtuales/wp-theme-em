@@ -794,7 +794,7 @@ progress {
   color: #6c757d;
 }
 
-.container,
+.container, #servicios-programas #carousel-servicios,
 .container-fluid,
 .container-xxl,
 .container-xl,
@@ -809,27 +809,27 @@ progress {
 }
 
 @media (min-width: 576px) {
-  .container-sm, .container {
+  .container-sm, .container, #servicios-programas #carousel-servicios {
     max-width: 540px;
   }
 }
 @media (min-width: 768px) {
-  .container-md, .container-sm, .container {
+  .container-md, .container-sm, .container, #servicios-programas #carousel-servicios {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
-  .container-lg, .container-md, .container-sm, .container {
+  .container-lg, .container-md, .container-sm, .container, #servicios-programas #carousel-servicios {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .container-xl, .container-lg, .container-md, .container-sm, .container {
+  .container-xl, .container-lg, .container-md, .container-sm, .container, #servicios-programas #carousel-servicios {
     max-width: 1140px;
   }
 }
 @media (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container, #servicios-programas #carousel-servicios {
     max-width: 1320px;
   }
 }
@@ -4412,7 +4412,7 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.navbar > .container,
+.navbar > .container, #servicios-programas .navbar > #carousel-servicios,
 .navbar > .container-fluid,
 .navbar > .container-sm,
 .navbar > .container-md,
@@ -11033,7 +11033,7 @@ textarea.form-control-lg {
   color: white;
   /* Estilos específicos para el menú del footer */
 }
-.site-footer .container {
+.site-footer .container, .site-footer #servicios-programas #carousel-servicios, #servicios-programas .site-footer #carousel-servicios {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -11160,7 +11160,7 @@ textarea.form-control-lg {
   }
 }
 @media (max-width: 576px) {
-  .site-footer .site-footer .container {
+  .site-footer .site-footer .container, .site-footer .site-footer #servicios-programas #carousel-servicios, #servicios-programas .site-footer .site-footer #carousel-servicios {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -12255,6 +12255,10 @@ textarea.form-control-lg {
   margin-bottom: 40px !important;
   text-align: center !important;
 }
+#servicios-programas #carousel-servicios {
+  border-radius: 20px !important;
+  overflow: hidden;
+}
 #servicios-programas .carousel-inner {
   border-radius: 15px !important;
   overflow: hidden !important;
@@ -12266,14 +12270,23 @@ textarea.form-control-lg {
   border-radius: 0 !important;
 }
 #servicios-programas .carousel-caption {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  border-radius: 10px !important;
-  padding: 20px !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
-  -webkit-backdrop-filter: blur(4px) !important;
-          backdrop-filter: blur(4px) !important;
-  max-width: 90% !important;
-  margin: 0 auto !important;
+  bottom: 30px !important;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+#servicios-programas .carousel-caption h3, #servicios-programas .carousel-caption .h3 {
+  font-size: 1.6rem !important;
+  font-weight: 700;
+  color: #ffd700 !important;
+}
+#servicios-programas .carousel-caption p {
+  font-size: 1rem !important;
+  color: #eee !important;
 }
 #servicios-programas .card {
   background-color: #002c55 !important;
