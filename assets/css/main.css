@@ -794,7 +794,7 @@ progress {
   color: #6c757d;
 }
 
-.container, #servicios-programas #carousel-servicios,
+.container,
 .container-fluid,
 .container-xxl,
 .container-xl,
@@ -809,27 +809,27 @@ progress {
 }
 
 @media (min-width: 576px) {
-  .container-sm, .container, #servicios-programas #carousel-servicios {
+  .container-sm, .container {
     max-width: 540px;
   }
 }
 @media (min-width: 768px) {
-  .container-md, .container-sm, .container, #servicios-programas #carousel-servicios {
+  .container-md, .container-sm, .container {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
-  .container-lg, .container-md, .container-sm, .container, #servicios-programas #carousel-servicios {
+  .container-lg, .container-md, .container-sm, .container {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .container-xl, .container-lg, .container-md, .container-sm, .container, #servicios-programas #carousel-servicios {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1140px;
   }
 }
 @media (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container, #servicios-programas #carousel-servicios {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1320px;
   }
 }
@@ -4412,7 +4412,7 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.navbar > .container, #servicios-programas .navbar > #carousel-servicios,
+.navbar > .container,
 .navbar > .container-fluid,
 .navbar > .container-sm,
 .navbar > .container-md,
@@ -11033,7 +11033,7 @@ textarea.form-control-lg {
   color: white;
   /* Estilos específicos para el menú del footer */
 }
-.site-footer .container, .site-footer #servicios-programas #carousel-servicios, #servicios-programas .site-footer #carousel-servicios {
+.site-footer .container {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -11160,7 +11160,7 @@ textarea.form-control-lg {
   }
 }
 @media (max-width: 576px) {
-  .site-footer .site-footer .container, .site-footer .site-footer #servicios-programas #carousel-servicios, #servicios-programas .site-footer .site-footer #carousel-servicios {
+  .site-footer .site-footer .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -12256,8 +12256,14 @@ textarea.form-control-lg {
   text-align: center !important;
 }
 #servicios-programas #carousel-servicios {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   border-radius: 20px !important;
-  overflow: hidden;
+  overflow: hidden !important;
+  position: relative !important;
 }
 #servicios-programas .carousel-inner {
   border-radius: 15px !important;

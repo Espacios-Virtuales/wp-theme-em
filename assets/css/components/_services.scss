@@ -21,9 +21,14 @@
     }
 
     #carousel-servicios {
-        @extend .container;
+        max-width: 1140px; // equivalente a container
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
         border-radius: 20px !important;
-        overflow: hidden;
+        overflow: hidden !important;
+        position: relative !important; // necesario para que overflow funcione
     }
 
     .carousel-inner {
