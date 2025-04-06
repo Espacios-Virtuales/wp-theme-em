@@ -12234,75 +12234,63 @@ textarea.form-control-lg {
   transform: scale(1.1);
 }
 
-#servicios-programas {
+.servicios-programas {
   background-color: #001f3f;
   color: #f5f5f5;
   padding: 60px 0;
-  /* Responsividad */
 }
-#servicios-programas h2, #servicios-programas .h2 {
+.servicios-programas h2, .servicios-programas .h2 {
   font-size: 2.5rem;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
   font-family: "Playfair Display", serif;
   margin-bottom: 20px;
-  text-align: center;
 }
-#servicios-programas p {
+.servicios-programas p {
   font-size: 1.1rem;
   line-height: 1.7;
   color: #dcdcdc;
   font-family: "Roboto", sans-serif;
   margin-bottom: 40px;
-  text-align: center;
 }
-#servicios-programas .card {
+.servicios-programas .carousel-item .card {
   background-color: #002c55;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
-#servicios-programas .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+.servicios-programas .carousel-item .card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
-#servicios-programas .card .card-body {
-  text-align: center;
+.servicios-programas .carousel-item .card .card-body {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-#servicios-programas .card .card-body i {
-  font-size: 3rem;
-  color: #0091ff;
-  margin-bottom: 10px;
+.servicios-programas .carousel-item .card .card-body h3, .servicios-programas .carousel-item .card .card-body .h3 {
+  color: #ffd700;
+  font-family: "Cinzel", serif;
+  margin-bottom: 15px;
 }
-#servicios-programas .card .card-body .card-title {
-  font-size: 1.5rem;
-  font-family: "Playfair Display", serif;
-}
-#servicios-programas .card .card-body .card-text {
+.servicios-programas .carousel-item .card .card-body p {
+  color: #eee;
   font-size: 1rem;
-  font-family: "Roboto", sans-serif;
 }
-#servicios-programas .card .card-body .btn {
-  background-color: #0091ff;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-#servicios-programas .card .card-body .btn:hover {
-  background-color: #0056b3;
+.servicios-programas .carousel-control-prev-icon,
+.servicios-programas .carousel-control-next-icon {
+  background-color: #ffd700;
+  border-radius: 50%;
+  padding: 10px;
 }
 @media (max-width: 768px) {
-  #servicios-programas h2, #servicios-programas .h2 {
+  .servicios-programas h2, .servicios-programas .h2 {
     font-size: 2rem;
   }
-  #servicios-programas .card-title {
-    font-size: 1.2rem;
+  .servicios-programas .card-body h3, .servicios-programas .card-body .h3 {
+    font-size: 1.3rem;
   }
-  #servicios-programas .card-text {
-    font-size: 0.9rem;
+  .servicios-programas .card-body p {
+    font-size: 0.95rem;
   }
 }
 
@@ -12464,10 +12452,13 @@ textarea.form-control-lg {
   .services-hero h1, .services-hero .h1 {
     font-size: 1.5rem;
   }
-  .value-section h5, .value-section .h5, .services-list h5, .services-list .h5 {
+  .value-section h5, .value-section .h5,
+  .services-list h5,
+  .services-list .h5 {
     font-size: 1rem;
   }
-  .value-section p, .services-list p {
+  .value-section p,
+  .services-list p {
     font-size: 0.8rem;
   }
 }
