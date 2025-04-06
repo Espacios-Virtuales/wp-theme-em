@@ -825,19 +825,21 @@ function ev_about_values_shortcode()
     <section class="values-section py-5">
         <div class="container">
             <h2 class="text-center text-primary mb-4">Nuestros Valores</h2>
-            <div class="values-section py-5">
-                <div class="row">
-                    <?php foreach ($values_group as $value): ?>
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
-                                <div class="card-body">
-                                    <h5 class="text-primary text-center"><?php echo esc_html($value['value_title']); ?></h5>
-                                    <p class="text-center"><?php echo esc_html($value['value_text']); ?></p>
-                                </div>
+            <div class="row">
+                <?php
+                $delay = 0;
+                foreach ($values_group as $value): ?>
+                    <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="<?php echo esc_attr($delay); ?>">
+                        <div class="card shadow-lg h-100">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="text-primary text-center mb-3"><?php echo esc_html($value['value_title']); ?></h5>
+                                <p class="text-center text-muted"><?php echo esc_html($value['value_text']); ?></p>
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                </div>
+                    </div>
+                <?php
+                    $delay += 100;
+                endforeach; ?>
             </div>
         </div>
     </section>
