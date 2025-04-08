@@ -92,7 +92,7 @@ function ev_about_shortcode()
                 </p>
 
                 <!-- Botón de suscripción -->
-                <a href="https://calendly.com/momistica" target="_blank" class="btn btn-em-gold btn-lg shadow-lg">
+                <a href="https://calendly.com/momistica/asesoria-alquimiza" target="_blank" class="btn btn-em-gold btn-lg shadow-lg">
                     Agenda <i class="bi bi-calendar rounded-circle d-none"></i>
                 </a>
             </div>
@@ -164,12 +164,12 @@ function ev_subscribe_modal()
                         <div class="mb-3">
                             <label for="modalName" class="form-label text-dark">Nombre:</label> <!-- Texto en negro -->
                             <input type="text" class="form-control text-dark" id="modalName" name="contact_name" required minlength="3" placeholder="Ingresa tu nombre">
-                            <div class="invalid-feedback">Por favor ingrese un nombre con al menos 3 caracteres</div>
+                            <div class="invalid-feedback">Ingrese un nombre con al menos 3 caracteres</div>
                         </div>
                         <div class="mb-3">
                             <label for="modalEmail" class="form-label text-dark">Correo Electrónico:</label> <!-- Texto en negro -->
                             <input type="email" class="form-control text-dark" id="modalEmail" name="contact_email" required placeholder="email@ejemplo.cl">
-                            <div class="invalid-feedback">Por favor ingrese un correo electrónico válido</div>
+                            <div class="invalid-feedback">Ingrese un correo electrónico válido</div>
                         </div>
                         <div class="form-check mb-3">
                             <input type="checkbox" id="subscribeCheck" name="contact_subscribe" value="yes" checked="checked">

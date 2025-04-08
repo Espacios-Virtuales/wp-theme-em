@@ -13,29 +13,15 @@ get_header(); ?>
     </section>
 
     <!-- Main Content -->
-    <div class="container-fluid my-5">
-        <!-- Introducción con the_content() -->
-        <div class="intro-section text-center">
-            <?php if (has_post_thumbnail()): ?>
-                <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>" class="img-fluid shadow-lg rounded mb-4">
-            <?php endif; ?>
-            <div class="page-content text-center text-dark">
-                <?php while (have_posts()): the_post(); ?>
-                    <?php the_content(); ?>
-                <?php endwhile; ?>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Propuesta de Valor -->
-    <section class="value-section mb-5">
-        <?php echo do_shortcode('[ev-services-value]'); ?>
-    </section>
 
     <!-- Servicios -->
     <section class="services-section mb-5">
         <?php echo do_shortcode('[ev-services-list]'); ?>
+    </section>
+
+    <!-- Propuesta de Valor -->
+    <section class="value-section mb-5">
+        <?php echo do_shortcode('[ev-services-value]'); ?>
     </section>
 
     <!-- Llamado a la Acción -->
