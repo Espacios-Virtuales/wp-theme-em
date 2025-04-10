@@ -205,8 +205,11 @@ function ev_servicios_shortcode()
 
             <!-- Llamado a la acción -->
             <div class="container d-flex justify-content-center">
-                <!-- Botón de suscripción -->
-                <a href="https://escuelamistica.cl/em/servicios/" target="_blank" class="btn btn-em-gold btn-lg shadow-lg">
+                <?php
+                $servicios_page = get_page_by_path('servicios');
+                $servicios_url = get_permalink($servicios_page->ID);
+                ?>
+                <a href="<?php echo esc_url($servicios_url); ?>" class="btn btn-em-gold btn-lg shadow-lg">
                     Accede a nuestros servicios
                 </a>
             </div>
