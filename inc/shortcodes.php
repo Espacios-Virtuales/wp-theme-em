@@ -68,6 +68,9 @@ function hero_slider_shortcode()
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <!-- Modal de suscripción -->
+    <?php ev_subscribe_modal(); ?>
+
     <?php
     return ob_get_clean();
 }
@@ -97,49 +100,6 @@ function ev_about_shortcode()
                 </a>
             </div>
 
-            <div class="container py-4">
-                <div class="row text-center">
-                    <?php
-                    // Loop para las tarjetas
-                    for ($i = 1; $i <= 3; $i++) {
-                        $card = get_field("card_$i");
-                        if ($card) { ?>
-                            <div class="col-md-4 mb-4">
-                                <div class="card h-100">
-                                    <div class="card-body rounded">
-                                        <div class="card-icon mb-3">
-                                            <i class="bi bi-moon-stars-fill display-4 text-gold"></i>
-                                        </div>
-                                        <h5 class="card-title"><?php echo esc_html($card["title_$i"]); ?></h5>
-                                        <p class="card-text"><?php echo esc_html($card["body_$i"]); ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                    <?php }
-                    } ?>
-                </div>
-
-                <!-- Galería de imágenes con Lightbox -->
-                <div class="row">
-                    <?php
-                    $images = get_field("images");
-                    for ($j = 1; $j <= 3; $j++) {
-                        $image = $images["image_$j"];
-                        if ($image) { ?>
-                            <div class="col-md-4 mb-4">
-                                <a href="<?php echo esc_url($image['url']); ?>" data-lightbox="gallery" data-title="<?php echo esc_attr($image['alt']); ?>">
-                                    <div class="image-container">
-                                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="img-fluid">
-                                    </div>
-                                </a>
-                            </div>
-                    <?php }
-                    } ?>
-                </div>
-            </div>
-
-            <!-- Modal de suscripción -->
-            <?php ev_subscribe_modal(); ?>
         </section>
     <?php
     }
@@ -200,10 +160,6 @@ function ev_servicios_shortcode()
     ?>
         <section class="py-5 bg-dark-blue text-light" id="servicios-programas"> <!-- Fondo azul oscuro y texto claro -->
             <div class="container">
-                <div class="text-center mb-4">
-                    <h2 class="text-gold display-6"><?php echo esc_html($intro["intro_1"]); ?></h2> <!-- Título principal -->
-                    <p class="lead text-muted"> <?php echo esc_html($intro["intro_2"]); ?></p>
-                </div>
 
                 <!-- Carousel de Servicios -->
                 <div id="carousel-servicios" class="carousel slide overflow-hidden rounded" data-bs-ride="carousel">
@@ -247,11 +203,12 @@ function ev_servicios_shortcode()
                 </div>
             </div>
 
-            <!-- Información adicional -->
+            <!-- Llamado a la acción -->
             <div class="container py-5">
-                <div class="text-center text-light">
-                    <p><?php echo esc_html($intro["intro_3"]); ?></p>
-                </div>
+                <!-- Botón de suscripción -->
+                <a href="https://escuelamistica.cl/em/servicios/" target="_blank" class="btn btn-em-gold btn-lg shadow-lg">
+                    Accede a nuestros servicios
+                </a>
             </div>
         </section>
         <?php
