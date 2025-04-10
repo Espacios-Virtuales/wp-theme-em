@@ -158,7 +158,7 @@ function ev_servicios_shortcode()
         $intro = get_field('introductions');
 
     ?>
-        <section class="py-5 bg-dark-blue text-light" id="servicios-programas"> <!-- Fondo azul oscuro y texto claro -->
+        <section class="bg-dark-blue text-light" id="servicios-programas"> <!-- Fondo azul oscuro y texto claro -->
             <div class="container">
 
                 <!-- Carousel de Servicios -->
@@ -204,7 +204,7 @@ function ev_servicios_shortcode()
             </div>
 
             <!-- Llamado a la acción -->
-            <div class="container py-5">
+            <div class="container d-flex justify-content-center">
                 <!-- Botón de suscripción -->
                 <a href="https://escuelamistica.cl/em/servicios/" target="_blank" class="btn btn-em-gold btn-lg shadow-lg">
                     Accede a nuestros servicios
