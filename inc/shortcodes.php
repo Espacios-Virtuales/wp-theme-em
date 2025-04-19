@@ -240,7 +240,7 @@ function community_membership_gallery_shortcode()
 
             $item_1 = $community_items['item_1'];
             $item_2 = $community_items['item_2'];
-?>
+        ?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
                     <div class="text-center mb-4">
@@ -303,7 +303,7 @@ function community_membership_gallery_shortcode()
                     </div>
                 </div>
             </section>
-<?php
+    <?php
         }
 
         wp_reset_postdata();
@@ -516,8 +516,8 @@ function ev_free_resources_shortcode()
                                     <div class="custom-rounded-btn bg-cyan">
                                         <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Canal de YouTube">
                                             <i class="bi bi-youtube"></i>
-                                        </a> 
-                                    </div>                             
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -533,7 +533,7 @@ function ev_free_resources_shortcode()
                                             <i class="bi bi-mic-fill"></i>
                                         </a>
                                     </div>
-                                  
+
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -541,7 +541,7 @@ function ev_free_resources_shortcode()
                         <!-- Ebook + Calendly -->
                         <?php if ($ebook_description && $calendly_link): ?>
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-                                <div class="resource-item text-center shadow-sm">    
+                                <div class="resource-item text-center shadow-sm">
                                     <h5 class="text-gold mt-3">Ebook Gratuito</h5>
                                     <p class="text-muted"><?php echo esc_html($ebook_description); ?></p>
                                     <div class="custom-rounded-btn bg-cyan">
@@ -932,7 +932,7 @@ function ev_services_list_shortcode()
 {
     $services_group = get_field('services_group');
     ob_start();
-    ?>
+?>
     <div class="services-list py-5">
         <h2 class="text-center text-primary mb-4">Nuestros Servicios</h2>
         <div class="row">
@@ -944,8 +944,8 @@ function ev_services_list_shortcode()
                             <i class="<?php echo esc_attr($service['item_icon']); ?> text-primary display-4 mb-3"></i>
                             <h5 class="text-primary"><?php echo esc_html($service['item_title']); ?></h5>
                             <p class="text-muted"><?php echo esc_html($service['item_description']); ?></p>
-                            <button 
-                                type="button" 
+                            <button
+                                type="button"
                                 class="btn btn-outline-primary mt-3 open-video-modal"
                                 data-bs-toggle="modal"
                                 data-bs-target="#videoModal"
@@ -960,24 +960,25 @@ function ev_services_list_shortcode()
         </div>
 
         <!-- Modal global -->
-        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content bg-dark text-white">
                     <div class="modal-header border-0">
-                        <h5 class="modal-title" id="videoModalLabel">Visualiza el contenido</h5>
+                        <h5 class="modal-title" id="videoModalLabel">Video del Servicio</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body p-0">
                         <div class="ratio ratio-16x9">
-                            <iframe id="videoFrame" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+                            <iframe id="videoFrame" src="" title="Video de servicio" allowfullscreen allow="autoplay"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
+
 
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('ev-services-list', 'ev_services_list_shortcode');

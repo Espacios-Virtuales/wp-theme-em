@@ -203,15 +203,21 @@ jQuery(document).ready(function ($) {
     const $videoFrame = $('#videoFrame');
 
     $('.open-video-modal').on('click', function () {
-      const videoUrl = $(this).data('video');
-      const autoplayUrl = videoUrl.includes('?') ? videoUrl + '&autoplay=1' : videoUrl + '?autoplay=1';
-      $videoFrame.attr('src', autoplayUrl);
+        const videoUrl = $(this).data('video');
+        if (!videoUrl) return;
+
+        // Asegura autoplay
+        const autoplayUrl = videoUrl.includes('?') ? videoUrl + '&autoplay=1' : videoUrl + '?autoplay=1';
+
+        $videoFrame.attr('src', autoplayUrl);
     });
 
+    // Limpia el src cuando se cierra
     $('#videoModal').on('hidden.bs.modal', function () {
-      $videoFrame.attr('src', '');
+        $videoFrame.attr('src', '');
     });
-  }
+}
+
 
 
   initializeAOS();
