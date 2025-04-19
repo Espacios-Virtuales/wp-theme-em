@@ -198,7 +198,22 @@ jQuery(document).ready(function ($) {
       console.warn("AOS no está cargado.");
     }
   }
-  
+
+  function initializeVideoModal() {
+    const $videoFrame = $('#videoFrame');
+
+    $('.open-video-modal').on('click', function () {
+      const videoUrl = $(this).data('video');
+      const autoplayUrl = videoUrl.includes('?') ? videoUrl + '&autoplay=1' : videoUrl + '?autoplay=1';
+      $videoFrame.attr('src', autoplayUrl);
+    });
+
+    $('#videoModal').on('hidden.bs.modal', function () {
+      $videoFrame.attr('src', '');
+    });
+  }
+
+
   initializeAOS();
   handleMenuNavigation();
   handleHeroCarousel();
@@ -217,6 +232,7 @@ jQuery(document).ready(function ($) {
     animateMissionVision();
   }
 
+  initializeVideoModal();
 
 
 });

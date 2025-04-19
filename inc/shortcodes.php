@@ -930,32 +930,54 @@ add_shortcode('ev-services-value', 'ev_services_value_shortcode');
 
 function ev_services_list_shortcode()
 {
-    $services_group = get_field('services_group'); // Group: services_group
+    $services_group = get_field('services_group');
     ob_start();
-?>
+    ?>
     <div class="services-list py-5">
         <h2 class="text-center text-primary mb-4">Nuestros Servicios</h2>
         <div class="row">
-            <?php $index = 0; // Inicializar el índice manualmente 
-            ?>
-
+            <?php $index = 0; ?>
             <?php foreach ($services_group['services'] as $service): ?>
                 <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
-                    <div class="card service-card shadow-lg border-0 h-100  <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
+                    <div class="card service-card shadow-lg border-0 h-100 <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
                         <div class="card-body text-center">
                             <i class="<?php echo esc_attr($service['item_icon']); ?> text-primary display-4 mb-3"></i>
                             <h5 class="text-primary"><?php echo esc_html($service['item_title']); ?></h5>
                             <p class="text-muted"><?php echo esc_html($service['item_description']); ?></p>
-                            <a href="<?php echo esc_url($service['item_link']); ?>" class="btn btn-outline-primary mt-3">Saber Más</a>
+                            <button 
+                                type="button" 
+                                class="btn btn-outline-primary mt-3 open-video-modal"
+                                data-bs-toggle="modal"
+                                data-bs-target="#videoModal"
+                                data-video="<?php echo esc_url($service['item_link']); ?>">
+                                Saber Más
+                            </button>
                         </div>
                     </div>
                 </div>
-                <?php $index++; // Incrementar el índice manualmente 
-                ?>
+                <?php $index++; ?>
             <?php endforeach; ?>
         </div>
+
+        <!-- Modal global -->
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="videoModalLabel">Visualiza el contenido</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="videoFrame" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-<?php
+    <?php
     return ob_get_clean();
 }
 add_shortcode('ev-services-list', 'ev_services_list_shortcode');
