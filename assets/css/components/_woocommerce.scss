@@ -1,5 +1,5 @@
 .cart-customlocation {
-    text-decoration: none; // Quita el subrayado del enlace
+    text-decoration: none !important; // Quita el subrayado del enlace
     color: inherit; // Mantiene el color del texto según el contexto
     font-weight: 500; // Hace que el texto sea un poco más elegante
 
