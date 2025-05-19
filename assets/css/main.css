@@ -12730,6 +12730,48 @@ textarea.form-control-lg {
   line-height: 1em;
 }
 
+#IntroVideoModal .modal-dialog {
+  max-width: 800px;
+  margin: auto;
+  border-radius: 15px;
+}
+#IntroVideoModal .modal-dialog .modal-content {
+  background-color: #111111;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+}
+#IntroVideoModal .modal-dialog .modal-content .modal-header {
+  background-color: transparent;
+  border-bottom: none;
+  padding: 1rem 1.5rem;
+}
+#IntroVideoModal .modal-dialog .modal-content .modal-header .modal-title {
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  color: #ffd700;
+}
+#IntroVideoModal .modal-dialog .modal-content .modal-header .btn-close {
+  filter: invert(1);
+  opacity: 0.7;
+  transition: 0.3s ease;
+}
+#IntroVideoModal .modal-dialog .modal-content .modal-header .btn-close:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+#IntroVideoModal .modal-dialog .modal-content .modal-body {
+  padding: 0 1.5rem 1.5rem;
+}
+#IntroVideoModal .modal-dialog .modal-content .modal-body iframe {
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+#IntroVideoModal .modal-backdrop.show {
+  opacity: 0.95 !important;
+  background-color: #000000 !important;
+}
+
 .cart-customlocation {
   text-decoration: none !important;
   color: inherit;
