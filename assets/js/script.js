@@ -1,30 +1,24 @@
 jQuery(document).ready(function ($) {
   // Animación de texto
   function animateText(selector) {
-    var $textWrapper = $(selector);
+    const $textWrapper = $(selector);
     if ($textWrapper.length) {
       $textWrapper.each(function () {
-        var $this = $(this);
+        const $this = $(this);
         $this.html($this.text().replace(/\S/g, "<span class='letter'>$&</span>"));
       });
-
-      anime.timeline({ loop: true })
+  
+      anime.timeline({ loop: false }) // Remueve el loop
         .add({
           targets: selector + " .letter",
-          scale: [0, 1],
-          duration: 1500,
-          elasticity: 600,
-          delay: (el, i) => 45 * (i + 1)
-        })
-        .add({
-          targets: selector,
-          opacity: 0,
-          duration: 1000,
-          easing: "easeOutExpo",
-          delay: 1000
+          opacity: [0, 1],
+          translateY: ["1.2em", 0],
+          duration: 1200,
+          delay: (el, i) => 50 * i,
+          easing: "easeOutCubic"
         });
     }
-  }
+  }  
 
   function animateHeroAboutUs() {
     anime.timeline()
