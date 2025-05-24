@@ -21,6 +21,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+    <?php acf_form_head(); ?>
     <?php wp_body_open(); ?>
 
     <div id="page" class="site">
