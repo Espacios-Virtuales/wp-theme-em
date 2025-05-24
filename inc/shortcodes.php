@@ -932,13 +932,17 @@ function ev_services_list_shortcode()
 {
     $services_group = get_field('services_group');
     ob_start();
-?>
+
+    if (!$services_group || !isset($services_group['services'])) {
+        return '<p>No se encontraron servicios.</p>';
+    }
+    ?>
     <div class="services-list py-5">
         <h2 class="text-center text-primary mb-4" data-aos="fade-up">Nuestros Servicios</h2>
         <div class="row">
-            <?php foreach ($services_group['services'] as $index => $service): 
+            <?php foreach ($services_group['services'] as $index => $service):
                 $modal_id = 'serviceModal_' . $index;
-            ?>
+                ?>
                 <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>" data-aos="fade-up" data-aos-delay="<?php echo $index * 100 + 100; ?>">
                     <div class="card service-card shadow-lg border-0 h-100 <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
                         <div class="card-body text-center">
@@ -957,12 +961,12 @@ function ev_services_list_shortcode()
                     </div>
                 </div>
 
-                <!-- Modal individual -->
-                <div class="modal fade" id="<?php echo esc_attr($modal_id); ?>" tabindex="-1" aria-labelledby="<?php echo $modal_id; ?>Label" aria-hidden="true">
+                <!-- Modal por servicio -->
+                <div class="modal fade" id="<?php echo esc_attr($modal_id); ?>" tabindex="-1" aria-labelledby="<?php echo esc_attr($modal_id . '_label'); ?>" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content bg-dark text-white rounded-4 shadow-lg">
                             <div class="modal-header border-0">
-                                <h5 class="modal-title text-gold" id="<?php echo $modal_id; ?>Label">
+                                <h5 class="modal-title text-gold" id="<?php echo esc_attr($modal_id . '_label'); ?>">
                                     <?php echo esc_html($service['item_title']); ?>
                                 </h5>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -988,7 +992,8 @@ function ev_services_list_shortcode()
             <?php endforeach; ?>
         </div>
     </div>
-<?php
+    <?php
     return ob_get_clean();
 }
 add_shortcode('ev-services-list', 'ev_services_list_shortcode');
+
