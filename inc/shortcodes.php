@@ -910,9 +910,9 @@ function ev_services_value_shortcode()
         <h2 class="text-center text-primary mb-4" data-aos="fade-up">Nuestra Propuesta de Valor</h2>
         <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($values['values_descriptions']); ?></p>
         <div class="row">
-            <?php foreach ($values['values_items'] as $index => $item): ?>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="<?php echo $index * 100 + 200; ?>">
-                    <div class="card shadow-lg border-0 h-100">
+            <?php foreach ($values['values_items'] as $item): ?>
+                <div class="col-md-4 mb-4" >
+                    <div class="card shadow-lg border-0 h-100" data-aos="fade-up" data-aos-delay="100">
                         <div class="card-body text-center">
                             <i class="<?php echo esc_attr($item['value_icon']); ?> text-primary display-4 mb-3"></i>
                             <h5 class="text-primary"><?php echo esc_html($item['value_title']); ?></h5>
@@ -928,18 +928,17 @@ function ev_services_value_shortcode()
 }
 add_shortcode('ev-services-value', 'ev_services_value_shortcode');
 
-
 function ev_services_list_shortcode()
 {
     $services_group = get_field('services_group');
     ob_start();
 ?>
     <div class="services-list py-5">
-        <h2 class="text-center text-primary mb-4" data-aos="fade-up">Nuestros Servicios</h2>
+        <h2 class="text-center text-primary mb-4">Nuestros Servicios</h2>
         <div class="row">
             <?php $index = 0; ?>
             <?php foreach ($services_group['services'] as $service): ?>
-                <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>" data-aos="fade-up" data-aos-delay="<?php echo $index * 100; ?>">
+                <div class="<?php echo $index === 0 ? 'col-12 mb-4' : 'col-md-4 mb-4'; ?>">
                     <div class="card service-card shadow-lg border-0 h-100 <?php echo $index === 0 ? 'text-center mx-auto' : ''; ?>">
                         <div class="card-body text-center">
                             <i class="<?php echo esc_attr($service['item_icon']); ?> text-primary display-4 mb-3"></i>
@@ -961,7 +960,7 @@ function ev_services_list_shortcode()
         </div>
 
         <!-- Modal global -->
-        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content bg-dark text-white">
                     <div class="modal-header border-0">
@@ -975,10 +974,11 @@ function ev_services_list_shortcode()
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
+
+
     </div>
 <?php
     return ob_get_clean();
 }
 add_shortcode('ev-services-list', 'ev_services_list_shortcode');
-
