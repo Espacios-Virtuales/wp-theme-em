@@ -193,22 +193,22 @@ jQuery(document).ready(function ($) {
     }
   }
 
-  function initializeVideoModal() {
-    const $videoFrame = $('#videoFrame');
-
+  function initializeVideoModals() {
     $('.open-video-modal').on('click', function () {
         const videoUrl = $(this).data('video');
-        if (!videoUrl) return;
+        const targetModal = $(this).data('bs-target'); // e.g. "#serviceModal_xxx"
 
-        // Asegura autoplay
+        if (!videoUrl || !targetModal) return;
+
+        const iframe = $(targetModal).find('iframe');
         const autoplayUrl = videoUrl.includes('?') ? videoUrl + '&autoplay=1' : videoUrl + '?autoplay=1';
 
-        $videoFrame.attr('src', autoplayUrl);
+        iframe.attr('src', autoplayUrl);
     });
 
-    // Limpia el src cuando se cierra
-    $('#videoModal').on('hidden.bs.modal', function () {
-        $videoFrame.attr('src', '');
+    // Limpiar src cuando cualquier modal se cierre
+    $('.modal').on('hidden.bs.modal', function () {
+        $(this).find('iframe').attr('src', '');
     });
 }
 
@@ -220,8 +220,8 @@ jQuery(document).ready(function ($) {
   animateText(".ml9");
   /* handleSubscriptionForm(); */
 
-  if ($('#IntroVideoModal').length) {
-    handleIntroVideoModal();
+  if ($('.open-video-modal').length) {
+    initializeVideoModals();
   }
 
   if ($('.hero-about').length) {
