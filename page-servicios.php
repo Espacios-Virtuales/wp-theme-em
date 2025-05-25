@@ -14,7 +14,10 @@ get_header(); ?>
 
     <!-- Main Content -->
 
-   
+    <section class="value-section mb-5">
+        <?php echo do_shortcode('[ev-services-list]'); ?>
+    </section>
+
 
     <!-- Propuesta de Valor -->
     <section class="value-section mb-5">
