@@ -9,7 +9,11 @@ $subtitulo = get_field('subtitulo_landing');
 $imagen_hero = get_field('imagen_hero');
 ?>
 
-<section class="landing-hero" style="background-image: url('<?php echo esc_url($imagen_hero['url']); ?>');">
+<section class="landing-hero">
+  <?php if ($imagen_hero): ?>
+    <img class="landing-hero-bg" src="<?php echo esc_url($imagen_hero['url']); ?>" alt="Fondo hero Escuela Mística" loading="lazy" />
+  <?php endif; ?>
+
   <div class="container" data-aos="fade-up">
     <h1><?php echo esc_html($titulo); ?></h1>
     <p><?php echo esc_html($subtitulo); ?></p>
