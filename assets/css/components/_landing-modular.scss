@@ -1,27 +1,55 @@
 .landing-hero {
-    background-size: cover;
-    background-position: center;
-    padding: 120px 0;
-    color: #fff;
-    text-align: center;
-  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 120px 20px;
+  text-align: center;
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 70vh;
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 80px 20px;
+    min-height: 60vh;
+
     h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
+      font-size: 2.2rem;
     }
-  
+
     p {
-      font-size: 1.4rem;
-      max-width: 700px;
-      margin: 0 auto;
+      font-size: 1.1rem;
     }
   }
-  
-  .landing-content {
-    padding: 80px 0;
-  
-    .shortcode-block {
-      margin-bottom: 60px;
-    }
+}
+
+.landing-content {
+  padding: 100px 20px;
+
+  .shortcode-block {
+    margin-bottom: 60px;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 60px 16px;
+  }
+}
+
   
