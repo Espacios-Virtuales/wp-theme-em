@@ -233,7 +233,8 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Implement shortcodes.
  */
-require get_template_directory() . '/inc/shortcodes.php';
+require get_template_directory() . '/inc/init-shortcodes.php';
+
 
 /**
  * Implement Queries.
