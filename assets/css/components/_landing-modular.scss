@@ -1,6 +1,7 @@
 .landing-hero {
   position: relative;
   overflow: hidden;
+  width: 100%;
   padding: 120px 20px;
   min-height: 70vh;
   display: flex;
@@ -12,12 +13,13 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
-    max-width: 1000px;
+    width: 140vw; // Ocupa más que el ancho real para asegurar full screen
+    max-width: none;
     transform: translate(-50%, -50%);
-    opacity: 0.4;
+    opacity: 0.3;
     z-index: 0;
     pointer-events: none;
+    filter: drop-shadow(0 0 80px rgba(0, 0, 0, 0.4));
   }
 
   .container {
@@ -47,7 +49,7 @@
     min-height: 60vh;
 
     .landing-hero-bg {
-      width: 140%;
+      width: 180vw;
     }
 
     .container {
