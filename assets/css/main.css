@@ -12807,4 +12807,28 @@ textarea.form-control-lg {
 }
 .cart-customlocation:active {
   transform: scale(0.95);
+}
+
+.landing-hero {
+  background-size: cover;
+  background-position: center;
+  padding: 120px 0;
+  color: #fff;
+  text-align: center;
+}
+.landing-hero h1, .landing-hero .h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+.landing-hero p {
+  font-size: 1.4rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.landing-content {
+  padding: 80px 0;
+}
+.landing-content .shortcode-block {
+  margin-bottom: 60px;
 }/*# sourceMappingURL=main.css.map */
