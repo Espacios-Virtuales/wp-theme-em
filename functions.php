@@ -233,7 +233,7 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Implement shortcodes.
  */
-require get_template_directory() . '/inc/init-shortcodes.php';
+require get_template_directory() . '/inc/shortcodes/init-shortcodes.php';
 
 
 /**
@@ -242,15 +242,10 @@ require get_template_directory() . '/inc/init-shortcodes.php';
 require get_template_directory() . '/inc/queries.php';
 
 /**
- * Implement Emails.
+ * Implement Modules.
  */
-require get_template_directory() . '/inc/emails.php';
+require get_template_directory() . '/inc/modules/modules.init.php';
 
-/**
- * Implement Calendar.
- */
-
- require get_template_directory() . '/inc/calendar.php';
 
 /**
  * Load Jetpack compatibility file.
