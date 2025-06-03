@@ -30,26 +30,28 @@ $propuesta_de_valor = get_field('propuesta_valor');
 
 <section class="landing-intro" data-aos="fade-up">
   <div class="container">
-    <?php if ($descripcion): ?>
-      <div class="landing-block">
-        <h2><i class="bi bi-book"></i> Descripción</h2>
-        <p><?php echo wp_kses_post($descripcion); ?></p>
-      </div>
-    <?php endif; ?>
+    <div class="landing-columns">
+      <?php if ($descripcion): ?>
+        <div class="landing-block">
+          <h2><i class="bi bi-book"></i> Descripción</h2>
+          <p><?php echo wp_kses_post($descripcion); ?></p>
+        </div>
+      <?php endif; ?>
 
-    <?php if ($objetivo): ?>
-      <div class="landing-block">
-        <h2><i class="bi bi-bullseye"></i> Objetivo</h2>
-        <p><?php echo wp_kses_post($objetivo); ?></p>
-      </div>
-    <?php endif; ?>
+      <?php if ($objetivo): ?>
+        <div class="landing-block">
+          <h2><i class="bi bi-bullseye"></i> Objetivo</h2>
+          <p><?php echo wp_kses_post($objetivo); ?></p>
+        </div>
+      <?php endif; ?>
 
-    <?php if ($propuesta_de_valor): ?>
-      <div class="landing-block">
-        <h2><i class="bi bi-stars"></i> Propuesta de Valor</h2>
-        <p><?php echo wp_kses_post($propuesta_de_valor); ?></p>
-      </div>
-    <?php endif; ?>
+      <?php if ($propuesta_de_valor): ?>
+        <div class="landing-block">
+          <h2><i class="bi bi-stars"></i> Propuesta de Valor</h2>
+          <p><?php echo wp_kses_post($propuesta_de_valor); ?></p>
+        </div>
+      <?php endif; ?>
+    </div>
   </div>
 </section>
 
