@@ -31,17 +31,17 @@ $propuesta_de_valor = get_field('propuesta_valor');
 <section class="landing-intro" data-aos="fade-up">
   <div class="container">
     <div class="landing-columns">
-      <?php if ($objetivo): ?>
-        <div class="landing-block">
-          <h2><i class="bi bi-bullseye"></i> Objetivo</h2>
-          <p><?php echo wp_kses_post($objetivo); ?></p>
-        </div>
-      <?php endif; ?>
-
       <?php if ($descripcion): ?>
         <div class="landing-block">
           <h2><i class="bi bi-book"></i> Descripción</h2>
           <p><?php echo wp_kses_post($descripcion); ?></p>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($objetivo): ?>
+        <div class="landing-block">
+          <h2><i class="bi bi-bullseye"></i> Objetivo</h2>
+          <p><?php echo wp_kses_post($objetivo); ?></p>
         </div>
       <?php endif; ?>
 
