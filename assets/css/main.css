@@ -12869,4 +12869,43 @@ textarea.form-control-lg {
   .landing-hero .container p {
     font-size: 1rem;
   }
+}
+
+.landing-intro {
+  padding: 60px 20px;
+  background-color: #fff;
+}
+.landing-intro .landing-block {
+  margin-bottom: 40px;
+}
+.landing-intro .landing-block h2, .landing-intro .landing-block .h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.landing-intro .landing-block h2 i, .landing-intro .landing-block .h2 i {
+  font-size: 1.4rem;
+  color: #6a0dad;
+}
+.landing-intro .landing-block p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #333;
+}
+@media screen and (max-width: 768px) {
+  .landing-intro .landing-block h2, .landing-intro .landing-block .h2 {
+    font-size: 1.6rem;
+  }
+  .landing-intro .landing-block p {
+    font-size: 1rem;
+  }
+}
+
+.landing-content {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+}
+.landing-content .container {
+  max-width: 1200px;
+  margin: 0 auto;
 }/*# sourceMappingURL=main.css.map */

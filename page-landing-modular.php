@@ -1,12 +1,20 @@
 <?php
 /**
- * Template Name: Landing Modular Unificada
+ * Template Name: Landing Modular
+ * Descripción: Hero + contenido CPT dinámico (descripción, objetivo, valor) + content con shortcodes.
  */
+
 get_header();
 
-$titulo = get_field('titulo_landing');
-$subtitulo = get_field('subtitulo_landing');
+// ACF Campos hero
+$titulo      = get_field('titulo_landing');
+$subtitulo   = get_field('subtitulo_landing');
 $imagen_hero = get_field('imagen_hero');
+
+// Campos personalizados del CPT (por ejemplo 'curso', 'terapia', etc.)
+$descripcion        = get_field('descripcion');
+$objetivo           = get_field('objetivo');
+$propuesta_de_valor = get_field('propuesta_valor');
 ?>
 
 <section class="landing-hero">
@@ -15,8 +23,33 @@ $imagen_hero = get_field('imagen_hero');
   <?php endif; ?>
 
   <div class="container" data-aos="fade-up">
-    <h1><?php echo esc_html($titulo); ?></h1>
-    <p><?php echo esc_html($subtitulo); ?></p>
+    <?php if ($titulo): ?><h1><?php echo esc_html($titulo); ?></h1><?php endif; ?>
+    <?php if ($subtitulo): ?><p><?php echo esc_html($subtitulo); ?></p><?php endif; ?>
+  </div>
+</section>
+
+<section class="landing-intro" data-aos="fade-up">
+  <div class="container">
+    <?php if ($descripcion): ?>
+      <div class="landing-block">
+        <h2><i class="bi bi-book"></i> Descripción</h2>
+        <p><?php echo wp_kses_post($descripcion); ?></p>
+      </div>
+    <?php endif; ?>
+
+    <?php if ($objetivo): ?>
+      <div class="landing-block">
+        <h2><i class="bi bi-bullseye"></i> Objetivo</h2>
+        <p><?php echo wp_kses_post($objetivo); ?></p>
+      </div>
+    <?php endif; ?>
+
+    <?php if ($propuesta_de_valor): ?>
+      <div class="landing-block">
+        <h2><i class="bi bi-stars"></i> Propuesta de Valor</h2>
+        <p><?php echo wp_kses_post($propuesta_de_valor); ?></p>
+      </div>
+    <?php endif; ?>
   </div>
 </section>
 
@@ -24,10 +57,11 @@ $imagen_hero = get_field('imagen_hero');
   <div class="container">
     <?php
       while (have_posts()) : the_post();
-        the_content(); // Aquí insertas los shortcodes [ev-cursos], [ev-terapias], etc.
+        the_content(); // Aquí irán los shortcodes [ev-*]
       endwhile;
     ?>
   </div>
 </section>
 
 <?php get_footer(); ?>
+

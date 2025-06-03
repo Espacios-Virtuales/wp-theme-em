@@ -13,7 +13,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 140vw; // Ocupa más que el ancho real para asegurar full screen
+    width: 140vw; // full screen efecto
     max-width: none;
     transform: translate(-50%, -50%);
     opacity: 0.3;
@@ -63,5 +63,53 @@
         font-size: 1rem;
       }
     }
+  }
+}
+
+.landing-intro {
+  padding: 60px 20px;
+  background-color: #fff;
+
+  .landing-block {
+    margin-bottom: 40px;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    
+      i {
+        font-size: 1.4rem;
+        color: #6a0dad;
+      } 
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #333;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .landing-block {
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.landing-content {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
