@@ -5,7 +5,7 @@
 
 
 // 🏠 Shorcodes 
-require_once __DIR__ . '/shorcodes/init-shorcodes.php';
+require_once __DIR__ . '/shortcodes/init-shorcodes.php';
 
 // 🌱 Modules  
 require_once __DIR__ . '/modules/init-modules.php';
