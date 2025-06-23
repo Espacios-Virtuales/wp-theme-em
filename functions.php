@@ -231,20 +231,9 @@ require get_template_directory() . '/inc/customizer.php';
 //require get_template_directory() . '/inc/blocks-registration.php';
 
 /**
- * Implement shortcodes.
+ * Implement inc.
  */
-require get_template_directory() . '/inc/shortcodes/init-shortcodes.php';
-
-
-/**
- * Implement Queries.
- */
-require get_template_directory() . '/inc/queries.php';
-
-/**
- * Implement Modules.
- */
-require get_template_directory() . '/inc/modules/modules.init.php';
+require get_template_directory() . '/inc/init.php';
 
 
 /**
