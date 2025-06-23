@@ -216,7 +216,7 @@ function ev_servicios_shortcode()
 }
 add_shortcode('ev-servicios', 'ev_servicios_shortcode');
 
-function blog_page_testimonials_shortcode()
+function ev_page_testimonials_shortcode()
 {
     // Obtener los testimonios
     $data = blog_get_custom_post_type('testimonial', 9);
@@ -297,7 +297,7 @@ function blog_page_testimonials_shortcode()
     }
 }
 
-add_shortcode('ev-testimonios', 'blog_page_testimonials_shortcode');
+add_shortcode('ev-testimonios', 'ev_page_testimonials_shortcode');
 
 
 function ev_intro_video_modal_shortcode()

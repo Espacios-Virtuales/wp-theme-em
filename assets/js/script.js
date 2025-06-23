@@ -77,21 +77,6 @@ jQuery(document).ready(function ($) {
   }
 
 
-  // Modal de introducción
-  function handleIntroVideoModal() {
-    const introVideoModal = new bootstrap.Modal(
-      document.getElementById("IntroVideoModal")
-    );
-    if (introVideoModal) {
-      setTimeout(() => {
-        introVideoModal.show();
-      }, 1000); // Retraso de 1 segundo
-    } else {
-      // Si no existe, no hacer nada para evitar errores
-      console.warn("Modal IntroVideoModal no encontrado en la página.");
-    }
-  }
-
   function animateMissionVision() {
     anime.timeline()
       .add({
@@ -125,33 +110,25 @@ jQuery(document).ready(function ($) {
   }
 
   function initializeVideoModals() {
+    if (!$('.open-video-modal').length) return;
+  
     $('.open-video-modal').on('click', function () {
       const videoUrl = $(this).data('video');
-      const targetModal = $(this).data('bs-target'); // e.g. "#serviceModal_xxx"
-
+      const targetModal = $(this).data('bs-target');
+  
       if (!videoUrl || !targetModal) return;
-
+  
       const iframe = $(targetModal).find('iframe');
       const autoplayUrl = videoUrl.includes('?') ? videoUrl + '&autoplay=1' : videoUrl + '?autoplay=1';
-
+  
       iframe.attr('src', autoplayUrl);
     });
-
-    // Limpiar src cuando cualquier modal se cierre
+  
     $('.modal').on('hidden.bs.modal', function () {
       $(this).find('iframe').attr('src', '');
     });
   }
-
-
-  initializeAOS();
-  handleMenuNavigation();
-  handleHeroCarousel();
-  animateText(".ml9");
-
-  if ($('.open-video-modal').length) {
-    initializeVideoModals();
-  }
+  
 
   if ($('.hero-about').length) {
     animateHeroAboutUs();
@@ -160,5 +137,12 @@ jQuery(document).ready(function ($) {
   if ($('.mission-vision-section').length) {
     animateMissionVision();
   }
+
+
+  initializeAOS();
+  handleMenuNavigation();
+  handleHeroCarousel();
+  animateText(".ml9");
+  initializeVideoModals();
 
 });
