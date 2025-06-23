@@ -26,4 +26,4 @@ require_once __DIR__ . '/ev-events.php';
 require_once __DIR__ . '/ev-testimonios.php';
 
 // 🧩 Componentes compartidos (modales, video, etc.)
-// require_once __DIR__ . '/shortcodes/ev-shared.php';
+require_once __DIR__ . '/shortcodes/ev-objetos.php';
