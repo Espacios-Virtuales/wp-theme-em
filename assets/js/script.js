@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
         const $this = $(this);
         $this.html($this.text().replace(/\S/g, "<span class='letter'>$&</span>"));
       });
-  
+
       anime.timeline({ loop: false }) // Remueve el loop
         .add({
           targets: selector + " .letter",
@@ -18,7 +18,7 @@ jQuery(document).ready(function ($) {
           easing: "easeOutCubic"
         });
     }
-  }  
+  }
 
   function animateHeroAboutUs() {
     anime.timeline()
@@ -76,75 +76,6 @@ jQuery(document).ready(function ($) {
     });
   }
 
-  /* function handleSubscriptionForm() {
-        $('#registerForm').on('submit', function (event) {
-            event.preventDefault();
-            var isValid = true;
-
-            // Limpiar mensajes de error anteriores
-            $('.invalid-feedback').remove();
-            $('.is-invalid').removeClass('is-invalid');
-
-            // Validar nombre
-            var username = $('#username').val().trim();
-            if (username === '') {
-                isValid = false;
-                $('#username').addClass('is-invalid');
-                $('#username').after('<div class="invalid-feedback">Por favor ingrese un nombre.</div>');
-            }
-
-            // Validar email
-            var email = $('#email').val().trim();
-            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            if (email === '') {
-                isValid = false;
-                $('#email').addClass('is-invalid');
-                $('#email').after('<div class="invalid-feedback">Por favor ingrese un email.</div>');
-            } else if (!emailPattern.test(email)) {
-                isValid = false;
-                $('#email').addClass('is-invalid');
-                $('#email').after('<div class="invalid-feedback">Por favor ingrese un email válido.</div>');
-            }
-
-            // Validar mensaje si existe en el formulario
-            if ($('#msj').length > 0) {
-                var message = $('#msj').val().trim();
-                if (message === '') {
-                    isValid = false;
-                    $('#msj').addClass('is-invalid');
-                    $('#msj').after('<div class="invalid-feedback">Por favor ingrese un mensaje.</div>');
-                }
-            }
-
-            // Si el formulario es válido, enviar la solicitud AJAX
-            if (isValid) {
-                var formData = {
-                    'action': 'handle_contact_form',
-                    'contact_name': username,
-                    'contact_email': email,
-                    'contact_message': message
-                };
-
-                $.ajax({
-                    url: ajax_object.ajax_url,  // Asegúrate de que esta URL esté correctamente localizada en PHP
-                    type: 'POST',
-                    data: formData,
-                    success: function (response) {
-                        if (response.success) {
-                            alert('¡Formulario enviado correctamente!');
-                            $('#registerForm').trigger('reset');  // Limpiar formulario
-                        } else {
-                            alert(response.data);  // Mostrar mensaje de error del servidor
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        console.error(xhr.responseText);  // Mostrar el error en la consola
-                        alert('Error en la comunicación con el servidor.');
-                    }
-                });
-            }
-        });
-    } */
 
   // Modal de introducción
   function handleIntroVideoModal() {
@@ -195,30 +126,28 @@ jQuery(document).ready(function ($) {
 
   function initializeVideoModals() {
     $('.open-video-modal').on('click', function () {
-        const videoUrl = $(this).data('video');
-        const targetModal = $(this).data('bs-target'); // e.g. "#serviceModal_xxx"
+      const videoUrl = $(this).data('video');
+      const targetModal = $(this).data('bs-target'); // e.g. "#serviceModal_xxx"
 
-        if (!videoUrl || !targetModal) return;
+      if (!videoUrl || !targetModal) return;
 
-        const iframe = $(targetModal).find('iframe');
-        const autoplayUrl = videoUrl.includes('?') ? videoUrl + '&autoplay=1' : videoUrl + '?autoplay=1';
+      const iframe = $(targetModal).find('iframe');
+      const autoplayUrl = videoUrl.includes('?') ? videoUrl + '&autoplay=1' : videoUrl + '?autoplay=1';
 
-        iframe.attr('src', autoplayUrl);
+      iframe.attr('src', autoplayUrl);
     });
 
     // Limpiar src cuando cualquier modal se cierre
     $('.modal').on('hidden.bs.modal', function () {
-        $(this).find('iframe').attr('src', '');
+      $(this).find('iframe').attr('src', '');
     });
-}
-
+  }
 
 
   initializeAOS();
   handleMenuNavigation();
   handleHeroCarousel();
   animateText(".ml9");
-  /* handleSubscriptionForm(); */
 
   if ($('.open-video-modal').length) {
     initializeVideoModals();
@@ -231,8 +160,5 @@ jQuery(document).ready(function ($) {
   if ($('.mission-vision-section').length) {
     animateMissionVision();
   }
-
-  initializeVideoModal();
-
 
 });
