@@ -130,6 +130,25 @@ jQuery(document).ready(function ($) {
   }
   
 
+  function handleIntroVideoModal() {
+    const modalElement = document.getElementById('IntroVideoModal');
+  
+    if (!modalElement) {
+      console.warn('Modal #IntroVideoModal no encontrado.');
+      return;
+    }
+  
+    const introModal = new bootstrap.Modal(modalElement);
+  
+    // Mostrar el modal 1 segundo después de cargar
+    setTimeout(() => {
+      introModal.show();
+    }, 1000);
+  
+    // (Opcional) cerrar al hacer clic fuera del modal o escape
+  }
+
+  
   if ($('.hero-about').length) {
     animateHeroAboutUs();
   }
@@ -143,6 +162,8 @@ jQuery(document).ready(function ($) {
   handleMenuNavigation();
   handleHeroCarousel();
   animateText(".ml9");
+  handleIntroVideoModal();
   initializeVideoModals();
+
 
 });
