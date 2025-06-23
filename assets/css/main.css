@@ -13052,4 +13052,16 @@ textarea.form-control-lg {
   .ev-objeto-card {
     padding: 16px;
   }
+}
+.ev-modal.show {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=main.css.map */
