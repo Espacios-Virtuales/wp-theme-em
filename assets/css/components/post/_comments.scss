@@ -1,25 +1,46 @@
 
 /* Comments */
+/* Comments */
 .comment-list {
     margin-top: 2rem;
-
+    list-style: none;
+    padding-left: 0;
+  
     .comment {
-        border-bottom: 1px solid $gray;
-        padding-bottom: 1rem;
-        margin-bottom: 1rem;
-
-        .comment-author {
-            font-weight: bold;
-            color: $primary;
+      position: relative;
+      border-left: 3px solid $primary;
+      background-color: lighten($gray-light, 5%);
+      padding: 1rem 1rem 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow-light;
+  
+      .comment-author {
+        font-weight: bold;
+        color: $primary;
+        margin-bottom: 0.25rem;
+      }
+  
+      .comment-meta {
+        font-size: 0.85rem;
+        color: $gray;
+      }
+  
+      .comment-content {
+        margin-top: 0.5rem;
+      }
+  
+      // Comentarios hijos (respuesta)
+      .children {
+        margin-top: 1rem;
+        margin-left: 1.5rem;
+  
+        .comment {
+          background-color: lighten($gray-light, 8%);
+          border-left: 3px solid $secondary;
+          box-shadow: $shadow-light;
         }
-
-        .comment-meta {
-            font-size: 0.9rem;
-            color: $gray;
-        }
-
-        .comment-content {
-            margin-top: 0.5rem;
-        }
+      }
     }
-}
+  }
+  
