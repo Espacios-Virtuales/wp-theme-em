@@ -12794,21 +12794,6 @@ textarea.form-control-lg {
   background-color: #000000 !important;
 }
 
-.cart-customlocation {
-  text-decoration: none !important;
-  color: inherit;
-  font-weight: 500;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-.cart-customlocation:hover {
-  color: #FFD700;
-  text-decoration: none;
-  transform: scale(1.05);
-}
-.cart-customlocation:active {
-  transform: scale(0.95);
-}
-
 .landing-hero {
   position: relative;
   overflow: hidden;
@@ -13180,4 +13165,52 @@ textarea.form-control-lg {
 }
 .related.products ul.products li.product .button:hover {
   background-color: rgba(75, 0, 130, 0.5);
+}
+
+/* Estilos generales para enlaces */
+a {
+  text-decoration: none;
+  color: #483d8b;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #daa520;
+}
+a:visited {
+  color: #483d8b;
+}
+
+/* Estilos para navegación de productos (next/previous) */
+.woocommerce-product-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem auto;
+  max-width: 800px;
+  font-size: 0.95rem;
+}
+.woocommerce-product-navigation a {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  color: #483d8b;
+  font-weight: 600;
+}
+.woocommerce-product-navigation a:hover {
+  background-color: rgba(75, 0, 130, 0.5);
+}
+
+/* Estilo para enlaces de edición */
+.edit-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+.edit-link a {
+  background-color: rgba(80, 200, 120, 0.5);
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: inline-block;
 }/*# sourceMappingURL=main.css.map */
