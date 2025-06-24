@@ -25,4 +25,7 @@
 @import 'components/woocommerce.scss';
 @import 'components/landing-modular';
 @import 'components/ev-objetos';
-@import 'components/ev-single-product';
+
+@import 'components/woocommerce/ev-single-product';
+@import 'components/woocommerce/ev-related-products';
+
