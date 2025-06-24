@@ -1,0 +1,44 @@
+// _ev-navigation.scss
+
+// _ev-navigation.scss
+
+.navigation.post-navigation {
+    margin: 4rem auto 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid map-get($theme-variables, "gray-light");
+  
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+  
+      .nav-previous,
+      .nav-next {
+        flex: 1;
+        text-align: center;
+  
+        a {
+          text-decoration: none;
+          font-weight: bold;
+          color: map-get($theme-variables, "primary");
+          padding: 0.6rem 1.2rem;
+          border-radius: 6px;
+          background-color: map-get($theme-variables, "gray-light");
+          transition: background-color 0.3s ease;
+  
+          &:hover {
+            background-color: map-get($theme-variables, "secondary-opacity-5");
+            color: map-get($theme-variables, "primary");
+          }
+  
+          &:visited {
+            color: map-get($theme-variables, "primary");
+          }
+        }
+      }
+    }
+  }
+  

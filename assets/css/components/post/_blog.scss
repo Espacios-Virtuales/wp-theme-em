@@ -69,10 +69,11 @@
                 transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
                 &:hover {
-                    background-color: darken($primary, 10%);
-                    border-color: darken($primary, 10%);
+                    background-color: color-mix(in srgb, var(--bs-primary), black 10%);
+                    border-color: color-mix(in srgb, var(--bs-primary), black 10%);
                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
                 }
+                  
             }
         }
     }
