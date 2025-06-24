@@ -10,7 +10,6 @@
 @import 'components/carousel';
 @import 'components/footer';
 @import 'components/transition';
-@import 'components/post';
 @import 'components/blog';
 @import 'components/about-us'; 
 @import 'components/calendar'; 
@@ -25,6 +24,13 @@
 @import 'components/landing-modular';
 @import 'components/ev-objetos';
 
+// Woo
 @import 'components/woocommerce/ev-single-product';
 @import 'components/woocommerce/ev-related-products';
 @import 'components/woocommerce/ev-links';
+
+//Post
+@import 'components/post/blog';
+@import 'components/post/comments';
+@import 'components/post/ev-navigation';
+
