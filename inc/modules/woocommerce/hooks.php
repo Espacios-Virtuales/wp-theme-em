@@ -35,3 +35,4 @@ function ev_send_terapia_agenda_email($order_id) {
         }
     }
 }
+
