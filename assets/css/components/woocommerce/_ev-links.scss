@@ -17,39 +17,78 @@ a {
   }
   
   /* Estilos para navegación de productos (next/previous) */
-  .woocommerce-product-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2rem auto;
-    max-width: 800px;
-    font-size: 0.95rem;
-  
-    a {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      background-color: map-get($theme-variables, "gray-light");
+// _ev-navigation.scss
+
+.woocommerce-product-navigation,
+.single-product .product-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: 3rem auto 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid map-get($theme-variables, "gray-light");
+
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    color: map-get($theme-variables, "primary");
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: map-get($theme-variables, "selector");
+    }
+
+    &:visited {
       color: map-get($theme-variables, "primary");
-      font-weight: 600;
-  
-      &:hover {
-        background-color: map-get($theme-variables, "secondary-opacity-5");
-      }
     }
   }
-  
-  /* Estilo para enlaces de edición */
-  .edit-link {
+
+  .prev,
+  .next {
+    flex: 1;
     text-align: center;
-    margin-top: 1rem;
-  
-    a {
-      background-color: map-get($theme-variables, "info-opacity-5");
-      padding: 0.4rem 1rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      display: inline-block;
+  }
+}
+
+/* Botón de editar estilizado */
+.edit-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+
+  a {
+    background-color: map-get($theme-variables, "info-opacity-5");
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: map-get($theme-variables, "info");
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: map-get($theme-variables, "info");
+      color: map-get($theme-variables, "white");
     }
   }
-  
+}
+
+.cart-customlocation {
+    text-decoration: none !important; // Quita el subrayado del enlace
+    color: inherit; // Mantiene el color del texto según el contexto
+    font-weight: 500; // Hace que el texto sea un poco más elegante
+
+    transition: color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        color: #FFD700; // Cambia a dorado al pasar el mouse (puedes modificarlo)
+        text-decoration: none; // Asegura que no se subraye al hacer hover
+        transform: scale(1.05); // Pequeño efecto de agrandamiento
+    }
+
+    &:active {
+        transform: scale(0.95); // Efecto sutil de presión al hacer clic
+    }
+}
+
+

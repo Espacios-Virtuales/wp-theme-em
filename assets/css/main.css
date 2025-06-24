@@ -13182,28 +13182,43 @@ a:visited {
 }
 
 /* Estilos para navegación de productos (next/previous) */
-.woocommerce-product-navigation {
+.woocommerce-product-navigation,
+.single-product .product-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem auto;
   max-width: 800px;
-  font-size: 0.95rem;
+  margin: 3rem auto 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #f5f5f5;
 }
-.woocommerce-product-navigation a {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  background-color: #f5f5f5;
-  color: #483d8b;
+.woocommerce-product-navigation a,
+.single-product .product-navigation a {
+  text-decoration: none;
   font-weight: 600;
+  color: #483d8b;
+  transition: all 0.3s ease;
 }
-.woocommerce-product-navigation a:hover {
-  background-color: rgba(75, 0, 130, 0.5);
+.woocommerce-product-navigation a:hover,
+.single-product .product-navigation a:hover {
+  color: #daa520;
+}
+.woocommerce-product-navigation a:visited,
+.single-product .product-navigation a:visited {
+  color: #483d8b;
+}
+.woocommerce-product-navigation .prev,
+.woocommerce-product-navigation .next,
+.single-product .product-navigation .prev,
+.single-product .product-navigation .next {
+  flex: 1;
+  text-align: center;
 }
 
-/* Estilo para enlaces de edición */
+/* Botón de editar estilizado */
 .edit-link {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-top: 1rem;
 }
 .edit-link a {
@@ -13212,5 +13227,25 @@ a:visited {
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: bold;
-  display: inline-block;
+  color: #50C878;
+  transition: background-color 0.3s ease;
+}
+.edit-link a:hover {
+  background-color: #50C878;
+  color: #ffffff;
+}
+
+.cart-customlocation {
+  text-decoration: none !important;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.cart-customlocation:hover {
+  color: #FFD700;
+  text-decoration: none;
+  transform: scale(1.05);
+}
+.cart-customlocation:active {
+  transform: scale(0.95);
 }/*# sourceMappingURL=main.css.map */
