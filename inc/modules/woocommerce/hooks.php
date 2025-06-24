@@ -36,3 +36,13 @@ function ev_send_terapia_agenda_email($order_id) {
     }
 }
 
+// Quitar estilos por defecto si no se usan
+add_filter('woocommerce_enqueue_styles', '__return_empty_array');
+
+// Cambios a productos, checkout, etc.
+add_action('woocommerce_before_main_content', function() {
+    echo '<section class="wc-container">';
+}, 5);
+add_action('woocommerce_after_main_content', function() {
+    echo '</section>';
+}, 50);
