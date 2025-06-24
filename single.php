@@ -10,7 +10,7 @@
 get_header();
 ?>
 <main id="primary" class="site-main">
-    <div class="container pt-5">
+    <div class="container-fluid pt-5">
         <div class="row">
             <div class="col-md-8">
                 <?php
