@@ -15,3 +15,137 @@
         transform: scale(0.95); // Efecto sutil de presión al hacer clic
     }
 }
+
+
+// Estilos globales de WooCommerce
+.woocommerce {
+
+    // Tienda y grillas
+    ul.products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+  
+      li.product {
+        background: #fff;
+        padding: 20px;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow-light;
+        transition: all 0.3s ease;
+  
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: $box-shadow-heavy;
+        }
+  
+        .woocommerce-loop-product__title {
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: $color-purpura;
+          margin-bottom: 10px;
+        }
+  
+        .price {
+          color: $color-text;
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+  
+        .button {
+          background: $color-dorado;
+          color: $color-purpura;
+          padding: 10px 20px;
+          border-radius: $border-radius;
+          font-weight: 600;
+          transition: background 0.3s ease;
+  
+          &:hover {
+            background: darken($color-dorado, 10%);
+          }
+        }
+      }
+    }
+  
+    // Página de producto individual
+    div.product {
+      .summary {
+        h1.product_title {
+          font-size: 2rem;
+          color: $color-purpura;
+        }
+  
+        .price {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: $color-dorado;
+          margin-bottom: 15px;
+        }
+  
+        .single_add_to_cart_button {
+          background: $color-purpura;
+          color: #fff;
+          padding: 12px 28px;
+          border-radius: $border-radius;
+          transition: background 0.3s ease;
+  
+          &:hover {
+            background: darken($color-purpura, 10%);
+          }
+        }
+      }
+    }
+  
+    // Carrito personalizado
+    .woocommerce-cart-form,
+    .cart_totals {
+      background: #fff;
+      padding: 30px;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow-light;
+    }
+  
+    .woocommerce-message,
+    .woocommerce-error,
+    .woocommerce-info {
+      border-radius: $border-radius;
+      padding: 20px;
+      font-weight: 500;
+    }
+  
+    .quantity input {
+      border-radius: $border-radius;
+      padding: 10px;
+      font-size: 1rem;
+      width: 70px;
+    }
+  
+    // Checkout
+    .woocommerce-checkout form {
+      background: #fff;
+      padding: 40px;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow-light;
+    }
+  
+    .woocommerce-billing-fields h3,
+    .woocommerce-shipping-fields h3 {
+      color: $color-purpura;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+  
+    // Botón finalizar compra
+    #place_order {
+      background: $color-dorado;
+      color: $color-purpura;
+      padding: 14px 28px;
+      border-radius: $border-radius;
+      font-weight: bold;
+      transition: background 0.3s ease;
+  
+      &:hover {
+        background: darken($color-dorado, 10%);
+      }
+    }
+  }
+  
