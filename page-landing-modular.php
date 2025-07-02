@@ -38,6 +38,13 @@ $propuesta_de_valor = get_field('propuesta_valor');
         </div>
       <?php endif; ?>
 
+      <?php if ($propuesta_de_valor): ?>
+        <div class="landing-block">
+          <h2><i class="bi bi-stars"></i> Propuesta de Valor</h2>
+          <p><?php echo wp_kses_post($propuesta_de_valor); ?></p>
+        </div>
+      <?php endif; ?>
+
       <?php if ($objetivo): ?>
         <div class="landing-block">
           <h2><i class="bi bi-bullseye"></i> Objetivo</h2>
@@ -45,12 +52,6 @@ $propuesta_de_valor = get_field('propuesta_valor');
         </div>
       <?php endif; ?>
 
-      <?php if ($propuesta_de_valor): ?>
-        <div class="landing-block">
-          <h2><i class="bi bi-stars"></i> Propuesta de Valor</h2>
-          <p><?php echo wp_kses_post($propuesta_de_valor); ?></p>
-        </div>
-      <?php endif; ?>
     </div>
   </div>
 </section>
