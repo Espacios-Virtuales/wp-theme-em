@@ -143,7 +143,7 @@ function ev_subscribe_modal()
 
 add_action('ev_modal_subscribe', 'blog_subscribe_modal');
 
-// Servicios & Programas adaptado para Escuela Mística
+// Servicios & Programas adaptado para Escuela Mística + AOS
 function ev_servicios_shortcode()
 {
     $data = blog_get_page(array('servicios'));
@@ -151,9 +151,8 @@ function ev_servicios_shortcode()
     while ($data->have_posts()) {
         $data->the_post();
         $intro = get_field('introductions');
-
     ?>
-        <section class="bg-dark-blue text-light" id="servicios-programas"> <!-- Fondo azul oscuro y texto claro -->
+        <section class="bg-dark-blue text-light py-5" id="servicios-programas" data-aos="fade-up">
             <div class="container">
 
                 <!-- Carousel de Servicios -->
@@ -172,7 +171,7 @@ function ev_servicios_shortcode()
                             $body = $card['body_' . $i];
                             $link = $card['link_' . $i];
                         ?>
-                            <div class="carousel-item <?php echo ($i === 1) ? 'active' : ''; ?>" data-bs-interval="8000">
+                            <div class="carousel-item <?php echo ($i === 1) ? 'active' : ''; ?>" data-bs-interval="8000" data-aos="zoom-in" data-aos-delay="<?php echo $i * 200; ?>">
                                 <div class="card h-100 border-0 shadow-lg">
                                     <a href="<?php echo esc_url($link); ?>" target="_blank">
                                         <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="d-block w-100 rounded">
@@ -199,7 +198,7 @@ function ev_servicios_shortcode()
             </div>
 
             <!-- Llamado a la acción -->
-            <div class="container d-flex justify-content-center">
+            <div class="container d-flex justify-content-center mt-4" data-aos="fade-up" data-aos-delay="600">
                 <?php
                 $servicios_page = get_page_by_path('servicios');
                 $servicios_url = get_permalink($servicios_page->ID);
@@ -209,12 +208,13 @@ function ev_servicios_shortcode()
                 </a>
             </div>
         </section>
-        <?php
+    <?php
     }
 
     wp_reset_postdata();
 }
 add_shortcode('ev-servicios', 'ev_servicios_shortcode');
+
 
 function ev_page_testimonials_shortcode()
 {
