@@ -72,30 +72,30 @@ function hero_slider_shortcode()
 add_shortcode('ev-hero', 'hero_slider_shortcode');
 
 
-// About Section con imágenes, Lightbox y Modal adaptado
+// About Section con imágenes, Lightbox y Modal adaptado + AOS
 function ev_about_shortcode()
 {
     $data = blog_get_page(array('sobre-nosotros'));
     while ($data->have_posts()) {
         $data->the_post(); ?>
 
-        <section id="about" class="mb-5 py-5">
+        <section id="about" class="mb-5 py-5" data-aos="fade-up">
             <div class="container shadow-custom rounded p-4 text-center">
                 <?php $intro = get_field('introductions'); ?>
-                <h2 class="display-6">
+                <h2 class="display-6" data-aos="fade-up" data-aos-delay="100">
                     <?php echo esc_html($intro["intro_1"]); ?>
                 </h2>
-                <p class="lead">
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">
                     <?php echo esc_html($intro["intro_2"]); ?>
                 </p>
 
                 <!-- Botón de suscripción -->
-                <a href="https://calendly.com/momistica/asesoria" target="_blank" class="btn btn-em-gold btn-lg shadow-lg">
+                <a href="https://calendly.com/momistica/asesoria" target="_blank" class="btn btn-em-gold btn-lg shadow-lg" data-aos="zoom-in" data-aos-delay="300">
                     Agenda <i class="bi bi-calendar rounded-circle d-none"></i>
                 </a>
             </div>
-
         </section>
+
     <?php
     }
     wp_reset_postdata();
