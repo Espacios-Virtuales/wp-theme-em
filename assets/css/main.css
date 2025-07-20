@@ -12908,7 +12908,9 @@ textarea.form-control-lg {
   max-width: 48%;
   color: #b3b3b3;
 }
-.single-product .product .summary.entry-summary .product_title {
+.single-product .product .summary.entry-summary .product_title,
+.single-product .product .summary.entry-summary h1.entry-title,
+.single-product .product .summary.entry-summary .entry-title.h1 {
   font-size: 2.2rem;
   color: #483d8b;
   margin-bottom: 0.5rem;
@@ -12919,17 +12921,66 @@ textarea.form-control-lg {
   color: #ffd700;
   margin-bottom: 1rem;
 }
-.single-product .product .summary.entry-summary .single_add_to_cart_button {
+.single-product .product .summary.entry-summary form.cart {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.single-product .product .summary.entry-summary form.cart .quantity {
+  flex: 1 1 120px;
+}
+.single-product .product .summary.entry-summary form.cart .quantity input {
+  width: 100%;
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid #f5f5f5;
+  border-radius: 4px;
+}
+.single-product .product .summary.entry-summary form.cart .single_add_to_cart_button {
+  flex: 1 1 auto;
   background-color: rgb(75, 0, 130);
   color: #ffffff;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.2rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.single-product .product .summary.entry-summary .single_add_to_cart_button:hover {
+.single-product .product .summary.entry-summary form.cart .single_add_to_cart_button:hover {
   background-color: rgba(75, 0, 130, 0.5);
+}
+@media (max-width: 768px) {
+  .single-product .product {
+    flex-direction: column;
+  }
+  .single-product .product .woocommerce-product-gallery,
+  .single-product .product .summary.entry-summary {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+  .single-product .product .summary.entry-summary h1.entry-title, .single-product .product .summary.entry-summary .entry-title.h1,
+  .single-product .product .summary.entry-summary .product_title {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+  .single-product .product .summary.entry-summary .price {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .single-product .product .summary.entry-summary form.cart {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .single-product .product .summary.entry-summary form.cart .quantity,
+  .single-product .product .summary.entry-summary form.cart .single_add_to_cart_button {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  .single-product .product .summary.entry-summary form.cart .quantity {
+    margin-bottom: 0.75rem;
+  }
 }
 
 .related.products {
