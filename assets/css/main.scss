@@ -5,10 +5,12 @@
 // Importa el framework Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-// Estilos generales
+// Layout
 @import 'components/header';
+@import 'components/layout/footer';
+
+// Componentes 
 @import 'components/carousel';
-@import 'components/footer';
 @import 'components/transition';
 @import 'components/about-us'; 
 @import 'components/calendar'; 
@@ -29,10 +31,11 @@
 @import 'components/woocommerce/ev-links';
 @import 'components/woocommerce/ev-tienda';
 
-
 //Post
 @import 'components/post/blog';
 @import 'components/post/comments';
 @import 'components/post/ev-navigation';
 @import 'components/post/sidebar';
+@import 'components/post/post';
+
 

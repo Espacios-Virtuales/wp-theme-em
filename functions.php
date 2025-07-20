@@ -226,15 +226,9 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Implement blocks.
- */
-//require get_template_directory() . '/inc/blocks-registration.php';
-
-/**
  * Implement inc.
  */
 require get_template_directory() . '/inc/init.php';
-
 
 /**
  * Load Jetpack compatibility file.
