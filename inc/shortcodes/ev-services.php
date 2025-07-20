@@ -129,7 +129,7 @@ function ev_services_list_shortcode()
                                 <?php endif; ?>
                                 <?php if ($cta_link): ?>
                                     <div class="text-center">
-                                        <a href="<?php echo $cta_link; ?>" class="btn btn-em-gold btn-lg shadow-sm" target="_blank">
+                                        <a href="<?php echo $cta_link; ?>" class="btn btn-em-gold btn-lg shadow-sm">
                                             <?php echo $cta_text; ?>
                                         </a>
                                     </div>
