@@ -13550,4 +13550,43 @@ a:visited {
 }
 .post-navigation .nav-title:hover {
   color: #87cefa;
+}
+
+.widget_search form.search-form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.widget_search form.search-form input[type=search] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #f5f5f5;
+  font-size: 1rem;
+  width: 100%;
+}
+.widget_search form.search-form button[type=submit] {
+  padding: 0.75rem 1rem;
+  background-color: var(--bs-primary);
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  width: auto;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+.widget_search form.search-form button[type=submit]:hover {
+  background-color: #362d68;
+}
+@media (max-width: 576px) {
+  .widget_search form.search-form {
+    flex-direction: column;
+  }
+  .widget_search form.search-form input[type=search],
+  .widget_search form.search-form button[type=submit] {
+    width: 100%;
+  }
 }/*# sourceMappingURL=main.css.map */
