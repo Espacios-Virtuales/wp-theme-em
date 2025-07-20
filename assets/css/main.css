@@ -13311,7 +13311,6 @@ a:visited {
   }
 }
 /* Comments */
-/* Comments */
 .comment-list {
   margin-top: 2rem;
   list-style: none;
@@ -13395,6 +13394,7 @@ a:visited {
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
+  text-align: center;
 }
 .sidebar .widget {
   margin-bottom: 2rem;
@@ -13426,14 +13426,28 @@ a:visited {
   background-color: var(--bs-primary);
   border: none;
   color: #ffffff;
-  border-radius: 0 4px 4px 0;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  border-radius: 0 4px 4px 0;
 }
 .sidebar .widget .search-form button[type=submit]:hover {
   background-color: color-mix(in srgb, var(--bs-primary), black 10%);
   border-color: color-mix(in srgb, var(--bs-primary), black 10%);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 576px) {
+  .sidebar .widget .search-form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .sidebar .widget .search-form input[type=search],
+  .sidebar .widget .search-form button[type=submit] {
+    width: 100%;
+    border-radius: 4px;
+  }
+  .sidebar .widget .search-form button[type=submit] {
+    border-radius: 4px;
+  }
 }
 
 /* Post */
