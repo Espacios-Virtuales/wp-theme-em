@@ -30,7 +30,7 @@ $box-shadow-light: 0 10px 20px rgba(0, 0, 0, 0.1);
 $box-shadow-heavy: 0 30px 60px rgba(0, 0, 0, 0.2);
 
 // Opacidades y variaciones
-$info-opacity-5: rgba(80, 200, 120, 0.5);
+$info-opacity-5:rgb(135, 206, 250, 0.5);
 
 // ========================================================
 // Tipografías
@@ -75,7 +75,7 @@ $theme-colors: (
     "emerald": $emerald,
     "blue-dark": $blue-dark,
     "dark-bg": $dark-bg,
-    "info": $emerald,
+    "info": $cyan,
     "info-opacity-5": $info-opacity-5,
     
 );
