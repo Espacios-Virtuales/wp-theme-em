@@ -11060,6 +11060,7 @@ textarea.form-control-lg {
   font-size: 0.9rem;
   color: var(--bs-light);
   margin-bottom: 0.5rem;
+  width: 100%;
 }
 .site-footer .row .widget a {
   color: var(--bs-light);
