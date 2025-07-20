@@ -1,36 +1,78 @@
 .related.products {
-  margin-top: 3rem;
-
-  h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: map-get($theme-variables, "primary");
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
-  ul.products {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    padding: 0;
-    margin: 0 auto; // ← aquí el equivalente a "m-auto" de Bootstrap
-    width: 100%;
-    max-width: 100%;
-
-    li.product {
-      flex: 0 1 100%;
-      max-width: 250px;
-      background-color: map-get($theme-variables, "white");
-      border-radius: 12px;
-      overflow: hidden;
+    margin-top: 3rem;
+  
+    h2 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: map-get($theme-variables, "primary");
+      margin-bottom: 2rem;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
-  }
+  
+    ul.products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      padding: 0;
+  
+      li.product {
+        background-color: map-get($theme-variables, "white");
+        border-radius: 12px;
+        overflow: hidden;
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+  
+        a {
+          text-decoration: none !important;
+          color: map-get($theme-variables, "primary");
+          font-weight: 600;
+  
+          &:visited {
+            color: map-get($theme-variables, "primary"); // evitar color azul
+          }
+  
+          &:hover {
+            color: map-get($theme-variables, "selector");
+          }
+        }
+  
+        .woocommerce-loop-product__title {
+          font-size: 1.1rem;
+          margin: 1rem 0 0.5rem;
+          min-height: 3rem; // Para mantener altura
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+  
+        .price {
+          font-weight: bold;
+          color: map-get($theme-variables, "gold");
+          margin-bottom: 0.75rem;
+        }
+  
+        .button {
+          background-color: map-get($theme-variables, "secondary");
+          color: map-get($theme-variables, "white");
+          font-weight: bold;
+          padding: 0.6rem 1.2rem;
+          border-radius: 6px;
+          margin: 0 auto 1rem;
+          width: fit-content;
+          transition: all 0.3s ease;
+  
+          &:hover {
+            background-color: map-get($theme-variables, "secondary-opacity-5");
+          }
+        }
+      }
+    }
 
   // 📱 Responsive: en pantallas pequeñas
   @media (max-width: 768px) {
@@ -44,3 +86,4 @@
     }
   }
 }
+  

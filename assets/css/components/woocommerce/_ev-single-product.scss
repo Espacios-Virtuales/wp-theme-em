@@ -76,6 +76,102 @@
         }
       }
     }
+
+    .woocommerce-tabs {
+      margin-top: 3rem;
+      padding: 2rem;
+      background-color: map-get($theme-variables, "white");
+      border-radius: 8px;
+      box-shadow: map-get($theme-variables, "light");
+
+      // Oculta viñetas del <ul>
+      ul.wc-tabs {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        margin: 0 0 2rem;
+        padding: 0;
+        border-bottom: 2px solid map-get($theme-variables, "gray-light");
+
+        li {
+          margin: 0;
+          padding: 0;
+
+          a {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            font-weight: bold;
+            color: map-get($theme-variables, "primary");
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.3s, color 0.3s;
+
+            &:hover {
+              color: map-get($theme-variables, "selector");
+            }
+          }
+
+          &.active a {
+            border-bottom-color: map-get($theme-variables, "secondary");
+            color: map-get($theme-variables, "secondary");
+          }
+        }
+      }
+
+      .woocommerce-Tabs-panel {
+        background-color: rgba(map-get($theme-variables, "info"), 0.05);
+        padding: 2rem;
+        border-radius: 6px;
+
+        h2 {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: map-get($theme-variables, "primary");
+          margin-bottom: 1rem;
+        }
+
+        p {
+          font-size: 1rem;
+          color: map-get($theme-variables, "text-muted");
+          line-height: 1.6;
+        }
+      }
+
+      // 📱 Responsivo para móvil
+      @media (max-width: 768px) {
+        padding: 1.2rem;
+
+        ul.wc-tabs {
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: stretch;
+
+          li {
+            a {
+              display: block;
+              text-align: center;
+              padding: 0.75rem;
+            }
+          }
+        }
+
+        .woocommerce-Tabs-panel {
+          padding: 1.2rem;
+
+          h2 {
+            font-size: 1.3rem;
+            text-align: center;
+          }
+
+          p {
+            font-size: 0.95rem;
+            text-align: justify;
+          }
+        }
+      }
+    }
+
+
   }
 
   // 📱 Ajustes para móvil
@@ -92,7 +188,7 @@
       .summary.entry-summary {
         h1.entry-title,
         .product_title {
-          text-align: center;
+          text-align: center !important;
           font-size: 1.6rem;
         }
 
