@@ -9,82 +9,42 @@
     text-align: center;
   }
 
-  // AÑADIDO: scope fuerte con .related.products ul.products
   > ul.products {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
     justify-content: center;
+    gap: 2rem;
     padding: 0;
     margin: 0;
+    list-style: none;
+    max-width: 1200px;
+    margin-inline: auto;
 
     > li.product {
-      background-color: map-get($theme-variables, "white");
-      border-radius: 12px;
-      overflow: hidden;
+      flex: 1 1 calc(25% - 2rem); // 4 columnas con gap compensado
       max-width: 250px;
-      text-align: center;
+      min-width: 220px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex: 1 1 250px;
-
-      a {
-        text-decoration: none !important;
-        color: map-get($theme-variables, "primary");
-        font-weight: 600;
-
-        &:visited {
-          color: map-get($theme-variables, "primary");
-        }
-
-        &:hover {
-          color: map-get($theme-variables, "selector");
-        }
-      }
-
-      .woocommerce-loop-product__title {
-        font-size: 1.1rem;
-        margin: 1rem 0 0.5rem;
-        min-height: 3rem;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
-
-      .price {
-        font-weight: bold;
-        color: map-get($theme-variables, "dark");
-        margin-bottom: 0.75rem;
-      }
-
-      .button {
-        background-color: map-get($theme-variables, "secondary");
-        color: map-get($theme-variables, "white");
-        font-weight: bold;
-        padding: 0.6rem 1.2rem;
-        border-radius: 6px;
-        margin: 0 auto 1rem;
-        width: fit-content;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background-color: map-get($theme-variables, "secondary-opacity-5");
-        }
-      }
+      text-align: center;
+      background-color: map-get($theme-variables, "white");
+      border-radius: 12px;
+      box-shadow: map-get($theme-variables, "light");
+      overflow: hidden;
     }
   }
 
-  // 📱 Responsive: solo dentro de related
-  @media (max-width: 768px) {
-    > ul.products {
-      justify-content: center;
-    }
-
+  @media (max-width: 1024px) {
     > ul.products > li.product {
-      margin-left: auto;
-      margin-right: auto;
+      flex: 1 1 calc(50% - 2rem); // 2 columnas
+    }
+  }
+
+  @media (max-width: 600px) {
+    > ul.products > li.product {
+      flex: 1 1 100%;
+      max-width: 100%;
     }
   }
 }
