@@ -39,66 +39,17 @@
     }
 
     ul.products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
-      padding: 0;
-      list-style: none;
-
-      li.product {
-        background-color: map-get($theme-variables, "white");
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: map-get($theme-variables, "light");
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 1rem;
-
-        a.woocommerce-LoopProduct-link {
-          color: map-get($theme-variables, "primary");
-          text-decoration: none;
-
-          img {
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            width: 100%;
-            height: auto;
-          }
-
-          h2.woocommerce-loop-product__title {
-            font-size: 1.1rem;
-            min-height: 3rem;
-            margin-bottom: 0.5rem;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-          }
-
-          .price {
-            font-weight: bold;
-            color: map-get($theme-variables, "dark");
-            margin-bottom: 1rem;
-          }
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+        padding: 0;
+        list-style: none;
+      
+        li.product {
+          @include product-card;
         }
-
-        a.add_to_cart_button {
-          background-color: map-get($theme-variables, "secondary");
-          color: map-get($theme-variables, "gold");
-          padding: 0.6rem 1.2rem;
-          font-weight: bold;
-          border-radius: 6px;
-          transition: background-color 0.3s ease;
-
-          &:hover {
-            background-color: map-get($theme-variables, "secondary-opacity-5");
-          }
-        }
-      }
     }
+      
 
     // Limpieza de float
     .woocommerce-result-count:after,
