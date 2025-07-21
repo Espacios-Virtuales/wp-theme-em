@@ -57,7 +57,7 @@
       transition: background-color 0.3s ease;
   
       &:hover {
-        background-color: map-get($theme-variables, "selector");
+        background-color: map-get($theme-variables, "primary-opacity-8");
       }
     }
   }
