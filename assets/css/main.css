@@ -13206,7 +13206,7 @@ textarea.form-control-lg {
 }
 .related.products > ul.products > li.product a.woocommerce-LoopProduct-link .price {
   font-weight: bold;
-  color: #ffd700;
+  color: black;
   margin-bottom: 1rem;
 }
 .related.products > ul.products > li.product a.add_to_cart_button,
@@ -13414,7 +13414,7 @@ a:visited {
 .post-type-archive-product .entry-content ul.products li.product a.woocommerce-LoopProduct-link .price,
 .woocommerce-page .entry-content ul.products li.product a.woocommerce-LoopProduct-link .price {
   font-weight: bold;
-  color: #ffd700;
+  color: black;
   margin-bottom: 1rem;
 }
 .post-type-archive-product .entry-content ul.products li.product a.add_to_cart_button,
