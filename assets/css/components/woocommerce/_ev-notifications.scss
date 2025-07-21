@@ -1,5 +1,4 @@
 // _ev-notifications.scss (o dentro de _ev-single-product.scss si lo prefieres)
-
 .woocommerce-message {
     background-color: rgba(map-get($theme-variables, "info"), 0.05);
     border-left: 4px solid map-get($theme-variables, "info");
@@ -8,34 +7,30 @@
     font-size: 1rem;
     color: map-get($theme-variables, "primary");
     margin: 2rem auto;
-    max-width: 800px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-  
+
     a.button.wc-forward {
-      align-self: flex-start;
-      background-color: map-get($theme-variables, "secondary");
-      color: map-get($theme-variables, "white");
-      padding: 0.5rem 1.2rem;
-      font-weight: bold;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: map-get($theme-variables, "secondary-opacity-5");
-      }
-    }
-  
-    @media (max-width: 768px) {
-      font-size: 0.95rem;
-      padding: 1rem;
-  
-      a.button.wc-forward {
-        width: 100%;
+        display: block; // ← asegura comportamiento de bloque
+        width: 100%; // ← ocupa toda la columna
+        padding: 0.75rem 1.2rem;
         text-align: center;
-      }
+        font-weight: bold;
+        background-color: map-get($theme-variables, "secondary");
+        color: map-get($theme-variables, "white");
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: map-get($theme-variables, "secondary-opacity-5");
+        }
     }
-  }
-  
+
+    @media (max-width: 768px) {
+        font-size: 0.95rem;
+        padding: 1rem;
+    }
+}
