@@ -1,0 +1,24 @@
+.product-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  
+    button {
+      background-color: map-get($theme-variables, "gray-light");
+      color: map-get($theme-variables, "primary");
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: map-get($theme-variables, "secondary");
+        color: map-get($theme-variables, "white");
+      }
+    }
+  }
+  

@@ -157,7 +157,7 @@ function blog_theme_scripts() {
     wp_enqueue_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js', array('jquery'), '5.0.2', true );
 
     // Script personalizado que depende de jQuery
-    wp_enqueue_script( 'blog-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), _S_VERSION, true );
+    wp_enqueue_script( 'blog-script', get_template_directory_uri() . '/assets/js/app.js', array('jquery'), _S_VERSION, true );
 
     // Localizar la variable ajax_object después de registrar el script
     wp_localize_script( 'blog-script', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );

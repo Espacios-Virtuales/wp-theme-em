@@ -10,6 +10,8 @@ require_once $modules_path . '/calendario/calendar.php';
 
 // WooCommerce
 require_once $modules_path . '/woocommerce/hooks.php';              // Eventos como post-pago
+require_once $modules_path . '/woocommerce/filters.php';            // Eventos como post-pago
+
 require_once $modules_path . '/woocommerce/products-linker.php';   // Lógica de relación CPT ↔ productos
 
 // Emails
