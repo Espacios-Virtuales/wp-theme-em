@@ -1,4 +1,3 @@
-
 // Aplicar las fuentes globalmente
 body {
     font-family: $font-family-base !important;
@@ -8,13 +7,19 @@ body {
 }
 
 // Aplicar la fuente de títulos a todos los encabezados
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: $headings-font-family !important;
     font-weight: $headings-font-weight !important; // Asegúrate de que la fuente esté bien visible
 }
 
 // Forzar la fuente en párrafos y enlaces si aún no toma la correcta
-p, a {
+p,
+a {
     font-family: $font-family-base !important;
     font-weight: 600;
     font-size: 18px;
@@ -28,13 +33,15 @@ p, a {
     z-index: 1000;
     width: 60px;
     height: 60px;
-    background-color: #25D366;
+    background-color: #25d366;
     border-radius: 50%;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition:
+        transform 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out;
 
     &:hover {
         transform: scale(1.1);
@@ -122,22 +129,23 @@ p, a {
 .btn-em-gold {
     background-color: var(--bs-selector) !important;
     color: #fff !important;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
 
     &:hover {
-      background-color: var(--bs-cyan) !important;
-      color: #fff;
+        background-color: var(--bs-cyan) !important;
+        color: #fff;
     }
 
     &:active {
-      background-color: #DAA520;
-      transform: scale(0.90);
+        background-color: #daa520;
+        transform: scale(0.9);
     }
-  }
-                                                                                                                                
+}
 
 .shadow-custom {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); // Sombra sutil y difusa
@@ -154,10 +162,9 @@ p, a {
 
 /* Text family */
 body {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     overflow-x: hidden;
 }
-
 
 /* Fondo para la página principal */
 body.home {
@@ -193,30 +200,35 @@ body {
     background-color: var(--bs-cyan);
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
     margin: 0 auto 25px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+
     &:hover {
-      background-color: var(--bs-secondary);
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        background-color: var(--bs-secondary);
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     }
-  
+
     a {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  
-      i {
-        font-size: 2.5rem;
-        color: #fff;
-        transition: transform 0.3s ease;
-      }
-  
-      &:hover i {
-        transform: scale(1.05);
-      }
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        i {
+            font-size: 2.5rem;
+            color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        &:hover i {
+            transform: scale(1.05);
+        }
     }
-  }
-                                                                                                                                   
+}
+
+a:visited {
+    color: var(--bs-gold);
+}
