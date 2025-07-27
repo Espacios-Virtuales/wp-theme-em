@@ -3,7 +3,6 @@
  * Shortcode: [ev-objetos tipo="terapia"]
  * Muestra tarjetas de objetos (terapias, cursos, programas) con modales personalizados.
  */
-
 function ev_objetos_shortcode($atts) {
   $atts = shortcode_atts([
     'tipo' => 'terapia',
@@ -27,9 +26,26 @@ function ev_objetos_shortcode($atts) {
           $propuesta = get_field('propuesta_valor');
           $proposito = get_field('proposito');
           $cliente = get_field('cliente_potencial');
-          $producto_id = get_post_meta($post_id, '_linked_product_id', true);
           $modal_id = 'modal-' . $post_id;
+          $tipo = $atts['tipo'];
+
+          // Inicializar variables
+          $producto_id = '';
+          $payment_url = '';
+          $formato = [];
+
+          // Lógica según tipo
+          if ($tipo === 'course') {
+            $producto_id = get_post_meta($post_id, '_course_product_id', true);
+            $payment_url = get_post_meta($post_id, 'course_payment_url', true);
+            $formato = get_post_meta($post_id, 'course_formato', true);
+          } elseif ($tipo === 'program') {
+            $producto_id = get_post_meta($post_id, '_program_product_id', true);
+          } elseif ($tipo === 'terapia') {
+            $producto_id = get_post_meta($post_id, '_linked_product_id', true);
+          }
         ?>
+
         <div class="ev-objeto-card">
           <?php echo $imagen; ?>
           <h3><?php echo esc_html($titulo); ?></h3>
@@ -80,13 +96,26 @@ function ev_objetos_shortcode($atts) {
               </div>
             <?php endif; ?>
 
-            <?php if ($producto_id): ?>
-              <div class="ev-modal-section text-center">
-                <a href="<?php echo get_permalink($producto_id); ?>" class="ev-cta-button">
+            <!-- Acción -->
+            <div class="ev-modal-section text-center">
+              <?php if ($tipo === 'course' && is_array($formato) && in_array('grabado', $formato)): ?>
+                <?php if (!empty($payment_url)): ?>
+                  <a href="<?php echo esc_url($payment_url); ?>" class="ev-cta-button" target="_blank" rel="noopener">
+                    Ver curso grabado
+                  </a>
+                <?php else: ?>
+                  <span class="ev-cta-unavailable">Curso grabado – enlace no disponible</span>
+                <?php endif; ?>
+
+              <?php elseif (!empty($producto_id)): ?>
+                <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
                   Adquirir ahora
                 </a>
-              </div>
-            <?php endif; ?>
+
+              <?php else: ?>
+                <span class="ev-cta-unavailable">Este contenido estará disponible pronto</span>
+              <?php endif; ?>
+            </div>
           </div>
         </div>
       <?php endwhile; ?>
