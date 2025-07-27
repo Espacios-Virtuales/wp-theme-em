@@ -1,7 +1,7 @@
 <?php
 function ev_menu_botones_shortcode($atts) {
     $atts = shortcode_atts([
-        'menu' => '',         // Nombre o slug del menú
+        'menu' => 'footer-subpaginas',         // Nombre o slug del menú
         'class' => 'ev-botonera-footer' // Clase envolvente
     ], $atts, 'ev-menu_botones');
 
