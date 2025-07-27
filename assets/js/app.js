@@ -5,7 +5,7 @@ import { handleHeroCarousel } from './modules/hero.js';
 import { initializeAOS } from './modules/aos.js';
 import { handleIntroVideoModal, initializeVideoModals, initializeObjetoModals } from './modules/modals.js';
 
-jQuery(document).ready(function ($) {
+document.addEventListener('DOMContentLoaded', () => {
 
   if ($('.hero-about').length) {
     animateText(".ml9");
