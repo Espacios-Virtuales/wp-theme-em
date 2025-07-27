@@ -1,5 +1,7 @@
 export function animateText(selector) {
     const $textWrapper = $(selector);
+    const $ = jQuery;
+
     if ($textWrapper.length) {
       $textWrapper.each(function () {
         const $this = $(this);

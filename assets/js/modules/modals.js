@@ -1,5 +1,6 @@
 export function initializeVideoModals() {
-    
+  const $ = jQuery;
+
     if (!$('.open-video-modal').length) return;
 
     $('.open-video-modal').on('click', function () {

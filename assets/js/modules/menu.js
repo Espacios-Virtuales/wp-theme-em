@@ -1,4 +1,5 @@
 export function handleMenuNavigation() {
+    const $ = jQuery;
     $(".menu-toggle").on("click", function () {
       $("#site-navigation").toggleClass("menu-open");
       const expanded = $(this).attr("aria-expanded") === "true" || false;
