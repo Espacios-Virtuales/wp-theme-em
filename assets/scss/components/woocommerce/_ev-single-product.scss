@@ -84,45 +84,48 @@
     // Tabs sección se mantiene como está (ya está bien responsiva)
   }
 
-  // 🔧 Vista móvil mejorada
-  @media (max-width: 768px) {
-    .product {
-      flex-direction: column;
-      gap: 1.5rem;
+  
+}
 
-      .woocommerce-product-gallery,
-      .summary.entry-summary {
-        max-width: 100% !important;
-        flex: 1 1 100% !important;
-      }
 
-      .summary.entry-summary {
-        h1.entry-title,
-        .product_title {
-          text-align: center;
-          font-size: 1.6rem;
-        }
+// 🔧 Vista móvil mejorada
+@media (max-width: 768px) {
+  .single-product .product {
+    display: block !important;
+    gap: 0 !important;
+  }
 
-        .price {
-          font-size: 1.2rem;
-          text-align: center;
-        }
+  .single-product .woocommerce-product-gallery,
+  .single-product .summary.entry-summary {
+    max-width: 100% !important;
+    width: 100% !important;
+    flex: 1 1 100% !important;
+  }
 
-        form.cart {
-          flex-direction: column;
-          align-items: stretch;
+  .single-product .summary.entry-summary h1.entry-title,
+  .single-product .summary.entry-summary .product_title {
+    text-align: center;
+    font-size: 1.6rem;
+  }
 
-          .quantity,
-          .single_add_to_cart_button {
-            flex: 1 1 100%;
-            width: 100%;
-          }
+  .single-product .summary.entry-summary .price {
+    font-size: 1.2rem;
+    text-align: center;
+  }
 
-          .quantity {
-            margin-bottom: 0.75rem;
-          }
-        }
-      }
-    }
+  .single-product form.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .single-product form.cart .quantity,
+  .single-product form.cart .single_add_to_cart_button {
+    width: 100% !important;
+  }
+
+  .single-product form.cart .quantity {
+    margin-bottom: 0.75rem;
   }
 }
