@@ -13535,6 +13535,10 @@ body.woocommerce .comments-area {
   }
 }
 
+.cart-customlocatio a:visited {
+  color: var(--bs-gold) !important;
+}
+
 .wp-block-woocommerce-cart {
   padding: 2rem 1rem;
   max-width: 1200px;
