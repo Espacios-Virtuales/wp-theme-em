@@ -205,10 +205,6 @@ body {
   transform: scale(1.05);
 }
 
-a:visited {
-  color: var(--bs-gold);
-}
-
 :root {
   --bs-primary: #483d8b;
   --bs-primary-opacity-8: rgba(72, 61, 139, 0.8);
