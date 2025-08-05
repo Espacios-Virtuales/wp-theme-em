@@ -213,3 +213,46 @@
     }
   }
 }
+
+@media (max-width: 1368px) {
+  .single-product {
+    .product {
+      flex-direction: column;
+      gap: 2rem;
+
+      .woocommerce-product-gallery,
+      .summary.entry-summary {
+        max-width: 100% !important;
+        flex: 1 1 100% !important;
+      }
+
+      .summary.entry-summary {
+        h1.entry-title,
+        .product_title {
+          text-align: center;
+          font-size: 1.8rem;
+        }
+
+        .price {
+          text-align: center;
+          font-size: 1.4rem;
+        }
+
+        form.cart {
+          flex-direction: column;
+          align-items: stretch;
+
+          .quantity,
+          .single_add_to_cart_button {
+            width: 100%;
+            flex: 1 1 100%;
+          }
+
+          .quantity {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
