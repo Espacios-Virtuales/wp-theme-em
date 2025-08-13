@@ -28,6 +28,16 @@ $propuesta_de_valor = get_field('propuesta_valor');
   </div>
 </section>
 
+<section class="landing-content" data-aos="fade-up">
+  <div class="container">
+    <?php
+      while (have_posts()) : the_post();
+        the_content(); // Aquí irán los shortcodes [ev-*]
+      endwhile;
+    ?>
+  </div>
+</section>
+
 <section class="landing-intro" data-aos="fade-up">
   <div class="container">
     <div class="landing-columns">
@@ -53,16 +63,6 @@ $propuesta_de_valor = get_field('propuesta_valor');
       <?php endif; ?>
 
     </div>
-  </div>
-</section>
-
-<section class="landing-content" data-aos="fade-up">
-  <div class="container">
-    <?php
-      while (have_posts()) : the_post();
-        the_content(); // Aquí irán los shortcodes [ev-*]
-      endwhile;
-    ?>
   </div>
 </section>
 
