@@ -19,8 +19,8 @@ get_header();
     <!-- Hero Section -->
     <section class="hero text-center py-5 mb-4 bg-light">
         <div class="container">
-            <h1 class="display-4 entry-title ml3"><?php esc_html_e('Bienvenido a Nuestro Blog', 'tiendavirtual'); ?></h1>
-            <p class="lead"><?php esc_html_e('Manténgase actualizado con las últimas noticias y artículos.', 'tiendavirtual'); ?></p>
+            <h1 class="display-4 entry-title ml3"><?php esc_html_e('Explora el blog de Escuela Mistica', 'tiendavirtual'); ?></h1>
+            <p class="lead"><?php esc_html_e('Mantente conectado con lo último en crecimiento personal y espiritualidad.', 'tiendavirtual'); ?></p>
         </div>
     </section>
 
