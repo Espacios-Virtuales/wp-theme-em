@@ -1,4 +1,6 @@
 // _ev-notifications.scss (o dentro de _ev-single-product.scss si lo prefieres)
+@use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
+
 .woocommerce-message {
     background-color: rgba(map-get($theme-variables, "info"), 0.05);
     border-left: 4px solid map-get($theme-variables, "info");

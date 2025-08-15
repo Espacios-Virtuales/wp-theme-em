@@ -1,4 +1,6 @@
 /*** Header ***/
+@use "../globals" as *;   // tus $variables
+@use "../../_bs" as *;    // mixins/vars de Bootstrap (bridge)
 
 /* Barra de anuncios */
 .announcement-bar {

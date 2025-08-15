@@ -1,4 +1,5 @@
 // _ev-single-product.scss
+@use "../globals" as *;  // trae $text-muted, $primary, breakpoints, etc.
 
 .single-product {
   .product {

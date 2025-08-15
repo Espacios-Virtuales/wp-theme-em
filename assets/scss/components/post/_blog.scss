@@ -1,5 +1,8 @@
-/** Blog **/
+/* assets/scss/components/post/_blog.scss */
+@use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
 
+
+/** Blog Hero **/
 .hero {
     background: linear-gradient(135deg, lighten($gray, 15%), darken($gray, 10%));
     color: $primary;
@@ -7,98 +10,116 @@
     text-align: center;
     border-radius: 1rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
+  
     .entry-title {
-        font-size: 3.5rem;
-        color: $primary;
-        font-weight: bold;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      font-size: 3.5rem;
+      color: $primary;
+      font-weight: bold;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     }
+  
     .lead {
-        font-size: 1.25rem;
-        color: $secondary;
-        margin-top: 1rem;
+      font-size: 1.25rem;
+      color: $secondary;
+      margin-top: 1rem;
     }
-}
-
-.blog-posts {
+  }
+  
+  
+  /** Blog Posts **/
+  .blog-posts {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
-    background-color: var(--bs-gray);
-
+    padding: 3rem 1.5rem;
+    background: linear-gradient(180deg, lighten($gray-light, 10%), $white);
+    border-radius: 1rem;
+  
     .card {
-        background-color: #fff;
-        border: none;
-        border-radius: 0.75rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-        &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      background-color: #fff;
+      border: none;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 100%;
+      max-width: 360px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+  
+      &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+      }
+  
+      .card-img-top {
+        height: 220px;
+        object-fit: cover;
+        border-bottom: 4px solid $primary;
+        border-radius: 0.75rem 0.75rem 0 0;
+      }
+  
+      .card-body {
+        padding: 1.5rem;
+        text-align: left;
+  
+        .card-title {
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: $primary;
+          margin-bottom: 0.5rem;
         }
-
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
+  
+        .card-text {
+          font-size: 1rem;
+          line-height: 1.6;
+          color: darken($secondary, 15%);
+          margin-bottom: 1.25rem;
         }
-
-        .card-body {
-            padding: 1.5rem;
-
-            .card-title {
-                font-size: 1.5rem;
-                color: $primary;
-                font-weight: 600;
-                margin-bottom: 0.75rem;
-            }
-
-            .card-text {
-                color: darken($secondary, 10%);
-                margin-bottom: 1.25rem;
-            }
-
-            .btn-primary {
-                background-color: $primary;
-                border-color: $primary;
-                border-radius: 50px;
-                padding: 0.75rem 1.5rem;
-                font-weight: 600;
-                transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
-                &:hover {
-                    background-color: color-mix(in srgb, var(--bs-primary), black 10%);
-                    border-color: color-mix(in srgb, var(--bs-primary), black 10%);
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-                }
-                  
-            }
+  
+        .btn-primary {
+          display: inline-block;
+          background-color: $primary;
+          border-color: $primary;
+          border-radius: 2rem;
+          padding: 0.5rem 1.5rem;
+          font-size: 1rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  
+          &:hover {
+            background-color: color-mix(in srgb, var(--bs-primary), black 10%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          }
         }
+      }
     }
-}
-
-/** Responsive Design **/
-@media (max-width: 767.98px) {
+  }
+  
+  
+  /** Responsive Design **/
+  @media (max-width: 767.98px) {
     .hero {
-        padding: 3rem 1.5rem;
-        text-align: center;
-
-        .entry-title {
-            font-size: 2.5rem;
-        }
-
-        .lead {
-            font-size: 1rem;
-        }
+      padding: 3rem 1.5rem;
+  
+      .entry-title {
+        font-size: 2.5rem;
+      }
+  
+      .lead {
+        font-size: 1rem;
+      }
     }
-
+  
     .blog-posts {
-        flex-direction: column;
-
-        .card {
-            margin-bottom: 2rem;
-        }
+      flex-direction: column;
+      align-items: center;
+  
+      .card {
+        max-width: 100%;
+      }
     }
-}
+  }
+  

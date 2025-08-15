@@ -1,3 +1,7 @@
+@use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
+@use "./_ev-product-card" as *; // trae el mixin product-card desde el parcial hermano
+
+
 .cart-customlocatio{
   a:visited {
     color: var(--bs-gold) !important;

@@ -1,3 +1,5 @@
+@use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
+
 .widget_search {
     form.search-form {
       display: flex;

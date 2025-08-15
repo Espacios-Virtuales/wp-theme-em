@@ -1,3 +1,7 @@
+@use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
+@use "../../_bs" as *;       // mixins de Bootstrap
+@use "./_ev-product-card" as *; // trae el mixin product-card desde el parcial hermano
+
 .related.products {
   margin-top: 3rem;
 

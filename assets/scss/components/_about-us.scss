@@ -1,3 +1,5 @@
+@use "./globals" as *;  // trae $text-muted, $primary, breakpoints, etc.
+
 #about {
     background-color: var(--bs-primary); // Fondo morado oscuro
     padding: 80px 0;

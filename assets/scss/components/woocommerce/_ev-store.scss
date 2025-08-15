@@ -1,4 +1,6 @@
 // _ev-shop.scss
+@use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
+@use "./_ev-product-card" as *; // trae el mixin product-card desde el parcial hermano
 
 .post-type-archive-product, // ← o usa .post-type-archive-product si es la plantilla de tienda
 .woocommerce-page {

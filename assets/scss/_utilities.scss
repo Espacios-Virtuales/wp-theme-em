@@ -1,40 +1,32 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:meta";
 
-// Variables personalizadas primero para sobreescribir las predeterminadas de Bootstrap
-@import 'components/custom-variables'; 
+@use 'components/custom-variables' as *;   /* aquí sí */
+@use 'components/custom-styles' as *;     
 
-// Estilos personalizados globales
-@import 'components/custom-styles';
-
-
+/* Exporta variables CSS */
 :root {
-    // Colores base
-    --bs-primary: #{$primary};
-    --bs-primary-opacity-8: #{$primary-opacity-8};
-    --bs-secondary: #{$secondary};
-    --bs-secondary-opacity-5: #{$secondary-opacity-5};
-    --bs-gray: #{$gray};
-    --bs-gray-light: #{$gray-light};
-    --bs-white: #{$white};
-    --bs-red: #{$red};
-    --bs-blue: #{$blue};
-    --bs-cyan: #{$cyan};
-    --bs-gold: #{$gold};
-    --bs-emerald: #{$emerald};
-    --bs-blue-dark: #{$blue-dark};
-    --bs-dark-bg: #{$dark-bg};
-  
-    // Texto
-    --bs-text-light: #{$text-light};
-    --bs-text-muted: #{$text-muted};
-  
-    // Sombras
-    --bs-shadow-default: #{$shadow-default};
-    --bs-shadow-hover: #{$shadow-hover};
-    --bs-shadow-light: #{$shadow-light};
-  
-    // Otros
-    --bs-selector: #{$selector};
-    --bs-spotify-green: #{$spotify-green};
-    --bs-spotify-green-hover: #{$spotify-green-hover};
-  }
-  
+  --bs-primary: #{$primary};
+  --bs-primary-opacity-8: #{$primary-opacity-8};
+  --bs-secondary: #{$secondary};
+  --bs-secondary-opacity-5: #{$secondary-opacity-5};
+  --bs-gray: #{$gray};
+  --bs-gray-light: #{$gray-light};
+  --bs-white: #{$white};
+  --bs-red: #{$red};
+  --bs-blue: #{$blue};
+  --bs-cyan: #{$cyan};
+  --bs-gold: #{$gold};
+  --bs-emerald: #{$emerald};
+  --bs-blue-dark: #{$blue-dark};
+  --bs-dark-bg: #{$dark-bg};
+  --bs-text-light: #{$text-light};
+  --bs-text-muted: #{$text-muted};
+  --bs-shadow-default: #{$shadow-default};
+  --bs-shadow-hover: #{$shadow-hover};
+  --bs-shadow-light: #{$shadow-light};
+  --bs-selector: #{$selector};
+  --bs-spotify-green: #{$spotify-green};
+  --bs-spotify-green-hover: #{$spotify-green-hover};
+}

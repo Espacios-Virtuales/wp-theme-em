@@ -1,3 +1,5 @@
+@use "./globals" as *;   // trae $breakpoint-sm, $primary, etc.
+
 /* Transition */
 .overlay {
     position: absolute;

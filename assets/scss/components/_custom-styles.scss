@@ -1,3 +1,5 @@
+@use './custom-variables' as *;
+
 // Aplicar las fuentes globalmente
 body {
     font-family: $font-family-base !important;

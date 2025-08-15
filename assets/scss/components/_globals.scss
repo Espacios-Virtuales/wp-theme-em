@@ -1,0 +1,6 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:meta";
+
+/* Solo re-exporta tus variables del tema */
+@forward "./custom-variables";

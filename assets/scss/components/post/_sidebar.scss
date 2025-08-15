@@ -1,3 +1,5 @@
+@use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
+
 .sidebar {
   background-color: darken($gray, 5%);
   padding: 2rem;
