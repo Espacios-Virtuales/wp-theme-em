@@ -101,4 +101,3 @@
             echo do_shortcode('[ev-hero]');
         }
         ?>
-    </div>
