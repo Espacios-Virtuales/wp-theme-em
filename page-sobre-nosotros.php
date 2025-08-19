@@ -5,14 +5,13 @@ Template Name: Sobre Nosotros
 
 get_header();
 ?>
+<?php 
+    while (have_posts()) : the_post();
+        the_content(); // Aquí irán los shortcodes [ev-*]
+    endwhile;
+?>
 
 <main id="sobre-nosotros" class="bg-light text-dark">
-
-    <?php 
-        while (have_posts()) : the_post();
-            the_content(); // Aquí irán los shortcodes [ev-*]
-        endwhile;
-    ?>
 
     <!-- Shortcode: Hero -->
     <?php echo do_shortcode('[ev-about-hero]'); ?>
