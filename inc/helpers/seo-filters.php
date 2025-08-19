@@ -1,6 +1,6 @@
 <?php
 /**
- * SEO Filters – integra campos ACF en meta tags
+ * SEO Filters – usa campos ACF para título y descripción
  */
 
 // Rank Math – descripción
