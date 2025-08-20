@@ -52,7 +52,7 @@ function ev_seo_intro_shortcode($atts = []) {
   }
 
   ob_start(); ?>
-  <section class="seo-intro py-5" data-aos="fade-up" aria-label="Introducción SEO">
+  <section class="seo-intro section-ev py-5" data-aos="fade-up" aria-label="Introducción SEO">
     <div class="container">
       <?php if ($title_safe) : ?>
         <h2 class="seo-intro__title h4 text-center mb-2"><?php echo $title_safe; ?></h2>

@@ -79,7 +79,7 @@ function ev_about_shortcode()
     while ($data->have_posts()) {
         $data->the_post(); ?>
 
-        <section id="about" class="mb-5 py-5" data-aos="fade-up">
+        <section id="about" class="about section-ev mb-5 py-5" data-aos="fade-up">
             <div class="container shadow-custom rounded p-4 text-center">
                 <?php $intro = get_field('introductions'); ?>
                 <h2 class="display-6" data-aos="fade-up" data-aos-delay="100">
@@ -152,7 +152,7 @@ function ev_servicios_shortcode()
         $data->the_post();
         $intro = get_field('introductions');
     ?>
-        <section class="bg-dark-blue text-light py-5" id="servicios-programas" data-aos="fade-up">
+        <section class="servicios section-ev py-5 bg-dark-blue text-light " id="servicios-programas" data-aos="fade-up">
             <div class="container">
 
                 <!-- Carousel de Servicios -->
@@ -222,7 +222,7 @@ function ev_page_testimonials_shortcode()
 
     if ($data->have_posts()) {
         ?>
-        <section class="testimonials-section py-5" id="testimonios" data-aos="fade-up">
+        <section class="testimonials section-ev py-5" id="testimonios" data-aos="fade-up">
             <div class="container">
                 <div class="title text-center mb-4">
                     <h2 class="text-gold" data-aos="fade-up" data-aos-delay="100">Testimonios</h2>
@@ -339,7 +339,7 @@ function ev_free_resources_shortcode()
             $youtube_description = $free_resources['youtube_description'];
             $calendly_link = $free_resources['calendly_link'];
     ?>
-            <section class="free-resources py-5" id="free-resources">
+            <section class="free-resources section-ev py-5" id="free-resources">
                 <div class="container">
                     <div class="title text-center mb-4">
                         <h2 class="text-gold">Recursos Gratuitos</h2>
