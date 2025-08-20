@@ -15,10 +15,14 @@ function ev_seo_intro_shortcode($atts = []) {
 
   // Enlaces fijos (hasta 5) – ACF Free
   $links = [];
+  $seo_links = get_field('seo_links') ?: [];
+  
   for ($i = 1; $i <= 5; $i++) {
-    $lab = (string) get_field("seo_link_{$i}_label");
-    $url = (string) get_field("seo_link_{$i}_url");
-    if ($lab && $url) $links[] = ['label' => $lab, 'url' => $url];
+    $lab = isset($seo_links["seo_link_{$i}_label"]) ? $seo_links["seo_link_{$i}_label"] : '';
+    $url = isset($seo_links["seo_link_{$i}_url"]) ? $seo_links["seo_link_{$i}_url"] : '';
+    if ($lab && $url) {
+      $links[] = ['label' => $lab, 'url' => $url];
+    }
   }
 
   // Seguridad
