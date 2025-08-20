@@ -1,26 +1,38 @@
 <?php
-// inc/shortcodes/ev-seo-intro.php
 function ev_seo_intro_shortcode($atts = []) {
-  if (!function_exists('get_field')) return ''; // ACF requerido
+  if (!function_exists('get_field')) return '';
 
-  $enabled   = get_field('seo_enabled') ?: false;
-  if (!$enabled) return '';
+  if (!(get_field('seo_enabled') ?: false)) return '';
 
-  $kw        = trim((string)get_field('seo_keyword'));
-  $title     = (string)get_field('seo_title');
-  $lead      = (string)get_field('seo_lead');
-  $body      = (string)get_field('seo_body');
-  $links     = get_field('seo_links') ?: [];
+  // Campos base
+  $kw        = trim((string) get_field('seo_keyword'));
+  $title     = (string) get_field('seo_title');
+  $lead      = (string) get_field('seo_lead');
+  $body      = (string) get_field('seo_body');
   $img_id    = get_field('seo_image');
-  $img_alt   = (string)get_field('seo_image_alt');
-  $collapsed = (bool)get_field('seo_collapsed');
+  $img_alt   = (string) get_field('seo_image_alt');
+  $collapsed = (bool) get_field('seo_collapsed');
 
-  // Seguridad básica
+  // Enlaces fijos (hasta 5) – ACF Free
+  $links = [];
+  for ($i = 1; $i <= 5; $i++) {
+    $lab = (string) get_field("seo_link_{$i}_label");
+    $url = (string) get_field("seo_link_{$i}_url");
+    if ($lab && $url) $links[] = ['label' => $lab, 'url' => $url];
+  }
+
+  // Seguridad
   $kw_safe    = esc_html($kw);
   $title_safe = esc_html($title);
   $lead_safe  = esc_html($lead);
   $body_html  = wp_kses_post($body);
-  $is_open    = $collapsed ? '' : ' show';
+
+  // Collapse
+  $is_open_class = $collapsed ? '' : ' show';
+  $aria_expanded = $collapsed ? 'false' : 'true';
+
+  // ID único por post
+  $uid = 'seoIntro-' . get_the_ID();
 
   // Imagen opcional
   $img_html = '';
@@ -28,7 +40,7 @@ function ev_seo_intro_shortcode($atts = []) {
     $src = wp_get_attachment_image_url($img_id, 'large');
     if ($src) {
       $img_html = sprintf(
-        '<figure class="seo-intro__figure mb-3"><img src="%s" alt="%s" class="img-fluid rounded shadow"/></figure>',
+        '<figure class="seo-intro__figure mb-3 mx-auto"><img src="%s" alt="%s" class="img-fluid rounded shadow"/></figure>',
         esc_url($src),
         esc_attr($img_alt ?: $kw)
       );
@@ -36,35 +48,36 @@ function ev_seo_intro_shortcode($atts = []) {
   }
 
   ob_start(); ?>
-  <section class="seo-intro container my-3" aria-label="Introducción SEO">
-    <?php if (!empty($title_safe)) : ?>
-      <h2 class="h4 text-center mb-2"><?php echo $title_safe; ?></h2>
-    <?php endif; ?>
+  <section class="seo-intro my-3" aria-label="Introducción SEO">
+    <div class="container">
+      <?php if ($title_safe) : ?>
+        <h2 class="seo-intro__title h4 text-center mb-2"><?php echo $title_safe; ?></h2>
+      <?php endif; ?>
 
-    <!-- Lead visible con keyword al inicio -->
-    <p class="lead text-center mb-2">
-      <strong><?php echo $kw_safe; ?></strong>
-      <?php echo $lead_safe ? ' ' . $lead_safe : ' es nuestro espacio de formación y práctica espiritual.'; ?>
-      <button class="btn btn-link p-0 align-baseline" type="button"
-              data-bs-toggle="collapse" data-bs-target="#seoIntro"
-              aria-expanded="<?php echo $collapsed ? 'false' : 'true'; ?>"
-              aria-controls="seoIntro">Leer más</button>
-    </p>
+      <p class="seo-intro__lead lead text-center mb-3">
+        <strong><?php echo $kw_safe ?: 'escuela mística'; ?></strong>
+        <?php echo $lead_safe ? ' ' . $lead_safe : ' es nuestro espacio de formación y práctica espiritual.'; ?>
+        <button class="btn btn-link p-0 align-baseline" type="button"
+                data-bs-toggle="collapse" data-bs-target="#<?php echo esc_attr($uid); ?>"
+                aria-expanded="<?php echo esc_attr($aria_expanded); ?>"
+                aria-controls="<?php echo esc_attr($uid); ?>">
+          Leer más
+        </button>
+      </p>
 
-    <div id="seoIntro" class="collapse<?php echo $is_open; ?>">
-      <div class="seo-intro__inner mx-auto">
-        <?php echo $img_html; ?>
-        <?php echo $body_html; ?>
+      <div id="<?php echo esc_attr($uid); ?>" class="collapse<?php echo $is_open_class; ?>">
+        <div class="seo-intro__inner text-center mx-auto">
+          <?php echo $img_html; ?>
+          <div class="seo-intro__content mx-auto"><?php echo $body_html; ?></div>
 
-        <?php if (!empty($links)) : ?>
-          <ul class="seo-intro__links list-unstyled mt-3">
-            <?php foreach ($links as $l) :
-              $url = isset($l['url']) ? esc_url($l['url']) : '#';
-              $lab = isset($l['label']) ? esc_html($l['label']) : $url; ?>
-              <li>→ <a href="<?php echo $url; ?>"><?php echo $lab; ?></a></li>
-            <?php endforeach; ?>
-          </ul>
-        <?php endif; ?>
+          <?php if (!empty($links)) : ?>
+            <ul class="seo-intro__links list-unstyled mt-3 mb-0">
+              <?php foreach ($links as $l) : ?>
+                <li class="mb-1">→ <a href="<?php echo esc_url($l['url']); ?>"><?php echo esc_html($l['label']); ?></a></li>
+              <?php endforeach; ?>
+            </ul>
+          <?php endif; ?>
+        </div>
       </div>
     </div>
   </section>
@@ -72,3 +85,4 @@ function ev_seo_intro_shortcode($atts = []) {
   return ob_get_clean();
 }
 add_shortcode('ev-seo_intro', 'ev_seo_intro_shortcode');
+
