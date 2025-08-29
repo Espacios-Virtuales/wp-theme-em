@@ -11,12 +11,6 @@ get_header();
     <!-- Shortcode: Hero -->
     <?php echo do_shortcode('[ev-about-hero]'); ?>
 
-    <?php 
-    while (have_posts()) : the_post();
-        the_content(); // Aquí irán los shortcodes [ev-*]
-    endwhile;
-    ?>
-    
     <!-- Shortcode: Propósito -->
     <?php echo do_shortcode('[ev-about-purpose]'); ?>
 
@@ -37,6 +31,12 @@ get_header();
     
     ?>
     
+    <?php 
+    while (have_posts()) : the_post();
+        the_content(); // Aquí irán los shortcodes [ev-*]
+    endwhile;
+    ?>
+
     <section class="cta-section bg-primary text-white py-5">
         <div class="container text-center">
             <p class="mb-4">Sigue explorando descubre la magia de nuestros servicios en Escuela Mistica</p>
