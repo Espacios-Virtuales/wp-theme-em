@@ -39,8 +39,7 @@ get_header();
     
     <section class="cta-section bg-primary text-white py-5">
         <div class="container text-center">
-            <h2 class="h3 mb-4">¿Quieres saber más?</h2>
-            <p class="mb-4">Sigue explorando nuestros servicios y descubre la magia de Escuela Mistica</p>
+            <p class="mb-4">Sigue explorando descubre la magia nuestros servicios en Escuela Mistica</p>
             <a href="<?php echo esc_url($servicios_url); ?>" class="btn btn-secondary btn-lg text-white">Servicios</a>
         </div>
     </section>
