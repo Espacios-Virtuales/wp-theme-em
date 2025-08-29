@@ -5,11 +5,6 @@ Template Name: Sobre Nosotros
 
 get_header();
 ?>
-<?php 
-    while (have_posts()) : the_post();
-        the_content(); // Aquí irán los shortcodes [ev-*]
-    endwhile;
-?>
 
 <main id="sobre-nosotros" class="bg-light text-dark">
 
@@ -29,6 +24,11 @@ get_header();
     <!-- Shortcode: Identidad -->
     <?php echo do_shortcode('[ev-about-identity]'); ?>
 
+    <?php 
+    while (have_posts()) : the_post();
+        the_content(); // Aquí irán los shortcodes [ev-*]
+    endwhile;
+    ?>
 
     <!-- Llamado a la Acción -->
     <?php
