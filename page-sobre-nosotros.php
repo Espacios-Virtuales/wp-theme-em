@@ -11,6 +11,12 @@ get_header();
     <!-- Shortcode: Hero -->
     <?php echo do_shortcode('[ev-about-hero]'); ?>
 
+    <?php 
+    while (have_posts()) : the_post();
+        the_content(); // Aquí irán los shortcodes [ev-*]
+    endwhile;
+    ?>
+    
     <!-- Shortcode: Propósito -->
     <?php echo do_shortcode('[ev-about-purpose]'); ?>
 
@@ -23,12 +29,6 @@ get_header();
 
     <!-- Shortcode: Identidad -->
     <?php echo do_shortcode('[ev-about-identity]'); ?>
-
-    <?php 
-    while (have_posts()) : the_post();
-        the_content(); // Aquí irán los shortcodes [ev-*]
-    endwhile;
-    ?>
 
     <!-- Llamado a la Acción -->
     <?php
