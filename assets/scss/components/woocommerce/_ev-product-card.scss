@@ -1,4 +1,5 @@
 // _ev-product-card.scss
+@use "sass:color";
 @use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
 
 @mixin product-card {
@@ -63,7 +64,7 @@
         margin-left: 0.5rem;
       
         &:hover {
-          color: darken(map-get($theme-variables, "gold"), 10%);
+          color: color.scale(map-get($theme-variables, "gold"), $lightness: -10%);
           text-decoration: underline;
         }
     }

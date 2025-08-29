@@ -1,34 +1,45 @@
+@use "sass:color";
 @use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
 
-
 /* Comments */
-.comment-list {
-  margin-top: 3rem;
-  list-style: none;
-  padding-left: 0;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+.comments-area {
+  margin-top: 4rem;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(180deg, #fdfdfd, lighten($gray-light, 8%));
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+
+  h2.comments-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: $primary;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  ul.comment-list {
+    padding-left: 0;
+    list-style: none;
+  }
 
   .comment {
-    position: relative;
     background-color: lighten($gray-light, 5%);
     border-left: 4px solid $primary;
     padding: 1.5rem;
     margin-bottom: 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.3s ease;
 
     &:hover {
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
 
     .comment-author {
       font-weight: bold;
       color: $primary;
       margin-bottom: 0.25rem;
-      font-size: 1.1rem;
     }
 
     .comment-meta {
@@ -39,11 +50,10 @@
 
     .comment-content {
       font-size: 1rem;
-      line-height: 1.7;
+      line-height: 1.6;
       color: #333;
     }
 
-    // Comentarios hijos (respuestas anidadas)
     .children {
       margin-top: 1.5rem;
       margin-left: 2rem;
@@ -51,78 +61,59 @@
       .comment {
         background-color: lighten($gray-light, 10%);
         border-left: 3px solid $secondary;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       }
     }
   }
-}
 
-/* Comment form */
-.comment-respond {
-  max-width: 720px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background-color: $white;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  // Formulario
+  .comment-respond {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: $white;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
 
-  #reply-title {
-    font-size: 1.75rem;
-    color: $primary;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  form.comment-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-
-    label {
-      font-weight: bold;
+    #reply-title {
+      font-size: 1.5rem;
       color: $primary;
-      margin-bottom: 0.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
 
-    textarea,
-    input[type="text"],
-    input[type="email"],
-    input[type="url"] {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      border: 1px solid $gray-light;
-      font-size: 1rem;
-      background-color: #fafafa;
-      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.03);
-    }
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
 
-    input[type="submit"] {
-      align-self: flex-start;
-      background-color: $primary;
-      color: #fff;
-      border: none;
-      padding: 0.75rem 1.75rem;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      textarea,
+      input[type="text"],
+      input[type="email"],
+      input[type="url"] {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        border: 1px solid $gray-light;
+        background-color: #fafafa;
+      }
 
-      &:hover {
-        background-color: color-mix(in srgb, var(--bs-primary) 90%, black);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      input[type="submit"] {
+        align-self: flex-start;
+        background-color: $primary;
+        color: #fff;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: color-mix(in srgb, var(--bs-primary), black 10%);
+        }
       }
     }
-  }
-
-  .logged-in-as,
-  .form-submit {
-    font-size: 0.9rem;
-    color: $gray;
-    text-align: center;
   }
 }
 
@@ -138,6 +129,17 @@
   }
 
   .comment-respond form.comment-form input[type="submit"] {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .comments-area {
+    padding: 2rem 1rem;
+  }
+
+  .comment-respond input[type="submit"] {
     width: 100%;
     text-align: center;
   }

@@ -1,4 +1,5 @@
 /* assets/scss/components/post/_blog.scss */
+@use "sass:color";
 @use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
 
 
@@ -73,7 +74,7 @@
         .card-text {
           font-size: 1rem;
           line-height: 1.6;
-          color: darken($secondary, 15%);
+          background-color: color-mix(in srgb, var(--bs-secondary), black 15%);
           margin-bottom: 1.25rem;
         }
   
