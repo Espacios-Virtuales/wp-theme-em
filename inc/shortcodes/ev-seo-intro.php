@@ -75,7 +75,7 @@ function ev_seo_intro_shortcode($atts = []) {
           <div class="seo-intro__content mx-auto"><?php echo $body_html; ?></div>
 
           <?php if (!empty($links)) : ?>
-            <ul class="seo-intro__links list-unstyled">
+            <ul class="seo-intro__links list-unstyled mx-auto">
               <?php foreach ($links as $l) : ?>
                 <li><a href="<?php echo esc_url($l['url']); ?>"><?php echo esc_html($l['label']); ?></a></li>
               <?php endforeach; ?>
