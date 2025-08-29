@@ -15,8 +15,7 @@
 @forward 'anime';
 @forward 'modal_video.scss';
 @forward 'landing-modular';
-@forward 'ev-objetos';
-@forward 'ev-menu_botones';
+
 
 @forward 'woocommerce/ev-product-card';
 @forward 'woocommerce/ev-single-product';
@@ -38,3 +37,5 @@
 @forward 'shortcodes/_ev-seo-intro';
 @forward 'shortcodes/ev-about';
 @forward 'shortcodes/ev_services';
+@forward 'shortcodes/ev-objetos';
+@forward 'shortcodes/ev-menu_botones';
