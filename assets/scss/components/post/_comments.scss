@@ -1,5 +1,5 @@
 @use "sass:color";
-@use "../globals" as *;      // tus variables ($breakpoint-*, colores, etc.)
+@use "../globals" as *; // tus variables ($breakpoint-*, colores, etc.)
 
 /* Comments */
 .comments-area {
@@ -14,7 +14,7 @@
     text-align: center;
     margin-bottom: 2rem;
     color: $primary;
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   }
 
@@ -65,54 +65,78 @@
     }
   }
 
-  // Formulario
-  .comment-respond {
-    margin-top: 3rem;
+  .comment-form {
+    max-width: 720px;
+    margin: 0 auto;
     padding: 2rem;
-    background-color: $white;
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
-    #reply-title {
-      font-size: 1.5rem;
-      color: $primary;
-      text-align: center;
-      margin-bottom: 1.5rem;
+    p {
+      margin: 0;
     }
 
-    .comment-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+    label {
+      display: block;
+      font-weight: 600;
+      color: $primary;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
 
-      textarea,
-      input[type="text"],
-      input[type="email"],
-      input[type="url"] {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        border-radius: 6px;
-        border: 1px solid $gray-light;
-        background-color: #fafafa;
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid $gray-light;
+      background-color: #f9f9f9;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: $primary;
+        outline: none;
       }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 160px;
+    }
+
+    .form-submit {
+      margin-top: 1rem;
 
       input[type="submit"] {
-        align-self: flex-start;
         background-color: $primary;
         color: #fff;
         border: none;
-        padding: 0.75rem 1.5rem;
+        padding: 0.75rem 2rem;
         border-radius: 50px;
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        cursor: pointer;
         transition: background-color 0.3s ease;
 
         &:hover {
           background-color: color-mix(in srgb, var(--bs-primary), black 10%);
+          cursor: pointer;
         }
       }
+    }
+
+    .required-field-message {
+      display: block;
+      font-size: 0.85rem;
+      color: $gray;
+      margin-top: 0.25rem;
     }
   }
 }
