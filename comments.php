@@ -8,9 +8,7 @@ if (post_password_required()) return;
 ?>
 
 <div id="comments" class="comments-area container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-lg-10 col-xl-8">
-
+  <div class="row">
       <?php if (have_comments()) : ?>
         <h2 class="comments-title">
           <?php
@@ -46,7 +44,5 @@ if (post_password_required()) return;
       <?php endif; ?>
 
       <?php comment_form(); ?>
-
-    </div>
   </div>
 </div>
