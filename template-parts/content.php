@@ -28,8 +28,9 @@
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
-
-	<?php the_post_thumbnail('small', array('class' => 'img-fluid w-50 justify-content-center"')); ?>
+	<div class="justify-content-center">
+		<?php the_post_thumbnail('small', array('class' => 'img-fluid w-50 ')); ?>
+	</div>
 
 	<div class="entry-content">
 		<?php
