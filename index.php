@@ -45,6 +45,7 @@ get_header();
                                             <div class="card-img-top d-flex justify-content-center">
                                                 <?php the_post_thumbnail('small', array('class' => 'img-fluid img-round')); ?>
                                             </div>
+
                                         <?php endif; ?>
                                         <div class="card-body">
                                             <h2 class="card-title"><?php the_title(); ?></h2>

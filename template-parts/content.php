@@ -28,10 +28,9 @@
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
-	<div class="card-img-top d-flex justify-content-center">
-		<?php the_post_thumbnail('small', array('class' => 'img-fluid img-round')); ?>
+	<div class="d-flex justify-content-center">
+		<?php the_post_thumbnail('small', array('class' => 'img-fluid w-50 ')); ?>
 	</div>
-
 
 	<div class="entry-content">
 		<?php
