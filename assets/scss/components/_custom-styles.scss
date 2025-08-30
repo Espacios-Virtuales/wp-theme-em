@@ -190,12 +190,6 @@ body {
         outline: none; /* Quitar el contorno de enfoque */
     }
 }
-.img-round {
-    width: clamp(96px, 25vw, 160px);
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    object-fit: cover;
-}
 
 .custom-rounded-btn {
     width: 80px;
