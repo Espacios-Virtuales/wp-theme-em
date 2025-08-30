@@ -29,7 +29,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php blog_theme_post_thumbnail(); ?>
+	<?php the_post_thumbnail('small', array('class' => 'img-fluid w-50 justify-content-center"')); ?>
 
 	<div class="entry-content">
 		<?php
