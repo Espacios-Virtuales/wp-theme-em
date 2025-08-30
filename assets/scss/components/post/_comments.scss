@@ -1,7 +1,6 @@
 @use "sass:color";
-@use "../globals" as *; // tus variables ($breakpoint-*, colores, etc.)
+@use "../globals" as *;
 
-/* Comments */
 .comments-area {
   margin-top: 4rem;
   padding: 3rem 1.5rem;
@@ -65,106 +64,124 @@
     }
   }
 
+  // --- Comment Form ---
   .comment-respond {
     max-width: 720px;
-    margin: 0 auto;
+    margin: 3rem auto 0;
     padding: 2rem;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
 
-    p {
-      width: 100%;
+    #reply-title {
+      font-size: 1.5rem;
+      color: $primary;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    form.comment-form {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      margin: 0;
-      gap: 0.5rem;
-
-      label {
-        flex: 0 0 50%;
-        max-width: 50%;
-        font-weight: 600;
-        color: $primary;
-        font-size: 0.95rem;
-        margin-bottom: 0.5rem;
-      }
-
-      input[type="text"],
-      input[type="email"],
-      input[type="url"],
-      textarea {
-        flex: 0 0 50%;
-        max-width: 50%;
-        padding: 0.75rem 1rem;
-        font-size: 1rem;
-        border-radius: 6px;
-        border: 1px solid $gray-light;
-        background-color: #f9f9f9;
-        width: 100%;
-      }
-    }
-
-    .comment-form-comment {
       flex-direction: column;
+      gap: 1.5rem;
 
-      label,
-      textarea {
-        max-width: 100%;
-        flex: 0 0 100%;
-      }
-    }
+      p {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        gap: 1rem;
+        margin: 0;
 
-    .form-submit {
-      margin-top: 1rem;
+        &.comment-form-comment {
+          flex-direction: column;
 
-      input[type="submit"] {
-        background-color: $primary;
-        color: #fff;
-        border: none;
-        padding: 0.75rem 2rem;
-        border-radius: 50px;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        transition: background-color 0.3s ease;
+          label,
+          textarea {
+            width: 100%;
+          }
+        }
 
-        &:hover {
-          background-color: color-mix(in srgb, var(--bs-primary), black 10%);
-          cursor: pointer;
+        label {
+          flex: 0 0 50%;
+          max-width: 50%;
+          font-weight: 600;
+          color: $primary;
+          font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea {
+          flex: 0 0 50%;
+          max-width: 50%;
+          padding: 0.75rem 1rem;
+          font-size: 1rem;
+          border-radius: 6px;
+          border: 1px solid $gray-light;
+          background-color: #f9f9f9;
+          transition: border-color 0.3s ease;
+          width: 100%;
+
+          &:focus {
+            border-color: $primary;
+            outline: none;
+          }
         }
       }
+
+      .form-submit {
+        display: flex;
+        justify-content: flex-start;
+
+        input[type="submit"] {
+          background-color: $primary;
+          color: #fff;
+          border: none;
+          padding: 0.75rem 2rem;
+          border-radius: 50px;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: color-mix(in srgb, var(--bs-primary), black 10%);
+            cursor: pointer;
+          }
+        }
+      }
+
+      .required-field-message {
+        grid-column: 1 / -1;
+        font-size: 0.85rem;
+        color: $gray;
+        margin-top: 0.25rem;
+      }
     }
   }
 }
 
-/* Responsive */
-@media (max-width: 767.98px) {
-  .comment-list,
-  .comment-respond {
-    padding: 1.5rem;
+// Responsive
+@media (max-width: 576px) {
+  .comment-respond form.comment-form p {
+    flex-direction: column;
+
+    label,
+    input,
+    textarea {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
   }
 
-  .comment .children {
-    margin-left: 1rem;
-  }
-
-  .comment-respond form.comment-form input[type="submit"] {
+  .form-submit input[type="submit"] {
     width: 100%;
     text-align: center;
   }
-}
 
-@media (max-width: 576px) {
   .comments-area {
     padding: 2rem 1rem;
-  }
-
-  .comment-respond input[type="submit"] {
-    width: 100%;
-    text-align: center;
   }
 }
