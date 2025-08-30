@@ -39,11 +39,11 @@
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     }
   
-    img {
+    .post-thumbnail img {
       display: block;
       margin: 2rem auto;
-      max-width: 50%;
-      max-height: 50%;
+      max-width: 50% !important;
+      max-height: 50% !important;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
       transition: transform 0.3s ease;
@@ -55,7 +55,7 @@
   
     a {
       color: $cyan;
-      text-decoration: underline;
+      text-decoration: none;
       transition: color 0.3s ease;
   
       &:hover {
