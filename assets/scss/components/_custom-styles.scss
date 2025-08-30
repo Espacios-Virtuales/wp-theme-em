@@ -191,20 +191,11 @@ body {
     }
 }
 .img-round {
-    width: 150px;          // fijo o responsive con clamp
-    aspect-ratio: 1 / 1;   // cuadrado perfecto
-    border-radius: 50%;    // círculo
-    object-fit: cover;     // recorta bien
-    display: block;
-    border: 4px solid $primary; // opcional
-  }
-  
-  /* Fallback navegadores antiguos */
-  @supports not (aspect-ratio: 1 / 1) {
-    .img-round {
-      height: 150px;
-    }
-  }
+    width: clamp(96px, 25vw, 160px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
 .custom-rounded-btn {
     width: 80px;
