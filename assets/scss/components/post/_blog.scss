@@ -54,12 +54,12 @@
       }
   
       .card-img-top {
-        height: 220px;
+        width: 50%;
+        max-height: 100px;
         object-fit: cover;
         border-bottom: 4px solid $primary;
-        border-radius: 0.75rem 0.75rem 0 0;
       }
-      
+
       .card-body {
         padding: 1.5rem;
         text-align: left;
