@@ -43,7 +43,7 @@ get_header();
                                     <article id="post-<?php the_ID(); ?>" <?php post_class('card shadow-sm'); ?>>
                                         <?php if (has_post_thumbnail()) : ?>
                                             <div class="card-img-top d-flex">
-                                                <?php the_post_thumbnail('small', array('class' => 'img-fluid w-30 justify-content-center"')); ?>
+                                                <?php the_post_thumbnail('small', array('class' => 'img-fluid w-30 justify-content-center')); ?>
                                             </div>
                                         <?php endif; ?>
                                         <div class="card-body">
