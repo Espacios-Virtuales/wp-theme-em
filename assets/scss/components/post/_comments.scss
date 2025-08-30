@@ -64,7 +64,6 @@
       }
     }
   }
-
   .comment-form {
     max-width: 720px;
     margin: 0 auto;
@@ -75,19 +74,31 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-
+  
+    // Cada campo (p) en dos columnas
     p {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: center;
+      gap: 1rem;
       margin: 0;
+  
+      &.comment-form-comment {
+        display: block;
+  
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+      }
     }
-
+  
     label {
-      display: block;
       font-weight: 600;
       color: $primary;
-      margin-bottom: 0.5rem;
       font-size: 0.95rem;
     }
-
+  
     input[type="text"],
     input[type="email"],
     input[type="url"],
@@ -99,21 +110,23 @@
       border: 1px solid $gray-light;
       background-color: #f9f9f9;
       transition: border-color 0.3s ease;
-
+  
       &:focus {
         border-color: $primary;
         outline: none;
       }
     }
-
+  
     textarea {
       resize: vertical;
       min-height: 160px;
     }
-
+  
     .form-submit {
+      display: flex;
+      justify-content: flex-start;
       margin-top: 1rem;
-
+  
       input[type="submit"] {
         background-color: $primary;
         color: #fff;
@@ -124,21 +137,22 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
         transition: background-color 0.3s ease;
-
+  
         &:hover {
           background-color: color-mix(in srgb, var(--bs-primary), black 10%);
           cursor: pointer;
         }
       }
     }
-
+  
     .required-field-message {
-      display: block;
+      grid-column: 1 / -1;
       font-size: 0.85rem;
       color: $gray;
       margin-top: 0.25rem;
     }
   }
+  
 }
 
 /* Responsive */
