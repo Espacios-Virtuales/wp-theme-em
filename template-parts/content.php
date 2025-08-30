@@ -28,7 +28,7 @@
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
-	<div class="justify-content-center">
+	<div class="d-flex justify-content-center">
 		<?php the_post_thumbnail('small', array('class' => 'img-fluid w-50 ')); ?>
 	</div>
 
