@@ -64,6 +64,7 @@
       }
     }
   }
+
   .comment-form {
     max-width: 720px;
     margin: 0 auto;
@@ -74,59 +75,52 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-  
-    // Cada campo (p) en dos columnas
+
     p {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      align-items: center;
-      gap: 1rem;
-      margin: 0;
-  
-      &.comment-form-comment {
-        display: block;
-  
-        label {
-          display: block;
-          margin-bottom: 0.5rem;
-        }
-      }
-    }
-  
-    label {
-      font-weight: 600;
-      color: $primary;
-      font-size: 0.95rem;
-    }
-  
-    input[type="text"],
-    input[type="email"],
-    input[type="url"],
-    textarea {
       width: 100%;
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: 1px solid $gray-light;
-      background-color: #f9f9f9;
-      transition: border-color 0.3s ease;
-  
-      &:focus {
-        border-color: $primary;
-        outline: none;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 0;
+      gap: 0.5rem;
+
+      label {
+        flex: 0 0 50%;
+        max-width: 50%;
+        font-weight: 600;
+        color: $primary;
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="url"],
+      textarea {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border-radius: 6px;
+        border: 1px solid $gray-light;
+        background-color: #f9f9f9;
+        width: 100%;
       }
     }
-  
-    textarea {
-      resize: vertical;
-      min-height: 160px;
+
+    .comment-form-comment {
+      flex-direction: column;
+
+      label,
+      textarea {
+        max-width: 100%;
+        flex: 0 0 100%;
+      }
     }
-  
+
     .form-submit {
-      display: flex;
-      justify-content: flex-start;
       margin-top: 1rem;
-  
+
       input[type="submit"] {
         background-color: $primary;
         color: #fff;
@@ -137,22 +131,14 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
         transition: background-color 0.3s ease;
-  
+
         &:hover {
           background-color: color-mix(in srgb, var(--bs-primary), black 10%);
           cursor: pointer;
         }
       }
     }
-  
-    .required-field-message {
-      grid-column: 1 / -1;
-      font-size: 0.85rem;
-      color: $gray;
-      margin-top: 0.25rem;
-    }
   }
-  
 }
 
 /* Responsive */
