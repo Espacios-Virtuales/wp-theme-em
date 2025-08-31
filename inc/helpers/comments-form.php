@@ -8,7 +8,7 @@ function ev_custom_comment_form($defaults) {
         </div>',
       'email' => '
         <div class="ev-form-row">
-          <label for="email">Correo *</label>
+          <label for="email">Mail *</label>
           <input id="email" name="email" type="email" required>
         </div>',
       'url' => '
