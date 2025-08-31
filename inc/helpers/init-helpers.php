@@ -12,3 +12,5 @@ require_once __DIR__ . '/seo-filters.php';
 
 
 require_once __DIR__ . '/seo-prepend.php';
+
+require_once __DIR__ . '/comments-form.php';

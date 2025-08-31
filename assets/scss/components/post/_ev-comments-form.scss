@@ -1,0 +1,62 @@
+@use "sass:color";
+@use "../globals" as *;
+
+.ev-form {
+    max-width: 720px;
+    margin: 3rem auto 0;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  
+    .ev-form-row {
+      margin-bottom: 1.75rem;
+  
+      label {
+        display: block;
+        font-weight: 600;
+        font-size: 1rem;
+        color: $primary;
+        margin-bottom: 0.5rem;
+      }
+  
+      input,
+      textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border: 1px solid $gray-light;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+        transition: border-color 0.3s ease;
+  
+        &:focus {
+          border-color: $primary;
+          outline: none;
+        }
+      }
+  
+      textarea {
+        resize: vertical;
+        min-height: 160px;
+      }
+    }
+  
+    .ev-btn {
+      background-color: $primary;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: $secondary; // o un tono más oscuro de $primary si prefieres
+        cursor: pointer;
+      }
+    }
+  }
+  
