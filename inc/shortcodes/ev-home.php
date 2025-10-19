@@ -110,7 +110,7 @@ function ev_subscribe_modal()
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-dark" id="subscribeModalLabel">Suscríbete a Nuevas Aventuras</h5> <!-- Texto en negro -->
+                    <h5 class="modal-title text-white" id="subscribeModalLabel">Suscríbete a Nuevas Aventuras</h5> <!-- Texto en negro -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
@@ -118,17 +118,17 @@ function ev_subscribe_modal()
                     <form id="modalContactForm" class="needs-validation mt-4" novalidate>
                         <div class="mb-3">
                             <label for="modalName" class="form-label text-dark">Nombre:</label> <!-- Texto en negro -->
-                            <input type="text" class="form-control text-dark" id="modalName" name="contact_name" required minlength="3" placeholder="Ingresa tu nombre">
+                            <input type="text" class="form-control text-white" id="modalName" name="contact_name" required minlength="3" placeholder="Ingresa tu nombre">
                             <div class="invalid-feedback">Ingrese un nombre con al menos 3 caracteres</div>
                         </div>
                         <div class="mb-3">
-                            <label for="modalEmail" class="form-label text-dark">Correo Electrónico:</label> <!-- Texto en negro -->
-                            <input type="email" class="form-control text-dark" id="modalEmail" name="contact_email" required placeholder="email@ejemplo.cl">
+                            <label for="modalEmail" class="form-label text-white">Correo Electrónico:</label> <!-- Texto en negro -->
+                            <input type="email" class="form-control text-white" id="modalEmail" name="contact_email" required placeholder="email@ejemplo.cl">
                             <div class="invalid-feedback">Ingrese un correo electrónico válido</div>
                         </div>
                         <div class="form-check mb-3">
                             <input type="checkbox" id="subscribeCheck" name="contact_subscribe" value="yes" checked="checked">
-                            <label class="form-check-label text-dark" for="subscribeCheck">
+                            <label class="form-check-label text-white" for="subscribeCheck">
                                 Deseo recibir actualizaciones y promociones
                             </label>
                         </div>

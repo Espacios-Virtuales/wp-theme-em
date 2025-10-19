@@ -24,9 +24,9 @@ get_header();
         </div>
     </section>
 
-    <!-- Blog Posts Section -->
-    <section class="blog-posts">
-        <div class="container-fluid p-5">
+     <!-- Blog Posts Section -->
+     <section class="blog-posts">
+        <div class="container-fluid p-4">
             <div class="row">
                 <!-- Sidebar -->
                 <div class="col-md-4">
@@ -34,31 +34,48 @@ get_header();
                 </div>
 
                 <!-- Main Content -->
+                <?php
+                $intro = get_field('introductions') ?: [];
+                ?>
+
                 <div class="col-md-8">
                     <div class="row">
-                        <?php
-                        if (have_posts()) :
+                        <?php if (!empty($intro['intro_1'])) : ?>
+                            <div class="col-12 mb-4">
+                                <div class="text-center px-3">
+                                    <p class="lead text-muted">
+                                        <?php echo wp_kses_post($intro['intro_1']); ?>
+                                    </p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (have_posts()) :
                             while (have_posts()) : the_post(); ?>
                                 <div class="col-md-6 mb-4">
-                                    <article id="post-<?php the_ID(); ?>" <?php post_class('card shadow-sm'); ?>>
-                                        <?php if (has_post_thumbnail()) : ?>
-                                            <div class="card-img-top d-flex justify-content-center">
-                                                <?php the_post_thumbnail('medium', ['class' => 'rounded-circle']); ?>
-                                            </div>
-
-                                        <?php endif; ?>
+                                    <article id="post-<?php the_ID(); ?>" <?php post_class('card border-0 overflow-hidden shadow-sm'); ?>>
+                                        <figure class="position-relative m-0" style="aspect-ratio: 16 / 9;">
+                                            <?php if (has_post_thumbnail()) : ?>
+                                                <?php the_post_thumbnail('large', ['class' => 'w-100 h-100 object-fit-cover']); ?>
+                                            <?php endif; ?>
+                                            <figcaption class="position-absolute bottom-0 start-0 w-100 p-4 text-white bg-gradient-to-top">
+                                                <h2 class="h5 fw-bold m-0"><?php the_title(); ?></h2>
+                                            </figcaption>
+                                        </figure>
                                         <div class="card-body">
-                                            <h2 class="card-title"><?php the_title(); ?></h2>
-                                            <p class="card-text"><?php the_excerpt(); ?></p>
-                                            <a href="<?php the_permalink(); ?>" class="btn btn-primary text-white"><?php esc_html_e('Leer más', 'tiendavirtual'); ?></a>
+                                            <p class="card-text">
+                                                <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
+                                            </p>
+                                            <a href="<?php the_permalink(); ?>" class="btn btn-outline-dark rounded-pill mt-3 px-4 py-2">
+                                                <?php esc_html_e('Leer más', 'tiendavirtual'); ?>
+                                            </a>
                                         </div>
                                     </article>
                                 </div>
-                        <?php endwhile;
+                            <?php endwhile;
                         else :
                             echo '<p>' . esc_html__('No se encontraron publicaciones', 'tiendavirtual') . '</p>';
-                        endif;
-                        ?>
+                        endif; ?>
                     </div>
                 </div>
             </div>
