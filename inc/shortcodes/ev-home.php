@@ -117,7 +117,7 @@ function ev_subscribe_modal()
                     <!-- Formulario de contacto -->
                     <form id="modalContactForm" class="needs-validation mt-4" novalidate>
                         <div class="mb-3">
-                            <label for="modalName" class="form-label text-dark">Nombre:</label> <!-- Texto en negro -->
+                            <label for="modalName" class="form-label text-white">Nombre:</label> <!-- Texto en negro -->
                             <input type="text" class="form-control text-white" id="modalName" name="contact_name" required minlength="3" placeholder="Ingresa tu nombre">
                             <div class="invalid-feedback">Ingrese un nombre con al menos 3 caracteres</div>
                         </div>
