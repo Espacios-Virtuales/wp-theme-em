@@ -99,11 +99,12 @@ add_action('admin_enqueue_scripts', 'ev_admin_assets', 20);
  * (Opcional) Defensa extra en el FRONT por si algún plugin carga Bootstrap CSS
  * y te rompe estilos: intenta remover handles típicos.
  */
-function ev_front_dequeue_third_party_bootstrap() {
-    if ( ! is_admin() ) {
-        wp_dequeue_style('bootstrap');
-        wp_dequeue_style('bootstrap-css');
-        // Si algún tema/hook cargó bootstrap.min.css con otro handle, añádelo aquí.
+add_action('wp_enqueue_scripts', function () {
+    foreach (wp_styles()->queue as $handle) {
+        $src = wp_styles()->registered[$handle]->src ?? '';
+        if (strpos($src, 'bootstrap') !== false) {
+            wp_dequeue_style($handle);
+            wp_deregister_style($handle);
+        }
     }
-}
-add_action('wp_enqueue_scripts', 'ev_front_dequeue_third_party_bootstrap', 100);
+}, 100);
