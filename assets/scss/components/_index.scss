@@ -1,6 +1,5 @@
 /* assets/scss/components/_index.scss */
-@forward 'layout/header';
-@forward 'layout/footer';
+@forward 'layout/index';
 
 @forward 'carousel';
 @forward 'transition';
@@ -26,12 +25,7 @@
 @forward 'woocommerce/ev-notifications';
 @forward 'woocommerce/ev-cart';
 
-@forward 'post/blog';
-@forward 'post/comments';
-@forward 'post/ev-navigation';
-@forward 'post/sidebar';
-@forward 'post/post';
-@forward 'post/widget_search';
+@forward 'post/index';
 
 
 @forward 'shortcodes/_ev-seo-intro';
