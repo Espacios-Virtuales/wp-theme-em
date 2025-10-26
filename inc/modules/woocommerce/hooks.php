@@ -89,3 +89,13 @@ add_action('woocommerce_after_main_content', function() {
 }, 50);
 
 
+// Usar nuestro template para la URL de la tienda real (is_shop)
+add_filter('template_include', function ($template) {
+  if (is_shop()) {
+    $custom = get_stylesheet_directory() . '/page-landing-modular.php';
+    if (file_exists($custom)) {
+      return $custom; // usamos nuestro template en la misma ruta
+    }
+  }
+  return $template;
+}, 99);
