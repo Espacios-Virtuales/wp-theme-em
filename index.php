@@ -33,10 +33,10 @@ get_header();
 
 <main id="primary" class="site-main bg-primary pt-4 pb-5" data-aos="fade-up">
     <section class="blog-posts">
-        <div class="container-fluid px-4">
-            <div class="row d-flex justify-content-center">
+        <div class="container-fluid p-5">
+            <div class="row">
                 <div class="col-md-8">
-                    <div class="row d-flex justify-content-center">
+                    <div class="row">
                         <?php if (have_posts()) :
                             $aos_delay = 0;
                             while (have_posts()) : the_post(); ?>
