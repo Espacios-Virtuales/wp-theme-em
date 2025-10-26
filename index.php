@@ -12,31 +12,29 @@
  *
  * @package blog-theme
  */
-
 get_header();
 ?>
+<section>
+    <?php
+    // ID de la página asignada como "Posts page"
+    $blog_page_id = get_option('page_for_posts');
 
-<!-- Hero Section -->
-<?php
-// ID de la página asignada como "Posts page"
-$blog_page_id = get_option('page_for_posts');
-
-// Toma los campos ACF de esa página (si existe). Fallback a 'option' si lo usas.
-$intro = $blog_page_id ? get_field('introductions', $blog_page_id) : null;
-if (!$intro) { $intro = get_field('introductions', 'option'); } // opcional
-?>
-<!-- Hero Section -->
-<?php if (!empty($intro)) : ?>
-<div class="container-fluid bg-primary text-center p-5 mb-4">
-  <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
-    <?php echo esc_html($intro['intro_1'] ?? ''); ?>
-  </h1>
-  <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
-    <?php echo esc_html($intro['intro_2'] ?? ''); ?>
-  </p>
-</div>
-<?php endif; ?>
-
+    // Toma los campos ACF de esa página (si existe). Fallback a 'option' si lo usas.
+    $intro = $blog_page_id ? get_field('introductions', $blog_page_id) : null;
+    if (!$intro) { $intro = get_field('introductions', 'option'); } // opcional
+    ?>
+    <!-- Hero Section -->
+    <?php if (!empty($intro)) : ?>
+    <div class="container-fluid bg-primary text-center p-5 mb-4">
+    <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
+        <?php echo esc_html($intro['intro_1'] ?? ''); ?>
+    </h1>
+    <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
+        <?php echo esc_html($intro['intro_2'] ?? ''); ?>
+    </p>
+    </div>
+    <?php endif; ?>
+</section>
 <main id="primary bg-primary" class="site-main">
     <!-- Blog Posts Section -->
     <section class="blog-posts">
