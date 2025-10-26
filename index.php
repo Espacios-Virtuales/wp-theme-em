@@ -32,16 +32,6 @@ get_header();
     <section class="blog-posts">
         <div class="container-fluid p-4">
             <div class="row">
-                <!-- Sidebar -->
-                <div class="col-md-4">
-                    <?php get_sidebar(); ?>
-                </div>
-
-                <!-- Main Content -->
-                <?php
-                $intro = get_field('introductions') ?: [];
-                ?>
-
                 <div class="col-md-8">
                     <div class="row">
                         <?php if (have_posts()) :
@@ -71,6 +61,10 @@ get_header();
                             echo '<p>' . esc_html__('No se encontraron publicaciones', 'tiendavirtual') . '</p>';
                         endif; ?>
                     </div>
+                </div>
+                <!-- Sidebar -->
+                <div class="col-md-4">
+                    <?php get_sidebar(); ?>
                 </div>
             </div>
         </div>
