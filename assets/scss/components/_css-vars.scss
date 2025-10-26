@@ -1,0 +1,35 @@
+// utilities/_css-vars.scss
+// ------------------------------------------------------------------
+// Exporta variables CSS DESPUÉS de importar Bootstrap para que las
+// sobreescrituras ganen en cascada. Solo si necesitas publicar
+// variables con prefijo --bs-* o propias --ev-*
+// ------------------------------------------------------------------
+
+@use "../components/globals" as *;
+
+:root {
+  /* Mapea tus valores a variables Bootstrap (si realmente lo necesitas) */
+  --bs-primary: #{$primary};
+  --bs-secondary: #{$secondary};
+  --bs-info: #{$cyan};
+  --bs-gray: #{$gray};
+  --bs-gray-light: #{$gray-light};
+  --bs-white: #{$white};
+  --bs-red: #{$red};
+  --bs-blue: #{$blue};
+
+  /* Sombras personalizadas */
+  --bs-shadow-default: #{$shadow-default};
+  --bs-shadow-hover: #{$shadow-hover};
+  --bs-shadow-light: #{$shadow-light};
+
+  /* Extras de identidad */
+  --ev-gold: #{$gold};
+  --ev-emerald: #{$emerald};
+  --ev-blue-dark: #{$blue-dark};
+  --ev-dark-bg: #{$dark-bg};
+  --ev-text-light: #{$text-light};
+  --ev-text-muted: #{$text-muted};
+  --ev-spotify-green: #{$spotify-green};
+  --ev-spotify-green-hover: #{$spotify-green-hover};
+}

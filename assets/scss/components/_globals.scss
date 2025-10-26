@@ -1,6 +1,81 @@
-@use "sass:color";
-@use "sass:math";
-@use "sass:meta";
+// components/_globals.scss
+// ------------------------------------------------------------------
+// Solo variables y maps SASS que deben aplicarse ANTES de importar Bootstrap
+// (NO declares :root aquí; eso va después del import de Bootstrap).
+// ------------------------------------------------------------------
 
-/* Solo re-exporta tus variables del tema */
-@forward "./custom-variables";
+@use "sass:map";
+
+// Colores principales
+$primary: #483d8b;
+$primary-opacity-8: rgba(72, 61, 139, 0.8);
+$secondary: rgb(75, 0, 130); // si quieres alpha usa rgba() o rgb(75 0 130 / .5)
+$secondary-opacity-5: rgba(75, 0, 130, 0.5);
+$gray: #d3d3d3;
+$gray-light: #f5f5f5;
+$white: #ffffff;
+$red: rgba(255, 0, 0, 0.8);
+$blue: rgba(26, 26, 112, 0.8);
+$selector: #daa520;
+$cyan: #87cefa;
+
+$gold: #ffd700; // identidad Escuela Mística
+$emerald: #50C878;
+$blue-dark: #0f0c3e;
+$dark-bg: #181818;
+$text-light: #f8f9fa;
+$text-muted: #b3b3b3;
+$spotify-green: #1DB954;
+$spotify-green-hover: #1AAE48;
+$dark: #000;
+
+// Tipografías
+$headings-font-family: "Libre Baskerville", serif;
+$headings-font-weight: 700;
+$font-family-base: "Cormorant Garamond", serif;
+
+// Bordes / sombras / utilidades
+$border-radius: 12px;
+$box-shadow-light: 0 10px 20px rgba(0, 0, 0, 0.1);
+$box-shadow-heavy: 0 30px 60px rgba(0, 0, 0, 0.2);
+$shadow-default: 0px 4px 15px rgba(0, 0, 0, 0.2);
+$shadow-hover: 0px 6px 20px rgba(0, 0, 0, 0.3);
+$shadow-light: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+// Breakpoints (opcional si quieres override)
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// --- Bootstrap maps -------------------------------------------------
+// Asegúrate de que $theme-colors tenga al menos las keys estándar para utilities.
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": #198754,
+  "info": $cyan,
+  "warning": #ffc107,
+  "danger": #dc3545,
+  "light": #f8f9fa,
+  "dark": #212529,
+
+  // extras del tema
+  "primary-opacity-8": $primary-opacity-8,
+  "secondary-opacity-5": $secondary-opacity-5,
+  "selector": $selector,
+  "gold": $gold,
+  "gray": $gray,
+  "gray-light": $gray-light,
+  "white": $white,
+  "red": $red,
+  "blue": $blue,
+  "emerald": $emerald,
+  "blue-dark": $blue-dark,
+  "dark-bg": $dark-bg,
+  "text-light": $text-light,
+  "text-muted": $text-muted
+);
+
+// Si prefieres extender el map original de Bootstrap (cuando exista), puedes hacer:
+// $theme-colors: map.merge($theme-colors, ("brand-emerald": $emerald));
