@@ -1,8 +1,8 @@
 {
-  "name": "espacios-virtuales",
+  "name": "escuela-mistica-theme",
   "version": "1.0.0",
-  "description": "Blog Page Theme For WordPress",
-  "author": "Automattic Theme Team",
+  "description": "WordPress Theme — Escuela Mística (SCSS via Node/Dart Sass)",
+  "author": "David Utreras",
   "license": "GPL-2.0-or-later",
   "keywords": [
     "WordPress",
@@ -16,13 +16,17 @@
   "bugs": {
     "url": "https://github.com/Automattic/_s/issues"
   },
+  "engines": {
+    "node": ">=18 <20",
+    "npm": ">=9"
+  },
   "devDependencies": {
     "@wordpress/scripts": "^19.2.2",
     "dir-archiver": "^1.1.1",
-    "node-sass": "^7.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rtlcss": "^3.5.0"
+    "rtlcss": "^3.5.0",
+    "sass": "1.62.1"
   },
   "rtlcssConfig": {
     "options": {
@@ -38,13 +42,15 @@
     "map": false
   },
   "scripts": {
-    "watch": "node-sass sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
-    "compile:css": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
-    "compile:rtl": "rtlcss style.css style-rtl.css",
-    "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
-    "lint:js": "wp-scripts lint-js 'js/*.js'",
-    "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock",
+    "dev": "sass --quiet-deps --watch --load-path=assets/scss assets/scss/main.scss:assets/css/main.css --style=expanded",
+    "build:css": "sass --quiet-deps --load-path=assets/scss assets/scss/main.scss:assets/css/main.css --style=expanded --embed-source-map",
+    "build:css:prod": "sass --quiet-deps --load-path=assets/scss assets/scss/main.scss:assets/css/main.min.css --style=compressed --no-source-map",
+    "dev:poll": "sass --quiet-deps --watch --poll --load-path=assets/scss assets/scss/main.scss:assets/css/main.css --style=expanded",
+    "build:rtl": "rtlcss assets/css/main.css assets/css/main-rtl.css",
     "build:blocks": "wp-scripts build assets/js/blocks/index.js --output-path=assets/js/blocks/build",
-    "start:blocks": "wp-scripts start assets/js/blocks/index.js --output-path=assets/js/blocks/build"
+    "start:blocks": "wp-scripts start assets/js/blocks/index.js --output-path=assets/js/blocks/build",
+    "lint:scss": "wp-scripts lint-style 'assets/scss/**/*.scss'",
+    "lint:js": "wp-scripts lint-js 'js/*.js'",
+    "bundle": "dir-archiver --src . --dest ../escuela-mistica.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist assets/scss style.css.map yarn.lock"
   }
 }
