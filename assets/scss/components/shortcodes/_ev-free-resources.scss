@@ -1,3 +1,5 @@
+@use "../globals" as *; 
+
 .free-resources {
     background-color: var(--bs-secondary-opacity-5);
     padding: 80px 0;
@@ -31,15 +33,15 @@
         }
 
         h5 {
-            @extend .fw-bold;
-            @extend .fs-4;
+            /*extend .fw-bold;
+            @extend .fs-4; */
             font-family: 'Cinzel', serif;
             color: #ffd700;
         }
 
         p {
-            @extend .text-muted;
-            @extend .lh-sm;
+            /*@extend .text-muted;
+            @extend .lh-sm;*/
             font-size: 1rem;
         }
         

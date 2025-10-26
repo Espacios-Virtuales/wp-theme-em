@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function hero_slider_shortcode()
 {
@@ -221,7 +221,7 @@ function ev_page_testimonials_shortcode()
     $data = blog_get_custom_post_type('testimonial', 9);
 
     if ($data->have_posts()) {
-        ?>
+    ?>
         <section class="testimonials section-ev py-5" id="testimonios" data-aos="fade-up">
             <div class="container">
                 <div class="title text-center mb-4">
@@ -372,8 +372,7 @@ function ev_free_resources_shortcode()
                                             <i class="bi bi-mic-fill"></i>
                                         </a>
                                     </div>
-
-                                </div>
+                               </div>
                             </div>
                         <?php endif; ?>
 
@@ -394,7 +393,7 @@ function ev_free_resources_shortcode()
                     </div>
                 </div>
             </section>
-        <?php
+<?php
         }
 
         wp_reset_postdata();
@@ -404,6 +403,3 @@ function ev_free_resources_shortcode()
     }
 }
 add_shortcode('ev-free_resources', 'ev_free_resources_shortcode');
-
-
-

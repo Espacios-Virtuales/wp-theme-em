@@ -1,3 +1,5 @@
+@use "../globals" as *;
+
 .community-membership {
     background-color: var(--bs-primary-opacity-5); // Fondo con opacidad
     padding: 80px 0;
