@@ -3,7 +3,6 @@
 @use "sass:meta";
 
 @use 'components/custom-variables' as *;   /* aquí sí */
-@use 'components/custom-styles' as *;     
 
 /* Exporta variables CSS */
 :root {
