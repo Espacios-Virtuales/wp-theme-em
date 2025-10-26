@@ -14,7 +14,7 @@ get_header(); ?>
 
     <!-- Main Content -->
 
-    <section class="value-section mb-5">
+    <section class="services-list mb-5">
         <?php echo do_shortcode('[ev-services-list]'); ?>
     </section>
 
@@ -25,7 +25,7 @@ get_header(); ?>
     </section>
 
     <!-- contenido -->
-    <section class="value-section mb-5">
+    <section class="container-fluid p-5">
         <?php
         while (have_posts()) : the_post();
             the_content(); // Aquí irán los shortcodes [ev-*]
