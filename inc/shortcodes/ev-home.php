@@ -148,6 +148,8 @@ function ev_servicios_shortcode()
 {
     $data = blog_get_page(array('servicios'));
 
+    ob_start();
+
     while ($data->have_posts()) {
         $data->the_post();
         $intro = get_field('introductions');
@@ -212,6 +214,8 @@ function ev_servicios_shortcode()
     }
 
     wp_reset_postdata();
+    return ob_get_clean(); // 👈 SIEMPRE return
+
 }
 add_shortcode('ev-servicios', 'ev_servicios_shortcode');
 

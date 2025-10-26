@@ -2,8 +2,10 @@
 
 function ev_page_testimonials_shortcode()
 {
+    
     // Obtener los testimonios
     $data = blog_get_custom_post_type('testimonial', 9);
+    ob_start(); // 👈
 
     if ($data->have_posts()) {
     ?>
@@ -65,6 +67,8 @@ function ev_page_testimonials_shortcode()
         </section>
     <?php
         wp_reset_postdata();
+        return ob_get_clean(); // 👈 SIEMPRE return
+
     } else {
     ?>
         <section class="testimonials-section py-5" id="testimonios">
@@ -73,7 +77,11 @@ function ev_page_testimonials_shortcode()
             </div>
         </section>
     <?php
+
+    wp_reset_postdata();
+    return ob_get_clean(); // 👈 SIEMPRE return
     }
+
 }
 
-add_shortcode('ev-testimonials', 'ev_page_testimonials_shortcode');
+add_shortcode('ev-testimonialss', 'ev_page_testimonials_shortcode');
