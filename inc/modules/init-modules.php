@@ -13,7 +13,6 @@ require_once $modules_path . '/woocommerce/hooks.php';              // Eventos c
 require_once $modules_path . '/woocommerce/filters.php';            // Eventos como post-pago
 
 require_once $modules_path . '/woocommerce/products-linker.php';   // Lógica de relación CPT ↔ productos
-require_once $modules_path . '/woocommerce/widgets.php';               
 
 
 // Emails

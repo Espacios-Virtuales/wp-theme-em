@@ -30,4 +30,5 @@ require_once __DIR__ . '/ev-objetos.php';
 require_once __DIR__ . '/ev-menu_botones.php';
 require_once __DIR__ . '/ev-seo-intro.php';
 
-
+// 🧩Tienda
+require_once __DIR__ . '/ev-product-links.php';
