@@ -19,7 +19,7 @@ get_header();
 <!-- Hero Section -->
 <?php $intro = get_field('introductions'); ?>
 
-<div class="container-fluid">
+<div class="container-fluid p-5 bg-dark text-center">
     <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
         <?php echo esc_html($intro["intro_1"]); ?>    </h1>
     <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
