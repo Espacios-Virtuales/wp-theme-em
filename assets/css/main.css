@@ -12115,7 +12115,7 @@ a {
   justify-content: center;
   gap: 2rem;
   padding: 3rem 1.5rem;
-  background: linear-gradient(180deg, white, #ffffff);
+  background: linear-gradient(180deg, #6800b5, #ffffff);
   border-radius: 1rem;
 }
 
@@ -12159,7 +12159,7 @@ a {
 .blog-posts .card .card-body .card-text {
   font-size: 1rem;
   line-height: 1.6;
-  background-color: color-mix(in srgb, var(--bs-secondary), black 15%);
+  background-color: color-mix(in srgb, #d3d3d3, black 15%);
   margin-bottom: 1.25rem;
 }
 
