@@ -1,31 +1,4 @@
 @charset "UTF-8";
-/* aquí sí */
-/* Exporta variables CSS */
-:root {
-  --bs-primary: #483d8b;
-  --bs-primary-opacity-8: rgba(72, 61, 139, 0.8);
-  --bs-secondary: rgb(75, 0, 130);
-  --bs-secondary-opacity-5: rgba(75, 0, 130, 0.5);
-  --bs-gray: #D3D3D3;
-  --bs-gray-light: #f5f5f5;
-  --bs-white: #ffffff;
-  --bs-red: rgba(255, 0, 0, 0.8);
-  --bs-blue: rgba(26, 26, 112, 0.8);
-  --bs-cyan: #87cefa;
-  --bs-gold: #ffd700;
-  --bs-emerald: #50C878;
-  --bs-blue-dark: #0f0c3e;
-  --bs-dark-bg: #181818;
-  --bs-text-light: #f8f9fa;
-  --bs-text-muted: #b3b3b3;
-  --bs-shadow-default: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  --bs-shadow-hover: 0px 6px 20px rgba(0, 0, 0, 0.3);
-  --bs-shadow-light: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  --bs-selector: #daa520;
-  --bs-spotify-green: #1DB954;
-  --bs-spotify-green-hover: #1AAE48;
-}
-
 /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -9763,6 +9736,33 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* aquí sí */
+/* Exporta variables CSS */
+:root {
+  --bs-primary: #483d8b;
+  --bs-primary-opacity-8: rgba(72, 61, 139, 0.8);
+  --bs-secondary: rgb(75, 0, 130);
+  --bs-secondary-opacity-5: rgba(75, 0, 130, 0.5);
+  --bs-gray: #D3D3D3;
+  --bs-gray-light: #f5f5f5;
+  --bs-white: #ffffff;
+  --bs-red: rgba(255, 0, 0, 0.8);
+  --bs-blue: rgba(26, 26, 112, 0.8);
+  --bs-cyan: #87cefa;
+  --bs-gold: #ffd700;
+  --bs-emerald: #50C878;
+  --bs-blue-dark: #0f0c3e;
+  --bs-dark-bg: #181818;
+  --bs-text-light: #f8f9fa;
+  --bs-text-muted: #b3b3b3;
+  --bs-shadow-default: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  --bs-shadow-hover: 0px 6px 20px rgba(0, 0, 0, 0.3);
+  --bs-shadow-light: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  --bs-selector: #daa520;
+  --bs-spotify-green: #1DB954;
+  --bs-spotify-green-hover: #1AAE48;
+}
+
 body {
   font-family: "Cormorant Garamond", serif !important;
   font-weight: 600;
