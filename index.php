@@ -25,7 +25,7 @@ get_header();
     ?>
     <!-- Hero Section -->
     <?php if (!empty($intro)) : ?>
-    <div class="container-fluid bg-primary text-center p-5 mb-4">
+    <div class="container-fluid bg-primary text-center p-5">
     <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
         <?php echo esc_html($intro['intro_1'] ?? ''); ?>
     </h1>
