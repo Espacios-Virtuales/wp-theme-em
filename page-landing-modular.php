@@ -40,28 +40,29 @@ $propuesta_de_valor = get_field('propuesta_valor');
 
       <!-- Carga de shortcodes personalizados directamente -->
       <div class="row justify-content-center">
-        <?php
-            echo do_shortcode('[ev-menu_botones]');
+          <?php
+            echo do_shortcode('[ev-botonera_anclas]');
           ?>
+
         <div class="col-md-10">
-          <div class="div">
+          <div class="terapias-section" id="terapias">
             <h3 class="text-primary mt-4 text-center">Terapias</h2>
             <?php echo do_shortcode('[ev-objetos]'); ?>
           </div>
           
-          <div>
+          <div class="cursos-section" id="cursos">
             <h3 class="text-primary mt-4 text-center">Cursos</h2>
             <?php echo do_shortcode('[ev-objetos tipo="course]'); ?>
           </div>
           
-          <div> 
+          <div class="programas-section" id="programas"> 
             <h3 class="text-primary mt-4 text-center">Programas</h2>
             <?php echo do_shortcode('[ev-objetos tipo="program"]'); ?>
           </div>
 
         </div>
         <?php
-            echo do_shortcode('[ev-menu_botones]');
+            echo do_shortcode('[ev-botonera_anclas]');
           ?>
       </div>
     

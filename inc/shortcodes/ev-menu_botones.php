@@ -29,3 +29,28 @@ function ev_menu_botones_shortcode($atts) {
 }
 
 add_shortcode('ev-menu_botones', 'ev_menu_botones_shortcode');
+
+function ev_botonera_anclas_shortcode($atts) {
+    $atts = shortcode_atts([
+        'class' => '', // Clases adicionales (opcional)
+    ], $atts, 'ev-botonera_anclas');
+
+    $output = '<nav class="ev-botonera-anclas d-flex justify-content-center flex-wrap gap-2 mb-4 ' . esc_attr($atts['class']) . '" data-aos="fade-up">';
+
+    $items = [
+        '#terapias'   => 'Terapias',
+        '#cursos'     => 'Cursos',
+        '#programas'  => 'Programas',
+    ];
+
+    foreach ($items as $href => $label) {
+        $output .= '<a href="' . esc_attr($href) . '" class="ev-boton-tab btn btn-outline-primary shadow-sm">';
+        $output .= esc_html($label);
+        $output .= '</a>';
+    }
+
+    $output .= '</nav>';
+    return $output;
+}
+add_shortcode('ev-botonera_anclas', 'ev_botonera_anclas_shortcode');
+
