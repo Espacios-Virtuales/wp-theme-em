@@ -17,8 +17,14 @@ get_header();
 ?>
 
 <!-- Hero Section -->
-<?php $intro = get_field('introductions'); ?>
+<?php
+// ID de la página asignada como "Posts page"
+$blog_page_id = get_option('page_for_posts');
 
+// Toma los campos ACF de esa página (si existe). Fallback a 'option' si lo usas.
+$intro = $blog_page_id ? get_field('introductions', $blog_page_id) : null;
+if (!$intro) { $intro = get_field('introductions', 'option'); } // opcional
+?>
 <!-- Hero Section -->
 <?php if (!empty($intro)) : ?>
 <div class="container-fluid bg-primary">
