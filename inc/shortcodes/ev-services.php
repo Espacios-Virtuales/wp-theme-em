@@ -99,16 +99,28 @@ function ev_services_list_shortcode()
                             <i class="<?php echo $icon_class; ?> text-primary display-4 mb-3"></i>
                             <h5 class="text-primary"><?php echo $title; ?></h5>
                             <p class="text-muted"><?php echo $description; ?></p>
-                            <?php if (!empty($video_link)): ?>
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-primary mt-3 open-video-modal"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#<?php echo $modal_id; ?>"
-                                    data-video="<?php echo $video_link; ?>">
-                                    Saber Más
-                                </button>
-                            <?php endif; ?>
+                            <div class="row">
+                                <div class="col">
+                                    <?php if (!empty($video_link)): ?>
+                                        <button
+                                            type="button"
+                                            class="btn btn-outline-primary mt-3 open-video-modal"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#<?php echo $modal_id; ?>"
+                                            data-video="<?php echo $video_link; ?>">
+                                            <i class="bi bi-play-circle-fill"></i>
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="col">
+                                    <a
+                                        class="btn btn-outline-primary mt-3 open-video-modal"
+                                        href="<?php echo $cta_link; ?>">
+                                        <i class="bi bi-arrow-right-circle-fill"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
