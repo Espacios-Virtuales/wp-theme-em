@@ -20,7 +20,7 @@
 		</div>
 	<?php } ?>
 
-	<div class="entry-content text-justify">
+	<div class="entry-content text-justify p-5">
 		<?php
 		the_content();
 
