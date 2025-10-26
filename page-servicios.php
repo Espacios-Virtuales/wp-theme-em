@@ -5,7 +5,7 @@ Template Name: Servicios
 
 get_header(); ?>
 
-<div class="page-servicios">
+<div class="page-servicios p-5">
 
     <!-- Hero Section -->
     <section class="hero-section bg-primary mb-5">
