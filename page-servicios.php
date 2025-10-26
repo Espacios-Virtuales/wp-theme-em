@@ -5,12 +5,15 @@ Template Name: Servicios
 
 get_header(); ?>
 
+<!-- Hero Section -->
+<section class="hero-section bg-primary mb-5">
+    <?php echo do_shortcode('[ev-services-hero]'); ?>
+</section>
+
+
 <div class="page-servicios p-5">
 
-    <!-- Hero Section -->
-    <section class="hero-section bg-primary mb-5">
-        <?php echo do_shortcode('[ev-services-hero]'); ?>
-    </section>
+
 
     <!-- Main Content -->
 
