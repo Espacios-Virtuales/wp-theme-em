@@ -34,7 +34,6 @@ $propuesta_de_valor = get_field('propuesta_valor');
     <?php if (is_shop()) : ?>
       <!-- Imagen representativa o header visual -->
       <div class="text-center mb-5">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/catalogo-espiritual.png" alt="Catálogo Escuela Mística" class="img-fluid rounded shadow-lg" loading="lazy" style="max-width: 600px;">
         <h2 class="text-gold mt-4">Catálogo de Productos</h2>
         <p class="text-muted">Explora nuestras terapias, cursos y programas especiales.</p>
       </div>
@@ -43,10 +42,9 @@ $propuesta_de_valor = get_field('propuesta_valor');
       <div class="row justify-content-center">
         <div class="col-md-10">
           <?php
+            echo do_shortcode('[ev-objetos]');
             echo do_shortcode('[ev-objetos tipo="course"]');
-            echo do_shortcode('[ev-objetos tipo="terapias"]');
-            echo do_shortcode('[ev-objetos tipo="programas"]');
-
+            echo do_shortcode('[ev-objetos tipo="program"]');
             echo do_shortcode('[ev-menu_botones]');
           ?>
         </div>
