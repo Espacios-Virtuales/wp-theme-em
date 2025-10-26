@@ -16,37 +16,32 @@ get_header();
 ?>
 <section>
     <?php
-    // ID de la página asignada como "Posts page"
     $blog_page_id = get_option('page_for_posts');
-
-    // Toma los campos ACF de esa página (si existe). Fallback a 'option' si lo usas.
-    $intro = $blog_page_id ? get_field('introductions', $blog_page_id) : null;
-    if (!$intro) { $intro = get_field('introductions', 'option'); } // opcional
+    $intro = $blog_page_id ? get_field('introductions', $blog_page_id) : get_field('introductions', 'option');
     ?>
-    <!-- Hero Section -->
     <?php if (!empty($intro)) : ?>
-    <div class="container-fluid bg-primary text-center p-5">
-    <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
-        <?php echo esc_html($intro['intro_1'] ?? ''); ?>
-    </h1>
-    <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
-        <?php echo esc_html($intro['intro_2'] ?? ''); ?>
-    </p>
-    </div>
+        <div class="container-fluid bg-primary text-center py-5 px-3" data-aos="zoom-in" data-aos-delay="100" style="perspective: 1000px;">
+            <h1 class="display-4 text-gold mb-3" data-aos="flip-down" data-aos-delay="200" style="transform-style: preserve-3d;">
+                <?php echo esc_html($intro['intro_1'] ?? ''); ?>
+            </h1>
+            <p class="lead text-white" data-aos="fade-up" data-aos-delay="300" style="max-width: 720px; margin: 0 auto;">
+                <?php echo esc_html($intro['intro_2'] ?? ''); ?>
+            </p>
+        </div>
     <?php endif; ?>
 </section>
-<main id="primary" class="site-main bg-primary" data-aos="fade-up">
-    <!-- Blog Posts Section -->
+
+<main id="primary" class="site-main bg-primary pt-4 pb-5" data-aos="fade-up">
     <section class="blog-posts">
-        <div class="container-fluid p-4">
-            <div class="row">
+        <div class="container-fluid px-4">
+            <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="row">
                         <?php if (have_posts()) :
                             $aos_delay = 0;
                             while (have_posts()) : the_post(); ?>
-                                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="<?php echo $aos_delay; ?>">
-                                    <article id="post-<?php the_ID(); ?>" <?php post_class('card border-0 overflow-hidden shadow-sm'); ?>>
+                                <div class="col-md-6 mb-5" data-aos="zoom-in-up" data-aos-delay="<?php echo $aos_delay; ?>" style="transform-style: preserve-3d;">
+                                    <article id="post-<?php the_ID(); ?>" <?php post_class('card border-0 overflow-hidden shadow-lg rounded-4'); ?> style="transition: transform 0.3s ease;">
                                         <figure class="position-relative m-0" style="aspect-ratio: 16 / 9;">
                                             <?php if (has_post_thumbnail()) : ?>
                                                 <?php the_post_thumbnail('large', ['class' => 'w-100 h-100 object-fit-cover']); ?>
@@ -55,17 +50,17 @@ get_header();
                                                 <h2 class="h5 fw-bold m-0"><?php the_title(); ?></h2>
                                             </figcaption>
                                         </figure>
-                                        <div class="card-body">
+                                        <div class="card-body bg-white text-dark">
                                             <p class="card-text">
                                                 <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
                                             </p>
-                                            <a href="<?php the_permalink(); ?>" class="btn btn-outline-dark rounded-pill mt-3 px-4 py-2">
+                                            <a href="<?php the_permalink(); ?>" class="btn btn-outline-primary rounded-pill mt-3 px-4 py-2">
                                                 <?php esc_html_e('Leer más', 'tiendavirtual'); ?>
                                             </a>
                                         </div>
                                     </article>
                                 </div>
-                                <?php $aos_delay += 100; // Incrementa delay para cada post ?>
+                                <?php $aos_delay += 100; ?>
                         <?php endwhile;
                         else :
                             echo '<p>' . esc_html__('No se encontraron publicaciones', 'tiendavirtual') . '</p>';
@@ -73,13 +68,13 @@ get_header();
                     </div>
                 </div>
 
-                <!-- Sidebar -->
-                <div class="col-md-4" data-aos="fade-left" data-aos-delay="200">
+                <div class="col-md-4 mt-5 mt-md-0" data-aos="fade-left" data-aos-delay="300">
                     <?php get_sidebar(); ?>
                 </div>
             </div>
         </div>
     </section>
 </main>
+
 
 <?php get_footer(); ?>
