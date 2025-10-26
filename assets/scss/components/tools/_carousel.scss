@@ -1,5 +1,5 @@
-@use "./globals" as *;   // MISMO directorio → "./globals"
-@use "../_bs" as *;      // (solo si usas mixins de Bootstrap aquí)
+@use "../globals" as *;   // MISMO directorio → "./globals"
+@use "../../bs" as *;      // (solo si usas mixins de Bootstrap aquí)
 
 /* Slider */
 .carousel {

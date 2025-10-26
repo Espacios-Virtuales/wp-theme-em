@@ -1,4 +1,4 @@
-@use "./globals" as *;   // trae $breakpoint-sm, $primary, etc.
+@use "../globals" as *;   // trae $breakpoint-sm, $primary, etc.
 
 /* Transition */
 .overlay {

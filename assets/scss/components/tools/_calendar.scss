@@ -1,4 +1,4 @@
-@use "./globals" as *;  // trae $text-muted, $primary, breakpoints, etc.
+@use "../globals" as *;  // trae $text-muted, $primary, breakpoints, etc.
 
 .calendar {
     background-color: map-get($theme-variables, "dark-bg");

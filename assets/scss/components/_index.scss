@@ -1,35 +1,18 @@
 /* assets/scss/components/_index.scss */
 @forward 'layout/index';
+@forward 'tools/index';
+@forward 'post/index';
+@forward 'shortcodes/index';
+@forward 'woocommerce/index';
+@forward 'landings/index.scss';
 
-@forward 'carousel';
-@forward 'transition';
-@forward 'about-us';
-@forward 'calendar';
 @forward 'hero';
 @forward 'support';
-@forward 'services';
 @forward 'testimonials';
 @forward 'community-membership';
 @forward 'contact';
 @forward 'anime';
-@forward 'modal_video.scss';
-@forward 'landing-modular';
+
+// @forward 'landing-modular';
 
 
-@forward 'woocommerce/ev-product-card';
-@forward 'woocommerce/ev-single-product';
-@forward 'woocommerce/ev-related-products';
-@forward 'woocommerce/ev-links';
-@forward 'woocommerce/ev-store';
-@forward 'woocommerce/ev-post-comments';
-@forward 'woocommerce/ev-notifications';
-@forward 'woocommerce/ev-cart';
-
-@forward 'post/index.scss';
-
-
-@forward 'shortcodes/_ev-seo-intro';
-@forward 'shortcodes/ev-about';
-@forward 'shortcodes/ev_services';
-@forward 'shortcodes/ev-objetos';
-@forward 'shortcodes/ev-menu_botones';

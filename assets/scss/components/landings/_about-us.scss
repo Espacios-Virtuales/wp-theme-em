@@ -1,4 +1,4 @@
-@use "./globals" as *;  // trae $text-muted, $primary, breakpoints, etc.
+@use "../globals" as *;  // trae $text-muted, $primary, breakpoints, etc.
 
 // Estilos globales para la sección
 .section-about {
