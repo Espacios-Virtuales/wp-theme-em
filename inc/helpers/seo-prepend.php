@@ -1,7 +1,7 @@
 <?php
-/**
- * Prepend del bloque SEO al principio del contenido si está habilitado.
- */
+/*
+  Prepend del bloque SEO al principio del contenido si está habilitado.
+ 
 add_filter('the_content', function($content){
   if (!is_singular()) return $content;
   if (!function_exists('get_field')) return $content;
@@ -14,3 +14,5 @@ add_filter('the_content', function($content){
   }
   return $content;
 }, 5); // prioridad baja para ir primero
+
+*/
