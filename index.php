@@ -36,7 +36,7 @@ get_header();
         <div class="container-fluid px-4">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="row">
+                    <div class="row align-items-stretch">
                         <?php if (have_posts()) :
                             $aos_delay = 0;
                             while (have_posts()) : the_post(); ?>
@@ -68,7 +68,7 @@ get_header();
                     </div>
                 </div>
 
-                <div class="col-md-4 mt-5 mt-md-0" data-aos="fade-left" data-aos-delay="300">
+                <div class="col-md-4 h-100" data-aos="fade-left" data-aos-delay="300">
                     <?php get_sidebar(); ?>
                 </div>
             </div>
