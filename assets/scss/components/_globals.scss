@@ -94,3 +94,10 @@ $theme-variables: map.merge(
   map.merge($theme-colors, $theme-shadows),
   $custom-color
 );
+
+$breakpoints: (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl
+);

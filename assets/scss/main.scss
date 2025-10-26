@@ -1,18 +1,9 @@
 /* 1) helpers internos de BS */
+/* assets/scss/main.scss */
 @import "bootstrap/scss/functions";
-
-/* 2) TUS overrides SASS (colores, maps, tipografías…) */
-@import "components/globals"; // aquí defines $primary y $theme-colors
-
-/* 3) Bootstrap compila con TUS valores */
-@import "bootstrap/scss/bootstrap";
-
-/* 4) Publicas CSS vars y utilidades propias DESPUÉS de BS */
-@import "utilities/css-vars";
+@import "components/globals";        // aquí defines $primary, $theme-colors, etc.
+@import "bootstrap/scss/bootstrap";  // Bootstrap compila con tus overrides
+@import "utilities/css-vars";        // si publicas :root --ev-* / --bs-*
 @import "utilities";
-
-/* 5) Componentes del tema */
-@import "components/index";
-
-/* (opcional) Parche post-BS para forzar primario en clases comunes */
-@import "utilities/bootstrap-overrides";
+@import "components/index";          // aquí forwardeas tus layouts, tools, etc.
+@import "utilities/bootstrap-overrides"; // parche post-BS

@@ -1,11 +1,8 @@
-@use "sass:color";
 @use "../globals" as *;  // trae $text-muted, $primary, breakpoints, etc.
 
 
 // Global Variables
-$primary: var(--bs-primary);
 $primary-light: rgba(72, 61, 139, 0.7);
-$blue-dark: var(--bs-blue-dark);
 $accent: #ffd700; // Gold
 $shadow-color: $shadow-hover;
 
@@ -24,7 +21,7 @@ $shadow-color: $shadow-hover;
         font-weight: bold;
         line-height: 1.2; // Espaciado entre líneas
         color: #fff;
-        text-shadow: 3px 3px $shadow-color; // Sombra para resaltar el texto
+        text-shadow: 3px 3px  $shadow-hover; // Sombra para resaltar el texto
     }
 
     // Paragraph Styles
@@ -71,7 +68,7 @@ $shadow-color: $shadow-hover;
 
     .card {
         border-radius: 15px;
-        box-shadow: 0 8px 20px $shadow-color;
+        box-shadow: 0 8px 20px  $shadow-hover;
         transition:
             transform 0.3s ease,
             box-shadow 0.3s ease;
@@ -138,7 +135,7 @@ $shadow-color: $shadow-hover;
 
     .card {
         border-radius: 15px;
-        box-shadow: 0 8px 20px $shadow-color;
+        box-shadow: 0 8px 20px  $shadow-hover;
         transition:
             transform 0.3s ease,
             box-shadow 0.3s ease;

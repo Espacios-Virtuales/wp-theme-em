@@ -1,0 +1,42 @@
+// assets/scss/utilities/_responsive.scss
+// Mixins de responsive independientes de Bootstrap (compatibles con 5.0.x)
+// Requiere que en components/_globals.scss exista el map: $breakpoints: (sm: ..., md: ..., lg: ..., xl: ...)
+
+@use "sass:map";
+@use "../components/globals" as g;
+
+// --- Helpers ---
+@function bp($name) {
+  @return map.get(g.$breakpoints, $name);
+}
+
+@function bp-max($name) {
+  // ancho máximo exclusivo, ej: 992px -> 991.98px
+  @return calc(bp($name) - 0.02px);
+}
+
+// --- Mixins base ---
+@mixin up($name) {
+  @media (min-width: bp($name)) { @content; }
+}
+
+@mixin down($name) {
+  @media (max-width: bp-max($name)) { @content; }
+}
+
+@mixin between($lower, $upper) {
+  @media (min-width: bp($lower)) and (max-width: bp-max($upper)) { @content; }
+}
+
+@mixin only($name) {
+  @if $name == sm { @include between(sm, md) { @content; } }
+  @else if $name == md { @include between(md, lg) { @content; } }
+  @else if $name == lg { @include between(lg, xl) { @content; } }
+  @else { @include up($name) { @content; } }
+}
+
+// --- Aliases tipo Bootstrap ---
+@mixin media-breakpoint-up($name)        { @include up($name) { @content; } }
+@mixin media-breakpoint-down($name)      { @include down($name) { @content; } }
+@mixin media-breakpoint-between($l, $u)  { @include between($l, $u) { @content; } }
+@mixin media-breakpoint-only($name)      { @include only($name) { @content; } }

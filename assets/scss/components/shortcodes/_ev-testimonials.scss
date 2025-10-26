@@ -1,6 +1,7 @@
+@use "../globals" as *;
 
 .testimonials {
-    background-color: var(--bs-blue-dark); 
+    background-color: $blue-dark; 
     padding: 80px 0;
     color: #fff;
 

@@ -2,7 +2,7 @@
 
 // Estilos globales para la sección
 .section-about {
-    background-color: var(--bs-secondary-opacity-5); // Fondo claro sutil
+    background-color: $secondary-opacity-5; // Fondo claro sutil
     padding: 80px 0;
 
     .title {

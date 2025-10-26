@@ -1,8 +1,8 @@
-/*** Footer ***/
-@use "../globals" as *;
+@use "../globals" as *;                   // <- tokens SASS (usa g.$...)
 
+/*** Footer ***/
 .site-footer {
-    background-color: var(--bs-primary);
+    background-color: $primary;
     color: white;
 
     .container {

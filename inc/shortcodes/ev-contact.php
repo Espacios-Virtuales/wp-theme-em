@@ -10,7 +10,7 @@ function ev_contact_shortcode()
         $data->the_post();
         ?>
         <section id="contact" class="bg-primary text-light py-5" data-aos="fade-up">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="title text-center mb-5">
                     <h1 class="h1_tsn text-gold" data-aos="fade-up" data-aos-delay="100">¡Únete a este viaje!</h1>
                 </div>

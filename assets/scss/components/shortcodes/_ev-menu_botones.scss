@@ -1,3 +1,5 @@
+@use "../globals" as *;
+
 
 .ev-botonera-footer {
     margin: 2rem 0;
@@ -17,7 +19,7 @@
   
       &.active {
         background-color: white;;
-        color: var(--bs-secondary);
+        color: $secondary;
 
         color: white;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
