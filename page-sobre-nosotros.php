@@ -25,7 +25,6 @@ get_header();
 
     <?php echo do_shortcode('[ev-testimonials]'); ?>
 
-
     <!-- Llamado a la Acción -->
     <?php
     $servicios_page = get_page_by_path('servicios'); 

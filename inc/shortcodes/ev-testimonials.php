@@ -84,4 +84,4 @@ function ev_page_testimonials_shortcode()
 
 }
 
-add_shortcode('ev-testimonialss', 'ev_page_testimonials_shortcode');
+add_shortcode('ev-testimonials', 'ev_page_testimonials_shortcode');
