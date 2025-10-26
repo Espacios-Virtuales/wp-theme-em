@@ -87,10 +87,3 @@
         </div>
       </nav>
     </header>
-
-    <?php
-    // Opcional: mover esto a front-page.php para mejor separación.
-    if (is_front_page()) {
-      echo do_shortcode('[ev-hero]');
-    }
-    ?>
