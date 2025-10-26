@@ -24,6 +24,20 @@ get_header(); ?>
         <?php echo do_shortcode('[ev-services-value]'); ?>
     </section>
 
+    <!-- contenido -->
+    <section class="value-section mb-5">
+        <?php
+        while (have_posts()) : the_post();
+            the_content(); // Aquí irán los shortcodes [ev-*]
+        endwhile;   
+        ?>
+    </section>
+
+    <!-- Propuesta de Valor -->
+    <section class="value-section mb-5">
+        <?php echo do_shortcode('[ev-seo_intro]'); ?>
+    </section>
+
     <!-- Llamado a la Acción -->
     <section class="cta-section bg-primary text-white py-5">
         <div class="container text-center">
