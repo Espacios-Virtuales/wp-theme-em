@@ -1,8 +1,6 @@
-@use "sass:color";
-@use "sass:math";
-@use "sass:meta";
 
-@use 'components/custom-variables' as *;   /* aquí sí */
+
+@use 'components/globals' as *;   /* aquí sí */
 
 /* Exporta variables CSS */
 :root {

@@ -2,6 +2,7 @@
 /* assets/scss/main.scss */
 /* 1) Bootstrap functions */
 /* 2) Utilities + Components del tema */
+/* Solo re-exporta tus variables del tema */
 /* aquí sí */
 /* Exporta variables CSS */
 :root {
