@@ -9,13 +9,14 @@ function ev_services_hero_shortcode()
 ?>
     <section class="services-hero py-5 text-center text-light" data-aos="fade-up">
         <div class="container">
+            <?php $intro = get_field('introductions'); ?>
             <h1 class="display-4 fw-bold mb-3 text-gold ml9" data-aos="fade-down" data-aos-delay="100">
                 <span class="text-wrapper">
-                    <span class="letters">Descubre Nuestros Servicios</span>
+                    <span class="letters"><?php echo esc_html($intro["intro_1"]); ?></span>
                 </span>
             </h1>
             <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">
-                Sanación, aprendizaje y transformación espiritual en un solo lugar.
+                <?php echo esc_html($intro["intro_2"]); ?>
             </p>
 
             <div class="row justify-content-center mt-5">

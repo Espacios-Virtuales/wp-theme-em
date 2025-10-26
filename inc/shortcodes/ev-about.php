@@ -10,12 +10,14 @@ function ev_about_hero_shortcode()
     <!-- Hero - Sobre Nosotros -->
     <section class="hero-about position-relative" data-aos="fade-up">
         <div class="container">
+            <?php $intro = get_field('introductions'); ?>
+
             <div class="row align-items-center">
                 <!-- Texto de Introducción -->
                 <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right" data-aos-delay="100">
-                    <h1 class="text-gold hero-title">Sobre Nosotros</h1>
+                    <h1 class="text-gold hero-title"><?php echo esc_html($intro["intro_1"]); ?></h1>
                     <p class="lead hero-description text-muted">
-                        Conoce nuestra historia, misión, valores y el propósito que nos inspira cada día.
+                        <?php echo esc_html($intro["intro_2"]); ?>
                     </p>
                 </div>
 
