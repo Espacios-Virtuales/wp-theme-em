@@ -1,8 +1,7 @@
 @charset "UTF-8";
-/* assets/scss/main.scss */
-/* 1) Necesario para helpers internos de BS */
-/* 2) Tus variables SASS ANTES (sobrescriben los !default) */
-/* 3) Bootstrap se compila con tus colores/tipografías */
+/* 1) helpers internos de BS */
+/* 2) TUS overrides SASS (colores, maps, tipografías…) */
+/* 3) Bootstrap compila con TUS valores */
 /*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -11101,7 +11100,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-/* 4) Luego exportas vars CSS y utilidades propias */
+/* 4) Publicas CSS vars y utilidades propias DESPUÉS de BS */
 :root {
   /* Mapea tus valores a variables Bootstrap (si realmente lo necesitas) */
   --bs-primary: #483d8b;
@@ -11154,7 +11153,7 @@ textarea.form-control-lg {
   --bs-spotify-green-hover: #1AAE48;
 }
 
-/* 5) Y finalmente tus componentes */
+/* 5) Componentes del tema */
 body {
   font-family: "Cormorant Garamond", serif !important;
   font-weight: 600;
@@ -25066,5 +25065,67 @@ body.woocommerce .comments-area {
 }
 
 /* assets/scss/components/_index.scss */
+/* (opcional) Parche post-BS para forzar primario en clases comunes */
+/* Text / BG / Border */
+.text-primary {
+  color: var(--bs-primary, #483d8b) !important;
+}
+
+.bg-primary {
+  background-color: var(--bs-primary, #483d8b) !important;
+}
+
+.border-primary {
+  border-color: var(--bs-primary, #483d8b) !important;
+}
+
+/* Links */
+a, .link-primary {
+  color: var(--bs-primary, #483d8b);
+}
+
+a:hover, .link-primary:hover {
+  color: color-mix(in srgb, var(--bs-primary, #483d8b) 85%, #000);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--bs-primary, #483d8b) !important;
+  border-color: var(--bs-primary, #483d8b) !important;
+  color: var(--bs-text-light, #f8f9fa) !important;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: color-mix(in srgb, var(--bs-primary, #483d8b) 90%, #000) !important;
+  border-color: color-mix(in srgb, var(--bs-primary, #483d8b) 90%, #000) !important;
+}
+
+/* Badges / Alerts / Pills / Pagination / Progress */
+.badge.bg-primary {
+  background-color: var(--bs-primary, #483d8b) !important;
+}
+
+.alert-primary {
+  --bs-alert-color: #000;
+  --bs-alert-bg: color-mix(in srgb, var(--bs-primary, #483d8b) 15%, #fff);
+  --bs-alert-border-color: var(--bs-primary, #483d8b);
+  color: var(--bs-alert-color) !important;
+  background-color: var(--bs-alert-bg) !important;
+  border-color: var(--bs-alert-border-color) !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: var(--bs-primary, #483d8b) !important;
+}
+
+.page-item.active .page-link {
+  background-color: var(--bs-primary, #483d8b) !important;
+  border-color: var(--bs-primary, #483d8b) !important;
+}
+
+.progress-bar {
+  background-color: var(--bs-primary, #483d8b) !important;
+}
 
 /*# sourceMappingURL=main.css.map */

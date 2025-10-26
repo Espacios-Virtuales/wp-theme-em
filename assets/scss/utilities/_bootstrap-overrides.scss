@@ -1,0 +1,47 @@
+@use "../components/globals" as g;
+
+/* Text / BG / Border */
+.text-primary   { color: var(--bs-primary, #{g.$primary}) !important; }
+.bg-primary     { background-color: var(--bs-primary, #{g.$primary}) !important; }
+.border-primary { border-color: var(--bs-primary, #{g.$primary}) !important; }
+
+/* Links */
+a, .link-primary { color: var(--bs-primary, #{g.$primary}); }
+a:hover, .link-primary:hover {
+  color: color-mix(in srgb, var(--bs-primary, #{g.$primary}) 85%, #000);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--bs-primary, #{g.$primary}) !important;
+  border-color: var(--bs-primary, #{g.$primary}) !important;
+  color: var(--bs-text-light, #{g.$text-light}) !important;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: color-mix(in srgb, var(--bs-primary, #{g.$primary}) 90%, #000) !important;
+  border-color: color-mix(in srgb, var(--bs-primary, #{g.$primary}) 90%, #000) !important;
+}
+
+/* Badges / Alerts / Pills / Pagination / Progress */
+.badge.bg-primary { background-color: var(--bs-primary, #{g.$primary}) !important; }
+
+.alert-primary {
+  --bs-alert-color: #000;
+  --bs-alert-bg: color-mix(in srgb, var(--bs-primary, #{g.$primary}) 15%, #fff);
+  --bs-alert-border-color: var(--bs-primary, #{g.$primary});
+  color: var(--bs-alert-color) !important;
+  background-color: var(--bs-alert-bg) !important;
+  border-color: var(--bs-alert-border-color) !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: var(--bs-primary, #{g.$primary}) !important;
+}
+
+.page-item.active .page-link {
+  background-color: var(--bs-primary, #{g.$primary}) !important;
+  border-color: var(--bs-primary, #{g.$primary}) !important;
+}
+
+.progress-bar { background-color: var(--bs-primary, #{g.$primary}) !important; }

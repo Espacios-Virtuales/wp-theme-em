@@ -153,7 +153,7 @@ function ev_servicios_shortcode()
         $intro = get_field('introductions');
     ?>
         <section class="servicios section-ev py-5 bg-dark-blue text-light " id="servicios-programas" data-aos="fade-up">
-            <div class="container">
+            <div class="container-fluid">
 
                 <!-- Carousel de Servicios -->
                 <div id="carousel-servicios" class="carousel slide overflow-hidden rounded" data-bs-ride="carousel">
@@ -223,7 +223,7 @@ function ev_page_testimonials_shortcode()
     if ($data->have_posts()) {
     ?>
         <section class="testimonials section-ev py-5" id="testimonios" data-aos="fade-up">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="title text-center mb-4">
                     <h2 class="text-gold" data-aos="fade-up" data-aos-delay="100">Testimonios</h2>
                 </div>
@@ -340,7 +340,7 @@ function ev_free_resources_shortcode()
             $calendly_link = $free_resources['calendly_link'];
     ?>
             <section class="free-resources section-ev py-5" id="free-resources">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="title text-center mb-4">
                         <h2 class="text-gold">Recursos Gratuitos</h2>
                         <p class="text-muted">Explora lo que podemos ofrecerte.</p>

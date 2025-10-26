@@ -1,17 +1,18 @@
-/* assets/scss/main.scss */
-
-/* 1) Necesario para helpers internos de BS */
+/* 1) helpers internos de BS */
 @import "bootstrap/scss/functions";
 
-/* 2) Tus variables SASS ANTES (sobrescriben los !default) */
-@import "components/globals";
+/* 2) TUS overrides SASS (colores, maps, tipografías…) */
+@import "components/globals"; // aquí defines $primary y $theme-colors
 
-/* 3) Bootstrap se compila con tus colores/tipografías */
+/* 3) Bootstrap compila con TUS valores */
 @import "bootstrap/scss/bootstrap";
 
-/* 4) Luego exportas vars CSS y utilidades propias */
+/* 4) Publicas CSS vars y utilidades propias DESPUÉS de BS */
 @import "utilities/css-vars";
 @import "utilities";
 
-/* 5) Y finalmente tus componentes */
+/* 5) Componentes del tema */
 @import "components/index";
+
+/* (opcional) Parche post-BS para forzar primario en clases comunes */
+@import "utilities/bootstrap-overrides";
