@@ -22,14 +22,14 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				tiendavirtual_posted_on();
-				tiendavirtual_posted_by();
+				blog_theme_posted_on();
+				blog_theme_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php tiendavirtual_post_thumbnail(); ?>
+	<?php blog_theme_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -50,7 +50,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'tiendavirtual' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'Escuela Mistica' ),
 				'after'  => '</div>',
 			)
 		);
@@ -58,6 +58,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php tiendavirtual_entry_footer(); ?>
+		<?php blog_theme_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
