@@ -1,0 +1,16 @@
+// utilities/_theme-helpers.scss
+// Helpers para leer colores y tokens desde el map unificado
+@use "sass:map";
+@use "../components/globals" as g;
+
+/**
+ * theme($key, $fallback: null)
+ * Retorna el valor desde g.$theme-variables para la clave $key.
+ * Si no existe, retorna $fallback (si se provee).
+ */
+@function theme($key, $fallback: null) {
+  @if map.has-key(g.$theme-variables, $key) {
+    @return map.get(g.$theme-variables, $key);
+  }
+  @return $fallback;
+}

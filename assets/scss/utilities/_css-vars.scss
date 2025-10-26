@@ -5,7 +5,7 @@
 // variables con prefijo --bs-* o propias --ev-*
 // ------------------------------------------------------------------
 
-@use "../components/globals" as *;
+@use "../components/globals";
 
 :root {
   /* Mapea tus valores a variables Bootstrap (si realmente lo necesitas) */

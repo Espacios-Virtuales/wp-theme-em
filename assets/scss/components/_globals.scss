@@ -9,7 +9,7 @@
 // Colores principales
 $primary: #483d8b;
 $primary-opacity-8: rgba(72, 61, 139, 0.8);
-$secondary: rgb(75, 0, 130); // si quieres alpha usa rgba() o rgb(75 0 130 / .5)
+$secondary: rgb(75, 0, 130);
 $secondary-opacity-5: rgba(75, 0, 130, 0.5);
 $gray: #d3d3d3;
 $gray-light: #f5f5f5;
@@ -49,7 +49,7 @@ $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 
 // --- Bootstrap maps -------------------------------------------------
-// Asegúrate de que $theme-colors tenga al menos las keys estándar para utilities.
+// Mantén las keys estándar para utilidades .text-*, .bg-*, etc.
 $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,
@@ -77,5 +77,20 @@ $theme-colors: (
   "text-muted": $text-muted
 );
 
-// Si prefieres extender el map original de Bootstrap (cuando exista), puedes hacer:
-// $theme-colors: map.merge($theme-colors, ("brand-emerald": $emerald));
+// Mapa de sombras y custom tokens adicionales
+$theme-shadows: (
+  "shadow-default": $shadow-default,
+  "shadow-hover": $shadow-hover,
+  "shadow-light": $shadow-light
+);
+
+$custom-color: (
+  "spotify-green": $spotify-green,
+  "spotify-green-hover": $spotify-green-hover
+);
+
+// Mapa final unificado disponible para helpers
+$theme-variables: map.merge(
+  map.merge($theme-colors, $theme-shadows),
+  $custom-color
+);
