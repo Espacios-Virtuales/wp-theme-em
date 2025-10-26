@@ -8,7 +8,7 @@
  */
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" ?>>
 	<header class="entry-header my-4">
 		<?php 
 			if(!is_front_page()){
