@@ -27,7 +27,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
     background: linear-gradient(180deg, lighten($primary, 10%), $primary-opacity-8);
   
     .card {

@@ -12112,7 +12112,6 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
   background: linear-gradient(180deg, #5a4dae, rgba(72, 61, 139, 0.8));
 }
 
