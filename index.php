@@ -35,7 +35,7 @@ get_header();
     </div>
     <?php endif; ?>
 </section>
-<main id="primary bg-primary" class="site-main">
+<main id="primary" class="site-main bg-primary" data-aos="fade-up">
     <!-- Blog Posts Section -->
     <section class="blog-posts">
         <div class="container-fluid p-4">
@@ -43,8 +43,9 @@ get_header();
                 <div class="col-md-8">
                     <div class="row">
                         <?php if (have_posts()) :
+                            $aos_delay = 0;
                             while (have_posts()) : the_post(); ?>
-                                <div class="col-md-6 mb-4">
+                                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="<?php echo $aos_delay; ?>">
                                     <article id="post-<?php the_ID(); ?>" <?php post_class('card border-0 overflow-hidden shadow-sm'); ?>>
                                         <figure class="position-relative m-0" style="aspect-ratio: 16 / 9;">
                                             <?php if (has_post_thumbnail()) : ?>
@@ -64,19 +65,21 @@ get_header();
                                         </div>
                                     </article>
                                 </div>
+                                <?php $aos_delay += 100; // Incrementa delay para cada post ?>
                         <?php endwhile;
                         else :
                             echo '<p>' . esc_html__('No se encontraron publicaciones', 'tiendavirtual') . '</p>';
                         endif; ?>
                     </div>
                 </div>
+
                 <!-- Sidebar -->
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="fade-left" data-aos-delay="200">
                     <?php get_sidebar(); ?>
                 </div>
             </div>
         </div>
     </section>
-</main><!-- #main -->
+</main>
 
 <?php get_footer(); ?>
