@@ -34,9 +34,9 @@ get_header();
 <main id="primary" class="site-main bg-primary pt-4 pb-5" data-aos="fade-up">
     <section class="blog-posts">
         <div class="container-fluid px-4">
-            <div class="row justify-content-center">
+            <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
-                    <div class="row align-items-stretch">
+                    <div class="row d-flex justify-content-center">
                         <?php if (have_posts()) :
                             $aos_delay = 0;
                             while (have_posts()) : the_post(); ?>
@@ -68,7 +68,7 @@ get_header();
                     </div>
                 </div>
 
-                <div class="col-md-4 h-100" data-aos="fade-left" data-aos-delay="300">
+                <div class="col-md-4" data-aos="fade-left" data-aos-delay="300">
                     <?php get_sidebar(); ?>
                 </div>
             </div>
