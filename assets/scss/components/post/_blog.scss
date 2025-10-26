@@ -29,8 +29,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    padding: 3rem 1.5rem;
-    background: linear-gradient(180deg, lighten($secondary, 10%), $white);
+    background: linear-gradient(180deg, lighten($secondary, 10%), $primary-opacity-8);
     border-radius: 1rem;
   
     .card {

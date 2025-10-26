@@ -12114,8 +12114,7 @@ a {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  padding: 3rem 1.5rem;
-  background: linear-gradient(180deg, #6800b5, #ffffff);
+  background: linear-gradient(180deg, #6800b5, rgba(72, 61, 139, 0.8));
   border-radius: 1rem;
 }
 
