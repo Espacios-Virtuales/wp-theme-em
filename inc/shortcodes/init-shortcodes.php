@@ -23,7 +23,7 @@ require_once __DIR__ . '/ev-contact.php';
 require_once __DIR__ . '/ev-events.php';
 
 // 💬 Testimonios
-require_once __DIR__ . '/ev-testimonios.php';
+require_once __DIR__ . '/ev-testimonials.php';
 
 // 🧩 Componentes compartidos (modales, video, etc.)
 require_once __DIR__ . '/ev-objetos.php';
