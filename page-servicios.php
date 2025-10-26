@@ -38,12 +38,16 @@ get_header(); ?>
 
 </div>
 
+<?php 
+$catalogo_page = get_page_by_path('catalogo'); 
+$catalogo_url = get_permalink($catalogo_page->ID); ?>
+
 <!-- Llamado a la Acción -->
 <section class="cta-section bg-primary text-white py-5">
     <div class="container text-center">
-        <h2 class="h3 mb-4">¿Listo para transformar tu vida?</h2>
-        <p class="mb-4">Reserva una consulta gratuita y descubre cómo podemos acompañarte en tu viaje espiritual.</p>
-        <a href="https://calendly.com/momistica" class="btn btn-secondary btn-lg text-white">Agenda tu Consulta</a>
+        <h2 class="h3 mb-4">¿Listo para empoderarte?</h2>
+        <p class="mb-4">Recorre el catalogo y descubre cómo podemos acompañarte en este camino.</p>
+        <a href="<?php echo esc_url($catalogo_url); ?>" class="btn btn-secondary btn-lg text-white">Catalogo</a>
     </div>
 </section>
 <?php get_footer(); ?>
