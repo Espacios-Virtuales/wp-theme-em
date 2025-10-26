@@ -30,13 +30,38 @@ $propuesta_de_valor = get_field('propuesta_valor');
 
 <section class="landing-content" data-aos="fade-up">
   <div class="container">
-    <?php
-      while (have_posts()) : the_post();
-        the_content(); // Aquí irán los shortcodes [ev-*]
-      endwhile;
-    ?>
+
+    <?php if (is_shop()) : ?>
+      <!-- Imagen representativa o header visual -->
+      <div class="text-center mb-5">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/catalogo-espiritual.png" alt="Catálogo Escuela Mística" class="img-fluid rounded shadow-lg" loading="lazy" style="max-width: 600px;">
+        <h2 class="text-gold mt-4">Catálogo de Productos</h2>
+        <p class="text-muted">Explora nuestras terapias, cursos y programas especiales.</p>
+      </div>
+
+      <!-- Carga de shortcodes personalizados directamente -->
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <?php
+            echo do_shortcode('[ev-objetos tipo="course"]');
+            echo do_shortcode('[ev-objetos tipo="terapias"]');
+            echo do_shortcode('[ev-objetos tipo="programas"]');
+
+            echo do_shortcode('[ev-menu_botones]');
+          ?>
+        </div>
+      </div>
+    
+    <?php else : ?>
+      <!-- Página normal -->
+      <?php while (have_posts()) : the_post(); ?>
+        <?php the_content(); ?>
+      <?php endwhile; ?>
+    <?php endif; ?>
+
   </div>
 </section>
+
 
 <section class="landing-intro" data-aos="fade-up">
   <div class="container">

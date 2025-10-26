@@ -13,9 +13,9 @@ function ev_objetos_shortcode($atts) {
 
   ob_start();
 
-  if ($query->have_posts()) :
+  if ($query->have_posts()) : 
 ?>
-    <div class="ev-objetos-grid">
+    <div class="ev-objetos-grid" id="<?php $atts['tipo']?>">
       <?php while ($query->have_posts()) : $query->the_post(); ?>
         <?php
           $post_id = get_the_ID();

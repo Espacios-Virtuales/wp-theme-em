@@ -106,31 +106,3 @@ add_filter('the_content', function ($content) {
   return $content;
 }, 1);
 
-add_action('template_redirect', function () {
-  if (is_shop()) {
-    remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-    remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-    remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
-    remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
-    remove_action('woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10);
-    remove_action('woocommerce_archive_description', 'woocommerce_product_archive_description', 10);
-
-    // 💥 Esto es el que importa:
-    remove_action('woocommerce_before_main_content', 'woocommerce_output_all_notices', 10);
-    remove_action('woocommerce_after_shop_loop', 'woocommerce_pagination', 10);
-    remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
-    remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
-
-    // Este es el que lanza el loop:
-    remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-    remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-
-    // 👇 Este es el que realmente imprime los productos
-    remove_action('woocommerce_after_main_content', 'woocommerce_output_related_products', 20);
-    remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-
-    // 💥 Finalmente esto bloquea el loop
-    remove_action('woocommerce_after_main_content', 'woocommerce_output_all_notices', 10);
-    remove_action('woocommerce_before_main_content', 'woocommerce_content', 10);
-  }
-});
