@@ -185,13 +185,13 @@
     }
 
     .purpose-card {
-        background: var(--bs-primary);
+        background: $primary;
         border-radius: 15px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         overflow: hidden;
 
         .card-header {
-            background: var(--bs-blue-dark); // Fondo dorado para el header
+            background: $blue-dark; // Fondo dorado para el header
             font-size: 1.5rem;
             font-weight: 600;
             padding: 1rem;
@@ -207,8 +207,8 @@
 
         &:hover {
             transform: scale(1.05);
-            box-shadow: var(--bs-secondary-opacity-5);
-            background: var(--bs-primary-opacity-8);
+            box-shadow: $secondary-opacity-5;
+            background: $primary-opacity-8;
         }
     }
 
@@ -344,12 +344,12 @@
 .values-section {
     .card {
         background-color: #fff;
-        border: 1px solid var(--bs-primary-opacity-8);
+        border: 1px solid $primary-opacity-8;
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
         height: 160px;
 
         &:hover {
-            background-color: var(--bs-secondary-opacity-5);
+            background-color: $secondary-opacity-5;
             color: var(--primary);
         }
 

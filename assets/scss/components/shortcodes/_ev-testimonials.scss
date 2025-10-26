@@ -1,7 +1,7 @@
 @use "../globals" as *;
 
 .testimonials {
-    background-color: $blue-dark; 
+    background: linear-gradient(135deg, rgb(28, 28, 60), rgb(59, 44, 109));
     padding: 80px 0;
     color: #fff;
 

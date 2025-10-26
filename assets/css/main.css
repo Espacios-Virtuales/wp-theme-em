@@ -13046,7 +13046,7 @@ a {
 }
 
 .testimonials {
-  background-color: #0f0c3e;
+  background: linear-gradient(135deg, rgb(28, 28, 60), rgb(59, 44, 109));
   padding: 80px 0;
   color: #fff;
 }
@@ -14491,14 +14491,14 @@ body.woocommerce .comments-area {
 }
 
 .purpose-section .purpose-card {
-  background: var(--bs-primary);
+  background: #483d8b;
   border-radius: 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
 }
 
 .purpose-section .purpose-card .card-header {
-  background: var(--bs-blue-dark);
+  background: #0f0c3e;
   font-size: 1.5rem;
   font-weight: 600;
   padding: 1rem;
@@ -14514,8 +14514,8 @@ body.woocommerce .comments-area {
 
 .purpose-section .purpose-card:hover {
   transform: scale(1.05);
-  box-shadow: var(--bs-secondary-opacity-5);
-  background: var(--bs-primary-opacity-8);
+  box-shadow: rgba(75, 0, 130, 0.5);
+  background: rgba(72, 61, 139, 0.8);
 }
 
 @media (max-width: 768px) {
@@ -14651,13 +14651,13 @@ body.woocommerce .comments-area {
 }
 .values-section .card {
   background-color: #fff;
-  border: 1px solid var(--bs-primary-opacity-8);
+  border: 1px solid rgba(72, 61, 139, 0.8);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   height: 160px;
 }
 
 .values-section .card:hover {
-  background-color: var(--bs-secondary-opacity-5);
+  background-color: rgba(75, 0, 130, 0.5);
   color: var(--primary);
 }
 
