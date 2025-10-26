@@ -12091,8 +12091,6 @@ a {
 /* assets/scss/components/post/_blog.scss */
 /** Blog Hero **/
 .hero {
-  background: linear-gradient(135deg, #f9f9f9, #bababa);
-  color: #483d8b;
   padding: 4rem 2rem;
   text-align: center;
   border-radius: 1rem;
@@ -12101,14 +12099,12 @@ a {
 
 .hero .entry-title {
   font-size: 3.5rem;
-  color: #483d8b;
   font-weight: bold;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .hero .lead {
   font-size: 1.25rem;
-  color: rgb(75, 0, 130);
   margin-top: 1rem;
 }
 

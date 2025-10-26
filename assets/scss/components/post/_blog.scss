@@ -5,8 +5,6 @@
 
 /** Blog Hero **/
 .hero {
-    background: linear-gradient(135deg, lighten($gray, 15%), darken($gray, 10%));
-    color: $primary;
     padding: 4rem 2rem;
     text-align: center;
     border-radius: 1rem;
@@ -14,18 +12,16 @@
   
     .entry-title {
       font-size: 3.5rem;
-      color: $primary;
       font-weight: bold;
       text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     }
   
     .lead {
       font-size: 1.25rem;
-      color: $secondary;
       margin-top: 1rem;
     }
   }
-  
+
   
   /** Blog Posts **/
   .blog-posts {
