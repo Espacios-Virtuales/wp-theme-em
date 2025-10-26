@@ -108,7 +108,7 @@ function ev_services_list_shortcode()
                                             data-bs-toggle="modal"
                                             data-bs-target="#<?php echo $modal_id; ?>"
                                             data-video="<?php echo $video_link; ?>">
-                                            <i class="bi bi-play-circle-fill display-4"></i>
+                                            <i class="bi bi-play-circle-fill display-5"></i>
                                         </button>
                                     <?php endif; ?>
                                 </div>
@@ -116,7 +116,7 @@ function ev_services_list_shortcode()
                                     <a
                                         class="btn btn-outline-primary mt-3 open-video-modal round-circle"
                                         href="<?php echo $cta_link; ?>">
-                                        <i class="bi bi-arrow-right-circle-fill display-4"></i>
+                                        <i class="bi bi-arrow-right-circle-fill display-5"></i>
                                     </a>
                                 </div>
                             </div>
