@@ -1,4 +1,14 @@
 /* assets/scss/main.scss */
-@use 'bootstrap/scss/bootstrap' as *; // utilidades globales
-@use 'utilities';
-@use 'components/index' as *;
+
+/* 1) Bootstrap functions */
+@import "bootstrap/scss/functions";
+
+/* 2) Overrides ANTES de Bootstrap */
+@import "components/custom-variables";
+
+/* 3) Bootstrap completo */
+@import "bootstrap/scss/bootstrap";
+
+/* 4) Utilities + Components del tema */
+@import "utilities";
+@import "components/index";
