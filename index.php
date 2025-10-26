@@ -16,20 +16,18 @@
 get_header();
 ?>
 
+<!-- Hero Section -->
+<?php $intro = get_field('introductions'); ?>
+
+<div class="container-fluid">
+    <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
+        <?php echo esc_html($intro["intro_1"]); ?>    </h1>
+    <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
+        <?php echo esc_html($intro["intro_2"]); ?>
+    </p>
+</div>
+
 <main id="primary" class="site-main">
-    <!-- Hero Section -->
-    <section class="hero text-center py-5 mb-4 bg-primary" data-aos="fade-up">
-        <div class="container">
-            <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
-                <?php esc_html_e('Explora el blog de Escuela Mistica', 'tiendavirtual'); ?>
-            </h1>
-            <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
-                <?php esc_html_e('Mantente conectado con lo último en crecimiento personal y espiritualidad.', 'tiendavirtual'); ?>
-            </p>
-        </div>
-    </section>
-
-
     <!-- Blog Posts Section -->
     <section class="blog-posts">
         <div class="container-fluid p-4">
