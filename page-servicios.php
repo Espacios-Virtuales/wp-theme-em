@@ -8,7 +8,7 @@ get_header(); ?>
 <div class="page-servicios">
 
     <!-- Hero Section -->
-    <section class="hero-section mb-5">
+    <section class="hero-section bg-primary mb-5">
         <?php echo do_shortcode('[ev-services-hero]'); ?>
     </section>
 
