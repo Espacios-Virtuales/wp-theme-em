@@ -89,26 +89,20 @@ add_action('woocommerce_after_main_content', function() {
 }, 50);
 
 
-// Usar nuestro template para la URL de la tienda real (is_shop)
+// Forzar template personalizado en /tienda
 add_filter('template_include', function ($template) {
   if (is_shop()) {
     $custom = get_stylesheet_directory() . '/page-landing-modular.php';
-    if (file_exists($custom)) {
-      return $custom; // usamos nuestro template en la misma ruta
-    }
+    if (file_exists($custom)) return $custom;
   }
   return $template;
 }, 99);
 
-add_action('template_redirect', function () {
-  if (is_shop()) {
-      // Evita que WooCommerce cargue su loop de productos
-      remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-      remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-      remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
-      remove_action('woocommerce_after_shop_loop', 'woocommerce_pagination', 10);
-      remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
-      remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
-      remove_action('woocommerce_after_main_content', 'woocommerce_output_related_products', 20);
+// Bloquea contenido automático de WooCommerce
+add_filter('the_content', function ($content) {
+  if (is_shop() && is_main_query()) {
+    return ''; // Previene que Woo agregue su loop
   }
-});
+  return $content;
+}, 1);
+
