@@ -35,7 +35,7 @@
    </main><!-- #main -->   
 <?php
 
-$abou_us_page = get_page_by_path('catalogo'); 
+$abou_us_page = get_page_by_path('sobre-nosotros'); 
 $about_us_url = get_permalink($abou_us_page->ID); ?>
 
 <!-- Llamado a la Acción -->
@@ -46,6 +46,7 @@ $about_us_url = get_permalink($abou_us_page->ID); ?>
         <a href="<?php echo esc_url($about_us_url); ?>" class="btn btn-secondary btn-lg text-white">Sobre Nosotros</a>
     </div>
 </section>
- 
- get_footer();
+
+<?php
+get_footer();
  
