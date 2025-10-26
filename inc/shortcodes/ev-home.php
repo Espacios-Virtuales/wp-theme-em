@@ -80,7 +80,7 @@ function ev_about_shortcode()
         $data->the_post(); ?>
 
         <section id="about" class="about section-ev py-5 mb-5" data-aos="fade-up">
-            <div class="container shadow-custom rounded p-4 text-center">
+            <div class="container-fluid shadow-custom rounded p-4 text-center">
                 <?php $intro = get_field('introductions'); ?>
                 <h2 class="display-6" data-aos="fade-up" data-aos-delay="100">
                     <?php echo esc_html($intro["intro_1"]); ?>
