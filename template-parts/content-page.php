@@ -4,17 +4,14 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package blog-theme
+ * @package tiendavirtual
  */
 
 ?>
-<article id="post-<?php the_ID(); ?>" ?>>
-	<header class="entry-header my-4">
-		<?php 
-			if(!is_front_page()){
-				the_title( '<h1 class="entry-title h1_tsn text-center">', '</h1>' );
-			}
-		?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<header class="entry-header">
+		<?php the_title( '<h1 class="entry-title h1_tsn text-center">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
 	<?php if (has_post_thumbnail()) { ?>

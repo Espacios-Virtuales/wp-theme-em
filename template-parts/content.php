@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package blog-theme
+ * @package tiendavirtual
  */
 
 ?>
@@ -13,24 +13,23 @@
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			the_title( '<h1 class="entry-title h1_tsn text-center">', '</h1>' );;
 		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h2 class="entry-title h1_tsn text-center"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) :
 			?>
 			<div class="entry-meta">
 				<?php
-				blog_theme_posted_on();
-				blog_theme_posted_by();
+				tiendavirtual_posted_on();
+				tiendavirtual_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
-	<div class="d-flex justify-content-center">
-		<?php the_post_thumbnail('small', array('class' => 'img-fluid w-50 ')); ?>
-	</div>
+
+	<?php tiendavirtual_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -38,7 +37,7 @@
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'blog-theme' ),
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'tiendavirtual' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -51,7 +50,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'blog-theme' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'tiendavirtual' ),
 				'after'  => '</div>',
 			)
 		);
@@ -59,6 +58,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php blog_theme_entry_footer(); ?>
+		<?php tiendavirtual_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
