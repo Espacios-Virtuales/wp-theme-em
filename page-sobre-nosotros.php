@@ -20,9 +20,11 @@ get_header();
     <!-- Shortcode: Valores -->
     <?php echo do_shortcode('[ev-about-values]'); ?>
    
-
     <!-- Shortcode: Identidad -->
     <?php echo do_shortcode('[ev-about-identity]'); ?>
+
+    <?php echo do_shortcode('[ev-testimonials]'); ?>
+
 
     <!-- Llamado a la Acción -->
     <?php
