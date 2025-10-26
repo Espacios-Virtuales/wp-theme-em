@@ -18,12 +18,12 @@ get_header();
 
 <main id="primary" class="site-main">
     <!-- Hero Section -->
-    <section class="hero text-center py-5 mb-4 bg-light" data-aos="fade-up">
+    <section class="hero text-center py-5 mb-4 bg-primary" data-aos="fade-up">
         <div class="container">
-            <h1 class="display-4 entry-title ml3" data-aos="fade-down" data-aos-delay="100">
+            <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
                 <?php esc_html_e('Explora el blog de Escuela Mistica', 'tiendavirtual'); ?>
             </h1>
-            <p class="lead" data-aos="fade-up" data-aos-delay="200">
+            <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
                 <?php esc_html_e('Mantente conectado con lo último en crecimiento personal y espiritualidad.', 'tiendavirtual'); ?>
             </p>
         </div>
