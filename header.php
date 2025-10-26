@@ -38,7 +38,7 @@
 
     <!-- Site Header -->
     <header id="masthead" class="site-header">
-      <div class="container py-2 bg-primary">
+      <div class="container-fluid py-2">
         <div class="row align-items-center">
           <div class="col d-flex justify-content-center justify-content-md-start site-header__logo">
             <?php the_custom_logo(); ?>
