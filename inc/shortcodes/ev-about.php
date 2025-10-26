@@ -6,21 +6,21 @@
 
 function ev_about_hero_shortcode()
 {
-    ?>
+?>
     <!-- Hero - Sobre Nosotros -->
-    <section class="hero-about position-relative">
+    <section class="hero-about position-relative" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Texto de Introducción -->
-                <div class="col-lg-6 text-center text-lg-start">
-                    <h1 class="text-gold hero-title text-gold">Sobre Nosotros</h1>
+                <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right" data-aos-delay="100">
+                    <h1 class="text-gold hero-title">Sobre Nosotros</h1>
                     <p class="lead hero-description text-muted">
                         Conoce nuestra historia, misión, valores y el propósito que nos inspira cada día.
                     </p>
                 </div>
 
                 <!-- Imagen -->
-                <div class="col-lg-6 text-center">
+                <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="200">
                     <?php if (has_post_thumbnail()) { ?>
                         <div class="hero-image-container">
                             <?php the_post_thumbnail('full', array('class' => 'hero-image')); ?>

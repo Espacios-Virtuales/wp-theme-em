@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The main template file
  *
@@ -17,15 +18,20 @@ get_header();
 
 <main id="primary" class="site-main">
     <!-- Hero Section -->
-    <section class="hero text-center py-5 mb-4 bg-light">
+    <section class="hero text-center py-5 mb-4 bg-light" data-aos="fade-up">
         <div class="container">
-            <h1 class="display-4 entry-title ml3"><?php esc_html_e('Explora el blog de Escuela Mistica', 'tiendavirtual'); ?></h1>
-            <p class="lead"><?php esc_html_e('Mantente conectado con lo último en crecimiento personal y espiritualidad.', 'tiendavirtual'); ?></p>
+            <h1 class="display-4 entry-title ml3" data-aos="fade-down" data-aos-delay="100">
+                <?php esc_html_e('Explora el blog de Escuela Mistica', 'tiendavirtual'); ?>
+            </h1>
+            <p class="lead" data-aos="fade-up" data-aos-delay="200">
+                <?php esc_html_e('Mantente conectado con lo último en crecimiento personal y espiritualidad.', 'tiendavirtual'); ?>
+            </p>
         </div>
     </section>
 
-     <!-- Blog Posts Section -->
-     <section class="blog-posts">
+
+    <!-- Blog Posts Section -->
+    <section class="blog-posts">
         <div class="container-fluid p-4">
             <div class="row">
                 <!-- Sidebar -->
@@ -72,7 +78,7 @@ get_header();
                                         </div>
                                     </article>
                                 </div>
-                            <?php endwhile;
+                        <?php endwhile;
                         else :
                             echo '<p>' . esc_html__('No se encontraron publicaciones', 'tiendavirtual') . '</p>';
                         endif; ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 // Landing Servicios 
@@ -7,24 +7,27 @@ function ev_services_hero_shortcode()
 {
     ob_start();
 ?>
-    <section class="services-hero py-5 text-center text-light">
+    <section class="services-hero py-5 text-center text-light" data-aos="fade-up">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-3 text-gold ml9">
+            <h1 class="display-4 fw-bold mb-3 text-gold ml9" data-aos="fade-down" data-aos-delay="100">
                 <span class="text-wrapper">
                     <span class="letters">Descubre Nuestros Servicios</span>
                 </span>
             </h1>
-            <p class="lead mb-4">Sanación, aprendizaje y transformación espiritual en un solo lugar.</p>
-            <div class="row justify-content-center">
-                <div class="col-4 col-md-2">
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">
+                Sanación, aprendizaje y transformación espiritual en un solo lugar.
+            </p>
+
+            <div class="row justify-content-center mt-5">
+                <div class="col-4 col-md-2" data-aos="zoom-in" data-aos-delay="300">
                     <i class="bi bi-heart-fill text-warning display-4"></i>
                     <p class="mt-2">Terapias</p>
                 </div>
-                <div class="col-4 col-md-2">
+                <div class="col-4 col-md-2" data-aos="zoom-in" data-aos-delay="400">
                     <i class="bi bi-mortarboard-fill text-warning display-4"></i>
                     <p class="mt-2">Cursos</p>
                 </div>
-                <div class="col-4 col-md-2">
+                <div class="col-4 col-md-2" data-aos="zoom-in" data-aos-delay="500">
                     <i class="bi bi-arrow-repeat text-warning display-4"></i>
                     <p class="mt-2">Programas</p>
                 </div>
@@ -46,7 +49,7 @@ function ev_services_value_shortcode()
         <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($values['values_descriptions']); ?></p>
         <div class="row">
             <?php foreach ($values['values_items'] as $item): ?>
-                <div class="col-md-4 mb-4" >
+                <div class="col-md-4 mb-4">
                     <div class="card shadow-lg border-0 h-100" data-aos="fade-up" data-aos-delay="100">
                         <div class="card-body text-center">
                             <i class="<?php echo esc_attr($item['value_icon']); ?> text-primary display-4 mb-3"></i>
@@ -71,7 +74,7 @@ function ev_services_list_shortcode()
     if (!$services_group || empty($services_group['services']) || !is_array($services_group['services'])) {
         return '<p class="text-muted text-center">No se encontraron servicios disponibles.</p>';
     }
-    ?>
+?>
     <div class="services-list py-5">
         <h2 class="text-center text-primary mb-4" data-aos="fade-up">Nuestros Servicios</h2>
         <div class="row">
@@ -142,7 +145,7 @@ function ev_services_list_shortcode()
             <?php endforeach; ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('ev-services-list', 'ev_services_list_shortcode');
