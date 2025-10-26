@@ -1,16 +1,19 @@
 <?php
 /**
- * Prepend del bloque SEO al principio del contenido si está habilitado.
+ * Append del bloque SEO al final del contenido si está habilitado.
  */
-add_filter('the_content', function($content){
-  if (!is_singular()) return $content;
-  if (!function_exists('get_field')) return $content;
+add_filter('the_content', function($content) {
+  // Solo en entradas/páginas singulares con ACF activo
+  if (!is_singular() || !function_exists('get_field')) {
+    return $content;
+  }
 
-  // Solo si está activo y aún no se insertó manualmente
+  // Si el campo ACF 'seo_enabled' está activo y no se insertó manualmente
   if (get_field('seo_enabled') && strpos($content, '[ev-seo_intro]') === false) {
     $intro = do_shortcode('[ev-seo_intro]');
-    // Lo anteponemos
-    return $intro . "\n\n" . $content;
+    // Lo agregamos al final del contenido
+    return $content . "\n\n" . $intro;
   }
+
   return $content;
-}, 5); // prioridad baja para ir primero
+}, 999); // prioridad alta → se ejecuta al final
