@@ -19,13 +19,17 @@ get_header();
 <!-- Hero Section -->
 <?php $intro = get_field('introductions'); ?>
 
+<!-- Hero Section -->
+<?php if (!empty($intro)) : ?>
 <div class="container-fluid bg-primary">
-    <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
-        <?php echo esc_html($intro["intro_1"]); ?>  </h1>
-    <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
-        <?php echo esc_html($intro["intro_2"]); ?>
-    </p>
+  <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
+    <?php echo esc_html($intro['intro_1'] ?? ''); ?>
+  </h1>
+  <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
+    <?php echo esc_html($intro['intro_2'] ?? ''); ?>
+  </p>
 </div>
+<?php endif; ?>
 
 <main id="primary" class="site-main">
     <!-- Blog Posts Section -->
