@@ -175,6 +175,8 @@ a {
     }
 }
 
+.entry-content { max-width: 100% !important;}
+
 /* Estilos adicionales para los enlaces (quitar marcas de haber sido utilizado) */
 .entry-content a {
     text-decoration: none !important; // Quitar subrayado
