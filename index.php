@@ -27,7 +27,7 @@ if (!$intro) { $intro = get_field('introductions', 'option'); } // opcional
 ?>
 <!-- Hero Section -->
 <?php if (!empty($intro)) : ?>
-<div class="container-fluid bg-primary">
+<div class="container-fluid bg-primary text-center p-5 mb-4">
   <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
     <?php echo esc_html($intro['intro_1'] ?? ''); ?>
   </h1>
@@ -37,7 +37,7 @@ if (!$intro) { $intro = get_field('introductions', 'option'); } // opcional
 </div>
 <?php endif; ?>
 
-<main id="primary" class="site-main">
+<main id="primary bg-primary" class="site-main">
     <!-- Blog Posts Section -->
     <section class="blog-posts">
         <div class="container-fluid p-4">
