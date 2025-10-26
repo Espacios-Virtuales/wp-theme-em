@@ -58,8 +58,8 @@ add_filter('script_loader_tag', function($tag, $handle) {
 // Admin Enque
 function enqueue_admin_bootstrap() {
     wp_enqueue_style('cpt-style', plugin_dir_url(__FILE__) . 'assets/css/admin/style.css', array(), '1.0.0');
-    wp_enqueue_style('bootstrap-css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
-    wp_enqueue_script('bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js', array('jquery'), null, true);
+    wp_enqueue_style( 'blog-theme-main', get_template_directory_uri(). '/assets/scss/main.css', array(), _S_VERSION );
+    wp_enqueue_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js', array('jquery'), '5.0.2', true );
 }
 add_action('admin_enqueue_scripts', 'enqueue_admin_bootstrap');
 
