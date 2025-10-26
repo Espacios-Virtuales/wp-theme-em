@@ -3,12 +3,11 @@
 /* 1) Bootstrap functions */
 @import "bootstrap/scss/functions";
 
-/* 2) Overrides ANTES de Bootstrap */
-@import "components/custom-variables";
+/* 2) Utilities + Components del tema */
+@import "utilities";
 
 /* 3) Bootstrap completo */
 @import "bootstrap/scss/bootstrap";
 
-/* 4) Utilities + Components del tema */
-@import "utilities";
+
 @import "components/index";
