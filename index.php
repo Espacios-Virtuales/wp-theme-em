@@ -19,7 +19,7 @@ get_header();
 <!-- Hero Section -->
 <?php $intro = get_field('introductions'); ?>
 
-<div class="container-fluid p-5 bg-primary">
+<div class="container-fluid bg-primary">
     <h1 class="display-4 text-gold" data-aos="fade-down" data-aos-delay="100">
         <?php echo esc_html($intro["intro_1"]); ?>  </h1>
     <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">
@@ -44,16 +44,6 @@ get_header();
 
                 <div class="col-md-8">
                     <div class="row">
-                        <?php if (!empty($intro['intro_1'])) : ?>
-                            <div class="col-12 mb-4">
-                                <div class="text-center px-3">
-                                    <p class="lead text-muted">
-                                        <?php echo wp_kses_post($intro['intro_1']); ?>
-                                    </p>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-
                         <?php if (have_posts()) :
                             while (have_posts()) : the_post(); ?>
                                 <div class="col-md-6 mb-4">

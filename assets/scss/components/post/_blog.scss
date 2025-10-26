@@ -7,7 +7,6 @@
 .hero {
     padding: 4rem 2rem;
     text-align: center;
-    border-radius: 1rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   
     .entry-title {
@@ -29,8 +28,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    background: linear-gradient(180deg, lighten($secondary, 10%), $primary-opacity-8);
-    border-radius: 1rem;
+    background: linear-gradient(180deg, lighten($primary, 10%), $primary-opacity-8);
   
     .card {
       background-color: #fff;
