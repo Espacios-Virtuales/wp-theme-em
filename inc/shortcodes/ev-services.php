@@ -104,19 +104,19 @@ function ev_services_list_shortcode()
                                     <?php if (!empty($video_link)): ?>
                                         <button
                                             type="button"
-                                            class="btn btn-outline-primary mt-3 open-video-modal"
+                                            class="btn btn-outline-primary mt-3 open-video-modal round-circle"
                                             data-bs-toggle="modal"
                                             data-bs-target="#<?php echo $modal_id; ?>"
                                             data-video="<?php echo $video_link; ?>">
-                                            <i class="bi bi-play-circle-fill"></i>
+                                            <i class="bi bi-play-circle-fill display-4"></i>
                                         </button>
                                     <?php endif; ?>
                                 </div>
                                 <div class="col">
                                     <a
-                                        class="btn btn-outline-primary mt-3 open-video-modal"
+                                        class="btn btn-outline-primary mt-3 open-video-modal round-circle"
                                         href="<?php echo $cta_link; ?>">
-                                        <i class="bi bi-arrow-right-circle-fill"></i>
+                                        <i class="bi bi-arrow-right-circle-fill display-4"></i>
                                     </a>
                                 </div>
                             </div>
