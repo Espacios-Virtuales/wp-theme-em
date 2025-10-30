@@ -92,7 +92,7 @@ add_action('woocommerce_after_main_content', function() {
 // Forzar template personalizado en /tienda
 add_filter('template_include', function ($template) {
   if (is_shop()) {
-    $custom = get_stylesheet_directory() . '/page-landing-modular.php';
+    $custom = get_stylesheet_directory() . '/template/page-landing-modular.php';
     if (file_exists($custom)) return $custom;
   }
   return $template;
