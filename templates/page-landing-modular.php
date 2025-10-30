@@ -1,7 +1,26 @@
 <?php
 /**
  * Template Name: Landing Modular
- * Descripción: Hero + contenido CPT dinámico (descripción, objetivo, valor) + content con shortcodes.
+ * Description: Plantilla de aterrizaje flexible que combina un bloque Hero,
+ * contenido dinámico proveniente de CPTs (descripción, objetivo, valor)
+ * y secciones modulares renderizadas mediante shortcodes.
+ *
+ * Ideal para crear páginas de programas, cursos o experiencias formativas
+ * dentro del tema Escuela Mística, integrando diseño, propósito y funcionalidad.
+ *
+ * @link https://developer.wordpress.org/themes/template-files-section/page-template-files/
+ *
+ * @package Escuela_Mistica
+ * @subpackage Templates
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
 
 get_header();

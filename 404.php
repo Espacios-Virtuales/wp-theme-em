@@ -1,10 +1,28 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
+ * 404 Template (Page Not Found)
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ * Plantilla que se muestra cuando el contenido solicitado no existe
+ * o la URL no coincide con ningún recurso disponible.
  *
- * @package blog-theme
+ * Incluye mensajes de error personalizados, enlaces de retorno
+ * y un formulario de búsqueda para mejorar la experiencia del usuario.
+ *
+ * Compatible con el sistema de bloques Gutenberg y estructura modular del tema.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#404-not-found
+ *
+ * @package Escuela_Mistica
+ * @subpackage Templates
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
 
 get_header();

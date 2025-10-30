@@ -1,16 +1,28 @@
 <?php
 /**
- * The template for displaying all pages
+ * Page Template
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * Plantilla principal utilizada para mostrar las páginas estáticas
+ * dentro del tema Escuela Mística. Compatible con ACF y bloques Gutenberg.
+ *
+ * Sirve como plantilla base para todas las páginas por defecto,
+ * a menos que una plantilla específica haya sido asignada.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package blog-theme
+ * @package Escuela_Mistica
+ * @subpackage Templates
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
+
 
  get_header();
  ?>

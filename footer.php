@@ -1,9 +1,27 @@
 <?php
 /**
- * The template for displaying the footer
- * @package blog-theme
+ * Footer Template
+ *
+ * Contiene el cierre del contenedor principal del sitio y la estructura
+ * de pie de página del tema Escuela Mística. Incluye la llamada a `wp_footer()`
+ * necesaria para que los scripts globales y plugins funcionen correctamente.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package Escuela_Mistica
+ * @subpackage Core
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
 ?>
+
 
 <a href="https://wa.me/56956412047?text=Maureen,%20Me%20gustaria%20recibir%20información%20sobre%20los%20Servicios%20%20de%20Ecuela%20Mistica"
    class="whatsapp-button"

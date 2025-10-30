@@ -1,10 +1,26 @@
 <?php
 /**
- * blog-theme functions and definitions
+ * Theme Functions and Definitions
+ *
+ * Archivo principal de configuración del tema Escuela Mística.
+ * Define las funciones globales, soportes del tema, encolado de scripts/estilos
+ * y la carga de archivos del núcleo ubicados en `/inc/`.
+ *
+ * Compatible con WooCommerce, ACF y bloques Gutenberg.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package blog-theme
+ * @package Escuela_Mistica
+ * @subpackage Core
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
 
  if ( ! defined( '_S_VERSION' ) ) {

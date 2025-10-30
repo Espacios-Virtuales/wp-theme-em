@@ -1,10 +1,29 @@
 <?php
-
 /**
- * The header for our theme
- * @package blog-theme
+ * Header Template
+ *
+ * Contiene la estructura de la cabecera del tema Escuela Mística:
+ * todo el bloque <head> y la apertura del <body> hasta el contenedor principal de contenido.
+ *
+ * Incluye las llamadas a `wp_head()` y `wp_body_open()` necesarias
+ * para compatibilidad total con el ecosistema WordPress moderno.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package Escuela_Mistica
+ * @subpackage Core
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
 ?>
+
 <!doctype html>
 <html <?php language_attributes(); ?>>
 

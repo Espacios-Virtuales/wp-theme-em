@@ -1,11 +1,30 @@
 <?php
 /**
- * The template for displaying archive pages
+ * Archive Template
+ *
+ * Plantilla utilizada para mostrar los archivos de WordPress:
+ * categorías, etiquetas, autores, fechas o tipos de contenido personalizados.
+ *
+ * Forma parte del sistema jerárquico de plantillas de WordPress y actúa
+ * como contenedor de resultados cuando se listan múltiples entradas o CPTs.
+ *
+ * Compatible con ACF, bloques Gutenberg y estructura modular del tema Escuela Mística.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package blog-theme
+ * @package Escuela_Mistica
+ * @subpackage Templates
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
+
 
 get_header();
 ?>

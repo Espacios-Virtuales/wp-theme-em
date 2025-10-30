@@ -1,11 +1,28 @@
 <?php
 /**
- * The template for displaying search results pages
+ * Search Results Template
+ *
+ * Plantilla utilizada para mostrar los resultados de búsqueda
+ * dentro del tema Escuela Mística. Compatible con ACF y bloques Gutenberg.
+ *
+ * Presenta los resultados de acuerdo al término buscado por el usuario
+ * e incluye fallback y formulario de nueva búsqueda si no se encuentran coincidencias.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package blog-theme
+ * @package Escuela_Mistica
+ * @subpackage Templates
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
+
 
 get_header();
 ?>

@@ -1,15 +1,29 @@
 <?php
 /**
- * The template front -page
+ * Front Page Template
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * Plantilla utilizada para mostrar la página de inicio del sitio,
+ * cuando se ha configurado una página estática como portada.
+ *
+ * Si no se define una plantilla específica, esta actúa como
+ * el punto de entrada principal del tema Escuela Mística.
+ *
+ * Compatible con ACF y bloques Gutenberg para construir la
+ * estructura modular de la portada.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package blog-theme
+ * @package Escuela_Mistica
+ * @subpackage Templates
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
 
  get_header();

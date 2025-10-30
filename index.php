@@ -1,17 +1,28 @@
 <?php
-
 /**
- * The main template file
+ * Index Template
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
+ * Plantilla principal y genérica del tema Escuela Mística.
+ * Es utilizada como fallback para mostrar cualquier contenido cuando
+ * no existe una plantilla más específica (home, archive, single, etc.).
+ *
+ * Actúa también como la página principal del blog cuando no hay un archivo home.php.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package blog-theme
+ * @package Escuela_Mistica
+ * @subpackage Core
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
+
 get_header();
 ?>
 <section>

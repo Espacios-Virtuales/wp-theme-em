@@ -1,10 +1,26 @@
 <?php
 /**
- * The template for displaying all single posts
+ * Single Post Template
+ *
+ * Plantilla utilizada para mostrar el contenido completo de una entrada individual
+ * dentro del tema Escuela Mística. Compatible con ACF y bloques Gutenberg.
+ *
+ * Incluye cabecera, cuerpo del artículo, metadatos, navegación entre entradas
+ * y área de comentarios si están habilitados.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package blog-theme
+ * @package Escuela_Mistica
+ * @subpackage Templates
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
  */
 
 get_header();

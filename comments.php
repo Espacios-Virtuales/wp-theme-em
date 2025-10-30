@@ -1,8 +1,27 @@
 <?php
 /**
- * Template for displaying comments and comment form
- * @package escuela-mistica
- */
+ * Comments Template
+ *
+ * Plantilla utilizada para mostrar la lista de comentarios y
+ * el formulario de envío dentro del tema Escuela Mística.
+ *
+ * Compatible con jerarquía de comentarios, estilos personalizados y
+ * funciones nativas de WordPress (`wp_list_comments()`, `comment_form()`).
+ *
+ * @link https://developer.wordpress.org/themes/template-files-section/partial-and-miscellaneous-template-files/#comments-php
+ *
+ * @package Escuela_Mistica
+ * @subpackage Templates
+ * @since 1.0.0
+ *
+ * License: GPL-3.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * © 2025 Espacios Virtuales — Proyecto Escuela Mística
+ * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
+ * términos de la GNU General Public License versión 3 o posterior.
+*/
 
 if (post_password_required()) return;
 ?>
