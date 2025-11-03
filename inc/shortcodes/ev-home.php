@@ -166,25 +166,45 @@ function ev_servicios_shortcode()
                     </div>
 
                     <div class="carousel-inner">
-                        <?php for ($i = 1; $i <= 3; $i++) {
-                            $card = get_field('card_' . $i);
-                            $image = $card['image_' . $i];
-                            $title = $card['title_' . $i];
-                            $body = $card['body_' . $i];
-                            $link = $card['link_' . $i];
+<?php for ($i = 1; $i <= 3; $i++):
+  // ACF puede devolver array, string o null. Normalizamos a array.
+  $card = get_field('card_' . $i);
+  $card = is_array($card) ? $card : [];
+
+  // Leer con fallback y castear a string para evitar null
+  $image = (string) ($card['image_' . $i] ?? '');
+  $title = (string) ($card['title_' . $i] ?? '');
+  $body  = (string) ($card['body_' . $i]  ?? '');
+  $link  = (string) ($card['link_' . $i]  ?? '');
+
+  // Escapar (ya no hay nulls)
+  $image = esc_url($image);
+  $title = esc_html($title);
+  $body  = esc_html($body);
+  $link  = esc_url($link);
+
+                        // Si no hay imagen, puedes saltarte el slide (opcional)
+                        if ($image === '') continue;
+
+                        // Construir apertura/cierre condicional del <a>
+                        $hasLink = ($link !== '');
+                        $aOpen  = $hasLink ? '<a href="'.$link.'" target="_blank" rel="noopener">' : '';
+                        $aClose = $hasLink ? '</a>' : '';
                         ?>
-                            <div class="carousel-item <?php echo ($i === 1) ? 'active' : ''; ?>" data-bs-interval="8000" data-aos="zoom-in" data-aos-delay="<?php echo $i * 200; ?>">
-                                <div class="card h-100 border-0 shadow-lg">
-                                    <a href="<?php echo esc_url($link); ?>" target="_blank">
-                                        <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" class="d-block w-100 rounded">
-                                    </a>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h3 class="fs-4 fw-bold text-gold"><?php echo esc_html($title); ?></h3>
-                                        <p class="text-light"><?php echo esc_html($body); ?></p>
-                                    </div>
+                        <div class="carousel-item <?php echo ($i === 1) ? 'active' : ''; ?>" data-bs-interval="8000" data-aos="zoom-in" data-aos-delay="<?php echo $i * 200; ?>">
+                            <div class="card h-100 border-0 shadow-lg">
+                            <?php echo $aOpen; ?>
+                                <img src="<?php echo $image; ?>" alt="<?php echo $title !== '' ? $title : 'Slide '.$i; ?>" class="d-block w-100 rounded">
+                            <?php echo $aClose; ?>
+                            <?php if ($title !== '' || $body !== ''): ?>
+                                <div class="carousel-caption d-none d-md-block">
+                                <?php if ($title !== ''): ?><h3 class="fs-4 fw-bold text-gold"><?php echo $title; ?></h3><?php endif; ?>
+                                <?php if ($body  !== ''): ?><p class="text-light"><?php echo $body; ?></p><?php endif; ?>
                                 </div>
+                            <?php endif; ?>
                             </div>
-                        <?php } ?>
+                        </div>
+                        <?php endfor; ?>
                     </div>
 
                     <!-- Controles del carousel -->
