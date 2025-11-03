@@ -40,69 +40,51 @@ export function handleIntroVideoModal() {
 
 export function initializeObjetoModals() {
   document.addEventListener('click', (e) => {
-    // ----- ABRIR -----
+    // ABRIR
     const opener = e.target.closest('.ev-open-modal');
     if (opener) {
       const targetId = opener.dataset.target;
       const modal = document.getElementById(targetId);
       if (!modal) return;
 
-      const content = modal.querySelector('.ev-modal-content');
-
-      // Calcula una posición "cercana" al botón/target
-      const rect = opener.getBoundingClientRect();
-      const baseTop = window.scrollY + rect.top + 16; // 16px debajo del botón
-      const viewportH = window.innerHeight;
-      const maxH = Math.min(0.9 * viewportH, 720); // coherente con tu max-height
-      // evita que el contenido quede fuera del documento
-      const docH = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
-      );
-      const clampedTop = Math.max(16, Math.min(baseTop, docH - maxH - 24));
-
-      content.style.setProperty('--ev-modal-top', `${clampedTop}px`);
-
+      // Mostrar modal (centrado fijo)
       modal.style.display = 'flex';
       modal.classList.add('show');
       modal.setAttribute('aria-hidden', 'false');
 
-      // si el inicio del modal queda por debajo del viewport, acompaña con scroll suave
-      const visibleTop = clampedTop - window.scrollY;
-      if (visibleTop > viewportH - 120) {
-        window.scrollTo({ top: clampedTop - 80, behavior: 'smooth' });
-      }
+      // Llevar la vista hacia la tarjeta que abrió el modal
+      // (el modal queda centrado y visible durante el scroll)
+      opener.scrollIntoView({ block: 'center', behavior: 'smooth' });
 
-      // foco accesible
-      const title = content.querySelector('h2');
+      // Foco accesible
+      const title = modal.querySelector('.ev-modal-content h2');
       if (title) { title.setAttribute('tabindex', '-1'); title.focus(); }
 
       e.preventDefault();
       return;
     }
 
-    // ----- CERRAR (botón o overlay) -----
+    // CERRAR (link × o clic en overlay)
     const closeBtn = e.target.closest('.ev-close-modal');
     const overlay = e.target.classList?.contains('ev-modal') ? e.target : null;
     const modalToClose = closeBtn ? closeBtn.closest('.ev-modal') : overlay;
     if (modalToClose) {
-      closeModal(modalToClose);
+      modalToClose.classList.remove('show');
+      modalToClose.setAttribute('aria-hidden', 'true');
+      modalToClose.style.display = 'none';
       e.preventDefault();
     }
   });
 
+  // ESC para cerrar
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       const openModal = document.querySelector('.ev-modal.show');
-      if (openModal) closeModal(openModal);
+      if (openModal) {
+        openModal.classList.remove('show');
+        openModal.setAttribute('aria-hidden', 'true');
+        openModal.style.display = 'none';
+      }
     }
   });
-
-  function closeModal(modal) {
-    modal.classList.remove('show');
-    modal.setAttribute('aria-hidden', 'true');
-    modal.style.display = 'none';
-    const content = modal.querySelector('.ev-modal-content');
-    if (content) content.style.removeProperty('--ev-modal-top');
-  }
 }

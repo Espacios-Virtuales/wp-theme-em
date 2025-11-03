@@ -57,8 +57,8 @@ function ev_objetos_shortcode($atts) {
         <!-- Modal -->
         <div id="<?php echo esc_attr($modal_id); ?>" class="ev-modal" aria-hidden="true">
           <div class="ev-modal-content" role="dialog" aria-modal="true" aria-labelledby="<?php echo esc_attr($modal_id); ?>-title">
-            <button class="ev-close-modal" aria-label="Cerrar">&times;</button>
-            <h2 id="<?php echo esc_attr($modal_id); ?>-title"><?php echo esc_html($titulo); ?></h2>
+          <a href="#" class="ev-close-modal" aria-label="Cerrar">×</a>
+          <h2 id="<?php echo esc_attr($modal_id); ?>-title"><?php echo esc_html($titulo); ?></h2>
             <?php echo get_the_post_thumbnail($post_id, 'large'); ?>
 
             <?php if ($descripcion): ?>
