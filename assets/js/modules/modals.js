@@ -39,37 +39,67 @@ export function handleIntroVideoModal() {
 }
 
 export function initializeObjetoModals() {
-    const openers = document.querySelectorAll('.ev-open-modal');
-    if (!openers.length) return;
+  // Delegación por si el grid se re-renderiza
+  document.addEventListener('click', (e) => {
+    // ----- ABRIR -----
+    const opener = e.target.closest('.ev-open-modal');
+    if (opener) {
+      const targetId = opener.dataset.target;
+      const modal = document.getElementById(targetId);
+      if (!modal) return;
 
-    openers.forEach(button => {
-      button.addEventListener('click', () => {
-        const targetId = button.dataset.target;
-        const modal = document.getElementById(targetId);
-        if (modal) {
-          modal.style.display = 'flex';
-          document.body.classList.add('ev-modal-open');
-        }
-      });
-    });
+      const content = modal.querySelector('.ev-modal-content');
+      const headerOffset = 24; // ajusta si tienes header sticky (ej. 64)
+      const top = Math.max(16, window.scrollY + headerOffset);
 
-    document.querySelectorAll('.ev-close-modal').forEach(close => {
-      close.addEventListener('click', () => {
-        const modal = close.closest('.ev-modal');
-        if (modal) {
-          modal.style.display = 'none';
-          document.body.classList.remove('ev-modal-open');
-        }
-      });
-    });
+      // setea la altura de aparición
+      content.style.setProperty('--ev-modal-top', `${top}px`);
 
-    // Cerrar si se hace clic fuera del contenido
-    document.querySelectorAll('.ev-modal').forEach(modal => {
-      modal.addEventListener('click', e => {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-          document.body.classList.remove('ev-modal-open');
-        }
-      });
-    });
+      modal.style.display = 'flex';
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+
+      // bloquea scroll del body
+      document.body.classList.add('ev-modal-open');
+
+      // foco accesible
+      const title = content.querySelector('h2');
+      if (title) {
+        title.setAttribute('tabindex', '-1');
+        title.focus();
+      }
+
+      e.preventDefault();
+      return;
+    }
+
+    // ----- CERRAR por botón o click en overlay -----
+    const closeBtn = e.target.closest('.ev-close-modal');
+    const overlay = e.target.classList?.contains('ev-modal') ? e.target : null;
+    const modalToClose = closeBtn ? closeBtn.closest('.ev-modal') : overlay;
+
+    if (modalToClose) {
+      closeModal(modalToClose);
+      e.preventDefault();
+      return;
+    }
+  });
+
+  // Escape para cerrar
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const openModal = document.querySelector('.ev-modal.show');
+      if (openModal) closeModal(openModal);
+    }
+  });
+
+  function closeModal(modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.style.display = 'none';
+    document.body.classList.remove('ev-modal-open');
+
+    const content = modal.querySelector('.ev-modal-content');
+    if (content) content.style.removeProperty('--ev-modal-top');
+  }
 }

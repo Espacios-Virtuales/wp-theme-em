@@ -13012,6 +13012,26 @@ a {
     opacity: 1;
   }
 }
+/* Bloquea scroll del documento cuando el modal está abierto (reusa tu clase existente) */
+body.ev-modal-open {
+  overflow: hidden;
+}
+
+/* Cambiamos el overlay para que respete la altura del scroll del documento */
+.ev-modal {
+  position: absolute; /* antes: fixed */
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* El contenido se posiciona con la custom property seteada desde JS */
+.ev-modal-content {
+  position: absolute; /* clave */
+  top: var(--ev-modal-top, 0px); /* la fija JS */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .ev-botonera-footer {
   margin: 2rem 0;
 }
