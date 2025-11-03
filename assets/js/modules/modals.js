@@ -39,7 +39,6 @@ export function handleIntroVideoModal() {
 }
 
 export function initializeObjetoModals() {
-  // Delegación por si el grid se re-renderiza
   document.addEventListener('click', (e) => {
     // ----- ABRIR -----
     const opener = e.target.closest('.ev-open-modal');
@@ -49,43 +48,49 @@ export function initializeObjetoModals() {
       if (!modal) return;
 
       const content = modal.querySelector('.ev-modal-content');
-      const headerOffset = 24; // ajusta si tienes header sticky (ej. 64)
-      const top = Math.max(16, window.scrollY + headerOffset);
 
-      // setea la altura de aparición
-      content.style.setProperty('--ev-modal-top', `${top}px`);
+      // Calcula una posición "cercana" al botón/target
+      const rect = opener.getBoundingClientRect();
+      const baseTop = window.scrollY + rect.top + 16; // 16px debajo del botón
+      const viewportH = window.innerHeight;
+      const maxH = Math.min(0.9 * viewportH, 720); // coherente con tu max-height
+      // evita que el contenido quede fuera del documento
+      const docH = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+      );
+      const clampedTop = Math.max(16, Math.min(baseTop, docH - maxH - 24));
+
+      content.style.setProperty('--ev-modal-top', `${clampedTop}px`);
 
       modal.style.display = 'flex';
       modal.classList.add('show');
       modal.setAttribute('aria-hidden', 'false');
 
-      // bloquea scroll del body
-      document.body.classList.add('ev-modal-open');
+      // si el inicio del modal queda por debajo del viewport, acompaña con scroll suave
+      const visibleTop = clampedTop - window.scrollY;
+      if (visibleTop > viewportH - 120) {
+        window.scrollTo({ top: clampedTop - 80, behavior: 'smooth' });
+      }
 
       // foco accesible
       const title = content.querySelector('h2');
-      if (title) {
-        title.setAttribute('tabindex', '-1');
-        title.focus();
-      }
+      if (title) { title.setAttribute('tabindex', '-1'); title.focus(); }
 
       e.preventDefault();
       return;
     }
 
-    // ----- CERRAR por botón o click en overlay -----
+    // ----- CERRAR (botón o overlay) -----
     const closeBtn = e.target.closest('.ev-close-modal');
     const overlay = e.target.classList?.contains('ev-modal') ? e.target : null;
     const modalToClose = closeBtn ? closeBtn.closest('.ev-modal') : overlay;
-
     if (modalToClose) {
       closeModal(modalToClose);
       e.preventDefault();
-      return;
     }
   });
 
-  // Escape para cerrar
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       const openModal = document.querySelector('.ev-modal.show');
@@ -97,8 +102,6 @@ export function initializeObjetoModals() {
     modal.classList.remove('show');
     modal.setAttribute('aria-hidden', 'true');
     modal.style.display = 'none';
-    document.body.classList.remove('ev-modal-open');
-
     const content = modal.querySelector('.ev-modal-content');
     if (content) content.style.removeProperty('--ev-modal-top');
   }
