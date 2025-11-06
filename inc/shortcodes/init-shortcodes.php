@@ -20,7 +20,7 @@ require_once __DIR__ . '/ev-services.php';
 require_once __DIR__ . '/ev-contact.php';
 
 // 📅 Eventos
-require_once __DIR__ . '/ev-events.php';
+require_once __DIR__ . '/ev-calendar.php';
 
 // 💬 Testimonios
 require_once __DIR__ . '/ev-testimonials.php';

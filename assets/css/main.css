@@ -13449,6 +13449,139 @@ a {
     padding: 20px;
   }
 }
+.calendar {
+  background-color: #181818;
+  color: #f8f9fa;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.calendar .header {
+  color: #ffd700;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.calendar .days {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.calendar .days .day_name {
+  flex: 1;
+  font-weight: 600;
+  color: #f8f9fa;
+  font-size: 1rem;
+}
+
+.calendar .days-numbers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar .days-numbers .day_num {
+  width: 14.2857142857%;
+  padding: 10px;
+  box-sizing: border-box;
+  color: #f8f9fa;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  text-align: center;
+}
+
+.calendar .days-numbers .day_num.ignore {
+  color: #b3b3b3;
+}
+
+.calendar .days-numbers .day_num .date-number {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.calendar .days-numbers .day_num .event {
+  background-color: #ffd700;
+  color: #181818;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.calendar .days-numbers .day_num:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+  .calendar .header {
+    font-size: 1.2rem;
+  }
+  .calendar .days .day_name {
+    font-size: 0.9rem;
+  }
+  .calendar .days-numbers .day_num {
+    width: 25%;
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+  .calendar .days-numbers .event {
+    font-size: 0.8rem;
+    padding: 4px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .calendar .days-numbers .day_num {
+    width: 33.3333333333%;
+    font-size: 0.7rem;
+    padding: 6px;
+  }
+}
+.modal-content {
+  background-color: #181818;
+  color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content .modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-content .modal-header .modal-title {
+  color: #ffd700;
+}
+
+.modal-content .modal-body p {
+  color: #f8f9fa;
+  margin-bottom: 15px;
+}
+
+.modal-content .modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-content .modal-footer .btn-secondary:hover {
+  background-color: #181818;
+  color: #f8f9fa;
+}
+
+.modal-content .modal-footer .btn-primary {
+  background-color: #ffd700;
+}
+
+.modal-content .modal-footer .btn-primary:hover {
+  color: #f8f9fa;
+}
+
 .single-product .product {
   display: flex;
   flex-wrap: wrap;

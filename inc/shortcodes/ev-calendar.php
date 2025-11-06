@@ -1,17 +1,19 @@
-<?php 
+<?php
 
-// Función para crear el shortcode de calendario con eventos de ACF y modales
-function ev_calendar_events_shortcode()
-{
+
+/*
+    Función para crear el shortcode de calendario con eventos de ACF y modales
+*/ 
+function ev_calendar_events_shortcode() {
     $calendar = new Calendar(date('Y-m-d'));
 
-    $data = blog_get_custom_post_type(array('evento'));
+    $data = blog_get_custom_post_type(array('evento'));        
     $posts = $data->posts;
 
     foreach ($posts as $post) {
-        $on = get_field('on', $post);
+        $on = get_field('on', $post); 
         $date = get_field('date', $post);
-
+        
         if ($on && $date) {
             $calendar->add_event($post->post_title, $date, 1, $post->ID);
         }
@@ -19,7 +21,7 @@ function ev_calendar_events_shortcode()
 
     ob_start();
     ?>
-    <section class="container-bg pt-5 pb-5" id="eventos-calendar">
+    <section class="container-bg pt-5 pb-5" id="eventos-calendar" data-aos="fade-up">
         <?= $calendar ?>
     </section>
 
@@ -30,9 +32,9 @@ function ev_calendar_events_shortcode()
 
         if ($on && $date) {
             $modal_id = 'modal_' . $post->ID;
-    ?>
+            ?>
             <div class="modal fade" id="<?= $modal_id ?>" tabindex="-1" aria-labelledby="<?= $modal_id ?>Label" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog" data-aos="zoom-in">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="<?= $modal_id ?>Label"><?= esc_html($post->post_title); ?></h5>
@@ -49,10 +51,10 @@ function ev_calendar_events_shortcode()
                     </div>
                 </div>
             </div>
-        <?php
+            <?php
         }
     }
 
     return ob_get_clean();
 }
-add_shortcode('ev-calendar_eventos', 'ev_calendar_events_shortcode');
+add_shortcode('ev-calendar', 'ev_calendar_events_shortcode');
