@@ -53,14 +53,6 @@ Este archivo documenta todos los shortcodes utilizados en el sistema modular de 
 
 ---
 
-## 📅 Eventos
-
-| Shortcode                | Archivo           | Descripción                                |
-|--------------------------|-------------------|--------------------------------------------|
-| `[ev-calendar_eventos]`  | `ev-events.php`   | Calendario de eventos con modales por día. |
-
----
-
 ## 💌 Contacto
 
 | Shortcode          | Archivo            | Descripción                           |
@@ -75,6 +67,16 @@ Este archivo documenta todos los shortcodes utilizados en el sistema modular de 
 |----------------------------|---------------------|--------------------------------------------------|
 | `[ev-intro_video_modal]`   | `ev-shared.php`     | Modal de video de introducción.                  |
 | `[ev-free_resources]`      | `ev-shared.php`     | Recursos gratuitos como podcast, ebook, YouTube. |
+
+---
+
+
+## 🧩 Landing Modular
+
+| Shortcode                  | Archivo             | Descripción                                      |
+|----------------------------|---------------------|--------------------------------------------------|
+| `[ev-objetos]`             | `ev-objetos.php`    | cards de productos.                              |
+
 
 ---
 

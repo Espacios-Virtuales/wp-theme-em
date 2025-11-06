@@ -9,59 +9,48 @@
   align-items: center;
   text-align: center;
 
+  // capa de sombra
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(10,10,20,0.4) 0%, rgba(0,0,0,0.75) 100%);
+    z-index: 0;
+  }
+
   .landing-hero-bg {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 140vw; // full screen efecto
+    width: 140vw;
     max-width: none;
     transform: translate(-50%, -50%);
-    opacity: 0.3;
-    z-index: 0;
-    pointer-events: none;
-    filter: drop-shadow(0 0 80px rgba(0, 0, 0, 0.4));
+    opacity: 0.25; // bajamos leve
+    filter: drop-shadow(0 0 60px rgba(0, 0, 0, 0.5));
+    z-index: -1; // queda detrás del overlay
   }
 
   .container {
     position: relative;
     z-index: 1;
-    background: rgba(20, 20, 40, 0.6);
+    background: rgba(15, 15, 35, 0.55);
     padding: 40px;
     border-radius: 16px;
     max-width: 800px;
     backdrop-filter: blur(8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-
-    p {
-      font-size: 1.4rem;
-      color: #ddd;
-    }
+    h1 { color: #fff; font-size: 3rem; margin-bottom: 1rem; }
+    p  { color: #ddd; font-size: 1.4rem; }
   }
 
-  @media screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     padding: 80px 16px;
-    min-height: 60vh;
-
-    .landing-hero-bg {
-      width: 180vw;
-    }
-
+    .landing-hero-bg { width: 180vw; }
     .container {
       padding: 24px;
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
+      h1 { font-size: 2rem; }
+      p  { font-size: 1rem; }
     }
   }
 }
