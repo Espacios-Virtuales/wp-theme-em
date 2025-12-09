@@ -137,3 +137,13 @@
 }
 
 
+@media screen and (max-width: 768px) {
+  header, 
+  .site-header, 
+  .custom-header,
+  .main-header,
+  .header-wrapper {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
