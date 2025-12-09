@@ -15018,7 +15018,7 @@ body.woocommerce .comments-area {
 /* 💜 Ajuste para móviles */
 @media screen and (max-width: 768px) {
   .landing-hero {
-    padding: 70px 16px 40px;
+    padding: 0;
     min-height: auto;
     align-items: flex-start;
   }
@@ -15096,16 +15096,6 @@ body.woocommerce .comments-area {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 768px) {
-  header,
-  .site-header,
-  .custom-header,
-  .main-header,
-  .header-wrapper {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-}
 /* assets/scss/components/_index.scss */
 /* Text / BG / Border */
 .text-primary {

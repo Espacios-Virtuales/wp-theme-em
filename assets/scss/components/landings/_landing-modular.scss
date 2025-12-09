@@ -52,7 +52,7 @@
 /* 💜 Ajuste para móviles */
 @media screen and (max-width: 768px) {
   .landing-hero {
-    padding: 70px 16px 40px;  // menos espacio arriba y abajo
+    padding: 0;  // menos espacio arriba y abajo
     min-height: auto;         // ya no obligamos a ocupar 70vh
     align-items: flex-start;  // 👈 clave: pegamos el bloque hacia arriba
   }
@@ -136,14 +136,3 @@
   }
 }
 
-
-@media screen and (max-width: 768px) {
-  header, 
-  .site-header, 
-  .custom-header,
-  .main-header,
-  .header-wrapper {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-}
