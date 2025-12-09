@@ -15078,6 +15078,23 @@ body.woocommerce .comments-area {
   margin: 0 auto;
 }
 
+/* 💜 Ajuste para móviles */
+@media screen and (max-width: 768px) {
+  .landing-hero {
+    padding: 70px 16px 60px;
+    min-height: 60vh;
+  }
+  .landing-hero .container {
+    padding: 24px 18px;
+  }
+  .landing-hero h1, .landing-hero .h1 {
+    font-size: 2rem;
+    margin: 0 0 0.75rem;
+  }
+  .landing-hero p {
+    font-size: 1rem;
+  }
+}
 /* assets/scss/components/_index.scss */
 /* Text / BG / Border */
 .text-primary {

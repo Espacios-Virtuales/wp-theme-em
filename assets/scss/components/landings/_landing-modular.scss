@@ -115,3 +115,25 @@
     margin: 0 auto;
   }
 }
+
+
+/* 💜 Ajuste para móviles */
+@media screen and (max-width: 768px) {
+  .landing-hero {
+    padding: 70px 16px 60px; // menos espacio arriba
+    min-height: 60vh;        // opcional
+  }
+
+  .landing-hero .container {
+    padding: 24px 18px;      // tarjeta un poco más compacta
+  }
+
+  .landing-hero h1 {
+    font-size: 2rem;         // opcional
+    margin: 0 0 0.75rem;
+  }
+
+  .landing-hero p {
+    font-size: 1rem;
+  }
+}
