@@ -9,7 +9,6 @@
   align-items: center;
   text-align: center;
 
-  // 🌙 Sombra ambiental suave
   &::before {
     content: "";
     position: absolute;
@@ -32,8 +31,8 @@
     width: 140vw;
     transform: translate(-50%, -50%);
     z-index: -1;
-    opacity: 0.9; // conserva color original
-    filter: saturate(1.05) brightness(0.95); // leve corrección de contraste
+    opacity: 0.9;
+    filter: saturate(1.05) brightness(0.95);
   }
 
   .container {
@@ -50,6 +49,27 @@
   }
 }
 
+/* 💜 Ajuste para móviles */
+@media screen and (max-width: 768px) {
+  .landing-hero {
+    padding: 70px 16px 40px;  // menos espacio arriba y abajo
+    min-height: auto;         // ya no obligamos a ocupar 70vh
+    align-items: flex-start;  // 👈 clave: pegamos el bloque hacia arriba
+  }
+
+  .landing-hero .container {
+    padding: 24px 18px;
+  }
+
+  .landing-hero h1 {
+    font-size: 2rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .landing-hero p {
+    font-size: 1rem;
+  }
+}
 
 .landing-intro {
   padding: 60px 20px;
@@ -117,23 +137,3 @@
 }
 
 
-/* 💜 Ajuste para móviles */
-@media screen and (max-width: 768px) {
-  .landing-hero {
-    padding: 70px 16px 60px; // menos espacio arriba
-    min-height: 60vh;        // opcional
-  }
-
-  .landing-hero .container {
-    padding: 24px 18px;      // tarjeta un poco más compacta
-  }
-
-  .landing-hero h1 {
-    font-size: 2rem;         // opcional
-    margin: 0 0 0.75rem;
-  }
-
-  .landing-hero p {
-    font-size: 1rem;
-  }
-}
