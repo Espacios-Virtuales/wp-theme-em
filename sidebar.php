@@ -23,16 +23,6 @@
  * términos de la GNU General Public License versión 3 o posterior.
  */
 
-if ( ! is_active_sidebar( 'default-sidebar' ) ) {
-	return;
-}
-?>
-
-<aside id="secondary" class="widget-area" role="complementary">
-	<?php dynamic_sidebar( 'default-sidebar' ); ?>
-</aside>
-
-
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 	return;
 }
