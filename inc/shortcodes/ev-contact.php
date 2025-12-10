@@ -55,7 +55,7 @@ function ev_contact_shortcode()
                                     </label>
                                 </div>
 
-                                <button type="submit" class="btn btn-em-gold w-100">Enviar</button>
+                                <button type="submit"  id="contactSubmit" class="btn btn-em-gold w-100">Enviar</button>
                             </form>
                         </div>
                     </div>

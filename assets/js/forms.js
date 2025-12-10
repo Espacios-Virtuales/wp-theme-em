@@ -227,12 +227,20 @@ jQuery(document).ready(function ($) {
   function handleContactForm() {
     $("#registerForm").on("submit", function (event) {
       event.preventDefault();
+  
+      var $form = $(this);
+      var $submitBtn = $form.find('button[type="submit"]'); // o $("#contactSubmit");
+      var originalText = $submitBtn.text();
+  
+      // Desactivar botón al iniciar validación/envío
+      $submitBtn.prop("disabled", true).text("Enviando...");
+  
       var isValid = true;
-
+  
       // Limpiar mensajes de error anteriores
-      $(".invalid-feedback").remove();
-      $(".is-invalid").removeClass("is-invalid");
-
+      $form.find(".invalid-feedback").remove();
+      $form.find(".is-invalid").removeClass("is-invalid");
+  
       // Validar nombre
       var username = $("#username").val().trim();
       if (username === "") {
@@ -242,7 +250,7 @@ jQuery(document).ready(function ($) {
           '<div class="invalid-feedback">Por favor ingrese un nombre.</div>'
         );
       }
-
+  
       // Validar email
       var email = $("#email").val().trim();
       var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -259,8 +267,8 @@ jQuery(document).ready(function ($) {
           '<div class="invalid-feedback">Por favor ingrese un email válido.</div>'
         );
       }
-
-      // Validar mensaje si está presente
+  
+      // Validar mensaje
       var message = $("#msj").val().trim();
       if (message.length > 0 && message.length < 10) {
         isValid = false;
@@ -269,40 +277,50 @@ jQuery(document).ready(function ($) {
           '<div class="invalid-feedback">El mensaje debe tener al menos 10 caracteres si lo llenas.</div>'
         );
       }
-
+  
       var subscribe = $("#subscribeContact").is(":checked") ? "yes" : "no";
-
-      // Si el formulario es válido, enviar la solicitud AJAX
-      if (isValid) {
-        var formData = {
-          action: "handle_contact_form",
-          contact_name: username,
-          contact_email: email,
-          contact_message: message,
-          contact_subscribe: subscribe,
-        };
-
-        $.ajax({
-          url: ajax_object.ajax_url, // Asegúrate de que esta URL esté correctamente localizada en PHP
-          type: "POST",
-          data: formData,
-          success: function (response) {
-            if (response.success) {
-              alert("¡Formulario enviado correctamente!");
-              $("#registerForm").trigger("reset"); // Limpiar formulario
-            } else {
-              alert(response.data); // Mostrar mensaje de error del servidor
-            }
-          },
-          error: function (xhr, status, error) {
-            console.error(xhr.responseText); // Mostrar el error en la consola
-            alert("Error en la comunicación con el servidor.");
-          },
-        });
+  
+      // Si no es válido, reactivar botón y salir
+      if (!isValid) {
+        $submitBtn.prop("disabled", false).text(originalText);
+        return;
       }
+  
+      // Si el formulario es válido, enviar la solicitud AJAX
+      var formData = {
+        action: "handle_contact_form",
+        contact_name: username,
+        contact_email: email,
+        contact_message: message,
+        contact_subscribe: subscribe,
+      };
+  
+      $.ajax({
+        url: ajax_object.ajax_url,
+        type: "POST",
+        data: formData,
+        success: function (response) {
+          if (response.success) {
+            alert("¡Formulario enviado correctamente!");
+            $form.trigger("reset");
+          } else {
+            alert(response.data || "Ocurrió un error al procesar tu solicitud.");
+          }
+  
+          // Reactivar botón después de la respuesta
+          $submitBtn.prop("disabled", false).text(originalText);
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText);
+          alert("Error en la comunicación con el servidor.");
+  
+          // Reactivar botón también en caso de error
+          $submitBtn.prop("disabled", false).text(originalText);
+        },
+      });
     });
   }
-
+  
   function handleSubscriptionForm() {
     // Manejar la validación del formulario del modal
     $("#modalContactForm").on("submit", function (event) {
