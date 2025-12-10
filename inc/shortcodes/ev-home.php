@@ -132,7 +132,7 @@ function ev_subscribe_modal()
                                 Deseo recibir actualizaciones y promociones
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-gold w-100">Enviar</button> <!-- Botón con color amarillo oro -->
+                        <button type="submit"  id="modalSubmitBtn" class="btn btn-gold w-100">Enviar</button> <!-- Botón con color amarillo oro -->
                     </form>
                 </div>
             </div>

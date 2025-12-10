@@ -50,7 +50,7 @@ function ev_contact_shortcode()
 
                                 <div class="form-check mb-3">
                                     <input class="form-check-input" type="checkbox" id="subscribeContact" name="subscribe" value="yes" checked>
-                                    <label class="form-check-label text-light" for="subscribeContact">
+                                    <label class="form-check-label text-dark" for="subscribeContact">
                                         Deseo recibir actualizaciones y promociones
                                     </label>
                                 </div>
