@@ -11286,7 +11286,7 @@ a {
   }
 }
 .btn-em-gold {
-  background-color: var(--bs-selector) !important;
+  background-color: var(--bs-gold) !important;
   color: #fff !important;
   transition: background-color 0.3s ease, transform 0.2s ease;
   border: none;
@@ -11295,12 +11295,12 @@ a {
 }
 
 .btn-em-gold:hover {
-  background-color: var(--bs-cyan) !important;
+  background-color: var(--bs-selector) !important;
   color: #fff;
 }
 
 .btn-em-gold:active {
-  background-color: #daa520;
+  background-color: var(--bs-gold) !important;
   transform: scale(0.9);
 }
 

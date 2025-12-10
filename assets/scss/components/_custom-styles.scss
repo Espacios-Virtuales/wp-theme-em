@@ -142,7 +142,7 @@ a {
 }
 
 .btn-em-gold {
-    background-color: var(--bs-selector) !important;
+    background-color: var(--bs-gold) !important;
     color: #fff !important;
     transition:
         background-color 0.3s ease,
@@ -152,12 +152,12 @@ a {
     padding: 10px 20px;
 
     &:hover {
-        background-color: var(--bs-cyan) !important;
+        background-color: var(--bs-selector) !important;
         color: #fff;
     }
 
     &:active {
-        background-color: #daa520;
+        background-color: var(--bs-gold) !important;
         transform: scale(0.9);
     }
 }
