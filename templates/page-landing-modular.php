@@ -71,7 +71,7 @@ $propuesta_de_valor = get_field('propuesta_valor');
           
           <div class="cursos-section" id="cursos">
             <h3 class="text-primary mt-4 text-center">Cursos</h2>
-            <?php echo do_shortcode('[ev-objetos tipo="course]'); ?>
+            <?php echo do_shortcode('[ev-objetos tipo="course" cantidad=10]'); ?>
           </div>
           
           <div class="programas-section" id="programas"> 
@@ -80,9 +80,9 @@ $propuesta_de_valor = get_field('propuesta_valor');
           </div>
 
         </div>
-        <?php
-            echo do_shortcode('[ev-botonera_anclas]');
-          ?>
+        <?php echo do_shortcode('[ev-botonera_anclas]');?>
+
+        <?php echo do_shortcode('[ev-seo_intro]');?>
       </div>
     
     <?php else : ?>
