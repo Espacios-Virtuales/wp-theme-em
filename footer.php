@@ -56,7 +56,7 @@
       </div>
       <div class="col-auto text-center text-md-end">
         <img src="<?php echo esc_url( get_template_directory_uri(). '/assets/imgs/logo.png' ); ?>"
-             class="img-fluid w-50" loading="lazy" alt="<?php echo esc_attr__('Logotipo de Davriel','blog-theme'); ?>">
+             class="img-fluid w-50" loading="lazy" alt="<?php echo esc_attr__('Logotipo de EM','blog-theme'); ?>">
       </div>
     </div>
   </div>
