@@ -2,27 +2,63 @@
 
 /* Slider */
 .carousel {
-    .carousel-control-prev, .carousel-control-next {
-        width: 9%;
+    // Duración general y easing suave
+    .carousel-item {
+        transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
     }
+
+    // Activa fade suave entre slides
+    &.carousel-fade .carousel-item {
+        opacity: 0;
+        transform: scale(1.015); // efecto respiración sutil
+    }
+
+    &.carousel-fade .carousel-item.active,
+    &.carousel-fade .carousel-item-start.active,
+    &.carousel-fade .carousel-item-end.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    // Controles más fluidos
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 9%;
+        transition: opacity 0.4s ease;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    // Imagen
     .carousel-item {
         .carousel-img {
             align-items: center;
             display: flex;
             justify-content: center;
-            width: 100%; /* Cambiado de 800px a 100% */
+            width: 100%;
             max-height: 600px;
-            object-fit: cover; /* Mantener aspecto */
-            object-position: center; /* Centrar la imagen */
-        } 
+            object-fit: cover;
+            object-position: center;
+            transition: transform 1.2s ease-in-out; // respiración visual
+        }
+
+        // Zoom in/out sutil al cambiar
+        &.active .carousel-img {
+            transform: scale(1);
+        }
+        &:not(.active) .carousel-img {
+            transform: scale(1.03);
+        }
+
         @media (max-width: $breakpoint-md) {
             .carousel-img {
-                height: 500px; /* Ajusta la altura para dispositivos medianos */
+                height: 500px;
             }
         }
         @media (max-width: $breakpoint-sm) {
             .carousel-img {
-                height: 300px; /* Ajusta la altura para dispositivos pequeños */
+                height: 300px;
             }
         }
     }
