@@ -56,11 +56,6 @@ function community_membership_gallery_shortcode()
                                                 <i class="bi bi-whatsapp"></i>
                                             </a>
                                         </div>
-                                        <div class="custom-rounded-btn bg-cyan">
-                                            <a href="<?php echo esc_url($item_1['link_telegram']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Tribu Mistica Telegram">
-                                                <i class="bi bi-telegram"></i>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
