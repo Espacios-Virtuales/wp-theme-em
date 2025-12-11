@@ -3,7 +3,7 @@ import { handleMenuNavigation } from './modules/menu.js';
 import { handleHeroCarousel } from './modules/hero.js';
 
 import { initializeAOS } from './modules/aos.js';
-import { handleIntroVideoModal, initializeVideoModals, initializeObjetoModals } from './modules/modals.js';
+import { handleIntroVideoModal, initializeVideoModals, initializeObjetoModals, initializeCalendarModals } from './modules/modals.js';
 
 jQuery(document).ready(function ($) {
 
@@ -21,4 +21,5 @@ jQuery(document).ready(function ($) {
   handleIntroVideoModal();
   initializeVideoModals();
   initializeObjetoModals();
+  initializeCalendarModals();
 });

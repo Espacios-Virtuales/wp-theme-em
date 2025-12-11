@@ -87,4 +87,26 @@ export function initializeObjetoModals() {
       }
     }
   });
+  
+}
+
+export function initializeCalendarModals() {
+  const modals = document.querySelectorAll('.modal.fade');
+
+  modals.forEach((modalEl) => {
+    const modal = new bootstrap.Modal(modalEl, {
+      backdrop: 'static', // o true, según tu diseño
+      keyboard: true,
+    });
+
+    // Opcional: podrías vincular apertura si quieres hacer alguna acción especial
+    modalEl.addEventListener('show.bs.modal', () => {
+      console.log('Modal abierto:', modalEl.id);
+    });
+
+    // Cerrar si es necesario algo extra
+    modalEl.addEventListener('hidden.bs.modal', () => {
+      console.log('Modal cerrado:', modalEl.id);
+    });
+  });
 }
