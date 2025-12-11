@@ -7,7 +7,7 @@
 function ev_calendar_events_shortcode() {
     $calendar = new Calendar(date('Y-m-d'));
 
-    $data = blog_get_custom_post_type(array('evento'));        
+    $data = blog_get_custom_post_type(array('experiencia'));        
     $posts = $data->posts;
 
     foreach ($posts as $post) {
