@@ -222,3 +222,17 @@
         opacity: 1;
     }
 }
+
+.ev-modal-content {
+    // Scroll funcional pero sin mostrar la barra visible
+    overflow-y: auto;
+
+    // Ocultar scroll en navegadores modernos
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE y Edge Legacy
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}
