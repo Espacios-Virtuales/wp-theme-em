@@ -1,4 +1,4 @@
-@use "../globals" as *; 
+@use "../globals" as *;
 
 .calendar {
     background-color: map-get($theme-variables, "dark-bg");
@@ -108,40 +108,117 @@
     }
 }
 
-.modal-content {
-    background-color: map-get($theme-variables, "dark-bg"); 
+.ev-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.ev-modal-content {
+    background-color: map-get($theme-variables, "dark-bg");
     color: map-get($theme-variables, "text-light");
     border-radius: 16px;
-    padding: 32px;
-    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.4);
-  
-    .modal-header, .modal-footer {
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-  
-    .modal-title {
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: map-get($theme-variables, "gold");
-    }
-  
-    .btn-primary {
-      background-color: map-get($theme-variables, "gold");
-      color: map-get($theme-variables, "text-dark");
-      border: none;
-      padding: 10px 24px;
-      border-radius: 8px;
-  
-      &:hover {
-        background-color: map-get($theme-variables, "light-gold");
-        color: map-get($theme-variables, "text-light");
-      }
-    }
-  
-    .modal-body {
-      p {
+    max-width: 800px;
+    width: 100%;
+    padding: 40px;
+    position: relative;
+    overflow-y: auto;
+    max-height: 90vh;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+
+    h2 {
+        font-size: 2rem;
+        color: map-get($theme-variables, "gold");
         margin-bottom: 1rem;
-      }
     }
-  }
-  
+
+    img {
+        max-width: 100%;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .ev-modal-section {
+        margin-bottom: 20px;
+
+        strong {
+            color: map-get($theme-variables, "gold");
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: map-get($theme-variables, "text-light");
+        }
+    }
+
+    .ev-cta-button {
+        display: inline-block;
+        padding: 14px 28px;
+        background: map-get($theme-variables, "gold");
+        color: map-get($theme-variables, "text-dark");
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 20px;
+        transition: background 0.3s;
+
+        &:hover {
+            background: map-get($theme-variables, "light-gold");
+            color: map-get($theme-variables, "text-light");
+        }
+    }
+
+    .ev-close-modal {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 28px;
+        color: map-get($theme-variables, "gold");
+        cursor: pointer;
+        transition: color 0.3s;
+
+        &:hover {
+            color: map-get($theme-variables, "text-light");
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ev-modal-content {
+        padding: 24px;
+    }
+}
+
+.ev-modal.show {
+    animation: fadeIn 0.3s ease forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.ev-modal.show .ev-modal-content {
+    animation: ev-pop-in 160ms ease-out both;
+}
+@keyframes ev-pop-in {
+    from {
+        transform: scale(0.985);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

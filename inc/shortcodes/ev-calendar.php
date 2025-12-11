@@ -4,7 +4,8 @@
     Calendario + Modal tipo "ev-objetos" para CPT experiencia
 */
 
-function ev_calendar_events_shortcode() {
+function ev_calendar_events_shortcode()
+{
 
     /* 1) Obtener experiencias */
     $calendar = new Calendar(date('Y-m-d'));
@@ -42,14 +43,6 @@ function ev_calendar_events_shortcode() {
         $descripcion  = get_field('descripcion', $post->ID);
         $producto_id  = get_post_meta($post->ID, '_linked_product_id', true);
     ?>
-
-        <!-- BOTÓN PARA ABRIR MODAL -->
-        <div class="text-center mb-4">
-            <button class="ev-open-modal" data-modal-experiencia="<?= esc_attr($modal_id); ?>">
-                Ver experiencia: <?= esc_html($titulo); ?>
-            </button>
-        </div>
-
         <!-- MODAL PERSONALIZADO -->
         <div id="<?= esc_attr($modal_id) ?>" class="ev-modal" aria-hidden="true">
 
@@ -92,45 +85,45 @@ function ev_calendar_events_shortcode() {
 
     <!-- JS: SISTEMA DE MODALES PERSONALIZADOS -->
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
 
-        /* ABRIR */
-        document.querySelectorAll('.ev-open-modal').forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = btn.getAttribute('data-modal-experiencia');
-                const modal = document.getElementById(targetId);
-                if (modal) {
-                    modal.style.display = 'flex';
-                    modal.classList.add('show');
-                    modal.setAttribute('aria-hidden', 'false');
-                }
+            /* ABRIR */
+            document.querySelectorAll('.ev-open-modal').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = btn.getAttribute('data-modal-experiencia');
+                    const modal = document.getElementById(targetId);
+                    if (modal) {
+                        modal.style.display = 'flex';
+                        modal.classList.add('show');
+                        modal.setAttribute('aria-hidden', 'false');
+                    }
+                });
             });
-        });
 
-        /* CERRAR */
-        document.querySelectorAll('.ev-close-modal').forEach(closeBtn => {
-            closeBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                const modal = closeBtn.closest('.ev-modal');
-                modal.classList.remove('show');
-                modal.setAttribute('aria-hidden', 'true');
-                modal.style.display = 'none';
-            });
-        });
-
-        /* ESC para cerrar */
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                const modal = document.querySelector('.ev-modal.show');
-                if (modal) {
+            /* CERRAR */
+            document.querySelectorAll('.ev-close-modal').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const modal = closeBtn.closest('.ev-modal');
                     modal.classList.remove('show');
                     modal.setAttribute('aria-hidden', 'true');
                     modal.style.display = 'none';
+                });
+            });
+
+            /* ESC para cerrar */
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.querySelector('.ev-modal.show');
+                    if (modal) {
+                        modal.classList.remove('show');
+                        modal.setAttribute('aria-hidden', 'true');
+                        modal.style.display = 'none';
+                    }
                 }
-            }
+            });
         });
-    });
     </script>
 
 <?php

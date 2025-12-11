@@ -42,7 +42,7 @@ class Calendar
 
             if (isset($this->events[$current_date])) {
                 foreach ($this->events[$current_date] as $event) {
-                    $html .= '<div class="event bg-' . $event[2] . ' p-1 mt-2 text-center rounded" data-bs-toggle="modal" data-bs-target="#modal_' . $event[3] . '">';
+                    $html .= '<div class="event bg-' . $event[2] . ' p-1 mt-2 text-center rounded ev-open-modal" data-modal-experiencia="modal_' . $event[3] . '">';
                     $html .= $event[0];
                     $html .= '</div>';
                 }
