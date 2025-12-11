@@ -13585,38 +13585,34 @@ a {
 .modal-content {
   background-color: #181818;
   color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.4);
 }
 
-.modal-content .modal-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.modal-content .modal-header, .modal-content .modal-footer {
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.modal-content .modal-header .modal-title {
+.modal-content .modal-title {
+  font-size: 1.6rem;
+  font-weight: bold;
   color: #ffd700;
 }
 
-.modal-content .modal-body p {
-  color: #f8f9fa;
-  margin-bottom: 15px;
-}
-
-.modal-content .modal-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.modal-content .modal-footer .btn-secondary:hover {
-  background-color: #181818;
-  color: #f8f9fa;
-}
-
-.modal-content .modal-footer .btn-primary {
+.modal-content .btn-primary {
   background-color: #ffd700;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
 }
 
-.modal-content .modal-footer .btn-primary:hover {
+.modal-content .btn-primary:hover {
   color: #f8f9fa;
+}
+
+.modal-content .modal-body p {
+  margin-bottom: 1rem;
 }
 
 .single-product .product {
