@@ -36,7 +36,8 @@ function ev_front_assets() {
     wp_enqueue_script('jquery');
 
     // JS: Popper + Bootstrap 5 (mantén versión consistente)
-    wp_enqueue_script('ev-bootstrap-bundle', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', ['jquery'], '5.0.2', true);
+    wp_enqueue_script('ev-popper', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js', ['jquery'], '2.9.2', true);
+    wp_enqueue_script('ev-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js', ['jquery', 'ev-popper'], '5.0.2', true);
 
     // App + datos
     wp_enqueue_script('ev-app', $theme_dir . '/assets/js/app.js', ['jquery'], _S_VERSION, true);
