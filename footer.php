@@ -23,7 +23,7 @@
 ?>
 
 
-<a href="https://wa.me/56956412047?text=Maureen,%20Me%20gustaria%20recibir%20información%20sobre%20los%20Servicios%20%20de%20Ecuela%20Mistica"
+<a href="https://wa.me/56956412047?text=Maureen,%20Me%20gustaria%20recibir%20información%20sobre%20los%20Servicios%20%de%20Escuela%20Mistica"
    class="whatsapp-button"
    target="_blank" rel="noopener" aria-label="WhatsApp Maureen">
   <i class="bi bi-whatsapp"></i>
