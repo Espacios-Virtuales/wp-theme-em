@@ -41,7 +41,7 @@ function ev_calendar_events_shortcode()
         $titulo       = get_the_title($post);
         $imagen       = get_the_post_thumbnail($post->ID, 'large');
         $descripcion  = get_field('descripcion', $post->ID);
-        $producto_id  = get_post_meta($post->ID, '_linked_product_id', true);
+        $producto_id  = get_post_meta($post->ID, 'linked_product_id', true);
     ?>
         <!-- MODAL PERSONALIZADO -->
         <div id="<?= esc_attr($modal_id) ?>" class="ev-modal" aria-hidden="true">
