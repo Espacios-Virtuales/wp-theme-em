@@ -48,7 +48,10 @@ function ev_objetos_shortcode($atts) {
 
           } elseif ($tipo === 'terapia') {
             $producto_id = get_post_meta($post_id, '_linked_product_id', true);
+          } elseif ($tipo === 'experiencia') {
+            $producto_id = get_post_meta($post_id, '_linked_product_id', true);
           }
+          
         ?>
 
         <div class="ev-objeto-card">
