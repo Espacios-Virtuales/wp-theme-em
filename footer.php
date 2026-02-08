@@ -20,14 +20,17 @@
  * Este archivo forma parte del tema Escuela Mística y se distribuye bajo los
  * términos de la GNU General Public License versión 3 o posterior.
  */
-?>
 
 
-<a href="https://wa.me/56956412047?text=Maureen,%20Me%20gustaria%20recibir%20información%20sobre%20los%20Servicios%20%de%20Escuela%20Mistica"
-   class="whatsapp-button"
-   target="_blank" rel="noopener" aria-label="WhatsApp Maureen">
-  <i class="bi bi-whatsapp"></i>
-</a>
+if ( ! is_checkout() ) {
+  ?>
+  <a href="https://wa.me/56956412047?text=Maureen,%20Me%20gustaria%20recibir%20información%20sobre%20los%20Servicios%20de%20Escuela%20Mistica"
+     class="whatsapp-button"
+     target="_blank" rel="noopener" aria-label="WhatsApp Maureen">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+  <?php
+} ?>
 
 <footer id="colophon" class="site-footer">
   <div class="text-white pt-5 pb-5">
