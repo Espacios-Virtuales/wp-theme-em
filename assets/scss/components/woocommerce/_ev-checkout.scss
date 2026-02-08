@@ -1,167 +1,350 @@
-// _ev-checkout.scss
+// components/checkout/_ev-checkout.scss
+// --------------------------------------------------
+// Checkout Blocks (WooCommerce) – Escuela Mística
+// Usa tokens globales (no redeclara variables aquí)
+// --------------------------------------------------
 
+@use "../globals" as *;
+@use "sass:map";
+
+// Helper: acceder a $theme-variables con fallback
+@function ev($key, $fallback: null) {
+  @if map.has-key($theme-variables, $key) {
+    @return map.get($theme-variables, $key);
+  }
+  @return $fallback;
+}
+
+// Helpers visuales (derivados desde globals)
+$surface: $white;
+$bg: #fbfafc;
+$ink: #141317;
+$border: rgba(0, 0, 0, 0.12);
+$focus-ring: 0 0 0 4px rgba(72, 61, 139, 0.18); // primary glow
+$shadow-soft: ev("shadow-light", $box-shadow-light);
+
+// --------------------------------------------------
+// WRAPPER
+// --------------------------------------------------
 .wp-block-woocommerce-checkout {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    font-family: $font-family-base;
-  
-    .entry-title,
-    h1, h2, h3 {
-      font-family: $headings-font-family;
-      font-weight: $headings-font-weight;
-      color: map-get($theme-variables, "primary");
-    }
-  
-    .wc-block-components-title {
-      font-size: 1.6rem;
-      font-weight: $headings-font-weight;
-      font-family: $headings-font-family;
-      color: map-get($theme-variables, "primary");
-      margin-bottom: 1rem;
-    }
-  
-    .wc-block-components-checkout-step__description {
-      font-size: 0.95rem;
-      color: map-get($theme-variables, "text-muted");
-      margin-bottom: 1.5rem;
-    }
-  
-    .wc-block-components-text-input,
-    .wc-block-components-address-form {
-      label {
-        display: block;
-        font-size: 0.9rem;
-        color: map-get($theme-variables, "primary");
-        margin-bottom: 0.3rem;
-        font-family: $font-family-base;
-      }
-  
-      input,
-      select {
-        width: 100%;
-        padding: 0.6rem;
-        border: 1px solid map-get($theme-variables, "gray-light");
-        border-radius: 4px;
-        font-size: 1rem;
-        background-color: white;
-        font-family: $font-family-base;
-      }
-    }
-  
-    .wc-block-components-button,
-    .wc-block-components-checkout-place-order-button {
-      background-color: map-get($theme-variables, "secondary");
-      color: map-get($theme-variables, "white");
-      border-radius: 6px;
-      padding: 0.75rem 1.5rem;
-      font-weight: bold;
-      font-family: $font-family-base;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: map-get($theme-variables, "secondary-opacity-5");
-      }
-    }
-  
-    .wc-block-components-checkbox__label {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 2vw, 2rem) 1rem;
+  font-family: $font-family-base;
+  background: $bg;
+
+  // Variables “nativas” Woo Blocks (más estable que pelear con clases)
+  --wc-components-color-accent: #{$secondary};
+  --wc-components-color-accent-contrast: #{$text-light};
+  --wc-components-color-foreground: #{$ink};
+  --wc-components-color-background: #{$surface};
+  --wc-components-color-info: #{$gold};
+
+  // ------------------------------------------------
+  // Titulares y textos
+  // ------------------------------------------------
+  .entry-title,
+  h1, h2, h3 {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    color: $primary;
+    letter-spacing: 0.01em;
+  }
+
+  .wc-block-components-title,
+  .wc-block-components-checkout-step__title {
+    font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+    font-weight: $headings-font-weight;
+    font-family: $headings-font-family;
+    color: $primary;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .wc-block-components-checkout-step__description {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: $text-muted;
+    margin: 0 0 1.25rem 0;
+  }
+
+  // ------------------------------------------------
+  // Columnas como “cards”
+  // ------------------------------------------------
+  .wc-block-checkout__main,
+  .wc-block-checkout__sidebar {
+    background: $surface;
+    border: 1px solid $border;
+    border-radius: $border-radius;
+    box-shadow: $shadow-soft;
+  }
+
+  .wc-block-checkout__main {
+    padding: clamp(1rem, 2vw, 1.75rem);
+  }
+
+  .wc-block-checkout__sidebar {
+    padding: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  // ------------------------------------------------
+  // Inputs (Woo Blocks)
+  // ------------------------------------------------
+  .wc-block-components-text-input,
+  .wc-block-components-address-form,
+  .wc-block-components-select-control,
+  .wc-block-components-textarea {
+    label {
+      display: block;
       font-size: 0.9rem;
-      color: map-get($theme-variables, "text-muted");
+      color: $primary;
+      margin-bottom: 0.35rem;
       font-family: $font-family-base;
+      font-weight: 700;
     }
-  
-    .wc-block-components-notice-banner.is-error {
-      background-color: rgba(map-get($theme-variables, "red"), 0.05);
-      border-left: 4px solid map-get($theme-variables, "red");
-      padding: 1rem;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.78rem 0.9rem;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      border-radius: 10px;
+      font-size: 1rem;
+      background: $surface;
       font-family: $font-family-base;
-    }
-  
-    .wc-block-checkout__sidebar {
-      border-left: 1px solid map-get($theme-variables, "gray-light");
-      padding-left: 2rem;
-    }
-  
-    .wc-block-components-checkout-order-summary__title-text {
-      font-weight: $headings-font-weight;
-      font-size: 1.3rem;
-      font-family: $headings-font-family;
-      color: map-get($theme-variables, "primary");
-      margin-bottom: 1rem;
-    }
-  
-    .wc-block-components-totals-item {
-      display: flex;
-      justify-content: space-between;
-      margin: 0.5rem 0;
-  
-      .wc-block-components-totals-item__label {
-        font-weight: 500;
-        font-family: $font-family-base;
+      color: $ink;
+
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+
+      &::placeholder {
+        color: rgba(179, 179, 179, 0.9);
       }
-  
-      .wc-block-components-totals-item__value {
-        font-weight: bold;
-        color: map-get($theme-variables, "gold");
-        font-family: $font-family-base;
+
+      &:focus {
+        outline: none;
+        border-color: rgba(72, 61, 139, 0.55); // primary
+        box-shadow: $focus-ring;
       }
     }
   }
-  
-  @media (max-width: 768px) {
-    .wp-block-woocommerce-checkout {
-      padding: 1rem;
-  
-      .wc-block-checkout__sidebar {
-        border-left: none;
-        padding-left: 0;
-        margin-top: 2rem;
+
+  // Menos “ruido” entre pasos
+  .wc-block-components-checkout-step {
+    margin-bottom: 1.2rem;
+
+    .wc-block-components-checkout-step__content {
+      display: grid;
+      gap: 0.9rem;
+    }
+  }
+
+  // ------------------------------------------------
+  // Checkboxes / radios
+  // ------------------------------------------------
+  .wc-block-components-checkbox__label,
+  .wc-block-components-radio-control__label {
+    font-size: 0.95rem;
+    color: $text-muted;
+    line-height: 1.35;
+  }
+
+  // ------------------------------------------------
+  // Notices (errores / info)
+  // ------------------------------------------------
+  .wc-block-components-notice-banner {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: $shadow-soft;
+
+    &.is-error {
+      background-color: rgba(220, 53, 69, 0.07);
+      border-left: 4px solid #dc3545;
+      color: $ink;
+    }
+
+    &.is-info {
+      background-color: rgba(218, 165, 32, 0.12); // selector/gold family
+      border-left: 4px solid $gold;
+      color: $ink;
+    }
+  }
+
+  // ------------------------------------------------
+  // Resumen de pedido (sidebar)
+  // ------------------------------------------------
+  .checkout-order-summary-block-fill-wrapper {
+    .wc-block-components-order-summary__content {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .wc-block-components-order-summary-item {
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      padding: 0.85rem;
+      background: rgba(255, 255, 255, 0.85);
+
+      .wc-block-components-product-name {
+        font-family: $headings-font-family;
+        font-weight: $headings-font-weight;
+        font-size: 1.05rem;
+        margin: 0 0 0.25rem 0;
+        color: $ink;
       }
-  
+
+      .wc-block-components-formatted-money-amount {
+        font-weight: 800;
+        color: $ink;
+      }
+    }
+
+    .wc-block-components-totals-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5rem 0;
+
+      .wc-block-components-totals-item__label {
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.78);
+      }
+
+      .wc-block-components-totals-item__value {
+        font-weight: 900;
+        color: $gold;
+      }
+    }
+
+    .wc-block-components-totals-footer-item {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed rgba(0, 0, 0, 0.18);
+
+      .wc-block-components-totals-item__label {
+        font-size: 1.05rem;
+      }
+
+      .wc-block-components-totals-footer-item-tax-value {
+        font-size: 1.18rem;
+        font-weight: 900;
+        color: $ink;
+      }
+    }
+  }
+
+  // Cupón (acordeón)
+  .wc-block-components-totals-coupon.wc-block-components-panel {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-radius: 12px;
+    background: $surface;
+    overflow: hidden;
+
+    .wc-block-components-panel__button {
+      padding: 0.85rem 1rem;
+      font-weight: 800;
+      color: $ink;
+    }
+  }
+
+  // ------------------------------------------------
+  // Actions row: volver + CTA pago
+  // ------------------------------------------------
+  .wc-block-checkout__actions_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: 1.25rem;
+
+    .wc-block-components-checkout-return-to-cart-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 0.95rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.10);
+      background: $surface;
+      color: $ink;
+      text-decoration: none;
+
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+
+      &:hover {
+        border-color: rgba(72, 61, 139, 0.35);
+        box-shadow: $shadow-soft;
+        transform: translateY(-1px);
+      }
+    }
+
+    // Botón principal (PayPal / place order)
+    button.wc-block-components-checkout-place-order-button,
+    .wc-block-components-checkout-place-order-button {
+      background: linear-gradient(135deg, $secondary, $primary);
+      border: 1px solid $gold;
+      border-radius: 999px;
+      padding: 0.88rem 1.45rem;
+      min-height: 52px;
+
+      color: $text-light;
+      font-family: $font-family-base;
+      font-size: 1.05rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      font-weight: 800;
+
+      box-shadow: $shadow-soft;
+      transition: transform 0.18s ease, box-shadow 0.24s ease, filter 0.24s ease;
+
+      .wc-block-components-checkout-place-order-button__text,
+      .wc-block-components-button__text {
+        color: $text-light;
+        font-weight: 800;
+      }
+
+      &:hover {
+        filter: brightness(1.03);
+        box-shadow: $shadow-hover;
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: $shadow-default;
+      }
+    }
+  }
+
+  // Pequeño polish
+  .wc-block-components-order-summary-item__image img {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .wc-block-components-totals-wrapper {
+    margin-top: 0.6rem;
+  }
+}
+
+// --------------------------------------------------
+// Responsive
+// --------------------------------------------------
+@media (max-width: $breakpoint-md) {
+  .wp-block-woocommerce-checkout {
+    padding: 1rem;
+
+    .wc-block-checkout__actions_row {
+      flex-direction: column;
+      align-items: stretch;
+
+      .wc-block-components-checkout-return-to-cart-button {
+        justify-content: center;
+      }
+
+      button.wc-block-components-checkout-place-order-button,
       .wc-block-components-checkout-place-order-button {
         width: 100%;
         text-align: center;
       }
     }
   }
-    
-/* ✨ Escuela Mística — CTA Checkout (Woo Blocks) */
-.wc-block-checkout__actions_row button.wc-block-components-checkout-place-order-button,
-.wp-block-woocommerce-checkout-actions-block button.wc-block-components-checkout-place-order-button,
-button.wc-block-components-checkout-place-order-button.contained {
-  background: linear-gradient(135deg, #4b1f6f, #7a3fa1) !important;
-  border: 1px solid #d4af37 !important;
-  border-radius: 999px !important;
-
-  padding: 14px 28px !important;
-  min-height: 48px !important;
-
-  color: #f6f1e8 !important;
-  font-family: "Cormorant Garamond", serif !important;
-  font-size: 1.05rem !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-
-  box-shadow: 0 10px 24px rgba(75, 31, 111, 0.35) !important;
-  transition: transform .2s ease, box-shadow .25s ease, background .25s ease !important;
-}
-
-.wc-block-checkout__actions_row button.wc-block-components-checkout-place-order-button:hover {
-  background: linear-gradient(135deg, #7a3fa1, #4b1f6f) !important;
-  box-shadow: 0 0 18px rgba(212, 175, 55, 0.40), 0 14px 30px rgba(75, 31, 111, 0.45) !important;
-  transform: translateY(-1px) !important;
-}
-
-.wc-block-checkout__actions_row button.wc-block-components-checkout-place-order-button:active {
-  transform: translateY(0) !important;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.25) !important;
-}
-
-/* Texto interno (a veces Woo lo estiliza aparte) */
-.wc-block-checkout__actions_row .wc-block-components-checkout-place-order-button__text,
-.wc-block-checkout__actions_row .wc-block-components-button__text {
-  color: #f6f1e8 !important;
-  font-weight: 600 !important;
 }
