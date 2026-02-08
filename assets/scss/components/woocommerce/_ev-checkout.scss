@@ -328,21 +328,95 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
 // --------------------------------------------------
 // Responsive
 // --------------------------------------------------
-@media (max-width: $breakpoint-md) {
+
+@function ev($key, $fallback: null) {
+  @if map.has-key($theme-variables, $key) { @return map.get($theme-variables, $key); }
+  @return $fallback;
+}
+
+$wp-max: 1400px; // XL real, puedes subir a 1440 si quieres
+
+.wp-block-woocommerce-checkout {
+  /* ocupa ancho completo, pero con límite XL elegante */
+  max-width: $wp-max;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 2vw, 1.5rem);
+
+  /* si hay wrappers del theme con max-width, los neutralizamos aquí */
+  .woocommerce,
+  .entry-content,
   .wp-block-woocommerce-checkout {
-    padding: 1rem;
+    max-width: 100%;
+  }
 
+  /* GRID PRINCIPAL (Woo Blocks) */
+  .wc-block-checkout {
+    width: 100%;
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    align-items: start;
+
+    /* SM default: 1 columna */
+    grid-template-columns: 1fr;
+  }
+
+  /* Las dos columnas internas deben poder encoger (evita overflow raro) */
+  .wc-block-checkout__main,
+  .wc-block-checkout__sidebar {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* =========================
+     MD (>=768): 2 columnas
+     ========================= */
+  @media (min-width: $breakpoint-md) {
+    .wc-block-checkout {
+      grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
+    }
+
+    .wc-block-checkout__sidebar {
+      position: sticky;
+      top: 24px;          // se queda a la vista sin molestar
+      align-self: start;
+    }
+  }
+
+  /* =========================
+     LG (>=992): más aire, sidebar más estable
+     ========================= */
+  @media (min-width: $breakpoint-lg) {
+    .wc-block-checkout {
+      grid-template-columns: minmax(0, 1.8fr) minmax(360px, 0.95fr);
+      gap: 1.75rem;
+    }
+  }
+
+  /* =========================
+     XL (>=1200): usa toda la pantalla de forma “premium”
+     ========================= */
+  @media (min-width: $breakpoint-xl) {
+    .wc-block-checkout {
+      grid-template-columns: minmax(0, 2fr) minmax(420px, 0.9fr);
+      gap: 2rem;
+    }
+  }
+
+  /* =========================
+     SM: acciones full width
+     ========================= */
+  @media (max-width: $breakpoint-md) {
     .wc-block-checkout__actions_row {
-      flex-direction: column;
-      align-items: stretch;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
 
-      .wc-block-components-checkout-return-to-cart-button {
-        justify-content: center;
-      }
-
+      .wc-block-components-checkout-return-to-cart-button,
       button.wc-block-components-checkout-place-order-button,
       .wc-block-components-checkout-place-order-button {
         width: 100%;
+        justify-content: center;
         text-align: center;
       }
     }

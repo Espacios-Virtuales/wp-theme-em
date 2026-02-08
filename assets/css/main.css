@@ -14910,20 +14910,83 @@ body.woocommerce .comments-area {
   margin-top: 0.6rem;
 }
 
+.wp-block-woocommerce-checkout {
+  /* ocupa ancho completo, pero con límite XL elegante */
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 2vw, 1.5rem);
+  /* si hay wrappers del theme con max-width, los neutralizamos aquí */
+  /* GRID PRINCIPAL (Woo Blocks) */
+  /* Las dos columnas internas deben poder encoger (evita overflow raro) */
+  /* =========================
+     MD (>=768): 2 columnas
+     ========================= */
+  /* =========================
+     LG (>=992): más aire, sidebar más estable
+     ========================= */
+  /* =========================
+     XL (>=1200): usa toda la pantalla de forma “premium”
+     ========================= */
+  /* =========================
+     SM: acciones full width
+     ========================= */
+}
+
+.wp-block-woocommerce-checkout .woocommerce,
+.wp-block-woocommerce-checkout .entry-content,
+.wp-block-woocommerce-checkout .wp-block-woocommerce-checkout {
+  max-width: 100%;
+}
+
+.wp-block-woocommerce-checkout .wc-block-checkout {
+  width: 100%;
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: start;
+  /* SM default: 1 columna */
+  grid-template-columns: 1fr;
+}
+
+.wp-block-woocommerce-checkout .wc-block-checkout__main,
+.wp-block-woocommerce-checkout .wc-block-checkout__sidebar {
+  min-width: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .wp-block-woocommerce-checkout .wc-block-checkout {
+    grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
+  }
+  .wp-block-woocommerce-checkout .wc-block-checkout__sidebar {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
+}
+@media (min-width: 992px) {
+  .wp-block-woocommerce-checkout .wc-block-checkout {
+    grid-template-columns: minmax(0, 1.8fr) minmax(360px, 0.95fr);
+    gap: 1.75rem;
+  }
+}
+@media (min-width: 1200px) {
+  .wp-block-woocommerce-checkout .wc-block-checkout {
+    grid-template-columns: minmax(0, 2fr) minmax(420px, 0.9fr);
+    gap: 2rem;
+  }
+}
 @media (max-width: 768px) {
-  .wp-block-woocommerce-checkout {
-    padding: 1rem;
-  }
   .wp-block-woocommerce-checkout .wc-block-checkout__actions_row {
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
-  .wp-block-woocommerce-checkout .wc-block-checkout__actions_row .wc-block-components-checkout-return-to-cart-button {
-    justify-content: center;
-  }
+  .wp-block-woocommerce-checkout .wc-block-checkout__actions_row .wc-block-components-checkout-return-to-cart-button,
   .wp-block-woocommerce-checkout .wc-block-checkout__actions_row button.wc-block-components-checkout-place-order-button,
   .wp-block-woocommerce-checkout .wc-block-checkout__actions_row .wc-block-components-checkout-place-order-button {
     width: 100%;
+    justify-content: center;
     text-align: center;
   }
 }
