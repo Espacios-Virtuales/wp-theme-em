@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Shortcode: [ev-objetos tipo="terapia"]
  * Muestra tarjetas de objetos (terapias, cursos, programas) con modales personalizados.
  */
-function ev_objetos_shortcode($atts) {
+function ev_objetos_shortcode($atts)
+{
   $atts = shortcode_atts([
     'tipo'      => 'terapia',
     'cantidad'  => -1
@@ -13,45 +15,46 @@ function ev_objetos_shortcode($atts) {
 
   ob_start();
 
-  if ($query->have_posts()) : 
+  if ($query->have_posts()) :
 ?>
     <div class="ev-objetos-grid" id="<?php echo esc_attr($atts['tipo']); ?>">
       <?php while ($query->have_posts()) : $query->the_post(); ?>
         <?php
-          $post_id    = get_the_ID();
-          $titulo     = get_the_title();
-          $imagen     = get_the_post_thumbnail($post_id, 'medium');
-          $descripcion= get_field('descripcion');
-          $objetivo   = get_field('objetivo');
-          $propuesta  = get_field('propuesta_valor');
-          $proposito  = get_field('proposito');
-          $cliente    = get_field('cliente_potencial');
-          $modal_id   = 'modal-' . $post_id;
-          $tipo       = $atts['tipo'];
+        $post_id    = get_the_ID();
+        $titulo     = get_the_title();
+        $imagen     = get_the_post_thumbnail($post_id, 'medium');
+        $descripcion = get_field('descripcion');
+        $objetivo   = get_field('objetivo');
+        $propuesta  = get_field('propuesta_valor');
+        $proposito  = get_field('proposito');
+        $cliente    = get_field('cliente_potencial');
+        $modal_id   = 'modal-' . $post_id;
+        $tipo       = $atts['tipo'];
 
-          // Inicializar variables
-          $producto_id = '';
-          $payment_url = '';
-          $formato     = [];
+        // Inicializar variables
+        $producto_id = '';
+        $payment_url = '';
+        $formato     = [];
 
-          // Lógica según tipo
-          if ($tipo === 'course') {
-            $producto_id = get_post_meta($post_id, '_course_product_id', true);
-            $payment_url = get_post_meta($post_id, 'course_payment_url', true);
-            $formato     = get_post_meta($post_id, 'course_formato', true);
+        // Lógica según tipo
+        if ($tipo === 'course') {
+          $producto_id = get_post_meta($post_id, '_course_product_id', true);
+          $payment_url = get_post_meta($post_id, 'course_payment_url', true);
+          $formato     = get_post_meta($post_id, 'course_formato', true);
+        } elseif ($tipo === 'program') {
+          // Producto interno (WooCommerce)
+          $producto_id = get_post_meta($post_id, '_program_product_id', true);
+          // URL de pago externo definida en ACF: payment_url
+          $payment_url = get_field('payment_url');
+        } elseif (in_array($tipo, ['terapia', 'experiencia'], true)) {
+          $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, '_linked_product_id', true)));
+        }
 
-          } elseif ($tipo === 'program') {
-            // Producto interno (WooCommerce)
-            $producto_id = get_post_meta($post_id, '_program_product_id', true);
-            // URL de pago externo definida en ACF: payment_url
-            $payment_url = get_field('payment_url');
+        // Validación: que exista y sea publicable
+        if (!empty($producto_id) && !get_post_status($producto_id)) {
+          $producto_id = 0;
+        }
 
-          } elseif ($tipo === 'terapia') {
-            $producto_id = get_post_meta($post_id, '_linked_product_id', true);
-          } elseif ($tipo === 'experiencia') {
-            $producto_id = get_post_meta($post_id, '_linked_product_id', true);
-          }
-          
         ?>
 
         <div class="ev-objeto-card">
@@ -145,7 +148,6 @@ function ev_objetos_shortcode($atts) {
                 <?php endif; ?>
 
               <?php elseif (!empty($producto_id)) : ?>
-
                 <!-- Terapia u otros tipos con producto vinculado -->
                 <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
                   Adquirir ahora
@@ -168,3 +170,25 @@ function ev_objetos_shortcode($atts) {
   return ob_get_clean();
 }
 add_shortcode('ev-objetos', 'ev_objetos_shortcode');
+
+function ev_normalize_post_id($raw)
+{
+  if (empty($raw)) return 0;
+
+  // Si ACF devuelve un objeto WP_Post
+  if ($raw instanceof WP_Post) return (int) $raw->ID;
+
+  // Si viene como array (ACF a veces devuelve ['ID'=>...])
+  if (is_array($raw)) {
+    if (!empty($raw['ID'])) return (int) $raw['ID'];
+    // Si viene como [0 => ID]
+    $first = reset($raw);
+    if (is_numeric($first)) return (int) $first;
+    if ($first instanceof WP_Post) return (int) $first->ID;
+  }
+
+  // Si viene como string numérico
+  if (is_numeric($raw)) return (int) $raw;
+
+  return 0;
+}
