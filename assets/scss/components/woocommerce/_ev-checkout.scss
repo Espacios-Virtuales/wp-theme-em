@@ -1,7 +1,7 @@
 // components/checkout/_ev-checkout.scss
 // --------------------------------------------------
 // Checkout Blocks (WooCommerce) – Escuela Mística
-// Usa tokens globales (no redeclara variables aquí)
+// Consume tokens desde globals (no redefine variables aquí)
 // --------------------------------------------------
 
 @use "../globals" as *;
@@ -15,25 +15,54 @@
   @return $fallback;
 }
 
-// Helpers visuales (derivados desde globals)
+// Visual helpers (derivados de globals)
 $surface: $white;
 $bg: #fbfafc;
 $ink: #141317;
 $border: rgba(0, 0, 0, 0.12);
-$focus-ring: 0 0 0 4px rgba(72, 61, 139, 0.18); // primary glow
+$focus-ring: 0 0 0 4px rgba(72, 61, 139, 0.18);
 $shadow-soft: ev("shadow-light", $box-shadow-light);
 
+$wp-max: 1400px;
+
 // --------------------------------------------------
-// WRAPPER
+// 0) ROMPER CERCO DEL THEME (solo checkout)
+// --------------------------------------------------
+// Esto suele ser lo que te está dejando la “columna de 4”
+body.woocommerce-checkout {
+  .site,
+  .site-main,
+  .content-area,
+  .content,
+  .container,
+  .container-fluid,
+  .entry-content,
+  .woocommerce {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  // muchos themes aplican padding lateral fuerte aquí:
+  .site-main,
+  .content-area,
+  .entry-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+// --------------------------------------------------
+// 1) WRAPPER PRINCIPAL
 // --------------------------------------------------
 .wp-block-woocommerce-checkout {
-  max-width: 1200px;
+  width: 100%;
+  max-width: $wp-max;
   margin: 0 auto;
-  padding: clamp(1.25rem, 2vw, 2rem) 1rem;
+  padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 2vw, 1.5rem);
   font-family: $font-family-base;
   background: $bg;
 
-  // Variables “nativas” Woo Blocks (más estable que pelear con clases)
+  // Variables nativas Woo Blocks (más estable)
   --wc-components-color-accent: #{$secondary};
   --wc-components-color-accent-contrast: #{$text-light};
   --wc-components-color-foreground: #{$ink};
@@ -41,35 +70,24 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
   --wc-components-color-info: #{$gold};
 
   // ------------------------------------------------
-  // Titulares y textos
+  // Layout grid de Woo Blocks
   // ------------------------------------------------
-  .entry-title,
-  h1, h2, h3 {
-    font-family: $headings-font-family;
-    font-weight: $headings-font-weight;
-    color: $primary;
-    letter-spacing: 0.01em;
+  .wc-block-checkout {
+    width: 100%;
+    display: grid;
+    align-items: start;
+    gap: clamp(1rem, 2vw, 2rem);
+    grid-template-columns: 1fr; // SM por defecto
   }
 
-  .wc-block-components-title,
-  .wc-block-components-checkout-step__title {
-    font-size: clamp(1.2rem, 1.6vw, 1.5rem);
-    font-weight: $headings-font-weight;
-    font-family: $headings-font-family;
-    color: $primary;
-    margin: 0 0 0.75rem 0;
+  // Columnas deben poder encoger sin overflow
+  .wc-block-checkout__main,
+  .wc-block-checkout__sidebar {
+    min-width: 0;
+    width: 100%;
   }
 
-  .wc-block-components-checkout-step__description {
-    font-size: 0.98rem;
-    line-height: 1.55;
-    color: $text-muted;
-    margin: 0 0 1.25rem 0;
-  }
-
-  // ------------------------------------------------
-  // Columnas como “cards”
-  // ------------------------------------------------
+  // “Cards”
   .wc-block-checkout__main,
   .wc-block-checkout__sidebar {
     background: $surface;
@@ -87,7 +105,34 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
   }
 
   // ------------------------------------------------
-  // Inputs (Woo Blocks)
+  // Tipografía
+  // ------------------------------------------------
+  .entry-title,
+  h1, h2, h3 {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    color: $primary;
+    letter-spacing: 0.01em;
+  }
+
+  .wc-block-components-title,
+  .wc-block-components-checkout-step__title {
+    font-size: clamp(1.2rem, 1.6vw, 1.55rem);
+    font-weight: $headings-font-weight;
+    font-family: $headings-font-family;
+    color: $primary;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .wc-block-components-checkout-step__description {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: $text-muted;
+    margin: 0 0 1.25rem 0;
+  }
+
+  // ------------------------------------------------
+  // Inputs (modernos y simples)
   // ------------------------------------------------
   .wc-block-components-text-input,
   .wc-block-components-address-form,
@@ -98,7 +143,6 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
       font-size: 0.9rem;
       color: $primary;
       margin-bottom: 0.35rem;
-      font-family: $font-family-base;
       font-weight: 700;
     }
 
@@ -106,29 +150,28 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
     select,
     textarea {
       width: 100%;
-      padding: 0.78rem 0.9rem;
+      padding: 0.8rem 0.95rem;
       border: 1px solid rgba(0, 0, 0, 0.14);
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 1rem;
       background: $surface;
-      font-family: $font-family-base;
       color: $ink;
 
       transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 
       &::placeholder {
-        color: rgba(179, 179, 179, 0.9);
+        color: rgba(179, 179, 179, 0.95);
       }
 
       &:focus {
         outline: none;
-        border-color: rgba(72, 61, 139, 0.55); // primary
+        border-color: rgba(72, 61, 139, 0.55);
         box-shadow: $focus-ring;
       }
     }
   }
 
-  // Menos “ruido” entre pasos
+  // Menos ruido entre pasos
   .wc-block-components-checkout-step {
     margin-bottom: 1.2rem;
 
@@ -149,7 +192,7 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
   }
 
   // ------------------------------------------------
-  // Notices (errores / info)
+  // Notices
   // ------------------------------------------------
   .wc-block-components-notice-banner {
     border-radius: 12px;
@@ -163,14 +206,14 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
     }
 
     &.is-info {
-      background-color: rgba(218, 165, 32, 0.12); // selector/gold family
+      background-color: rgba(255, 215, 0, 0.10);
       border-left: 4px solid $gold;
       color: $ink;
     }
   }
 
   // ------------------------------------------------
-  // Resumen de pedido (sidebar)
+  // Resumen del pedido (sidebar)
   // ------------------------------------------------
   .checkout-order-summary-block-fill-wrapper {
     .wc-block-components-order-summary__content {
@@ -181,8 +224,8 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
     .wc-block-components-order-summary-item {
       border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 12px;
-      padding: 0.85rem;
-      background: rgba(255, 255, 255, 0.85);
+      padding: 0.9rem;
+      background: rgba(255, 255, 255, 0.92);
 
       .wc-block-components-product-name {
         font-family: $headings-font-family;
@@ -198,11 +241,16 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
       }
     }
 
+    .wc-block-components-order-summary-item__image img {
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
     .wc-block-components-totals-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 0.5rem 0;
+      margin: 0.55rem 0;
 
       .wc-block-components-totals-item__label {
         font-weight: 700;
@@ -232,7 +280,7 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
     }
   }
 
-  // Cupón (acordeón)
+  // Cupón acordeón
   .wc-block-components-totals-coupon.wc-block-components-panel {
     border: 1px solid rgba(0, 0, 0, 0.10);
     border-radius: 12px;
@@ -247,25 +295,26 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
   }
 
   // ------------------------------------------------
-  // Actions row: volver + CTA pago
+  // Actions row: volver + CTA
   // ------------------------------------------------
   .wc-block-checkout__actions_row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.8rem;
+    gap: 0.9rem;
     margin-top: 1.25rem;
 
     .wc-block-components-checkout-return-to-cart-button {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 0.95rem;
-      border-radius: 10px;
+      gap: 0.55rem;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
       border: 1px solid rgba(0, 0, 0, 0.10);
       background: $surface;
       color: $ink;
       text-decoration: none;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
 
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 
@@ -276,34 +325,34 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
       }
     }
 
-    // Botón principal (PayPal / place order)
+    // CTA principal (PayPal / place order)
     button.wc-block-components-checkout-place-order-button,
     .wc-block-components-checkout-place-order-button {
       background: linear-gradient(135deg, $secondary, $primary);
       border: 1px solid $gold;
       border-radius: 999px;
-      padding: 0.88rem 1.45rem;
-      min-height: 52px;
+      padding: 0.9rem 1.6rem;
+      min-height: 54px;
 
       color: $text-light;
       font-family: $font-family-base;
       font-size: 1.05rem;
       letter-spacing: 0.09em;
       text-transform: uppercase;
-      font-weight: 800;
+      font-weight: 900;
 
-      box-shadow: $shadow-soft;
+      box-shadow: $shadow-hover;
       transition: transform 0.18s ease, box-shadow 0.24s ease, filter 0.24s ease;
 
       .wc-block-components-checkout-place-order-button__text,
       .wc-block-components-button__text {
         color: $text-light;
-        font-weight: 800;
+        font-weight: 900;
       }
 
       &:hover {
-        filter: brightness(1.03);
-        box-shadow: $shadow-hover;
+        filter: brightness(1.04);
+        box-shadow: $box-shadow-heavy;
         transform: translateY(-1px);
       }
 
@@ -314,98 +363,40 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
     }
   }
 
-  // Pequeño polish
-  .wc-block-components-order-summary-item__image img {
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-  }
+  // ------------------------------------------------
+  // RESPONSIVE GRID (sensación 12-col)
+  // ------------------------------------------------
 
-  .wc-block-components-totals-wrapper {
-    margin-top: 0.6rem;
-  }
-}
-
-// --------------------------------------------------
-// Responsive
-// --------------------------------------------------
-
-@function ev($key, $fallback: null) {
-  @if map.has-key($theme-variables, $key) { @return map.get($theme-variables, $key); }
-  @return $fallback;
-}
-
-$wp-max: 1400px; // XL real, puedes subir a 1440 si quieres
-
-.wp-block-woocommerce-checkout {
-  /* ocupa ancho completo, pero con límite XL elegante */
-  max-width: $wp-max;
-  width: 100%;
-  margin: 0 auto;
-  padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 2vw, 1.5rem);
-
-  /* si hay wrappers del theme con max-width, los neutralizamos aquí */
-  .woocommerce,
-  .entry-content,
-  .wp-block-woocommerce-checkout {
-    max-width: 100%;
-  }
-
-  /* GRID PRINCIPAL (Woo Blocks) */
-  .wc-block-checkout {
-    width: 100%;
-    display: grid;
-    gap: clamp(1rem, 2vw, 1.5rem);
-    align-items: start;
-
-    /* SM default: 1 columna */
-    grid-template-columns: 1fr;
-  }
-
-  /* Las dos columnas internas deben poder encoger (evita overflow raro) */
-  .wc-block-checkout__main,
-  .wc-block-checkout__sidebar {
-    min-width: 0;
-    width: 100%;
-  }
-
-  /* =========================
-     MD (>=768): 2 columnas
-     ========================= */
+  // MD: 8/4 aprox
   @media (min-width: $breakpoint-md) {
     .wc-block-checkout {
-      grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
+      grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
     }
 
     .wc-block-checkout__sidebar {
       position: sticky;
-      top: 24px;          // se queda a la vista sin molestar
+      top: 24px;
       align-self: start;
     }
   }
 
-  /* =========================
-     LG (>=992): más aire, sidebar más estable
-     ========================= */
+  // LG: 9/3 feel (main domina más)
   @media (min-width: $breakpoint-lg) {
     .wc-block-checkout {
-      grid-template-columns: minmax(0, 1.8fr) minmax(360px, 0.95fr);
-      gap: 1.75rem;
+      grid-template-columns: minmax(0, 2.4fr) minmax(360px, 0.9fr);
+      gap: 1.9rem;
     }
   }
 
-  /* =========================
-     XL (>=1200): usa toda la pantalla de forma “premium”
-     ========================= */
+  // XL: 10/2 feel (main muy ancho, sidebar compacto premium)
   @media (min-width: $breakpoint-xl) {
     .wc-block-checkout {
-      grid-template-columns: minmax(0, 2fr) minmax(420px, 0.9fr);
-      gap: 2rem;
+      grid-template-columns: minmax(0, 3fr) minmax(380px, 0.8fr);
+      gap: 2.2rem;
     }
   }
 
-  /* =========================
-     SM: acciones full width
-     ========================= */
+  // SM: botones full
   @media (max-width: $breakpoint-md) {
     .wc-block-checkout__actions_row {
       display: grid;
