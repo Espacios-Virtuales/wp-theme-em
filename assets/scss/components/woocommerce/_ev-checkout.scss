@@ -23,33 +23,8 @@ $border: rgba(0, 0, 0, 0.12);
 $focus-ring: 0 0 0 4px rgba(72, 61, 139, 0.18);
 $shadow-soft: ev("shadow-light", $box-shadow-light);
 
-$wp-max: 1400px;
+$wp-max: 1440px;
 
-// --------------------------------------------------
-// 0) ROMPER CERCO DEL THEME (solo checkout)
-// --------------------------------------------------
-// Esto suele ser lo que te está dejando la “columna de 4”
-body.woocommerce-checkout {
-  .site,
-  .site-main,
-  .content-area,
-  .content,
-  .container,
-  .container-fluid,
-  .entry-content,
-  .woocommerce {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  // muchos themes aplican padding lateral fuerte aquí:
-  .site-main,
-  .content-area,
-  .entry-content {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-}
 
 // --------------------------------------------------
 // 1) WRAPPER PRINCIPAL

@@ -14610,33 +14610,9 @@ body.woocommerce .comments-area {
     max-width: 300px;
   }
 }
-body.woocommerce-checkout .site,
-body.woocommerce-checkout .site-main,
-body.woocommerce-checkout .content-area,
-body.woocommerce-checkout .content,
-body.woocommerce-checkout .container,
-body.woocommerce-checkout .container-fluid,
-body.woocommerce-checkout .container-sm,
-body.woocommerce-checkout .container-md,
-body.woocommerce-checkout .container-lg,
-body.woocommerce-checkout .container-xl,
-body.woocommerce-checkout .container-xxl,
-body.woocommerce-checkout .entry-content,
-body.woocommerce-checkout .woocommerce {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-body.woocommerce-checkout .site-main,
-body.woocommerce-checkout .content-area,
-body.woocommerce-checkout .entry-content {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
 .wp-block-woocommerce-checkout {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 2vw, 1.5rem);
   font-family: "Cormorant Garamond", serif;
