@@ -1,19 +1,18 @@
 // components/checkout/_ev-checkout.scss
 // --------------------------------------------------
-// WooCommerce Blocks Checkout – Escuela Mística
-// Scoped + Wide layout (override Woo sidebar layout + container queries)
+// WooCommerce Blocks Checkout – Escuela Mística (Scoped)
 // --------------------------------------------------
 
 @use "../globals" as *;
 @use "sass:map";
 
-// Helper: acceder a $theme-variables con fallback
 @function ev($key, $fallback: null) {
-  @if map.has-key($theme-variables, $key) { @return map.get($theme-variables, $key); }
+  @if map.has-key($theme-variables, $key) {
+    @return map.get($theme-variables, $key);
+  }
   @return $fallback;
 }
 
-// Visual helpers (derivados de globals)
 $surface: $white;
 $bg: #fbfafc;
 $ink: #141317;
@@ -23,13 +22,24 @@ $shadow-soft: ev("shadow-light", $box-shadow-light);
 
 $wp-max: 1440px;
 
-// ==================================================
-// 0) OVERRIDES SOLO CHECKOUT
-//    - Desactiva el sidebar layout interno de Woo (65%)
-//    - Desactiva container queries (container-type: inline-size)
-// ==================================================
+// --------------------------------------------------
+// 0) Romper “container” del theme SOLO en checkout
+// --------------------------------------------------
 body.woocommerce-checkout {
-
+  .site-main,
+  .content-area,
+  .entry-content,
+  .woocommerce,
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .site-main,
+  .content-area,
+  .entry-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
   // Anular el layout de Woo que fuerza “main 65%”
   .wc-block-components-sidebar-layout {
     display: block !important;
@@ -56,9 +66,9 @@ body.woocommerce-checkout {
   }
 }
 
-// ==================================================
-// 1) WRAPPER PRINCIPAL (SCOPED)
-// ==================================================
+// --------------------------------------------------
+// 1) Wrapper Checkout (todo scoping aquí)
+// --------------------------------------------------
 .wp-block-woocommerce-checkout {
   width: 100%;
   max-width: $wp-max;
@@ -67,21 +77,21 @@ body.woocommerce-checkout {
   font-family: $font-family-base;
   background: $bg;
 
-  // Variables nativas Woo Blocks (estables)
+  // Variables nativas Woo Blocks (seguras)
   --wc-components-color-accent: #{$secondary};
   --wc-components-color-accent-contrast: #{$text-light};
   --wc-components-color-foreground: #{$ink};
   --wc-components-color-background: #{$surface};
   --wc-components-color-info: #{$gold};
 
-  // ------------------------------------------------
-  // Layout propio (grid) — ahora manda este
-  // ------------------------------------------------
+  // ---------------------------
+  // Layout (no tocar fuera)
+  // ---------------------------
   .wc-block-checkout {
     width: 100%;
     display: grid;
-    align-items: start;
     gap: clamp(1rem, 2vw, 2rem);
+    align-items: start;
     grid-template-columns: 1fr; // mobile first
   }
 
@@ -95,12 +105,16 @@ body.woocommerce-checkout {
     box-shadow: $shadow-soft;
   }
 
-  .wc-block-checkout__main { padding: clamp(1rem, 2vw, 1.75rem); }
-  .wc-block-checkout__sidebar { padding: clamp(1rem, 2vw, 1.5rem); }
+  .wc-block-checkout__main {
+    padding: clamp(1rem, 2vw, 1.75rem);
+  }
+  .wc-block-checkout__sidebar {
+    padding: clamp(1rem, 2vw, 1.5rem);
+  }
 
-  // ------------------------------------------------
-  // Tipografía
-  // ------------------------------------------------
+  // ---------------------------
+  // Tipografía (solo dentro)
+  // ---------------------------
   .wc-block-components-title,
   .wc-block-components-checkout-step__title {
     font-family: $headings-font-family;
@@ -108,19 +122,18 @@ body.woocommerce-checkout {
     color: $primary;
     font-size: clamp(1.2rem, 1.6vw, 1.55rem);
     margin: 0 0 0.75rem 0;
-    letter-spacing: 0.01em;
   }
 
   .wc-block-components-checkout-step__description {
+    color: $text-muted;
     font-size: 0.98rem;
     line-height: 1.55;
-    color: $text-muted;
     margin: 0 0 1.25rem 0;
   }
 
-  // ------------------------------------------------
-  // Inputs (modernos, legibles, simples)
-  // ------------------------------------------------
+  // ---------------------------
+  // Inputs (moderno + simple)
+  // ---------------------------
   .wc-block-components-text-input,
   .wc-block-components-address-form,
   .wc-block-components-select-control,
@@ -143,11 +156,9 @@ body.woocommerce-checkout {
       background: $surface;
       color: $ink;
       font-size: 1rem;
-      transition: border-color .18s ease, box-shadow .18s ease;
-
-      &::placeholder {
-        color: rgba(179, 179, 179, 0.95);
-      }
+      transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
 
       &:focus {
         outline: none;
@@ -162,32 +173,32 @@ body.woocommerce-checkout {
     gap: 0.9rem;
   }
 
-  // ------------------------------------------------
+  // ---------------------------
   // Notices
-  // ------------------------------------------------
+  // ---------------------------
   .wc-block-components-notice-banner {
     border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.10);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: $shadow-soft;
 
     &.is-error {
       background: rgba(220, 53, 69, 0.07);
       border-left: 4px solid #dc3545;
-      color: $ink;
     }
-
     &.is-info {
-      background: rgba(255, 215, 0, 0.10);
+      background: rgba(255, 215, 0, 0.1);
       border-left: 4px solid $gold;
-      color: $ink;
     }
   }
 
-  // ------------------------------------------------
+  // ---------------------------
   // Sidebar: resumen + totales
-  // ------------------------------------------------
+  // ---------------------------
   .checkout-order-summary-block-fill-wrapper {
-    .wc-block-components-order-summary__content { display: grid; gap: 0.85rem; }
+    .wc-block-components-order-summary__content {
+      display: grid;
+      gap: 0.85rem;
+    }
 
     .wc-block-components-order-summary-item {
       border: 1px solid rgba(0, 0, 0, 0.08);
@@ -198,9 +209,9 @@ body.woocommerce-checkout {
       .wc-block-components-product-name {
         font-family: $headings-font-family;
         font-weight: $headings-font-weight;
+        color: $ink;
         font-size: 1.05rem;
         margin: 0 0 0.25rem 0;
-        color: $ink;
       }
 
       .wc-block-components-formatted-money-amount {
@@ -209,66 +220,28 @@ body.woocommerce-checkout {
       }
     }
 
-    .wc-block-components-order-summary-item__image img {
-      border-radius: 10px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-    }
-
     .wc-block-components-totals-item {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       margin: 0.55rem 0;
 
       .wc-block-components-totals-item__label {
         font-weight: 700;
-        color: rgba(0, 0, 0, 0.78);
       }
-
       .wc-block-components-totals-item__value {
         font-weight: 900;
         color: $gold;
       }
     }
-
-    .wc-block-components-totals-footer-item {
-      margin-top: 0.75rem;
-      padding-top: 0.75rem;
-      border-top: 1px dashed rgba(0, 0, 0, 0.18);
-
-      .wc-block-components-totals-item__label {
-        font-size: 1.05rem;
-      }
-
-      .wc-block-components-totals-footer-item-tax-value {
-        font-size: 1.18rem;
-        font-weight: 900;
-        color: $ink;
-      }
-    }
   }
 
-  // Cupón acordeón
-  .wc-block-components-totals-coupon.wc-block-components-panel {
-    border: 1px solid rgba(0, 0, 0, 0.10);
-    border-radius: 12px;
-    background: $surface;
-    overflow: hidden;
-
-    .wc-block-components-panel__button {
-      padding: 0.85rem 1rem;
-      font-weight: 800;
-      color: $ink;
-    }
-  }
-
-  // ------------------------------------------------
-  // Actions row (scoped: no afecta cart)
-  // ------------------------------------------------
+  // ---------------------------
+  // Actions: Volver + Pagar (SIN tocar botones globales)
+  // ---------------------------
   .wc-block-checkout__actions_row {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 0.9rem;
     margin-top: 1.25rem;
 
@@ -278,12 +251,13 @@ body.woocommerce-checkout {
       gap: 0.55rem;
       padding: 0.75rem 1rem;
       border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.10);
+      border: 1px solid rgba(0, 0, 0, 0.1);
       background: $surface;
       color: $ink;
       text-decoration: none;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-      transition: transform .18s ease, box-shadow .18s ease;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
 
       &:hover {
         transform: translateY(-1px);
@@ -291,29 +265,28 @@ body.woocommerce-checkout {
       }
     }
 
-    // SOLO el botón de checkout (no wc-block-components-button global)
+    // SOLO este botón (evita sangrado a cart)
     button.wc-block-components-checkout-place-order-button {
       background: linear-gradient(135deg, $secondary, $primary);
       border: 1px solid $gold;
       border-radius: 999px;
       padding: 0.9rem 1.6rem;
       min-height: 54px;
-
       color: $text-light;
       font-family: $font-family-base;
-      font-size: 1.05rem;
+      font-weight: 900;
       letter-spacing: 0.09em;
       text-transform: uppercase;
-      font-weight: 900;
-
       box-shadow: ev("shadow-hover", $box-shadow-heavy);
-      transition: transform .18s ease, filter .24s ease, box-shadow .24s ease;
+      transition:
+        transform 0.18s ease,
+        filter 0.24s ease,
+        box-shadow 0.24s ease;
 
       &:hover {
         filter: brightness(1.04);
         transform: translateY(-1px);
       }
-
       &:active {
         transform: translateY(0);
         box-shadow: ev("shadow-default", $shadow-default);
@@ -321,14 +294,13 @@ body.woocommerce-checkout {
     }
   }
 
-  // ------------------------------------------------
-  // Responsive grid (8/4 → 9/3 → 10/2 feel)
-  // ------------------------------------------------
+  // ---------------------------
+  // Responsive: 8/4 → 9/3 → 10/2 feel
+  // ---------------------------
   @media (min-width: $breakpoint-md) {
     .wc-block-checkout {
       grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
     }
-
     .wc-block-checkout__sidebar {
       position: sticky;
       top: 24px;
@@ -339,14 +311,12 @@ body.woocommerce-checkout {
   @media (min-width: $breakpoint-lg) {
     .wc-block-checkout {
       grid-template-columns: minmax(0, 2.6fr) minmax(360px, 0.9fr);
-      gap: 1.9rem;
     }
   }
 
   @media (min-width: $breakpoint-xl) {
     .wc-block-checkout {
       grid-template-columns: minmax(0, 3.2fr) minmax(380px, 0.8fr);
-      gap: 2.2rem;
     }
   }
 
