@@ -14650,7 +14650,7 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
 
 .wp-block-woocommerce-checkout {
   width: 100%;
-  max-width: 1884px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 2vw, 1.5rem);
   font-family: "Cormorant Garamond", serif;
