@@ -5,16 +5,15 @@
 // 0) FULL-BLEED: salir del container del theme
 // ==================================================
 body.woocommerce-checkout .wp-block-woocommerce-checkout {
-  /* rompe el "encierro" del contenedor padre */
   width: 100vw !important;
   max-width: 100vw !important;
   margin-left: calc(50% - 50vw) !important;
   margin-right: calc(50% - 50vw) !important;
 
-  /* tu ancho útil real dentro del full-bleed */
   padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 2vw, 1.5rem) !important;
   background: #fbfafc;
   font-family: $font-family-base;
+  box-sizing: border-box;
 }
 
 /* contenedor interno “útil” centrado a 1440 */
@@ -25,7 +24,7 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout > * {
 }
 
 // ==================================================
-// 1) NO CONTAINER QUERIES (para que no recalcule raro)
+// 1) NO CONTAINER QUERIES (evita recálculos raros)
 // ==================================================
 body.woocommerce-checkout .wp-block-woocommerce-checkout {
   container-type: normal !important;
@@ -43,7 +42,7 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout
   width: 100% !important;
 }
 
-/* anular el padding-right 4.528% y cualquier ancho heredado */
+/* anular padding-right heredado */
 body.woocommerce-checkout .wp-block-woocommerce-checkout
 .wc-block-components-sidebar-layout .wc-block-components-main {
   width: auto !important;
@@ -88,5 +87,160 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout
   body.woocommerce-checkout .wp-block-woocommerce-checkout
   .wc-block-components-sidebar-layout {
     grid-template-columns: minmax(0, 3.2fr) minmax(420px, 0.85fr) !important;
+  }
+}
+
+// ==================================================
+// 3) SKIN (simpleza): padding, cards, inputs, botón
+//    *sin tocar layout*
+// ==================================================
+body.woocommerce-checkout .wp-block-woocommerce-checkout {
+
+  // Variables Woo Blocks (ayuda a consistencia)
+  --wc-components-color-accent: #{$secondary};
+  --wc-components-color-accent-contrast: #{$text-light};
+  --wc-components-color-foreground: #{$dark};
+  --wc-components-color-background: #{$white};
+  --wc-components-color-info: #{$gold};
+
+  // “cards” para main + sidebar
+  .wc-block-checkout__main,
+  .wc-block-checkout__sidebar {
+    background: $white;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-light;
+  }
+
+  .wc-block-checkout__main { padding: clamp(1rem, 2vw, 1.75rem); }
+  .wc-block-checkout__sidebar { padding: clamp(1rem, 2vw, 1.5rem); }
+
+  // Títulos: más aire, no pegados al borde
+  .wc-block-components-checkout-step__title,
+  .wc-block-components-title {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    color: $primary;
+    margin: 0 0 0.9rem 0;
+  }
+
+  .wc-block-components-checkout-step__description {
+    color: $text-muted;
+    margin: 0 0 1.25rem 0;
+    line-height: 1.55;
+  }
+
+  // Inputs legibles
+  .wc-block-components-text-input,
+  .wc-block-components-address-form,
+  .wc-block-components-select-control,
+  .wc-block-components-textarea {
+    label {
+      font-weight: 700;
+      color: $primary;
+      margin-bottom: 0.35rem;
+    }
+
+    input, select, textarea {
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.14);
+      padding: 0.8rem 0.95rem;
+      font-size: 1rem;
+      background: $white;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+
+      &:focus {
+        outline: none;
+        border-color: rgba(72, 61, 139, 0.55);
+        box-shadow: 0 0 0 4px rgba(72, 61, 139, 0.18);
+      }
+    }
+  }
+
+  // Separación entre bloques internos del checkout
+  .wc-block-components-checkout-step__content {
+    display: grid;
+    gap: 0.95rem;
+  }
+
+  // Sidebar: resumen con aire
+  .wc-block-components-order-summary__content {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .wc-block-components-order-summary-item {
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 0.85rem;
+    background: rgba(255,255,255,0.92);
+  }
+
+  .wc-block-components-totals-item {
+    margin: 0.55rem 0;
+
+    .wc-block-components-totals-item__label {
+      font-weight: 700;
+    }
+    .wc-block-components-totals-item__value {
+      font-weight: 900;
+      color: $gold;
+    }
+  }
+
+  // Botón principal (PayPal)
+  button.wc-block-components-checkout-place-order-button {
+    background: linear-gradient(135deg, $secondary, $primary);
+    border: 1px solid $gold;
+    border-radius: 999px;
+    padding: 0.9rem 1.6rem;
+    min-height: 54px;
+
+    color: $text-light;
+    font-family: $font-family-base;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    box-shadow: $shadow-hover;
+    transition: transform 0.18s ease, filter 0.24s ease, box-shadow 0.24s ease;
+
+    &:hover {
+      filter: brightness(1.04);
+      transform: translateY(-1px);
+    }
+    &:active {
+      transform: translateY(0);
+      box-shadow: $shadow-default;
+    }
+  }
+
+  // Botón volver al carrito con estilo suave
+  .wc-block-components-checkout-return-to-cart-button {
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.10);
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    box-shadow: $shadow-light;
+
+    &:hover {
+      box-shadow: $box-shadow-light;
+    }
+  }
+
+  // Mobile: acciones full width
+  @media (max-width: $breakpoint-md) {
+    .wc-block-checkout__actions_row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+
+      .wc-block-components-checkout-return-to-cart-button,
+      button.wc-block-components-checkout-place-order-button {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+    }
   }
 }
