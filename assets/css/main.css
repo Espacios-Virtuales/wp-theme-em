@@ -14727,6 +14727,7 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wp-block-woocommerce-c
 body.woocommerce-checkout .wp-block-woocommerce-checkout .checkout-order-summary-block-fill-wrapper,
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary {
   margin: 0;
+  padding: 20px;
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary__content {
@@ -14876,34 +14877,21 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-ch
   }
 }
 @media (min-width: 768px) {
-  /* Asegura sidebar visible */
+  /* Oculta el resumen inline (mobile version) */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary:not(.wc-block-components-sidebar *) {
+    display: none !important;
+  }
+  /* Asegura que el sidebar sí se vea */
   body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-sidebar {
-    display: block !important;
-  }
-  /* Oculta el bloque inline de resumen (los wrappers típicos de Woo) */
-  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-checkout__order-summary,
-  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-checkout__order-summary-toggle,
-  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-checkout__order-summary-panel {
-    display: none !important;
-  }
-  /* Y por si viene “suelto”: oculta cualquier order-summary fuera del sidebar */
-  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary {
-    display: none !important;
-  }
-  /* …pero NO ocultes el order summary que está dentro del sidebar */
-  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-sidebar .wc-block-components-order-summary {
     display: block !important;
   }
 }
 @media (max-width: 768px) {
-  /* Oculta sidebar completo */
+  /* Oculta el sidebar completo */
   body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-sidebar {
     display: none !important;
   }
   /* Muestra el resumen inline */
-  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-checkout__order-summary,
-  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-checkout__order-summary-toggle,
-  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-checkout__order-summary-panel,
   body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary {
     display: block !important;
   }
