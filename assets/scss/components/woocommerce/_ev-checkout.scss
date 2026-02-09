@@ -262,44 +262,62 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     }
   }
 }
-
 // ==================================================
-// 4) FIX CRÍTICO — Woo duplica el resumen (mobile/desktop)
+// 4) FIX CRÍTICO — Woo duplica resumen (mobile/desktop)
+//   Desktop: SOLO sidebar
+//   Mobile: SOLO inline
 // ==================================================
 
-// --- Desktop: SOLO sidebar ---
+// DESKTOP (md+): mostrar sidebar y ocultar inline
 @media (min-width: $breakpoint-md) {
 
-  /* Oculta el resumen inline (mobile version) */
-  body.woocommerce-checkout
-  .wp-block-woocommerce-checkout
-  .wc-block-components-order-summary:not(.wc-block-components-sidebar *) {
+  /* Asegura sidebar visible */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
+  .wc-block-components-sidebar {
+    display: block !important;
+  }
+
+  /* Oculta el bloque inline de resumen (los wrappers típicos de Woo) */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
+  .wc-block-checkout__order-summary,
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
+  .wc-block-checkout__order-summary-toggle,
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
+  .wc-block-checkout__order-summary-panel {
     display: none !important;
   }
 
-  /* Asegura que el sidebar sí se vea */
-  body.woocommerce-checkout
-  .wp-block-woocommerce-checkout
-  .wc-block-components-sidebar {
+  /* Y por si viene “suelto”: oculta cualquier order-summary fuera del sidebar */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
+  .wc-block-components-order-summary {
+    display: none !important;
+  }
+
+  /* …pero NO ocultes el order summary que está dentro del sidebar */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
+  .wc-block-components-sidebar .wc-block-components-order-summary {
     display: block !important;
   }
 }
 
-// --- Mobile: SOLO resumen inline ---
+// MOBILE (< md): ocultar sidebar y mostrar inline
 @media (max-width: $breakpoint-md) {
 
-  /* Oculta el sidebar completo */
-  body.woocommerce-checkout
-  .wp-block-woocommerce-checkout
+  /* Oculta sidebar completo */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
   .wc-block-components-sidebar {
     display: none !important;
   }
 
   /* Muestra el resumen inline */
-  body.woocommerce-checkout
-  .wp-block-woocommerce-checkout
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
+  .wc-block-checkout__order-summary,
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
+  .wc-block-checkout__order-summary-toggle,
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
+  .wc-block-checkout__order-summary-panel,
+  body.woocommerce-checkout .wp-block-woocommerce-checkout
   .wc-block-components-order-summary {
     display: block !important;
   }
 }
-
