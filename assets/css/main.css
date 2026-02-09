@@ -14609,6 +14609,9 @@ body.woocommerce .comments-area {
     max-width: 300px;
   }
 }
+/* ==================================================
+   0) FULL-BLEED (salir del container del theme)
+   ================================================== */
 body.woocommerce-checkout .wp-block-woocommerce-checkout {
   width: 100vw !important;
   max-width: 100vw !important;
@@ -14618,25 +14621,28 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
   background: #fbfafc;
   font-family: "Cormorant Garamond", serif;
   box-sizing: border-box;
+  /* 1) cortar container queries de Woo */
+  container-type: normal !important;
+  padding-top: 0 !important;
 }
 
-/* contenedor interno “útil” centrado a 1440 */
-body.woocommerce-checkout .wp-block-woocommerce-checkout > * {
+/* ✅ Centrar SOLO el layout principal (NO todos los hijos) */
+body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-sidebar-layout,
+body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-notices {
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
 }
 
-body.woocommerce-checkout .wp-block-woocommerce-checkout {
-  container-type: normal !important;
-  padding-top: 0 !important;
-}
-
+/* ==================================================
+   2) LAYOUT: dominar el 65/35 de Woo con GRID
+   ================================================== */
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-sidebar-layout {
   display: grid !important;
   grid-template-columns: 1fr; /* mobile first */
   gap: clamp(1rem, 2vw, 2rem) !important;
   width: 100% !important;
+  align-items: start;
 }
 
 /* anular padding-right heredado */
@@ -14645,6 +14651,9 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-si
   padding-right: 0 !important;
   margin: 0 !important;
   min-width: 0 !important;
+  /* clave: que NO se centre dentro del grid */
+  justify-self: stretch !important;
+  max-width: none !important;
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-sidebar-layout .wc-block-components-sidebar {
@@ -14652,6 +14661,9 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-si
   padding-left: 0 !important;
   margin: 0 !important;
   min-width: 0 !important;
+  /* clave: que NO se centre dentro del grid */
+  justify-self: stretch !important;
+  max-width: none !important;
 }
 
 /* MD+ (8/4 feel) */
@@ -14677,8 +14689,22 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-si
     grid-template-columns: minmax(0, 3.2fr) minmax(420px, 0.85fr) !important;
   }
 }
+/* ==================================================
+   3) SKIN (simple): cards, inputs, botón, espaciado
+   ================================================== */
 body.woocommerce-checkout .wp-block-woocommerce-checkout {
-  color: #141317;
+  --wc-components-color-accent: rgb(75, 0, 130);
+  --wc-components-color-accent-contrast: #f8f9fa;
+  --wc-components-color-foreground: #141317;
+  --wc-components-color-background: #ffffff;
+  /* Cards */
+  /* Sidebar: padding real en el contenedor correcto */
+  /* AIRE dentro del resumen (evita “pegado al borde”) */
+  /* Títulos */
+  /* Inputs */
+  /* Precios: negro + bold */
+  /* CTA PayPal */
+  /* Volver al carrito: solo flecha en desktop */
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-checkout__main,
@@ -14700,14 +14726,13 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-checkout__sid
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wp-block-woocommerce-checkout-order-summary-block,
 body.woocommerce-checkout .wp-block-woocommerce-checkout .checkout-order-summary-block-fill-wrapper,
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary {
-  padding: 0 !important;
   margin: 0;
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary__content {
   display: grid;
   gap: 1rem;
-  padding: 0.25rem;
+  padding: 0.5rem; /* esto es lo que evita el borde pegado */
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary-item {
@@ -14717,25 +14742,12 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-or
   background: rgba(255, 255, 255, 0.92);
 }
 
-body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-step {
-  padding: clamp(0.75rem, 1.6vw, 1.25rem);
-  border-radius: 12px;
-}
-
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-step__title,
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-title {
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
   color: #483d8b;
   margin: 0 0 0.9rem 0;
-}
-
-body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-step__content {
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-  display: grid;
-  gap: 0.95rem;
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-text-input label,
@@ -14764,7 +14776,6 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-te
   font-size: 1rem;
   background: #ffffff;
   color: #141317;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-text-input input:focus, body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-text-input select:focus, body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-text-input textarea:focus,
@@ -14808,7 +14819,6 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-ch
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3) !important;
-  transition: transform 0.18s ease, filter 0.24s ease, box-shadow 0.24s ease !important;
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout button.wc-block-components-checkout-place-order-button:hover,
@@ -14816,20 +14826,6 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-ch
   filter: brightness(1.04) !important;
   transform: translateY(-1px) !important;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2) !important;
-}
-
-body.woocommerce-checkout .wp-block-woocommerce-checkout button.wc-block-components-checkout-place-order-button:active,
-body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-place-order-button:active {
-  transform: translateY(0) !important;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2) !important;
-}
-
-body.woocommerce-checkout .wp-block-woocommerce-checkout button.wc-block-components-checkout-place-order-button .wc-block-components-checkout-place-order-button__text,
-body.woocommerce-checkout .wp-block-woocommerce-checkout button.wc-block-components-checkout-place-order-button .wc-block-components-button__text,
-body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-place-order-button .wc-block-components-checkout-place-order-button__text,
-body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-place-order-button .wc-block-components-button__text {
-  color: #f8f9fa !important;
-  font-weight: 900 !important;
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-return-to-cart-button {
@@ -14843,10 +14839,6 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-ch
   padding: 0.75rem 1rem;
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-return-to-cart-button:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-return-to-cart-button svg {

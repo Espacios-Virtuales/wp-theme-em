@@ -1,9 +1,9 @@
 // components/checkout/_ev-checkout.scss
 @use "../globals" as *;
 
-// ==================================================
-// 0) FULL-BLEED: salir del container del theme
-// ==================================================
+/* ==================================================
+   0) FULL-BLEED (salir del container del theme)
+   ================================================== */
 body.woocommerce-checkout .wp-block-woocommerce-checkout {
   width: 100vw !important;
   max-width: 100vw !important;
@@ -14,32 +14,30 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
   background: #fbfafc;
   font-family: $font-family-base;
   box-sizing: border-box;
+
+  /* 1) cortar container queries de Woo */
+  container-type: normal !important;
+  padding-top: 0 !important;
 }
 
-/* contenedor interno “útil” centrado a 1440 */
-body.woocommerce-checkout .wp-block-woocommerce-checkout > * {
+/* ✅ Centrar SOLO el layout principal (NO todos los hijos) */
+body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-sidebar-layout,
+body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-notices {
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
 }
 
-// ==================================================
-// 1) NO CONTAINER QUERIES (evita recálculos raros)
-// ==================================================
-body.woocommerce-checkout .wp-block-woocommerce-checkout {
-  container-type: normal !important;
-  padding-top: 0 !important;
-}
-
-// ==================================================
-// 2) LAYOUT: dominar el 65/35 de Woo con GRID
-// ==================================================
+/* ==================================================
+   2) LAYOUT: dominar el 65/35 de Woo con GRID
+   ================================================== */
 body.woocommerce-checkout .wp-block-woocommerce-checkout
 .wc-block-components-sidebar-layout {
   display: grid !important;
   grid-template-columns: 1fr; /* mobile first */
   gap: clamp(1rem, 2vw, 2rem) !important;
   width: 100% !important;
+  align-items: start;
 }
 
 /* anular padding-right heredado */
@@ -49,6 +47,10 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout
   padding-right: 0 !important;
   margin: 0 !important;
   min-width: 0 !important;
+
+  /* clave: que NO se centre dentro del grid */
+  justify-self: stretch !important;
+  max-width: none !important;
 }
 
 body.woocommerce-checkout .wp-block-woocommerce-checkout
@@ -57,6 +59,10 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout
   padding-left: 0 !important;
   margin: 0 !important;
   min-width: 0 !important;
+
+  /* clave: que NO se centre dentro del grid */
+  justify-self: stretch !important;
+  max-width: none !important;
 }
 
 /* MD+ (8/4 feel) */
@@ -90,18 +96,16 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout
   }
 }
 
-// ==================================================
-// 3) SKIN (simple): cards, inputs, botón, espaciado
-//    *sin tocar layout*
-// ==================================================
+/* ==================================================
+   3) SKIN (simple): cards, inputs, botón, espaciado
+   ================================================== */
 body.woocommerce-checkout .wp-block-woocommerce-checkout {
+  --wc-components-color-accent: #{$secondary};
+  --wc-components-color-accent-contrast: #{$text-light};
+  --wc-components-color-foreground: #141317;
+  --wc-components-color-background: #{$white};
 
-  // Base (por si el theme cambió colores)
-  color: #141317;
-
-  // ---------------------------
-  // Cards: main + sidebar
-  // ---------------------------
+  /* Cards */
   .wc-block-checkout__main,
   .wc-block-checkout__sidebar {
     background: $white;
@@ -110,29 +114,22 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     box-shadow: $box-shadow-light;
   }
 
-  .wc-block-checkout__main {
-    padding: clamp(1rem, 2vw, 1.75rem);
-  }
+  .wc-block-checkout__main { padding: clamp(1rem, 2vw, 1.75rem); }
 
-  // OJO: el “pegado al borde” muchas veces es por wrappers internos
-  // (no por .wc-block-checkout__sidebar)
-  .wc-block-checkout__sidebar {
-    padding: clamp(1rem, 2vw, 1.75rem);
-  }
+  /* Sidebar: padding real en el contenedor correcto */
+  .wc-block-checkout__sidebar { padding: clamp(1rem, 2vw, 1.75rem); }
 
-  // Wrapper(s) internos del sidebar: darles aire real
+  /* AIRE dentro del resumen (evita “pegado al borde”) */
   .wp-block-woocommerce-checkout-order-summary-block,
   .checkout-order-summary-block-fill-wrapper,
   .wc-block-components-order-summary {
-    padding: 0 !important; // dejamos que el padding “venga” del sidebar
     margin: 0;
   }
 
-  // Pero el contenido del resumen sí debe respirar
   .wc-block-components-order-summary__content {
     display: grid;
     gap: 1rem;
-    padding: 0.25rem; // micro-padding para que nada toque borde visual
+    padding: 0.5rem; /* esto es lo que evita el borde pegado */
   }
 
   .wc-block-components-order-summary-item {
@@ -142,14 +139,7 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     background: rgba(255,255,255,0.92);
   }
 
-  // ---------------------------
-  // Títulos / separación de pasos
-  // ---------------------------
-  .wc-block-components-checkout-step {
-    padding: clamp(0.75rem, 1.6vw, 1.25rem);
-    border-radius: $border-radius;
-  }
-
+  /* Títulos */
   .wc-block-components-checkout-step__title,
   .wc-block-components-title {
     font-family: $headings-font-family;
@@ -158,27 +148,12 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     margin: 0 0 0.9rem 0;
   }
 
-  // Centrar el contenido del step (email)
-  .wc-block-components-checkout-step__content {
-    width: 100%;
-    max-width: 980px;
-    margin: 0 auto;
-    display: grid;
-    gap: 0.95rem;
-  }
-
-  // ---------------------------
-  // Inputs
-  // ---------------------------
+  /* Inputs */
   .wc-block-components-text-input,
   .wc-block-components-address-form,
   .wc-block-components-select-control,
   .wc-block-components-textarea {
-    label {
-      font-weight: 700;
-      color: $primary;
-      margin-bottom: 0.35rem;
-    }
+    label { font-weight: 700; color: $primary; margin-bottom: 0.35rem; }
 
     input, select, textarea {
       width: 100%;
@@ -188,7 +163,6 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
       font-size: 1rem;
       background: $white;
       color: #141317;
-      transition: border-color 0.18s ease, box-shadow 0.18s ease;
 
       &:focus {
         outline: none;
@@ -198,9 +172,7 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     }
   }
 
-  // ---------------------------
-  // Totales: negro + bold (no dorado)
-  // ---------------------------
+  /* Precios: negro + bold */
   .wc-block-components-formatted-money-amount,
   .wc-block-components-product-price__value,
   .wc-block-components-totals-item__value,
@@ -214,9 +186,7 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     font-weight: 700;
   }
 
-  // ---------------------------
-  // CTA PayPal (recuperado)
-  // ---------------------------
+  /* CTA PayPal */
   button.wc-block-components-checkout-place-order-button,
   .wc-block-components-checkout-place-order-button {
     background: linear-gradient(135deg, $secondary, $primary) !important;
@@ -232,30 +202,15 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     text-transform: uppercase !important;
 
     box-shadow: $shadow-hover !important;
-    transition: transform 0.18s ease, filter 0.24s ease, box-shadow 0.24s ease !important;
 
     &:hover {
       filter: brightness(1.04) !important;
       transform: translateY(-1px) !important;
       box-shadow: $box-shadow-heavy !important;
     }
-
-    &:active {
-      transform: translateY(0) !important;
-      box-shadow: $shadow-default !important;
-    }
-
-    // Texto interno que Woo a veces estiliza aparte
-    .wc-block-components-checkout-place-order-button__text,
-    .wc-block-components-button__text {
-      color: $text-light !important;
-      font-weight: 900 !important;
-    }
   }
 
-  // ---------------------------
-  // Volver al carrito: solo flecha visible
-  // ---------------------------
+  /* Volver al carrito: solo flecha en desktop */
   .wc-block-components-checkout-return-to-cart-button {
     display: inline-flex;
     align-items: center;
@@ -267,8 +222,6 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     padding: 0.75rem 1rem;
     background: $white;
     box-shadow: $shadow-light;
-
-    &:hover { box-shadow: $box-shadow-light; }
   }
 
   .wc-block-components-checkout-return-to-cart-button svg {
@@ -277,10 +230,9 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     fill: currentColor !important;
   }
 
-  // Desktop: ocultar texto, solo flecha
   @media (min-width: $breakpoint-md) {
     .wc-block-components-checkout-return-to-cart-button {
-      font-size: 0;     // oculta texto
+      font-size: 0;
       line-height: 0;
       padding: 0.75rem 0.9rem;
     }
@@ -290,7 +242,6 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     }
   }
 
-  // Mobile: mostrar texto (mejor UX)
   @media (max-width: $breakpoint-md) {
     .wc-block-checkout__actions_row {
       display: grid;
