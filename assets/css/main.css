@@ -14743,6 +14743,10 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-or
   background: rgba(255, 255, 255, 0.92);
 }
 
+body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-checkout__form {
+  padding: 30px;
+}
+
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-checkout-step__title,
 body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-title {
   font-family: "Libre Baskerville", serif;
