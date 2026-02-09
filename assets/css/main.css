@@ -14875,6 +14875,26 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-ch
     line-height: 1.2;
   }
 }
+@media (min-width: 768px) {
+  /* Oculta el resumen inline (mobile version) */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary:not(.wc-block-components-sidebar *) {
+    display: none !important;
+  }
+  /* Asegura que el sidebar sí se vea */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-sidebar {
+    display: block !important;
+  }
+}
+@media (max-width: 768px) {
+  /* Oculta el sidebar completo */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-sidebar {
+    display: none !important;
+  }
+  /* Muestra el resumen inline */
+  body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-order-summary {
+    display: block !important;
+  }
+}
 .section-about {
   background-color: rgba(75, 0, 130, 0.5);
   padding: 80px 0;

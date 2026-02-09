@@ -262,3 +262,44 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     }
   }
 }
+
+// ==================================================
+// 4) FIX CRÍTICO — Woo duplica el resumen (mobile/desktop)
+// ==================================================
+
+// --- Desktop: SOLO sidebar ---
+@media (min-width: $breakpoint-md) {
+
+  /* Oculta el resumen inline (mobile version) */
+  body.woocommerce-checkout
+  .wp-block-woocommerce-checkout
+  .wc-block-components-order-summary:not(.wc-block-components-sidebar *) {
+    display: none !important;
+  }
+
+  /* Asegura que el sidebar sí se vea */
+  body.woocommerce-checkout
+  .wp-block-woocommerce-checkout
+  .wc-block-components-sidebar {
+    display: block !important;
+  }
+}
+
+// --- Mobile: SOLO resumen inline ---
+@media (max-width: $breakpoint-md) {
+
+  /* Oculta el sidebar completo */
+  body.woocommerce-checkout
+  .wp-block-woocommerce-checkout
+  .wc-block-components-sidebar {
+    display: none !important;
+  }
+
+  /* Muestra el resumen inline */
+  body.woocommerce-checkout
+  .wp-block-woocommerce-checkout
+  .wc-block-components-order-summary {
+    display: block !important;
+  }
+}
+
