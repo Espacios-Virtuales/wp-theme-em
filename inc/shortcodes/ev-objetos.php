@@ -46,17 +46,13 @@ function ev_objetos_shortcode($atts)
           $producto_id = get_post_meta($post_id, '_program_product_id', true);
           // URL de pago externo definida en ACF: payment_url
           $payment_url = get_field('payment_url');
-        } elseif (in_array($tipo, ['terapia', 'experiencia'], true)) {
-
-          // 1) Intento principal (terapia)
-          $raw_producto = get_post_meta($post_id, '_linked_product_id', true);
+        } elseif ($tipo === 'terapia') {
+          // Terapia (como ya funciona)
+          $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, '_linked_product_id', true)));
         
-          // 2) Fallback (experiencia u otros)
-          if (empty($raw_producto)) {
-            $raw_producto = get_post_meta($post_id, 'linked_product_id', true);
-          }
-        
-          $producto_id = absint(ev_normalize_post_id($raw_producto));
+        } elseif ($tipo === 'experiencia') {
+          // Experiencia (como tu ejemplo)
+          $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, 'linked_product_id', true)));
         }
 
         // Validación: que exista y sea publicable
