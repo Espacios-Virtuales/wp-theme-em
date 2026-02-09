@@ -91,59 +91,116 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout
 }
 
 // ==================================================
-// 3) SKIN (simpleza): padding, cards, inputs, botón
+// 3) SKIN (simple): cards, inputs, botón, espaciado
 //    *sin tocar layout*
 // ==================================================
 body.woocommerce-checkout .wp-block-woocommerce-checkout {
 
-  /* 1) CONTACTO (email) – centrar y dar aire */
-  .wc-block-checkout__main {
-    /* asegura que el contenido no quede “corrído” */
-    display: grid;
-    justify-items: stretch;
+  // Base (por si el theme cambió colores)
+  color: #141317;
+
+  // ---------------------------
+  // Cards: main + sidebar
+  // ---------------------------
+  .wc-block-checkout__main,
+  .wc-block-checkout__sidebar {
+    background: $white;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-light;
   }
 
-  /* este bloque suele ser el primero (contacto) */
+  .wc-block-checkout__main {
+    padding: clamp(1rem, 2vw, 1.75rem);
+  }
+
+  // OJO: el “pegado al borde” muchas veces es por wrappers internos
+  // (no por .wc-block-checkout__sidebar)
+  .wc-block-checkout__sidebar {
+    padding: clamp(1rem, 2vw, 1.75rem);
+  }
+
+  // Wrapper(s) internos del sidebar: darles aire real
+  .wp-block-woocommerce-checkout-order-summary-block,
+  .checkout-order-summary-block-fill-wrapper,
+  .wc-block-components-order-summary {
+    padding: 0 !important; // dejamos que el padding “venga” del sidebar
+    margin: 0;
+  }
+
+  // Pero el contenido del resumen sí debe respirar
+  .wc-block-components-order-summary__content {
+    display: grid;
+    gap: 1rem;
+    padding: 0.25rem; // micro-padding para que nada toque borde visual
+  }
+
+  .wc-block-components-order-summary-item {
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 1rem;
+    background: rgba(255,255,255,0.92);
+  }
+
+  // ---------------------------
+  // Títulos / separación de pasos
+  // ---------------------------
   .wc-block-components-checkout-step {
     padding: clamp(0.75rem, 1.6vw, 1.25rem);
     border-radius: $border-radius;
   }
 
-  /* centrar el “panel” de contacto cuando Woo lo deja raro */
+  .wc-block-components-checkout-step__title,
+  .wc-block-components-title {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    color: $primary;
+    margin: 0 0 0.9rem 0;
+  }
+
+  // Centrar el contenido del step (email)
   .wc-block-components-checkout-step__content {
     width: 100%;
-    max-width: 980px;           /* evita que se vea desparramado */
-    margin: 0 auto;             /* centra el contenido del step */
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    gap: 0.95rem;
   }
 
-  /* el input del correo a veces queda con width raro: lo normalizamos */
-  .wc-block-components-text-input input[type="email"] {
-    display: block;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  // ---------------------------
+  // Inputs
+  // ---------------------------
+  .wc-block-components-text-input,
+  .wc-block-components-address-form,
+  .wc-block-components-select-control,
+  .wc-block-components-textarea {
+    label {
+      font-weight: 700;
+      color: $primary;
+      margin-bottom: 0.35rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.14);
+      padding: 0.8rem 0.95rem;
+      font-size: 1rem;
+      background: $white;
+      color: #141317;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+
+      &:focus {
+        outline: none;
+        border-color: rgba(72, 61, 139, 0.55);
+        box-shadow: 0 0 0 4px rgba(72, 61, 139, 0.18);
+      }
+    }
   }
 
-  /* 2) SIDEBAR – padding + separación + no pegado al borde */
-  .wc-block-checkout__sidebar {
-    padding: clamp(1rem, 2vw, 1.75rem) !important;
-  }
-
-  .checkout-order-summary-block-fill-wrapper,
-  .wp-block-woocommerce-checkout-order-summary-block,
-  .wc-block-components-order-summary {
-    padding: 0 !important;
-  }
-
-  .wc-block-components-order-summary__content {
-    gap: 1rem !important;
-  }
-
-  .wc-block-components-order-summary-item {
-    padding: 1rem !important;
-  }
-
-  /* 3) PRECIOS – negro + bold (incluye totales) */
+  // ---------------------------
+  // Totales: negro + bold (no dorado)
+  // ---------------------------
   .wc-block-components-formatted-money-amount,
   .wc-block-components-product-price__value,
   .wc-block-components-totals-item__value,
@@ -152,33 +209,80 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     font-weight: 800 !important;
   }
 
-  /* labels un poco más sobrios */
   .wc-block-components-totals-item__label {
     color: rgba(20, 19, 23, 0.75) !important;
     font-weight: 700;
   }
 
-  /* 4) VOLVER AL CARRITO – solo flecha visible */
+  // ---------------------------
+  // CTA PayPal (recuperado)
+  // ---------------------------
+  button.wc-block-components-checkout-place-order-button,
+  .wc-block-components-checkout-place-order-button {
+    background: linear-gradient(135deg, $secondary, $primary) !important;
+    border: 1px solid $gold !important;
+    border-radius: 999px !important;
+    padding: 0.9rem 1.6rem !important;
+    min-height: 54px !important;
+
+    color: $text-light !important;
+    font-family: $font-family-base !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+
+    box-shadow: $shadow-hover !important;
+    transition: transform 0.18s ease, filter 0.24s ease, box-shadow 0.24s ease !important;
+
+    &:hover {
+      filter: brightness(1.04) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: $box-shadow-heavy !important;
+    }
+
+    &:active {
+      transform: translateY(0) !important;
+      box-shadow: $shadow-default !important;
+    }
+
+    // Texto interno que Woo a veces estiliza aparte
+    .wc-block-components-checkout-place-order-button__text,
+    .wc-block-components-button__text {
+      color: $text-light !important;
+      font-weight: 900 !important;
+    }
+  }
+
+  // ---------------------------
+  // Volver al carrito: solo flecha visible
+  // ---------------------------
   .wc-block-components-checkout-return-to-cart-button {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: #141317 !important;                 /* fuerza visibilidad */
+    color: #141317 !important;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.10);
+    padding: 0.75rem 1rem;
+    background: $white;
+    box-shadow: $shadow-light;
+
+    &:hover { box-shadow: $box-shadow-light; }
   }
 
-  /* el SVG debe ser visible siempre */
   .wc-block-components-checkout-return-to-cart-button svg {
     display: inline-block !important;
     opacity: 1 !important;
     fill: currentColor !important;
   }
 
-  /* ocultar texto en desktop: solo flecha */
+  // Desktop: ocultar texto, solo flecha
   @media (min-width: $breakpoint-md) {
     .wc-block-components-checkout-return-to-cart-button {
-      font-size: 0;            /* truco: oculta texto sin romper layout */
+      font-size: 0;     // oculta texto
       line-height: 0;
-      padding: 0.75rem 0.9rem; /* botón compacto */
+      padding: 0.75rem 0.9rem;
     }
     .wc-block-components-checkout-return-to-cart-button svg {
       width: 22px;
@@ -186,12 +290,24 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout {
     }
   }
 
-  /* en móvil sí mostramos el texto (mejor usabilidad) */
+  // Mobile: mostrar texto (mejor UX)
   @media (max-width: $breakpoint-md) {
+    .wc-block-checkout__actions_row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+
+      .wc-block-components-checkout-return-to-cart-button,
+      button.wc-block-components-checkout-place-order-button {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
     .wc-block-components-checkout-return-to-cart-button {
       font-size: 1rem;
       line-height: 1.2;
-      justify-content: center;
     }
   }
 }
