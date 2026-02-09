@@ -29,22 +29,6 @@ $wp-max: 1440px;
 //    - Desactiva container queries (container-type: inline-size)
 // ==================================================
 body.woocommerce-checkout {
-  // Romper contenedores del theme que limitan ancho (solo en checkout)
-  .site-main,
-  .content-area,
-  .entry-content,
-  .woocommerce,
-  .container {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  .site-main,
-  .content-area,
-  .entry-content {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
 
   // Anular el layout de Woo que fuerza “main 65%”
   .wc-block-components-sidebar-layout {

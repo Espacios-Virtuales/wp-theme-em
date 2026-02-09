@@ -14609,22 +14609,6 @@ body.woocommerce .comments-area {
     max-width: 300px;
   }
 }
-body.woocommerce-checkout .site-main,
-body.woocommerce-checkout .content-area,
-body.woocommerce-checkout .entry-content,
-body.woocommerce-checkout .woocommerce,
-body.woocommerce-checkout .container {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-body.woocommerce-checkout .site-main,
-body.woocommerce-checkout .content-area,
-body.woocommerce-checkout .entry-content {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
 body.woocommerce-checkout .wc-block-components-sidebar-layout {
   display: block !important;
   width: 100% !important;
