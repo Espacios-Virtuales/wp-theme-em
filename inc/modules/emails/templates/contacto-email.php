@@ -14,7 +14,7 @@ $subscription_message = ($subscribe === 'yes') ? '
     </tr>
     <tr>
         <td style="padding: 20px;">
-            <p style="color: #333;">Hemos recibido tu mensaje. Te responderemos lo antes posible.</p>
+            <p style="color: #333;">Hemos recibido tu mensaje.</p>
             <?= $subscription_message ?>
             <p>Con cariño, el equipo de Escuela Mística.</p>
         </td>

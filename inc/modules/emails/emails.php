@@ -38,7 +38,7 @@ function send_custom_email_response($user_email, $subscribe)
         <tr>
             <td style="padding: 20px; background-color: #ffffff;">
                 <p style="color: rgb(72, 61, 139); font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
-                    ¡Hola! Agradecemos mucho que te hayas tomado el tiempo para contactarnos. Hemos recibido tu mensaje y te responderemos lo antes posible.
+                    ¡Hola! Agradecemos mucho que te hayas tomado el tiempo para contactarnos.
                 </p>
                 ' . $subscription_message . '
                 <p style="color: rgb(72, 61, 139); font-size: 16px; line-height: 1.5;">
