@@ -19,4 +19,4 @@ require_once $modules_path . '/emails/autoresponder.php';          // Envío de 
 require_once $modules_path . '/emails/handlers.php';               // Formularios AJAX (contacto, cliente)
 
 // Ventas
-//require_once $modules_path . '/ventas/flow-engine.php';
+require_once $modules_path . '/ventas/flow-engine.php';
