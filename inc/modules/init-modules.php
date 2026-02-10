@@ -11,7 +11,7 @@ require_once $modules_path . '/calendario/calendar.php';
 // WooCommerce
 require_once $modules_path . '/woocommerce/hooks.php';              // Eventos como post-pago
 require_once $modules_path . '/woocommerce/filters.php';            // Eventos como post-pago
-// require_once $modules_path . '/woocommerce/products-linker.php';   // Lógica de relación CPT ↔ productos
+require_once $modules_path . '/woocommerce/products-linker.php';   // Lógica de relación CPT ↔ productos
 
 
 // Emails
@@ -19,4 +19,4 @@ require_once $modules_path . '/emails/autoresponder.php';          // Envío de 
 require_once $modules_path . '/emails/handlers.php';               // Formularios AJAX (contacto, cliente)
 
 // Ventas
-require_once $modules_path . '/ventas/flow-engine.php';
+//require_once $modules_path . '/ventas/flow-engine.php';
