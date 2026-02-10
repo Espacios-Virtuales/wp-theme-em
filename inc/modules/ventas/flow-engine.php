@@ -3,13 +3,13 @@ if (!defined('ABSPATH')) exit;
 
 // Helpers
 require_once __DIR__ . '/helpers/order-utils.php';
+require_once __DIR__ . '/helpers/logger.php';
 
 // Handlers
 require_once __DIR__ . '/handlers/terapia.php';
 require_once __DIR__ . '/handlers/course.php';
 require_once __DIR__ . '/handlers/experiencia.php';
 require_once __DIR__ . '/handlers/program.php';
-
 
 function ev_flow_note($order, $note) {
     if (!$order || !method_exists($order, 'add_order_note')) return;
