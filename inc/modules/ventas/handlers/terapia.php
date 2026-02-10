@@ -6,6 +6,6 @@ function ev_handle_terapia_flow($order, $post) {
     $calendly = get_post_meta($post->ID, '_calendly_link', true);
 
     if ($calendly) {
-        ev_send_agenda_email_template($email, $titulo, $calendly);
+        ev_send_terapia_agenda($email, $titulo, $calendly);
     }
 }
