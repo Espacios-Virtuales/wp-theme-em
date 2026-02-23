@@ -42,10 +42,10 @@ if ( ! is_checkout() ) {
         <div class="col-sm-6 col-md-2">
           <?php dynamic_sidebar('footer-widget-col-two'); ?>
         </div>
-        <div class="ccol-sm-6 col-md-2">
+        <div class="col-sm-6 col-md-2">
           <?php dynamic_sidebar('footer-widget-col-three'); ?>
         </div>
-        <div class="col-sm-6 col-md-2">
+        <div class="col-md-4 ms-auto col-sm-12">
           <?php dynamic_sidebar('footer-widget-col-four'); ?>
         </div>
       </div>
