@@ -248,8 +248,8 @@ add_action('widgets_init', 'custom_footer_widget_three');
 function custom_footer_widget_four(){
 	$args = array(
 		'id' 			=> 'footer-widget-col-four',
-		'name'			=> __('Footer Column Three', 'text_domain'),
-		'description' 	=> __('Column Three', 'text_domain'),
+		'name'			=> __('Footer Column Four', 'text_domain'),
+		'description' 	=> __('Column Four', 'text_domain'),
 		'before_title'	=> '<h3 class="title">',
 		'after_title'	=> '</h3>',
 		'before_widget' => '<div id="%1$s" class="widget %2$s" >',
