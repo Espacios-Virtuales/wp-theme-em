@@ -227,7 +227,7 @@ function custom_footer_widget_two(){
 add_action('widgets_init', 'custom_footer_widget_two');
 
 
-// Footer Widget two
+// Footer Widget three
 function custom_footer_widget_three(){
 	$args = array(
 		'id' 			=> 'footer-widget-col-three',
@@ -243,4 +243,20 @@ function custom_footer_widget_three(){
 }
 add_action('widgets_init', 'custom_footer_widget_three');
 
+
+// Footer Widget two
+function custom_footer_widget_four(){
+	$args = array(
+		'id' 			=> 'footer-widget-col-four',
+		'name'			=> __('Footer Column Three', 'text_domain'),
+		'description' 	=> __('Column Three', 'text_domain'),
+		'before_title'	=> '<h3 class="title">',
+		'after_title'	=> '</h3>',
+		'before_widget' => '<div id="%1$s" class="widget %2$s" >',
+		'after_widget'	=> '</div>'																							
+
+	);
+	register_sidebar($args);
+}
+add_action('widgets_init', 'custom_footer_widget_four');
 
