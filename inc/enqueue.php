@@ -53,6 +53,9 @@ function ev_front_assets() {
     wp_enqueue_script('anime', 'https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js', ['jquery'], '2.0.2', true);
     wp_enqueue_script('lightbox-js', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js', ['jquery'], '2.11.3', true);
     wp_enqueue_script('aos-js', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', ['jquery'], '2.3.4', true);
+
+    // JS landing
+    wp_enqueue_script('ev-regalo', get_template_directory_uri().'/assets/js/modules/ev-regalo.js', ['aos-js'], '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'ev_front_assets');
 

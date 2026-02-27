@@ -15601,6 +15601,125 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-ch
   margin: 0 auto;
 }
 
+.ev-regalo {
+  --ev-purple: #4b0082;
+  --ev-gold: #d4af37;
+  --ev-ink: #0f1020;
+  --ev-mist: #f5f7fa;
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(75, 0, 130, 0.12), transparent 60%), radial-gradient(900px 500px at 80% 30%, rgba(212, 175, 55, 0.1), transparent 55%), var(--ev-mist);
+  color: var(--ev-ink);
+  padding: 3rem 0;
+}
+
+.ev-regalo__container {
+  width: min(980px, 92%);
+  margin: 0 auto;
+}
+
+.ev-regalo__title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.ev-regalo__subtitle {
+  margin-top: 0.75rem;
+  opacity: 0.85;
+  max-width: 60ch;
+}
+
+.ev-regalo__videoBtn {
+  width: 100%;
+  max-width: 520px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  border: 1px solid rgba(75, 0, 130, 0.25);
+  background: linear-gradient(135deg, rgba(75, 0, 130, 0.12), rgba(212, 175, 55, 0.1));
+  box-shadow: 0 18px 50px rgba(15, 16, 32, 0.12);
+  cursor: pointer;
+}
+
+.ev-regalo__finalBox {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 16, 32, 0.08);
+  box-shadow: 0 14px 40px rgba(15, 16, 32, 0.1);
+}
+
+.ev-regalo__cta {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  background: var(--ev-purple);
+  color: white;
+  text-decoration: none;
+}
+
+/* Modal luz/sombra */
+.ev-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+}
+
+.ev-modal.is-open {
+  display: block;
+}
+
+.ev-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 16, 32, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.ev-modal__panel {
+  position: relative;
+  width: min(920px, 92vw);
+  margin: 6vh auto;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0b0c18;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.ev-modal__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.ev-modal__frameWrap {
+  aspect-ratio: 16/9;
+}
+
+.ev-modal__frameWrap iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+html.ev-modal-open {
+  overflow: hidden;
+}
+
 /* assets/scss/components/_index.scss */
 /* Text / BG / Border */
 .text-primary {
