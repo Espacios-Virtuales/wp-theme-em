@@ -13705,6 +13705,98 @@ a {
   height: 0;
 }
 
+.ev-masterclass-gift {
+  margin: 24px 0;
+  padding: 0 16px;
+}
+
+.ev-masterclass-gift .ev-mc__inner {
+  max-width: 920px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 18px;
+  border: 1px solid rgba(75, 0, 130, 0.14);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.ev-masterclass-gift .ev-mc__title {
+  margin: 0 0 12px 0;
+  color: #4b0082;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.ev-masterclass-gift .ev-mc__body {
+  color: #1f1f24;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.ev-masterclass-gift .ev-mc__body p {
+  margin: 0 0 10px 0;
+}
+
+.ev-masterclass-gift .ev-mc__body p:last-child {
+  margin-bottom: 0;
+}
+
+.ev-masterclass-gift .ev-mc__cta {
+  margin: 16px 0 10px 0;
+}
+
+.ev-masterclass-gift .ev-mc__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #4b0082;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 10px 18px rgba(75, 0, 130, 0.18);
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.ev-masterclass-gift .ev-mc__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 22px rgba(75, 0, 130, 0.22);
+  filter: brightness(1.03);
+}
+
+.ev-masterclass-gift .ev-mc__body--repeat {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(75, 0, 130, 0.18);
+}
+
+.ev-masterclass-gift .ev-mc__note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: rgba(31, 31, 36, 0.75);
+}
+
+.ev-masterclass-gift.ev-mc--vortice .ev-mc__inner {
+  background: linear-gradient(180deg, #f6f3fb 0%, #ffffff 70%);
+  border: 1px solid rgba(75, 0, 130, 0.18);
+}
+
+.ev-masterclass-gift.ev-mc--vortice .ev-mc__title {
+  color: #4b0082;
+}
+
+.ev-masterclass-gift.ev-mc--vortice .ev-mc__btn {
+  border-color: rgba(212, 175, 55, 0.7);
+}
+
 .single-product .product {
   display: flex;
   flex-wrap: wrap;
