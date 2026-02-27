@@ -10,19 +10,18 @@ $cta_txt  = get_field('ev_regalo_cta_label') ?: 'IR A LA PÁGINA PRINCIPAL';
 $cta_url  = get_field('ev_regalo_cta_url') ?: home_url('/');
 
 function ev_youtube_embed_url($url) {
-  if (!$url) return '';
-  // youtu.be/ID
-  if (preg_match('~youtu\.be/([A-Za-z0-9_-]+)~', $url, $m)) {
-    return 'https://www.youtube.com/embed/' . $m[1] . '?rel=0';
+    if (!$url) return '';
+  
+    // Extraer ID de cualquier formato YouTube
+    $pattern = '%(?:youtu\.be/|youtube\.com/(?:watch\?v=|embed/|shorts/))([A-Za-z0-9_-]{11})%';
+    
+    if (preg_match($pattern, $url, $matches)) {
+      return 'https://www.youtube.com/embed/' . $matches[1] . '?rel=0';
+    }
+  
+    return '';
   }
-  // youtube.com/watch?v=ID
-  if (preg_match('~[?&]v=([^&]+)~', $url, $m)) {
-    return 'https://www.youtube.com/embed/' . $m[1] . '?rel=0';
-  }
-  // ya viene en formato embed o algo equivalente
-  return $url;
-}
-
+  
 $video_embed = ev_youtube_embed_url($video);
 ?>
 
