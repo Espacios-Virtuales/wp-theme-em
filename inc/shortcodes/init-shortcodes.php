@@ -32,3 +32,6 @@ require_once __DIR__ . '/ev-seo-intro.php';
 
 // 🧩Tienda
 require_once __DIR__ . '/ev-product-links.php';
+
+// Marketing
+require_once __DIR__ . '/ev-masterclass-gift.php';
