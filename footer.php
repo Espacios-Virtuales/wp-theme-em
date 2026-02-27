@@ -22,6 +22,13 @@
  */
 
 
+
+if (is_page('masterclass-gratuita')) {
+    echo do_shortcode('[ev_masterclass_gift]');
+}
+
+
+
 if ( ! is_checkout() ) {
   ?>
   <a href="https://wa.me/56956412047?text=Maureen,%20Me%20gustaria%20recibir%20información%20sobre%20los%20Servicios%20de%20Escuela%20Mistica"
