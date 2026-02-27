@@ -55,10 +55,6 @@ function ev_sc_masterclass_gift($atts = []) {
           <div class="ev-mc__cta">
             <?php echo $btn_html; ?>
           </div>
-
-          <?php if ($gift_body_html): ?>
-            <div class="ev-mc__body ev-mc__body--repeat"><?php echo $gift_body_html; ?></div>
-          <?php endif; ?>
         <?php endif; ?>
 
         <?php if (!empty($gift_note)): ?>
