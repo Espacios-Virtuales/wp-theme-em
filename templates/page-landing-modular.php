@@ -79,7 +79,7 @@ $propuesta_de_valor = get_field('propuesta_valor');
             <?php echo do_shortcode('[ev-objetos tipo="program"]'); ?>
           </div>
 
-          <div class="programas-section" id="programas"> 
+          <div class="programas-section" id="experiencias"> 
             <h3 class="text-primary mt-4 text-center">Experiencias</h2>
             <?php echo do_shortcode('[ev-objetos tipo="experiencia"]'); ?>
           </div>

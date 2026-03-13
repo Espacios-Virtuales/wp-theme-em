@@ -41,6 +41,7 @@ function ev_botonera_anclas_shortcode($atts) {
         '#terapias'   => 'Terapias',
         '#cursos'     => 'Cursos',
         '#programas'  => 'Programas',
+        '#experiencias' => 'Experiencias',
     ];
 
     foreach ($items as $href => $label) {
