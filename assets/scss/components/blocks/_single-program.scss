@@ -1,0 +1,256 @@
+@use "../globals" as g;
+@use "../../utilities/responsive" as r;
+
+.ev-program-single {
+  background:
+    radial-gradient(circle at top, rgba(255, 215, 0, 0.06), transparent 30%),
+    linear-gradient(180deg, rgba(15, 12, 62, 1) 0%, rgba(34, 22, 66, 1) 100%);
+  color: g.$text-light;
+}
+
+.ev-program-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5rem, 8vw, 8rem) 0 clamp(3rem, 6vw, 5rem);
+  background-color: g.$blue-dark;
+  background-image: var(--ev-hero-bg);
+  background-size: cover;
+  background-position: center;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(15, 12, 62, 0.92), rgba(72, 61, 139, 0.78)),
+      radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.15), transparent 25%);
+    backdrop-filter: blur(2px);
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid rgba(255, 215, 0, 0.45);
+    border-radius: 999px;
+    color: g.$gold;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &__title {
+    margin: 0 0 1rem;
+    color: g.$text-light;
+    font-family: "Libre Baskerville", serif;
+    font-size: clamp(2.3rem, 5vw, 4.8rem);
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  &__subtitle {
+    max-width: 52rem;
+    margin: 0 0 1.75rem;
+    color: rgba(248, 249, 250, 0.9);
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    line-height: 1.4;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.ev-program-section {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+
+  &--intro {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  &--grid {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  }
+}
+
+.ev-program-richtext {
+  max-width: 60rem;
+  margin: 0 auto;
+  color: rgba(248, 249, 250, 0.92);
+  font-size: 1.1rem;
+  line-height: 1.9;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  &--lead {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+  }
+}
+
+.ev-program-card {
+  height: 100%;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.14);
+  border-radius: 1.4rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 215, 0, 0.32);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+    color: g.$gold;
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.1rem;
+  }
+
+  &__body {
+    color: rgba(248, 249, 250, 0.88);
+    line-height: 1.75;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.ev-program-cta-card {
+  position: relative;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.16);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+
+  @include r.media-breakpoint-up(lg) {
+    position: sticky;
+    top: 2rem;
+  }
+
+  &__title {
+    margin-bottom: 0.75rem;
+    color: g.$text-light;
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.4rem;
+  }
+
+  &__text {
+    margin-bottom: 1rem;
+    color: rgba(248, 249, 250, 0.82);
+    line-height: 1.7;
+  }
+
+  .ev-btn + .ev-btn {
+    margin-top: 0.85rem;
+  }
+}
+
+.ev-program-closing {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid rgba(255, 215, 0, 0.14);
+  border-radius: 1.75rem;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(72, 61, 139, 0.18), rgba(15, 12, 62, 0.32));
+
+  &__title {
+    margin-bottom: 1rem;
+    font-family: "Libre Baskerville", serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: g.$text-light;
+  }
+
+  &__text {
+    max-width: 42rem;
+    margin: 0 auto 1.5rem;
+    color: rgba(248, 249, 250, 0.84);
+    line-height: 1.8;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.ev-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0.95rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease,
+    background-color 0.28s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  &--primary {
+    color: #1a1338;
+    background: linear-gradient(135deg, g.$gold, #ffef99);
+    box-shadow: 0 18px 40px rgba(255, 215, 0, 0.22);
+  }
+
+  &--secondary {
+    color: g.$text-light;
+    background: linear-gradient(135deg, g.$primary, g.$secondary);
+    box-shadow: 0 18px 40px rgba(72, 61, 139, 0.28);
+  }
+
+  &--ghost {
+    color: g.$text-light;
+    border-color: rgba(248, 249, 250, 0.24);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &--paypal {
+    color: g.$text-light;
+    border-color: rgba(80, 200, 120, 0.25);
+    background: linear-gradient(135deg, rgba(80, 200, 120, 0.16), rgba(72, 61, 139, 0.22));
+  }
+}
+
+@include r.media-breakpoint-down(lg) {
+  .ev-program-hero {
+    padding-top: 4.5rem;
+  }
+
+  .ev-program-cta-card {
+    margin-top: 1rem;
+  }
+}
