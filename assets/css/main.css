@@ -15713,7 +15713,7 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-ch
   transform: translateY(-1px);
 }
 
-/* assets/scss/components/_index.scss */
+/* assets/scss/components/_index.scss */ /* assets/scss/components/_index.scss */
 /* Text / BG / Border */
 .text-primary {
   color: var(--bs-primary, #483d8b) !important;
