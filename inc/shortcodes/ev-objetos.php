@@ -42,10 +42,9 @@ function ev_objetos_shortcode($atts)
           $payment_url = get_post_meta($post_id, 'course_payment_url', true);
           $formato     = get_post_meta($post_id, 'course_formato', true);
         } elseif ($tipo === 'program') {
-          // Producto interno (WooCommerce)
-          $producto_id = get_post_meta($post_id, '_program_product_id', true);
-          // URL de pago externo definida en ACF: payment_url
-          $payment_url = get_field('payment_url');
+          // Ruta del propio CPT program
+          $program_url   = get_permalink($post_id);
+          $program_title = get_the_title($post_id);
         } elseif ($tipo === 'terapia') {
           // Terapia (como ya funciona)
           $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, '_linked_product_id', true)));
@@ -125,43 +124,14 @@ function ev_objetos_shortcode($atts)
                   <span class="ev-cta-unavailable">Curso grabado – enlace no disponible</span>
                 <?php endif; ?>
 
-              <?php elseif ($tipo === 'program') : ?>
-
-                <?php if (!empty($producto_id) && !empty($payment_url)) : ?>
-                  <!-- Dos flujos: interno y externo -->
-                  <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
-                    Inscripción interna
-                  </a>
-                  <a href="<?php echo esc_url($payment_url); ?>" class="ev-cta-button ev-cta-secondary" target="_blank" rel="noopener">
-                    Pago externo
-                  </a>
-
-                <?php elseif (!empty($producto_id)) : ?>
-                  <!-- Sólo flujo interno -->
-                  <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
-                    Inscribirme ahora
-                  </a>
-
-                <?php elseif (!empty($payment_url)) : ?>
-                  <!-- Sólo flujo externo -->
-                  <a href="<?php echo esc_url($payment_url); ?>" class="ev-cta-button" target="_blank" rel="noopener">
-                    Ir a pago
-                  </a>
-
-                <?php else : ?>
-                  <span class="ev-cta-unavailable">Este programa estará disponible pronto</span>
-                <?php endif; ?>
-
-              <?php elseif (!empty($producto_id)) : ?>
-                <!-- Terapia u otros tipos con producto vinculado -->
-                <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
-                  Adquirir ahora
-                </a>
-
-              <?php else : ?>
-
-                <span class="ev-cta-unavailable">Este contenido estará disponible pronto</span>
-
+                <?php elseif ($tipo === 'program') : ?>
+                  <?php if (!empty($program_url)) : ?>
+                      <a href="<?php echo esc_url($program_url); ?>" class="ev-cta-button">
+                          <?php echo esc_html('Adquirir ' . $program_title); ?>
+                      </a>
+                  <?php else : ?>
+                      <span class="ev-cta-unavailable">Este programa estará disponible pronto</span>
+                  <?php endif; ?>
               <?php endif; ?>
             </div>
           </div>
