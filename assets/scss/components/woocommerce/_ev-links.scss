@@ -39,10 +39,6 @@ a {
     &:hover {
       color: map-get($theme-variables, "selector");
     }
-
-    &:visited {
-      color: map-get($theme-variables, "primary");
-    }
   }
 
   .prev,
