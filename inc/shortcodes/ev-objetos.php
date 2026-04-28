@@ -48,7 +48,6 @@ function ev_objetos_shortcode($atts)
         } elseif ($tipo === 'terapia') {
           // Terapia (como ya funciona)
           $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, '_linked_product_id', true)));
-        
         } elseif ($tipo === 'experiencia') {
           // Experiencia (como tu ejemplo)
           $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, 'linked_product_id', true)));
@@ -113,6 +112,7 @@ function ev_objetos_shortcode($atts)
             <?php endif; ?>
 
             <!-- Acción -->
+            <!-- Acción -->
             <div class="ev-modal-section text-center">
               <?php if ($tipo === 'course' && is_array($formato) && in_array('grabado', $formato, true)) : ?>
 
@@ -120,18 +120,39 @@ function ev_objetos_shortcode($atts)
                   <a href="<?php echo esc_url($payment_url); ?>" class="ev-cta-button" target="_blank" rel="noopener">
                     Ver curso grabado
                   </a>
+                <?php elseif (!empty($producto_id)) : ?>
+                  <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
+                    Inscribirme ahora
+                  </a>
                 <?php else : ?>
                   <span class="ev-cta-unavailable">Curso grabado – enlace no disponible</span>
                 <?php endif; ?>
 
-                <?php elseif ($tipo === 'program') : ?>
-                  <?php if (!empty($program_url)) : ?>
-                      <a href="<?php echo esc_url($program_url); ?>" class="ev-cta-button">
-                          <?php echo esc_html('Adquirir ' . $program_title); ?>
-                      </a>
-                  <?php else : ?>
-                      <span class="ev-cta-unavailable">Este programa estará disponible pronto</span>
-                  <?php endif; ?>
+              <?php elseif ($tipo === 'program') : ?>
+
+                <?php
+                $program_url   = !empty($program_url) ? $program_url : get_permalink($post_id);
+                $program_title = !empty($program_title) ? $program_title : get_the_title($post_id);
+                ?>
+
+                <?php if (!empty($program_url)) : ?>
+                  <a href="<?php echo esc_url($program_url); ?>" class="ev-cta-button">
+                    <?php echo esc_html('Adquirir ' . $program_title); ?>
+                  </a>
+                <?php else : ?>
+                  <span class="ev-cta-unavailable">Este programa estará disponible pronto</span>
+                <?php endif; ?>
+
+              <?php elseif (!empty($producto_id)) : ?>
+
+                <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
+                  Adquirir ahora
+                </a>
+
+              <?php else : ?>
+
+                <span class="ev-cta-unavailable">Este contenido estará disponible pronto</span>
+
               <?php endif; ?>
             </div>
           </div>
