@@ -34,10 +34,13 @@ h6 {
 
 // Forzar la fuente en párrafos y enlaces si aún no toma la correcta
 p,
-a {
+a,
+a:visited{
     font-family: $font-family-base !important;
     font-weight: 600;
     font-size: 18px;
+    color: inherit; // o define un color fijo
+    text-decoration: none; // opcional
 }
 
 // Wsp Button
