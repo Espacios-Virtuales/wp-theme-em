@@ -11185,12 +11185,14 @@ h6,
 }
 
 p,
-a,
-a:visited {
+a {
   font-family: "Cormorant Garamond", serif !important;
   font-weight: 600;
   font-size: 18px;
-  color: inherit;
+}
+
+a:active {
+  color: white !important;
   text-decoration: none;
 }
 
@@ -14167,11 +14169,6 @@ a:visited {
 .woocommerce-product-navigation a:hover,
 .single-product .product-navigation a:hover {
   color: #daa520;
-}
-
-.woocommerce-product-navigation a:visited,
-.single-product .product-navigation a:visited {
-  color: #483d8b;
 }
 
 .woocommerce-product-navigation .prev,
