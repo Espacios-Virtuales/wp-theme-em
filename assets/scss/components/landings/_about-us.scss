@@ -102,18 +102,6 @@
     position: relative;
     overflow: hidden;
 
-    // Ola decorativa en el fondo
-    &:after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 100%;
-        height: 150px; // Ajustar la altura de la ola
-        background: url("https://escuelamistica.cl/em/wp-content/uploads/wave-up.svg") no-repeat bottom center / cover;
-        z-index: 0; // Se asegura que esté detrás del contenido
-    }
-
     // Sección de contenido asegurada sobre la ola
     .hero-content {
         position: relative;
