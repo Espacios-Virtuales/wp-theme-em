@@ -31,9 +31,6 @@ function ev_about_hero_shortcode()
                 </div>
             </div>
         </div>
-
-        <!-- Ola decorativa -->
-        <div class="hero-wave"></div>
     </section>
 <?php
 
