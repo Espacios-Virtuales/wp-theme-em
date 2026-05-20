@@ -361,8 +361,8 @@ function ev_free_resources_shortcode()
                         <?php if ($podcast_link): ?>
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
                                 <div class="resource-item text-center shadow-sm">
-                                    <h5 class="text-gold mt-3">Podcast</h5>
-                                    <p class="text-muted"><?php echo esc_html($podcast_description); ?></p>
+                                    <h5 class="text-primary mt-3">Podcast</h5>
+                                    <p class="text-dark"><?php echo esc_html($podcast_description); ?></p>
                                     <div class="custom-rounded-btn bg-cyan ">
                                         <a href="<?php echo esc_url($podcast_link); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Canal de Spotify">
                                             <i class="bi bi-mic-fill"></i>
@@ -376,8 +376,8 @@ function ev_free_resources_shortcode()
                         <?php if ($ebook_description && $calendly_link): ?>
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
                                 <div class="resource-item text-center shadow-sm">
-                                    <h5 class="text-gold mt-3">Ebook Gratuito</h5>
-                                    <p class="text-muted"><?php echo esc_html($ebook_description); ?></p>
+                                    <h5 class="text-primary mt-3">Ebook Gratuito</h5>
+                                    <p class="text-dark"><?php echo esc_html($ebook_description); ?></p>
                                     <div class="custom-rounded-btn bg-cyan">
                                         <a href="<?php echo esc_url($calendly_link); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Agenda">
                                             <i class="bi bi-book-fill"></i>
