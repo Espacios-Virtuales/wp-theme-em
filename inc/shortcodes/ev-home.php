@@ -4,113 +4,113 @@ function hero_slider_shortcode()
 {
     ob_start();
 ?>
-    <?php
-    $hero_groups = [
-        [
-            'group' => get_field('hero_1'),
-            'index' => 1,
-        ],
-        [
-            'group' => get_field('hero_2'),
-            'index' => 2,
-        ],
-        [
-            'group' => get_field('hero_3'),
-            'index' => 3,
-        ],
-    ];
+    <div id="hero" class="carousel slide" data-bs-ride="carousel">
+        <?php
+        $page_id = get_option('page_on_front');
+        $slides = [];
 
-    $heroes = array_filter($hero_groups, function ($item) {
-        $hero = $item['group'];
+        if ($page_id) {
+            for ($i = 1; $i <= 3; $i++) {
+                $card = get_field("hero_$i", $page_id);
 
-        if (empty($hero) || !is_array($hero)) {
-            return false;
+                if (!empty($card) && is_array($card)) {
+                    $image    = $card["image_$i"] ?? null;
+                    $title    = $card["title_$i"] ?? '';
+                    $body     = $card["body_$i"] ?? '';
+                    $cta_text = $card["cta_text_$i"] ?? '';
+                    $cta_url  = $card["cta_url_$i"] ?? '';
+
+                    if (!empty($image) && (!empty($title) || !empty($body))) {
+                        $slides[] = [
+                            'index'    => $i,
+                            'image'    => $image,
+                            'title'    => $title,
+                            'body'     => $body,
+                            'cta_text' => $cta_text,
+                            'cta_url'  => $cta_url,
+                        ];
+                    }
+                }
+            }
         }
+        ?>
 
-        $index = $item['index'];
+        <?php if (!empty($slides)) : ?>
 
-        return !empty($hero["title_{$index}"])
-            || !empty($hero["body_{$index}"])
-            || !empty($hero["cta_text_{$index}"])
-            || !empty($hero["cta_url_{$index}"]);
-    });
-    ?>
-
-    <?php if (!empty($heroes)) : ?>
-        <section id="hero" class="carousel slide" data-bs-ride="carousel">
-
-            <?php if (count($heroes) > 1) : ?>
-                <div class="carousel-indicators">
-                    <?php $slide_index = 0; ?>
-                    <?php foreach ($heroes as $item) : ?>
-                        <button
-                            type="button"
-                            data-bs-target="#hero"
-                            data-bs-slide-to="<?php echo esc_attr($slide_index); ?>"
-                            class="<?php echo $slide_index === 0 ? 'active' : ''; ?>"
-                            aria-current="<?php echo $slide_index === 0 ? 'true' : 'false'; ?>"
-                            aria-label="Slide <?php echo esc_attr($slide_index + 1); ?>">
-                        </button>
-                        <?php $slide_index++; ?>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-
-            <div class="carousel-inner">
-                <?php $slide_index = 0; ?>
-
-                <?php foreach ($heroes as $item) : ?>
-                    <?php
-                    $hero = $item['group'];
-                    $index = $item['index'];
-
-                    $title = $hero["title_{$index}"] ?? '';
-                    $body = $hero["body_{$index}"] ?? '';
-                    $cta_text = $hero["cta_text_{$index}"] ?? '';
-                    $cta_url = $hero["cta_url_{$index}"] ?? '';
-
-                    /**
-                     * Si ya tienes imágenes antiguas en el hero,
-                     * aquí se mantiene la lógica visual existente.
-                     * Si después agregas imagen por grupo:
-                     * image_1, image_2, image_3
-                     * se puede activar aquí.
-                     */
-                    ?>
-
-                    <div class="carousel-item <?php echo $slide_index === 0 ? 'active' : ''; ?>">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <?php the_post_thumbnail('full'); ?>
-                        <?php endif; ?>
-
-                        <div class="carousel-caption">
-                            <div class="ev-hero-content">
-                                <?php if (!empty($title)) : ?>
-                                    <h1><?php echo esc_html($title); ?></h1>
-                                <?php endif; ?>
-
-                                <?php if (!empty($body)) : ?>
-                                    <div class="ev-hero-body">
-                                        <?php echo wp_kses_post($body); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <?php if (!empty($cta_text) && !empty($cta_url)) : ?>
-                                    <div class="ev-hero-actions">
-                                        <a href="<?php echo esc_url($cta_url); ?>" class="ev-btn ev-btn-primary">
-                                            <?php echo esc_html($cta_text); ?>
-                                        </a>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <?php $slide_index++; ?>
+            <div class="carousel-indicators">
+                <?php foreach ($slides as $slide_index => $slide) : ?>
+                    <button
+                        type="button"
+                        data-bs-target="#hero"
+                        data-bs-slide-to="<?php echo esc_attr($slide_index); ?>"
+                        class="<?php echo $slide_index === 0 ? 'active' : ''; ?>"
+                        aria-current="<?php echo $slide_index === 0 ? 'true' : 'false'; ?>"
+                        aria-label="Slide <?php echo esc_attr($slide_index + 1); ?>">
+                    </button>
                 <?php endforeach; ?>
             </div>
 
-            <?php if (count($heroes) > 1) : ?>
+            <div class="carousel-inner">
+                <?php foreach ($slides as $slide_index => $slide) : ?>
+                    <?php
+                    $image_url = '';
+
+                    if (is_numeric($slide['image'])) {
+                        $image_url = wp_get_attachment_image_src($slide['image'], 'full')[0] ?? '';
+                    } elseif (is_array($slide['image']) && !empty($slide['image']['url'])) {
+                        $image_url = $slide['image']['url'];
+                    } elseif (is_string($slide['image'])) {
+                        $image_url = $slide['image'];
+                    }
+                    ?>
+
+                    <?php if ($image_url) : ?>
+                        <div class="carousel-item <?php echo $slide_index === 0 ? 'active' : ''; ?>">
+                            <div class="position-relative w-100 h-100">
+                                <img
+                                    src="<?php echo esc_url($image_url); ?>"
+                                    class="d-block w-100 h-100"
+                                    style="object-fit: cover;"
+                                    alt="<?php echo esc_attr($slide['title'] ?: 'Slide ' . $slide['index']); ?>">
+
+                                <div class="carousel-caption">
+                                    <div class="ev-hero-content">
+                                        <?php if (!empty($slide['title'])) : ?>
+                                            <h1><?php echo esc_html($slide['title']); ?></h1>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($slide['body'])) : ?>
+                                            <div class="ev-hero-body">
+                                                <?php echo wp_kses_post($slide['body']); ?>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($slide['cta_text']) && !empty($slide['cta_url'])) : ?>
+                                            <div class="ev-hero-actions">
+                                                <a href="<?php echo esc_url($slide['cta_url']); ?>" class="ev-btn ev-btn-primary">
+                                                    <?php echo esc_html($slide['cta_text']); ?>
+                                                </a>
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="ev-hero-actions">
+                                                <button
+                                                    type="button"
+                                                    class="ev-btn ev-btn-primary"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#subscribeModal">
+                                                    Suscríbete
+                                                </button>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+
+            <?php if (count($slides) > 1) : ?>
                 <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Anterior</span>
@@ -122,8 +122,9 @@ function hero_slider_shortcode()
                 </button>
             <?php endif; ?>
 
-        </section>
-    <?php endif;
+        <?php endif; ?>
+    </div>
+    <?php
     return ob_get_clean();
 }
 add_shortcode('ev-hero', 'hero_slider_shortcode');
