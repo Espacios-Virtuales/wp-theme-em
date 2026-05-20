@@ -35,7 +35,7 @@ function community_membership_gallery_shortcode()
                             </div>
                             <div class="col-md-8">
                                 <blockquote class="maureen-thought text-center text-md-start">
-                                    <p class="fs-4 text-white"><?php echo esc_html($description_group['maureen_thought']); ?></p>
+                                    <p class="fs-4 text-dark"><?php echo esc_html($description_group['maureen_thought']); ?></p>
                                 </blockquote>
                             </div>
                         </div>
@@ -49,7 +49,7 @@ function community_membership_gallery_shortcode()
                                         <img src="<?php echo esc_url($item_1['image']['url']); ?>" alt="<?php echo esc_attr($item_1['image']['alt']); ?>" class="img-fluid rounded community-icon mb-3">
                                     <?php endif; ?>
                                     <h5 class="text-gold"><?php echo esc_html($item_1['title']); ?></h5>
-                                    <p class="text-muted"><?php echo esc_html($item_1['description']); ?></p>
+                                    <p class="text-white"><?php echo esc_html($item_1['description']); ?></p>
                                     <div class="d-flex justify-content-center gap-3 mt-3">
                                         <div class="custom-rounded-btn ">
                                             <button
