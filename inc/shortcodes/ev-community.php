@@ -19,7 +19,7 @@ function community_membership_gallery_shortcode()
 
             $item_1 = $community_items['item_1'];
             $item_2 = $community_items['item_2'];
-?>
+        ?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
                     <div class="text-center mb-4">
@@ -52,19 +52,22 @@ function community_membership_gallery_shortcode()
                                     <p class="text-muted"><?php echo esc_html($item_1['description']); ?></p>
                                     <div class="d-flex justify-content-center gap-3 mt-3">
                                         <div class="custom-rounded-btn bg-cyan">
-                                            <a href="<?php echo esc_url($item_1['link_whatsapp']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Tribu Mistica WhatsApp">
+                                            <button
+                                                type="button"
+                                                class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#subscribeModal">
                                                 <i class="bi bi-whatsapp"></i>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         <?php endif; ?>
-
                     </div>
                 </div>
             </section>
-<?php
+    <?php
         }
 
         wp_reset_postdata();

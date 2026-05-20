@@ -91,6 +91,7 @@ function hero_slider_shortcode()
                                                     <?php echo esc_html($slide['cta_text']); ?>
                                                 </a>
                                             </div>
+
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -114,6 +115,7 @@ function hero_slider_shortcode()
 
         <?php endif; ?>
     </div>
+    <?php ev_subscribe_modal(); ?>
     <?php
     return ob_get_clean();
 }
