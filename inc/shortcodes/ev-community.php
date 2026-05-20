@@ -51,15 +51,13 @@ function community_membership_gallery_shortcode()
                                     <h5 class="text-gold"><?php echo esc_html($item_1['title']); ?></h5>
                                     <p class="text-muted"><?php echo esc_html($item_1['description']); ?></p>
                                     <div class="d-flex justify-content-center gap-3 mt-3">
-                                        <div class="custom-rounded-btn bg-cyan">
                                             <button
                                                 type="button"
-                                                class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none"
+                                                class="d-flex justify-content-center align-items-center w-100 h-100 ustom-rounded-btn bg-cyan"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#subscribeModal">
                                                 <i class="bi bi-whatsapp"></i>
                                             </button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
