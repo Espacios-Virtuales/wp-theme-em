@@ -338,8 +338,8 @@ function ev_free_resources_shortcode()
             <section class="free-resources section-ev py-5" id="free-resources">
                 <div class="container-fluid">
                     <div class="title text-center mb-4">
-                        <h2 class="text-gold">Recursos Gratuitos</h2>
-                        <p class="text-muted">Explora lo que podemos ofrecerte.</p>
+                        <h2 class="text-primary">Recursos Gratuitos</h2>
+                        <p class="text-dark">Explora lo que podemos ofrecerte.</p>
                     </div>
                     <div class="row g-4 justify-content-center">
                         <!-- YouTube -->

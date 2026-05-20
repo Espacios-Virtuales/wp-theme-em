@@ -48,7 +48,7 @@ function ev_about_purpose_shortcode()
     <section class="purpose-section py-5">
         <div class="container">
             <h2 class="text-center text-gold mb-4">Nuestro Propósito</h2>
-            <p class="text-center text-muted mb-5"><?php echo esc_html($purpose_group['purpose_intro']); ?></p>
+            <p class="text-center text-white mb-5"><?php echo esc_html($purpose_group['purpose_intro']); ?></p>
 
             <div id="purpose-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
