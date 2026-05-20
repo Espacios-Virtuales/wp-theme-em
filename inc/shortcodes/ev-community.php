@@ -24,7 +24,7 @@ function community_membership_gallery_shortcode()
                 <div class="container">
                     <div class="text-center mb-4">
                         <h2 class="text-gold display-6" data-aos="fade-up"><?php echo esc_html($intro["intro_1"]); ?></h2>
-                        <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($intro["intro_2"]); ?></p>
+                        <p class="lead text-white" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($intro["intro_2"]); ?></p>
                     </div>
                     <?php if ($description_group): ?>
                         <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="200">
