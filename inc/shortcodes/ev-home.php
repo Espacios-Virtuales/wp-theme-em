@@ -338,16 +338,16 @@ function ev_free_resources_shortcode()
             <section class="free-resources section-ev py-5" id="free-resources">
                 <div class="container-fluid">
                     <div class="title text-center mb-4">
-                        <h2 class="text-primary">Recursos Gratuitos</h2>
-                        <p class="text-dark">Explora lo que podemos ofrecerte.</p>
+                        <h2 class="text-gold">Recursos Gratuitos</h2>
+                        <p class="text-white">Explora lo que podemos ofrecerte.</p>
                     </div>
                     <div class="row g-4 justify-content-center">
                         <!-- YouTube -->
                         <?php if ($youtube_link): ?>
                             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
                                 <div class="resource-item text-center shadow-sm">
-                                    <h5 class="text-gold mt-3">Canal de YouTube</h5>
-                                    <p class="text-muted"><?php echo esc_html($youtube_description); ?></p>
+                                    <h5 class="text-primary mt-3">Canal de YouTube</h5>
+                                    <p class="text-dark"><?php echo esc_html($youtube_description); ?></p>
                                     <div class="custom-rounded-btn bg-cyan">
                                         <a href="<?php echo esc_url($youtube_link); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Canal de YouTube">
                                             <i class="bi bi-youtube"></i>
