@@ -92,7 +92,20 @@ function hero_slider_shortcode()
                                                 </a>
                                             </div>
 
+                                            <?php else : ?>
+                                            <div class="ev-hero-actions">
+                                                <button
+                                                    type="button"
+                                                    class="ev-btn ev-btn-primary"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#subscribeModal">
+                                                    Suscríbete
+                                                </button>
+                                            </div>
+
                                         <?php endif; ?>
+
+                                        
                                     </div>
                                 </div>
                             </div>
