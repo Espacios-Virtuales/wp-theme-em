@@ -35,7 +35,7 @@ function community_membership_gallery_shortcode()
                             </div>
                             <div class="col-md-8">
                                 <blockquote class="maureen-thought text-center text-md-start">
-                                    <p class="fs-4 text-muted"><?php echo esc_html($description_group['maureen_thought']); ?></p>
+                                    <p class="fs-4 text-white"><?php echo esc_html($description_group['maureen_thought']); ?></p>
                                 </blockquote>
                             </div>
                         </div>
