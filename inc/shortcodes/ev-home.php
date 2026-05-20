@@ -4,73 +4,129 @@ function hero_slider_shortcode()
 {
     ob_start();
 ?>
-    <div id="hero" class="carousel slide" data-bs-ride="carousel">
-        <!-- Indicadores de la presentación -->
-        <div class="carousel-indicators">
-            <?php for ($i = 0; $i < 3; $i++) : ?>
-                <button type="button" data-bs-target="#hero" data-bs-slide-to="<?php echo $i; ?>" class="<?php echo $i === 0 ? 'active' : ''; ?>" aria-current="true" aria-label="Slide <?php echo $i + 1; ?>"></button>
-            <?php endfor; ?>
-        </div>
-
-        <!-- Hero dinámico con fondo oscuro y descripciones interactivas -->
-        <div class="carousel-inner"> <!-- Eliminamos height h-100 para evitar problemas -->
-            <?php
-            $page_id = get_option('page_on_front');
-            if ($page_id) {
-                for ($i = 1; $i <= 3; $i++) {
-                    $card = get_field("hero_$i", $page_id); // Extraemos los grupos hero_1, hero_2, etc.
-                    if (!empty($card) && isset($card["image_$i"], $card["title_$i"], $card["body_$i"])) {
-                        $image = $card["image_$i"];
-                        $title = $card["title_$i"];
-                        $body = $card["body_$i"];
-                        $active_class = ($i === 1) ? 'active' : '';
-
-                        if ($image) {
-                            $image_url = wp_get_attachment_image_src($image, 'full')[0];
-            ?>
-                            <div class="carousel-item <?php echo esc_attr($active_class); ?>">
-                                <div class="position-relative w-100 h-100">
-                                    <img src="<?php echo esc_url($image_url); ?>" class="d-block w-100 h-100" style="object-fit: cover;" alt="Slide <?php echo esc_attr($i); ?>">
-                                    <div class="carousel-caption d-flex flex-column justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5);">
-                                        <div class="container text-center">
-                                            <!-- Título en animación -->
-                                            <h5 class="text-white"><?php echo esc_html($title); ?></h5>
-                                            <!-- Descripción interactiva que invita a la introspección -->
-                                            <p class="lead text-white"><?php echo esc_html($body); ?></p>
-                                            <!-- Botón hacia Spotify con efecto visual -->
-                                            <button type="button" class="btn btn-em-gold btn-lg shadow-lg" data-bs-toggle="modal" data-bs-target="#subscribeModal">
-                                                Suscribete <i class="bi bi-person-hearts me-2 text-white"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-            <?php
-                        }
-                    }
-                }
-            }
-            ?>
-        </div>
-
-        <!-- Controles de navegación del carousel -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    <!-- Modal de suscripción -->
-    <?php ev_subscribe_modal(); ?>
-
     <?php
+    $hero_groups = [
+        [
+            'group' => get_field('hero_1'),
+            'index' => 1,
+        ],
+        [
+            'group' => get_field('hero_2'),
+            'index' => 2,
+        ],
+        [
+            'group' => get_field('hero_3'),
+            'index' => 3,
+        ],
+    ];
+
+    $heroes = array_filter($hero_groups, function ($item) {
+        $hero = $item['group'];
+
+        if (empty($hero) || !is_array($hero)) {
+            return false;
+        }
+
+        $index = $item['index'];
+
+        return !empty($hero["title_{$index}"])
+            || !empty($hero["body_{$index}"])
+            || !empty($hero["cta_text_{$index}"])
+            || !empty($hero["cta_url_{$index}"]);
+    });
+    ?>
+
+    <?php if (!empty($heroes)) : ?>
+        <section id="hero" class="carousel slide" data-bs-ride="carousel">
+
+            <?php if (count($heroes) > 1) : ?>
+                <div class="carousel-indicators">
+                    <?php $slide_index = 0; ?>
+                    <?php foreach ($heroes as $item) : ?>
+                        <button
+                            type="button"
+                            data-bs-target="#hero"
+                            data-bs-slide-to="<?php echo esc_attr($slide_index); ?>"
+                            class="<?php echo $slide_index === 0 ? 'active' : ''; ?>"
+                            aria-current="<?php echo $slide_index === 0 ? 'true' : 'false'; ?>"
+                            aria-label="Slide <?php echo esc_attr($slide_index + 1); ?>">
+                        </button>
+                        <?php $slide_index++; ?>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+            <div class="carousel-inner">
+                <?php $slide_index = 0; ?>
+
+                <?php foreach ($heroes as $item) : ?>
+                    <?php
+                    $hero = $item['group'];
+                    $index = $item['index'];
+
+                    $title = $hero["title_{$index}"] ?? '';
+                    $body = $hero["body_{$index}"] ?? '';
+                    $cta_text = $hero["cta_text_{$index}"] ?? '';
+                    $cta_url = $hero["cta_url_{$index}"] ?? '';
+
+                    /**
+                     * Si ya tienes imágenes antiguas en el hero,
+                     * aquí se mantiene la lógica visual existente.
+                     * Si después agregas imagen por grupo:
+                     * image_1, image_2, image_3
+                     * se puede activar aquí.
+                     */
+                    ?>
+
+                    <div class="carousel-item <?php echo $slide_index === 0 ? 'active' : ''; ?>">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <?php the_post_thumbnail('full'); ?>
+                        <?php endif; ?>
+
+                        <div class="carousel-caption">
+                            <div class="ev-hero-content">
+                                <?php if (!empty($title)) : ?>
+                                    <h1><?php echo esc_html($title); ?></h1>
+                                <?php endif; ?>
+
+                                <?php if (!empty($body)) : ?>
+                                    <div class="ev-hero-body">
+                                        <?php echo wp_kses_post($body); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if (!empty($cta_text) && !empty($cta_url)) : ?>
+                                    <div class="ev-hero-actions">
+                                        <a href="<?php echo esc_url($cta_url); ?>" class="ev-btn ev-btn-primary">
+                                            <?php echo esc_html($cta_text); ?>
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <?php $slide_index++; ?>
+                <?php endforeach; ?>
+            </div>
+
+            <?php if (count($heroes) > 1) : ?>
+                <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            <?php endif; ?>
+
+        </section>
+    <?php endif;
     return ob_get_clean();
 }
 add_shortcode('ev-hero', 'hero_slider_shortcode');
-
 
 // About Section con imágenes, Lightbox y Modal adaptado + AOS
 function ev_about_shortcode()
@@ -132,7 +188,7 @@ function ev_subscribe_modal()
                                 Deseo recibir actualizaciones y promociones
                             </label>
                         </div>
-                        <button type="submit"  id="modalSubmitBtn" class="btn btn-gold w-100">Enviar</button> <!-- Botón con color amarillo oro -->
+                        <button type="submit" id="modalSubmitBtn" class="btn btn-gold w-100">Enviar</button> <!-- Botón con color amarillo oro -->
                     </form>
                 </div>
             </div>
@@ -166,44 +222,44 @@ function ev_servicios_shortcode()
                     </div>
 
                     <div class="carousel-inner">
-<?php for ($i = 1; $i <= 3; $i++):
-  // ACF puede devolver array, string o null. Normalizamos a array.
-  $card = get_field('card_' . $i);
-  $card = is_array($card) ? $card : [];
+                        <?php for ($i = 1; $i <= 3; $i++):
+                            // ACF puede devolver array, string o null. Normalizamos a array.
+                            $card = get_field('card_' . $i);
+                            $card = is_array($card) ? $card : [];
 
-  // Leer con fallback y castear a string para evitar null
-  $image = (string) ($card['image_' . $i] ?? '');
-  $title = (string) ($card['title_' . $i] ?? '');
-  $body  = (string) ($card['body_' . $i]  ?? '');
-  $link  = (string) ($card['link_' . $i]  ?? '');
+                            // Leer con fallback y castear a string para evitar null
+                            $image = (string) ($card['image_' . $i] ?? '');
+                            $title = (string) ($card['title_' . $i] ?? '');
+                            $body  = (string) ($card['body_' . $i]  ?? '');
+                            $link  = (string) ($card['link_' . $i]  ?? '');
 
-  // Escapar (ya no hay nulls)
-  $image = esc_url($image);
-  $title = esc_html($title);
-  $body  = esc_html($body);
-  $link  = esc_url($link);
+                            // Escapar (ya no hay nulls)
+                            $image = esc_url($image);
+                            $title = esc_html($title);
+                            $body  = esc_html($body);
+                            $link  = esc_url($link);
 
-                        // Si no hay imagen, puedes saltarte el slide (opcional)
-                        if ($image === '') continue;
+                            // Si no hay imagen, puedes saltarte el slide (opcional)
+                            if ($image === '') continue;
 
-                        // Construir apertura/cierre condicional del <a>
-                        $hasLink = ($link !== '');
-                        $aOpen  = $hasLink ? '<a href="'.$link.'" target="_blank" rel="noopener">' : '';
-                        $aClose = $hasLink ? '</a>' : '';
+                            // Construir apertura/cierre condicional del <a>
+                            $hasLink = ($link !== '');
+                            $aOpen  = $hasLink ? '<a href="' . $link . '" target="_blank" rel="noopener">' : '';
+                            $aClose = $hasLink ? '</a>' : '';
                         ?>
-                        <div class="carousel-item <?php echo ($i === 1) ? 'active' : ''; ?>" data-bs-interval="8000" data-aos="zoom-in" data-aos-delay="<?php echo $i * 200; ?>">
-                            <div class="card h-100 border-0 shadow-lg">
-                            <?php echo $aOpen; ?>
-                                <img src="<?php echo $image; ?>" alt="<?php echo $title !== '' ? $title : 'Slide '.$i; ?>" class="d-block w-100 rounded">
-                            <?php echo $aClose; ?>
-                            <?php if ($title !== '' || $body !== ''): ?>
-                                <div class="carousel-caption d-none d-md-block">
-                                <?php if ($title !== ''): ?><h3 class="fs-4 fw-bold text-gold"><?php echo $title; ?></h3><?php endif; ?>
-                                <?php if ($body  !== ''): ?><p class="text-light"><?php echo $body; ?></p><?php endif; ?>
+                            <div class="carousel-item <?php echo ($i === 1) ? 'active' : ''; ?>" data-bs-interval="8000" data-aos="zoom-in" data-aos-delay="<?php echo $i * 200; ?>">
+                                <div class="card h-100 border-0 shadow-lg">
+                                    <?php echo $aOpen; ?>
+                                    <img src="<?php echo $image; ?>" alt="<?php echo $title !== '' ? $title : 'Slide ' . $i; ?>" class="d-block w-100 rounded">
+                                    <?php echo $aClose; ?>
+                                    <?php if ($title !== '' || $body !== ''): ?>
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <?php if ($title !== ''): ?><h3 class="fs-4 fw-bold text-gold"><?php echo $title; ?></h3><?php endif; ?>
+                                            <?php if ($body  !== ''): ?><p class="text-light"><?php echo $body; ?></p><?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                            <?php endif; ?>
                             </div>
-                        </div>
                         <?php endfor; ?>
                     </div>
 
@@ -319,7 +375,7 @@ function ev_free_resources_shortcode()
                                             <i class="bi bi-mic-fill"></i>
                                         </a>
                                     </div>
-                               </div>
+                                </div>
                             </div>
                         <?php endif; ?>
 
