@@ -19,7 +19,7 @@ function community_membership_gallery_shortcode()
 
             $item_1 = $community_items['item_1'];
             $item_2 = $community_items['item_2'];
-        ?>
+?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
                     <div class="text-center mb-4">
@@ -61,23 +61,10 @@ function community_membership_gallery_shortcode()
                             </div>
                         <?php endif; ?>
 
-                        <?php if ($item_2): ?>
-                            <div class="col" data-aos="fade-up" data-aos-delay="400">
-                                <div class="text-center">
-                                    <h5 class="text-gold"><?php echo esc_html($item_2['title_2']); ?></h5>
-                                    <p class="text-muted"><?php echo esc_html($item_2['description_2']); ?></p>
-                                    <div class="custom-rounded-btn bg-cyan">
-                                        <a href="<?php echo esc_url($item_2['link_whatsapp_2']); ?>" target="_blank" class="d-flex justify-content-center align-items-center w-100 h-100 text-decoration-none" aria-label="Momistica WhatsApp">
-                                            <i class="bi bi-whatsapp"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endif; ?>
                     </div>
                 </div>
             </section>
-    <?php
+<?php
         }
 
         wp_reset_postdata();
