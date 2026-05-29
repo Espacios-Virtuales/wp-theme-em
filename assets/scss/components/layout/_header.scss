@@ -174,3 +174,39 @@
   height: auto;
   min-height: 100px;
 }
+
+@media (max-width: 768px) {
+  #hero {
+    padding-top: 88px;
+    min-height: 100svh;
+    height: auto;
+
+    .carousel-inner,
+    .carousel-item {
+      min-height: calc(100svh - 88px);
+    }
+
+    .carousel-item {
+      img {
+        height: calc(100svh - 88px);
+      }
+
+      .carousel-caption {
+        top: 0;
+        padding: 1.25rem;
+        padding-top: 2rem;
+        align-items: center;
+      }
+    }
+
+    .ev-hero-content {
+      margin-top: 0;
+      padding: 1.25rem;
+      max-width: 100%;
+    }
+
+    .ev-hero-content h1 {
+      font-size: clamp(2rem, 10vw, 3rem);
+    }
+  }
+}

@@ -11560,6 +11560,34 @@ a:active {
   min-height: 100px;
 }
 
+@media (max-width: 768px) {
+  #hero {
+    padding-top: 88px;
+    min-height: 100svh;
+    height: auto;
+  }
+  #hero .carousel-inner,
+  #hero .carousel-item {
+    min-height: calc(100svh - 88px);
+  }
+  #hero .carousel-item img {
+    height: calc(100svh - 88px);
+  }
+  #hero .carousel-item .carousel-caption {
+    top: 0;
+    padding: 1.25rem;
+    padding-top: 2rem;
+    align-items: center;
+  }
+  #hero .ev-hero-content {
+    margin-top: 0;
+    padding: 1.25rem;
+    max-width: 100%;
+  }
+  #hero .ev-hero-content h1, #hero .ev-hero-content .h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+}
 /*** Footer ***/
 .site-footer {
   background-color: #483d8b;
