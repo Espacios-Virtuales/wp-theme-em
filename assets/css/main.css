@@ -13961,7 +13961,7 @@ a:active {
   padding: 0.95rem 1.5rem;
   border-radius: 999px;
   background: #25D366;
-  color: #fff;
+  color: #fff !important;
   font-weight: 800;
   text-decoration: none;
   box-shadow: 0 16px 36px rgba(37, 211, 102, 0.28);
