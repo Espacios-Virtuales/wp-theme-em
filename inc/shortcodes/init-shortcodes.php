@@ -35,3 +35,4 @@ require_once __DIR__ . '/ev-product-links.php';
 
 // Marketing
 require_once __DIR__ . '/ev-masterclass-gift.php';
+require_once __DIR__ . '/ev-whatsapp-cta.php';
