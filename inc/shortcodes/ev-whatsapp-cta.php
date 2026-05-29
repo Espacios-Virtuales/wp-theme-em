@@ -8,7 +8,7 @@ function ev_render_whatsapp_cta_shortcode($atts = []) {
         'title' => '¿No sabes por dónde comenzar?',
         'body' => 'Habla directamente con Maureen y recibe orientación para elegir la comunidad, terapia o programa más adecuado para tu momento actual.',
         'button' => 'Hablar con Maureen por WhatsApp',
-        'phone' => '56964883002',
+        'phone' => '56956412047',
         'message' => 'Hola Maureen, me gustaría recibir orientación para comenzar en Escuela Mística.',
     ], $atts, 'ev-whatsapp_cta');
 
