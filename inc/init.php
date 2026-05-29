@@ -3,6 +3,8 @@
  * Registro de modulos
  */
 
+// 🧩 ACF Local JSON
+require_once __DIR__ . '/acf-json.php';
 
 // ✨ Helpers
 require_once __DIR__ . '/helpers/init-helpers.php';
