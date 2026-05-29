@@ -2,20 +2,20 @@
 function ev_seo_intro_shortcode($atts = []) {
   if (!function_exists('get_field')) return '';
 
-  if (!(get_field('seo_enabled') ?: false)) return '';
+  if (!(ev_get_field('seo_enabled') ?: false)) return '';
 
   // Campos base
-  $kw        = trim((string) get_field('seo_keyword'));
-  $title     = (string) get_field('seo_title');
-  $lead      = (string) get_field('seo_lead');
-  $body      = (string) get_field('seo_body');
-  $img_id    = get_field('seo_image');
-  $img_alt   = (string) get_field('seo_image_alt');
-  $collapsed = (bool) get_field('seo_collapsed');
+  $kw        = trim((string) ev_get_field('seo_keyword'));
+  $title     = (string) ev_get_field('seo_title');
+  $lead      = (string) ev_get_field('seo_lead');
+  $body      = (string) ev_get_field('seo_body');
+  $img_id    = ev_get_field('seo_image');
+  $img_alt   = (string) ev_get_field('seo_image_alt');
+  $collapsed = (bool) ev_get_field('seo_collapsed');
 
   // Enlaces fijos (hasta 5) – ACF Free
   $links = [];
-  $seo_links = get_field('seo_links') ?: [];
+  $seo_links = ev_get_field('seo_links') ?: [];
   
   for ($i = 1; $i <= 5; $i++) {
     $lab = isset($seo_links["seo_link_{$i}_label"]) ? $seo_links["seo_link_{$i}_label"] : '';

@@ -16,12 +16,12 @@ function ev_sc_masterclass_gift($atts = []) {
         return '<!-- ACF no disponible -->';
     }
 
-    $whatsapp_url  = trim((string) get_field('mc_whatsapp_url'));
-    $button_label  = trim((string) get_field('mc_button_label')) ?: 'UNIRME AL GRUPO DE WHATSAPP';
-    $gift_title    = trim((string) get_field('mc_gift_title')) ?: 'REGALO EXCLUSIVO PARA MIEMBROS DEL GRUPO';
-    $gift_body     = (string) get_field('mc_gift_body');
-    $gift_note     = trim((string) get_field('mc_gift_note'));
-    $style_variant = trim((string) get_field('mc_style_variant')) ?: 'vortice';
+    $whatsapp_url  = trim((string) ev_get_field('mc_whatsapp_url'));
+    $button_label  = trim((string) ev_get_field('mc_button_label')) ?: 'UNIRME AL GRUPO DE WHATSAPP';
+    $gift_title    = trim((string) ev_get_field('mc_gift_title')) ?: 'REGALO EXCLUSIVO PARA MIEMBROS DEL GRUPO';
+    $gift_body     = (string) ev_get_field('mc_gift_body');
+    $gift_note     = trim((string) ev_get_field('mc_gift_note'));
+    $style_variant = trim((string) ev_get_field('mc_style_variant')) ?: 'vortice';
 
     // Body class auxiliar para scss por variante
     $variant_class = 'ev-mc--' . sanitize_html_class($style_variant);

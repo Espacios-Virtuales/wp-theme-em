@@ -23,11 +23,11 @@ function ev_objetos_shortcode($atts)
         $post_id    = get_the_ID();
         $titulo     = get_the_title();
         $imagen     = get_the_post_thumbnail($post_id, 'medium');
-        $descripcion = get_field('descripcion');
-        $objetivo   = get_field('objetivo');
-        $propuesta  = get_field('propuesta_valor');
-        $proposito  = get_field('proposito');
-        $cliente    = get_field('cliente_potencial');
+        $descripcion = ev_get_field('descripcion');
+        $objetivo   = ev_get_field('objetivo');
+        $propuesta  = ev_get_field('propuesta_valor');
+        $proposito  = ev_get_field('proposito');
+        $cliente    = ev_get_field('cliente_potencial');
         $modal_id   = 'modal-' . $post_id;
         $tipo       = $atts['tipo'];
 

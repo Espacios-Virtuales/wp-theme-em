@@ -11,7 +11,7 @@ function hero_slider_shortcode()
 
         if ($page_id) {
             for ($i = 1; $i <= 3; $i++) {
-                $card = get_field("hero_$i", $page_id);
+                $card = ev_get_field("hero_$i", $page_id);
 
                 if (!empty($card) && is_array($card)) {
                     $image    = $card["image_$i"] ?? null;
@@ -143,12 +143,15 @@ function ev_about_shortcode()
 
         <section id="about" class="about section-ev py-5 mb-5" data-aos="fade-up">
             <div class="container-fluid shadow-custom rounded p-4 text-center">
-                <?php $intro = get_field('introductions'); ?>
+                <?php
+                $intro = ev_get_field('introductions', false, true, []);
+                $intro = is_array($intro) ? $intro : [];
+                ?>
                 <h2 class="display-6" data-aos="fade-up" data-aos-delay="100">
-                    <?php echo esc_html($intro["intro_1"]); ?>
+                    <?php echo esc_html($intro["intro_1"] ?? ''); ?>
                 </h2>
                 <p class="lead" data-aos="fade-up" data-aos-delay="200">
-                    <?php echo esc_html($intro["intro_2"]); ?>
+                    <?php echo esc_html($intro["intro_2"] ?? ''); ?>
                 </p>
 
                 <!-- Botón de suscripción -->
@@ -214,7 +217,8 @@ function ev_servicios_shortcode()
 
     while ($data->have_posts()) {
         $data->the_post();
-        $intro = get_field('introductions');
+        $intro = ev_get_field('introductions', false, true, []);
+        $intro = is_array($intro) ? $intro : [];
     ?>
         <section class="servicios section-ev py-5 bg-dark-blue text-light " id="servicios-programas" data-aos="fade-up">
             <div class="container-fluid">
@@ -230,7 +234,7 @@ function ev_servicios_shortcode()
                     <div class="carousel-inner">
                         <?php for ($i = 1; $i <= 3; $i++):
                             // ACF puede devolver array, string o null. Normalizamos a array.
-                            $card = get_field('card_' . $i);
+                            $card = ev_get_field('card_' . $i);
                             $card = is_array($card) ? $card : [];
 
                             // Leer con fallback y castear a string para evitar null
@@ -285,7 +289,7 @@ function ev_servicios_shortcode()
             <div class="container d-flex justify-content-center mt-4" data-aos="fade-up" data-aos-delay="600">
                 <?php
                 $servicios_page = get_page_by_path('servicios');
-                $servicios_url = get_permalink($servicios_page->ID);
+                $servicios_url = $servicios_page ? get_permalink($servicios_page->ID) : home_url('/');
                 ?>
                 <a href="<?php echo esc_url($servicios_url); ?>" class="btn btn-em-gold btn-lg shadow-lg">
                     Accede a nuestros servicios
@@ -305,7 +309,7 @@ add_shortcode('ev-servicios', 'ev_servicios_shortcode');
 
 function ev_intro_video_modal_shortcode()
 {
-    $link_video_intro = get_field('link_video_intro');
+    $link_video_intro = ev_get_field('link_video_intro');
 
     ob_start(); ?>
     <!-- Modal -->
@@ -340,13 +344,14 @@ function ev_free_resources_shortcode()
         while ($data->have_posts()) {
             $data->the_post();
 
-            $free_resources = get_field('free_resources_group');
-            $youtube_link = $free_resources['youtube_link'];
-            $podcast_link = $free_resources['podcast_link'];
-            $ebook_description = $free_resources['ebook_description'];
-            $podcast_description = $free_resources['podcast_description'];
-            $youtube_description = $free_resources['youtube_description'];
-            $calendly_link = $free_resources['calendly_link'];
+            $free_resources = ev_get_field('free_resources_group', false, true, []);
+            $free_resources = is_array($free_resources) ? $free_resources : [];
+            $youtube_link = $free_resources['youtube_link'] ?? '';
+            $podcast_link = $free_resources['podcast_link'] ?? '';
+            $ebook_description = $free_resources['ebook_description'] ?? '';
+            $podcast_description = $free_resources['podcast_description'] ?? '';
+            $youtube_description = $free_resources['youtube_description'] ?? '';
+            $calendly_link = $free_resources['calendly_link'] ?? '';
     ?>
             <section class="free-resources section-ev py-5" id="free-resources">
                 <div class="container-fluid">

@@ -45,7 +45,7 @@ get_header();
     <!-- Llamado a la Acción -->
     <?php
     $servicios_page = get_page_by_path('servicios'); 
-    $servicios_url = get_permalink($servicios_page->ID);
+    $servicios_url = $servicios_page ? get_permalink($servicios_page->ID) : home_url('/');
     
     ?>
     

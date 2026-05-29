@@ -20,6 +20,10 @@ add_action('woocommerce_order_status_processing', 'ev_flow_engine_on_order_paid'
 add_action('woocommerce_order_status_completed',  'ev_flow_engine_on_order_paid');
 
 function ev_flow_engine_on_order_paid($order_id) {
+    if (!function_exists('wc_get_order')) {
+        return;
+    }
+
     $order = wc_get_order($order_id);
     if (!$order) return;
 

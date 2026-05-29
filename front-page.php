@@ -50,7 +50,7 @@
 <?php
 
 $abou_us_page = get_page_by_path('sobre-nosotros'); 
-$about_us_url = get_permalink($abou_us_page->ID); ?>
+$about_us_url = $abou_us_page ? get_permalink($abou_us_page->ID) : home_url('/'); ?>
 
 <!-- Llamado a la Acción -->
 <section class="cta-section bg-primary text-white py-5">
@@ -63,4 +63,3 @@ $about_us_url = get_permalink($abou_us_page->ID); ?>
 
 <?php
 get_footer();
- 

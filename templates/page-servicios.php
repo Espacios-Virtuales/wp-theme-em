@@ -59,7 +59,7 @@ get_header(); ?>
 
 <?php 
 $catalogo_page = get_page_by_path('catalogo'); 
-$catalogo_url = get_permalink($catalogo_page->ID); ?>
+$catalogo_url = $catalogo_page ? get_permalink($catalogo_page->ID) : home_url('/'); ?>
 
 <!-- Llamado a la Acción -->
 <section class="cta-section bg-primary text-white py-5">

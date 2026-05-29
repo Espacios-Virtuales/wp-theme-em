@@ -13,8 +13,8 @@ function ev_calendar_events_shortcode()
     $posts = $data->posts;
 
     foreach ($posts as $post) {
-        $on   = get_field('on', $post);
-        $date = get_field('date', $post);
+        $on   = ev_get_field('on', $post);
+        $date = ev_get_field('date', $post);
 
         if ($on && $date) {
             $calendar->add_event($post->post_title, $date, 1, $post->ID);
@@ -32,15 +32,15 @@ function ev_calendar_events_shortcode()
     /* 2) Render de botones + modales */
     foreach ($posts as $post):
 
-        $on   = get_field('on', $post);
-        $date = get_field('date', $post);
+        $on   = ev_get_field('on', $post);
+        $date = ev_get_field('date', $post);
 
         if (!$on || !$date) continue;
 
         $modal_id     = 'modal_' . $post->ID;
         $titulo       = get_the_title($post);
         $imagen       = get_the_post_thumbnail($post->ID, 'large');
-        $descripcion  = get_field('descripcion', $post->ID);
+        $descripcion  = ev_get_field('descripcion', $post->ID);
         $producto_id  = get_post_meta($post->ID, 'linked_product_id', true);
     ?>
         <!-- MODAL PERSONALIZADO -->

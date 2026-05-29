@@ -1,6 +1,10 @@
 <?php
 
 function ev_render_productos($cat) {
+    if (!function_exists('wc_get_template_part')) {
+      return '<p>No hay productos disponibles.</p>';
+    }
+
     $args = [
       'post_type' => 'product',
       'posts_per_page' => -1,
@@ -55,7 +59,7 @@ add_action('woocommerce_after_main_content', function() {
 
 // Forzar template personalizado en /tienda
 add_filter('template_include', function ($template) {
-  if (is_shop()) {
+  if (ev_is_shop()) {
     $custom = get_stylesheet_directory() . '/templates/page-landing-modular.php';
     if (file_exists($custom)) return $custom;
   }
@@ -64,9 +68,8 @@ add_filter('template_include', function ($template) {
 
 // Bloquea contenido automático de WooCommerce
 add_filter('the_content', function ($content) {
-  if (is_shop() && is_main_query()) {
+  if (ev_is_shop() && is_main_query()) {
     return ''; // Previene que Woo agregue su loop
   }
   return $content;
 }, 1);
-

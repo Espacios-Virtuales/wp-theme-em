@@ -26,18 +26,18 @@
 get_header();
 
 // ACF Campos hero
-$titulo      = get_field('titulo_landing');
-$subtitulo   = get_field('subtitulo_landing');
-$imagen_hero = get_field('imagen_hero');
+$titulo      = ev_get_field('titulo_landing');
+$subtitulo   = ev_get_field('subtitulo_landing');
+$imagen_hero = ev_get_field('imagen_hero');
 
 // Campos personalizados del CPT (por ejemplo 'curso', 'terapia', etc.)
-$descripcion        = get_field('descripcion');
-$objetivo           = get_field('objetivo');
-$propuesta_de_valor = get_field('propuesta_valor');
+$descripcion        = ev_get_field('descripcion');
+$objetivo           = ev_get_field('objetivo');
+$propuesta_de_valor = ev_get_field('propuesta_valor');
 ?>
 
 <section class="landing-hero">
-  <?php if ($imagen_hero): ?>
+  <?php if (is_array($imagen_hero) && !empty($imagen_hero['url'])): ?>
     <img class="landing-hero-bg" src="<?php echo esc_url($imagen_hero['url']); ?>" alt="Fondo hero Escuela Mística" loading="lazy" />
   <?php endif; ?>
 
@@ -50,7 +50,7 @@ $propuesta_de_valor = get_field('propuesta_valor');
 <section class="landing-content" data-aos="fade-up">
   <div class="container">
 
-    <?php if (is_shop()) : ?>
+    <?php if (ev_is_shop()) : ?>
       <!-- Imagen representativa o header visual -->
       <div class="text-center mb-5">
         <h2 class="text-gold mt-4">Catálogo de Productos</h2>
@@ -130,4 +130,3 @@ $propuesta_de_valor = get_field('propuesta_valor');
 </section>
 
 <?php get_footer(); ?>
-

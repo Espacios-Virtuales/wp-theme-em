@@ -28,7 +28,7 @@ get_header();
 <section>
     <?php
     $blog_page_id = get_option('page_for_posts');
-    $intro = $blog_page_id ? get_field('introductions', $blog_page_id) : get_field('introductions', 'option');
+    $intro = $blog_page_id ? ev_get_field('introductions', $blog_page_id) : ev_get_field('introductions', 'option');
     ?>
     <?php if (!empty($intro)) : ?>
         <div class="container-fluid bg-primary text-center py-5 px-3" data-aos="zoom-in" data-aos-delay="100" style="perspective: 1000px;">

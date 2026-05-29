@@ -10,14 +10,17 @@ function ev_about_hero_shortcode()
     <!-- Hero - Sobre Nosotros -->
     <section class="hero-about position-relative" data-aos="fade-up">
         <div class="container">
-            <?php $intro = get_field('introductions'); ?>
+            <?php
+            $intro = ev_get_field('introductions', false, true, []);
+            $intro = is_array($intro) ? $intro : [];
+            ?>
 
             <div class="row align-items-center">
                 <!-- Texto de Introducción -->
                 <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right" data-aos-delay="100">
-                    <h1 class="text-gold hero-title"><?php echo esc_html($intro["intro_1"]); ?></h1>
+                    <h1 class="text-gold hero-title"><?php echo esc_html($intro["intro_1"] ?? ''); ?></h1>
                     <p class="lead hero-description text-muted">
-                        <?php echo esc_html($intro["intro_2"]); ?>
+                        <?php echo esc_html($intro["intro_2"] ?? ''); ?>
                     </p>
                 </div>
 
@@ -42,26 +45,28 @@ add_shortcode('ev-about-hero', 'ev_about_hero_shortcode');
 // Propósito con slide y animaciones
 function ev_about_purpose_shortcode()
 {
-    $purpose_group = get_field('purpose_group');
+    $purpose_group = ev_get_field('purpose_group', false, true, []);
+    $purpose_group = is_array($purpose_group) ? $purpose_group : [];
     ob_start();
 ?>
     <section class="purpose-section py-5">
         <div class="container">
             <h2 class="text-center text-gold mb-4">Nuestro Propósito</h2>
-            <p class="text-center text-white mb-5"><?php echo esc_html($purpose_group['purpose_intro']); ?></p>
+            <p class="text-center text-white mb-5"><?php echo esc_html($purpose_group['purpose_intro'] ?? ''); ?></p>
 
             <div id="purpose-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <?php $index = 0; ?>
-                    <?php foreach ($purpose_group['purpose_items'] as $item): ?>
+                    <?php foreach (($purpose_group['purpose_items'] ?? []) as $item): ?>
+                        <?php if (!is_array($item)) continue; ?>
                         <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                             <div class="card shadow-lg purpose-card">
                                 <div class="card-header text-center">
                                     <i class="bi bi-stars text-gold"></i>
-                                    <h5 class="mb-0 text-white"><?php echo esc_html($item['item_title']); ?></h5>
+                                    <h5 class="mb-0 text-white"><?php echo esc_html($item['item_title'] ?? ''); ?></h5>
                                 </div>
                                 <div class="card-body">
-                                    <p><?php echo esc_html($item['item_description']); ?></p>
+                                    <p><?php echo esc_html($item['item_description'] ?? ''); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +90,8 @@ add_shortcode('ev-about-purpose', 'ev_about_purpose_shortcode');
 // Misión y Visión con animaciones y slide responsivo
 function ev_about_mission_vision_shortcode()
 {
-    $mission_vision_group = get_field('mission_vision_group');
+    $mission_vision_group = ev_get_field('mission_vision_group', false, true, []);
+    $mission_vision_group = is_array($mission_vision_group) ? $mission_vision_group : [];
     ob_start();
 ?>
     <section class="mission-vision-section py-5">
@@ -101,12 +107,12 @@ function ev_about_mission_vision_shortcode()
                                 <div class="card shadow-lg vision-card">
                                     <div class="card-body">
                                         <h5 class="text-primary">Visión</h5>
-                                        <p><?php echo esc_html($mission_vision_group['vision_text']); ?></p>
+                                        <p><?php echo esc_html($mission_vision_group['vision_text'] ?? ''); ?></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 text-center">
-                                <img src="<?php echo esc_url($mission_vision_group['vision_image']['url']); ?>" class="img-fluid rounded vision-image my-2" alt="Visión">
+                                <img src="<?php echo esc_url($mission_vision_group['vision_image']['url'] ?? ''); ?>" class="img-fluid rounded vision-image my-2" alt="Visión">
                             </div>
                         </div>
                     </div>
@@ -117,12 +123,12 @@ function ev_about_mission_vision_shortcode()
                                 <div class="card shadow-lg mission-card">
                                     <div class="card-body">
                                         <h5 class="text-primary">Misión</h5>
-                                        <p><?php echo esc_html($mission_vision_group['mission_text']); ?></p>
+                                        <p><?php echo esc_html($mission_vision_group['mission_text'] ?? ''); ?></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 text-center">
-                                <img src="<?php echo esc_url($mission_vision_group['mission_image']['url']); ?>" class="img-fluid rounded mission-image my-2" alt="Misión">
+                                <img src="<?php echo esc_url($mission_vision_group['mission_image']['url'] ?? ''); ?>" class="img-fluid rounded mission-image my-2" alt="Misión">
                             </div>
                         </div>
                     </div>
@@ -145,7 +151,8 @@ add_shortcode('ev-about-mission-vision', 'ev_about_mission_vision_shortcode');
 // Valores
 function ev_about_values_shortcode()
 {
-    $values_group = get_field('values_items');
+    $values_group = ev_get_field('values_items', false, true, []);
+    $values_group = is_array($values_group) ? $values_group : [];
     ob_start();
 ?>
     <section class="values-section py-5">
@@ -155,11 +162,12 @@ function ev_about_values_shortcode()
                 <?php
                 $delay = 0;
                 foreach ($values_group as $value): ?>
+                    <?php if (!is_array($value)) continue; ?>
                     <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="<?php echo esc_attr($delay); ?>">
                         <div class="card shadow-lg h-100">
                             <div class="card-body d-flex flex-column justify-content-center">
-                                <h5 class="text-primary text-center mb-3"><?php echo esc_html($value['value_title']); ?></h5>
-                                <p class="text-center text-muted"><?php echo esc_html($value['value_text']); ?></p>
+                                <h5 class="text-primary text-center mb-3"><?php echo esc_html($value['value_title'] ?? ''); ?></h5>
+                                <p class="text-center text-muted"><?php echo esc_html($value['value_text'] ?? ''); ?></p>
                             </div>
                         </div>
                     </div>
@@ -177,23 +185,24 @@ add_shortcode('ev-about-values', 'ev_about_values_shortcode');
 // Identidad
 function ev_about_identity_shortcode()
 {
-    $identity_group = get_field('identity_group');
+    $identity_group = ev_get_field('identity_group', false, true, []);
+    $identity_group = is_array($identity_group) ? $identity_group : [];
     ob_start();
 ?>
     <section class="identity-section py-5">
         <div class="container">
             <h2 class="text-center text-gold mb-4">Nuestra Identidad</h2>
-            <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro']); ?></p>
+            <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro'] ?? ''); ?></p>
 
-            <?php if (!empty($identity_group['identity_items'])) : ?>
+            <?php if (!empty($identity_group['identity_items']) && is_array($identity_group['identity_items'])) : ?>
                 <?php $first_item = array_shift($identity_group['identity_items']); // Extraer el primer ítem 
                 ?>
 
                 <!-- Hero de Identidad -->
                 <div class="identity-hero text-center text-light py-5">
                     <div class="hero-content">
-                        <h2 class="hero-title"><?php echo esc_html($first_item['archetype_title']); ?></h2>
-                        <p class="hero-description"><?php echo esc_html($first_item['archetype_description']); ?></p>
+                        <h2 class="hero-title"><?php echo esc_html($first_item['archetype_title'] ?? ''); ?></h2>
+                        <p class="hero-description"><?php echo esc_html($first_item['archetype_description'] ?? ''); ?></p>
                     </div>
                 </div>
 
@@ -202,11 +211,12 @@ function ev_about_identity_shortcode()
                     <div class="carousel-inner">
                         <?php $index = 0; ?>
                         <?php foreach ($identity_group['identity_items'] as $item) : ?>
+                            <?php if (!is_array($item)) continue; ?>
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                                 <div class="card identity-card mx-auto">
                                     <div class="card-body text-center">
-                                        <h5 class="text-primary"><?php echo esc_html($item['archetype_title']); ?></h5>
-                                        <p><?php echo esc_html($item['archetype_description']); ?></p>
+                                        <h5 class="text-primary"><?php echo esc_html($item['archetype_title'] ?? ''); ?></h5>
+                                        <p><?php echo esc_html($item['archetype_description'] ?? ''); ?></p>
                                     </div>
                                 </div>
                             </div>

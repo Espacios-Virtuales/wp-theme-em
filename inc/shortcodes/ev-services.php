@@ -9,14 +9,17 @@ function ev_services_hero_shortcode()
 ?>
     <section class="services-hero py-5 text-center text-light" data-aos="fade-up">
         <div class="container">
-            <?php $intro = get_field('introductions'); ?>
+            <?php
+            $intro = ev_get_field('introductions', false, true, []);
+            $intro = is_array($intro) ? $intro : [];
+            ?>
             <h1 class="display-4 fw-bold mb-3 text-gold ml9" data-aos="fade-down" data-aos-delay="100">
                 <span class="text-wrapper">
-                    <span class="letters"><?php echo esc_html($intro["intro_1"]); ?></span>
+                    <span class="letters"><?php echo esc_html($intro["intro_1"] ?? ''); ?></span>
                 </span>
             </h1>
             <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">
-                <?php echo esc_html($intro["intro_2"]); ?>
+                <?php echo esc_html($intro["intro_2"] ?? ''); ?>
             </p>
 
             <div class="row justify-content-center mt-5">
@@ -42,20 +45,22 @@ add_shortcode('ev-services-hero', 'ev_services_hero_shortcode');
 
 function ev_services_value_shortcode()
 {
-    $values = get_field('values_group'); // Group: value_group
+    $values = ev_get_field('values_group', false, true, []); // Group: value_group
+    $values = is_array($values) ? $values : [];
     ob_start();
 ?>
     <div class="value-section py-5">
         <h2 class="text-center text-primary mb-4" data-aos="fade-up">Nuestra Propuesta de Valor</h2>
-        <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($values['values_descriptions']); ?></p>
+        <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($values['values_descriptions'] ?? ''); ?></p>
         <div class="row">
-            <?php foreach ($values['values_items'] as $item): ?>
+            <?php foreach (($values['values_items'] ?? []) as $item): ?>
+                <?php if (!is_array($item)) continue; ?>
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg border-0 h-100" data-aos="fade-up" data-aos-delay="100">
                         <div class="card-body text-center">
-                            <i class="<?php echo esc_attr($item['value_icon']); ?> text-primary display-4 mb-3"></i>
-                            <h5 class="text-primary"><?php echo esc_html($item['value_title']); ?></h5>
-                            <p class="text-muted"><?php echo esc_html($item['value_text']); ?></p>
+                            <i class="<?php echo esc_attr($item['value_icon'] ?? ''); ?> text-primary display-4 mb-3"></i>
+                            <h5 class="text-primary"><?php echo esc_html($item['value_title'] ?? ''); ?></h5>
+                            <p class="text-muted"><?php echo esc_html($item['value_text'] ?? ''); ?></p>
                         </div>
                     </div>
                 </div>
@@ -69,7 +74,7 @@ add_shortcode('ev-services-value', 'ev_services_value_shortcode');
 
 function ev_services_list_shortcode()
 {
-    $services_group = get_field('services_group');
+    $services_group = ev_get_field('services_group');
     ob_start();
 
     if (!$services_group || empty($services_group['services']) || !is_array($services_group['services'])) {

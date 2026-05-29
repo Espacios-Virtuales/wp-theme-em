@@ -13,29 +13,32 @@ function community_membership_gallery_shortcode()
             $data->the_post();
 
             // Obtener los datos necesarios
-            $intro = get_field('introductions');
-            $description_group = get_field('description_group');
-            $community_items = get_field('community_comunity_group');
+            $intro = ev_get_field('introductions', false, true, []);
+            $intro = is_array($intro) ? $intro : [];
+            $description_group = ev_get_field('description_group', false, true, []);
+            $description_group = is_array($description_group) ? $description_group : [];
+            $community_items = ev_get_field('community_comunity_group', false, true, []);
+            $community_items = is_array($community_items) ? $community_items : [];
 
-            $item_1 = $community_items['item_1'];
-            $item_2 = $community_items['item_2'];
+            $item_1 = isset($community_items['item_1']) && is_array($community_items['item_1']) ? $community_items['item_1'] : [];
+            $item_2 = isset($community_items['item_2']) && is_array($community_items['item_2']) ? $community_items['item_2'] : [];
         ?>
             <section class="community-membership py-5" id="community">
                 <div class="container">
                     <div class="text-center mb-4">
-                        <h2 class="text-gold display-6" data-aos="fade-up"><?php echo esc_html($intro["intro_1"]); ?></h2>
-                        <p class="lead text-white" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($intro["intro_2"]); ?></p>
+                        <h2 class="text-gold display-6" data-aos="fade-up"><?php echo esc_html($intro["intro_1"] ?? ''); ?></h2>
+                        <p class="lead text-white" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($intro["intro_2"] ?? ''); ?></p>
                     </div>
                     <?php if ($description_group): ?>
                         <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="200">
                             <div class="col-md-4 text-center">
-                                <?php if ($description_group['maureen_image']): ?>
-                                    <img src="<?php echo esc_url($description_group['maureen_image']['url']); ?>" alt="<?php echo esc_attr($description_group['maureen_image']['alt']); ?>" class="img-fluid rounded-circle maureen-photo">
+                                <?php if (!empty($description_group['maureen_image']) && is_array($description_group['maureen_image'])): ?>
+                                    <img src="<?php echo esc_url($description_group['maureen_image']['url'] ?? ''); ?>" alt="<?php echo esc_attr($description_group['maureen_image']['alt'] ?? ''); ?>" class="img-fluid rounded-circle maureen-photo">
                                 <?php endif; ?>
                             </div>
                             <div class="col-md-8">
                                 <blockquote class="maureen-thought text-center text-md-start">
-                                    <p class="fs-4 text-dark"><?php echo esc_html($description_group['maureen_thought']); ?></p>
+                                    <p class="fs-4 text-dark"><?php echo esc_html($description_group['maureen_thought'] ?? ''); ?></p>
                                 </blockquote>
                             </div>
                         </div>
@@ -45,11 +48,11 @@ function community_membership_gallery_shortcode()
                         <?php if ($item_1): ?>
                             <div class="col" data-aos="fade-up" data-aos-delay="300">
                                 <div class="text-center">
-                                    <?php if ($item_1['image']): ?>
-                                        <img src="<?php echo esc_url($item_1['image']['url']); ?>" alt="<?php echo esc_attr($item_1['image']['alt']); ?>" class="img-fluid rounded community-icon mb-3">
+                                    <?php if (!empty($item_1['image']) && is_array($item_1['image'])): ?>
+                                        <img src="<?php echo esc_url($item_1['image']['url'] ?? ''); ?>" alt="<?php echo esc_attr($item_1['image']['alt'] ?? ''); ?>" class="img-fluid rounded community-icon mb-3">
                                     <?php endif; ?>
-                                    <h5 class="text-gold"><?php echo esc_html($item_1['title']); ?></h5>
-                                    <p class="text-white"><?php echo esc_html($item_1['description']); ?></p>
+                                    <h5 class="text-gold"><?php echo esc_html($item_1['title'] ?? ''); ?></h5>
+                                    <p class="text-white"><?php echo esc_html($item_1['description'] ?? ''); ?></p>
                                     <div class="d-flex justify-content-center gap-3 mt-3">
                                         <div class="custom-rounded-btn ">
                                             <button

@@ -9,7 +9,7 @@ add_filter('the_content', function($content) {
   }
 
   /* Si el campo ACF 'seo_enabled' está activo y no se insertó manualmente
-  if (get_field('seo_enabled') && strpos($content, '[ev-seo_intro]') === false) {
+  if (ev_get_field('seo_enabled') && strpos($content, '[ev-seo_intro]') === false) {
     $intro = do_shortcode('[ev-seo_intro]');
     // Lo agregamos al final del contenido
     return $content . "\n\n" . $intro;

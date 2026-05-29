@@ -2,12 +2,12 @@
 /* Template Name: Regalo */
 get_header();
 
-$title    = get_field('ev_regalo_title') ?: 'Clase de Preparación: La Energía que Está Moviendo tu Vida (y Aún No Sabes Cómo Leerla)';
-$subtitle = get_field('ev_regalo_subtitle') ?: 'Una clase exclusiva para quienes se están preparando para la Masterclass “La Inteligencia de los Chakras”.';
-$video    = get_field('ev_regalo_video_url') ?: 'https://youtu.be/hOewiT4k3Jg';
-$context  = get_field('ev_regalo_context') ?: 'Esta clase es un regalo exclusivo...';
-$cta_txt  = get_field('ev_regalo_cta_label') ?: 'IR A LA PÁGINA PRINCIPAL';
-$cta_url  = get_field('ev_regalo_cta_url') ?: home_url('/');
+$title    = ev_get_field('ev_regalo_title') ?: 'Clase de Preparación: La Energía que Está Moviendo tu Vida (y Aún No Sabes Cómo Leerla)';
+$subtitle = ev_get_field('ev_regalo_subtitle') ?: 'Una clase exclusiva para quienes se están preparando para la Masterclass “La Inteligencia de los Chakras”.';
+$video    = ev_get_field('ev_regalo_video_url') ?: 'https://youtu.be/hOewiT4k3Jg';
+$context  = ev_get_field('ev_regalo_context') ?: 'Esta clase es un regalo exclusivo...';
+$cta_txt  = ev_get_field('ev_regalo_cta_label') ?: 'IR A LA PÁGINA PRINCIPAL';
+$cta_url  = ev_get_field('ev_regalo_cta_url') ?: home_url('/');
 
 function ev_youtube_embed_url($url) {
     if (!$url) return '';

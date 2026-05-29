@@ -56,14 +56,15 @@
           </div>
 
           <div class="col cart d-flex justify-content-center justify-content-md-end align-items-center pt-2">
-            <?php if (function_exists('WC') && WC()->cart) : ?>
+            <?php $ev_cart = ev_wc_cart(); ?>
+            <?php if ($ev_cart && function_exists('wc_get_cart_url')) : ?>
               <a href="<?php echo esc_url(wc_get_cart_url()); ?>"><i class="bi bi-bag-dash p-2 text-white"></i></a>
               <a class="cart-customlocation" href="<?php echo esc_url(wc_get_cart_url()); ?>" title="<?php esc_attr_e('View your shopping cart'); ?>">
                 <?php
-                $count = WC()->cart->get_cart_contents_count();
+                $count = $ev_cart->get_cart_contents_count();
                 /* translators: %d: cart items */
                 printf(_n('%d item', '%d items', $count), $count);
-                ?> – <?php echo WC()->cart->get_cart_total(); ?>
+                ?> – <?php echo $ev_cart->get_cart_total(); ?>
               </a>
             <?php endif; ?>
           </div>
