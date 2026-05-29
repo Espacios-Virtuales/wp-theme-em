@@ -31,7 +31,7 @@ function ev_render_whatsapp_cta_shortcode($atts = []) {
             </p>
 
             <a
-                class="ev-whatsapp-cta__button"
+                class="ev-whatsapp-cta__button text-decoration-none text-white"
                 href="<?php echo esc_url($url); ?>"
                 target="_blank"
                 rel="noopener noreferrer">
