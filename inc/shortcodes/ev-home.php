@@ -84,28 +84,11 @@ function hero_slider_shortcode()
                                                 <?php echo wp_kses_post($slide['body']); ?>
                                             </div>
                                         <?php endif; ?>
-
-                                        <?php if (!empty($slide['cta_text']) && !empty($slide['cta_url'])) : ?>
-                                            <div class="ev-hero-actions">
-                                                <a href="<?php echo esc_url($slide['cta_url']); ?>" class="ev-btn ev-btn-primary">
-                                                    <?php echo esc_html($slide['cta_text']); ?>
-                                                </a>
-                                            </div>
-
-                                            <?php else : ?>
-                                            <div class="ev-hero-actions">
-                                                <button
-                                                    type="button"
-                                                    class="ev-btn ev-btn-primary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#subscribeModal">
-                                                    Suscríbete
-                                                </button>
-                                            </div>
-
-                                        <?php endif; ?>
-
-                                        
+                                        <div class="ev-hero-actions">
+                                            <a href="<?php echo esc_url($slide['cta_url']); ?>" class="ev-btn ev-btn-primary">
+                                                <?php echo esc_html($slide['cta_text']); ?>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
