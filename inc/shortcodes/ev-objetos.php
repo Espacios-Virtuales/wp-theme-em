@@ -1,68 +1,63 @@
 <?php
-
 /**
  * Shortcode: [ev-objetos tipo="terapia"]
- * Muestra tarjetas de objetos (terapias, cursos, programas) con modales personalizados.
+ *
+ * Flujo actualizado:
+ * Catálogo → Card → Modal → Landing CPT → Venta
+ *
+ * El shortcode NO vende directamente.
+ * El CTA del modal deriva al single del CPT correspondiente.
  */
 function ev_objetos_shortcode($atts)
 {
   $atts = shortcode_atts([
     'tipo'      => 'terapia',
-    'cantidad'  => -1
+    'cantidad'  => -1,
+    'cta_text'  => 'Conocer',
   ], $atts, 'ev-objetos');
 
-  $query = blog_get_custom_post_type($atts['tipo'], $atts['cantidad']);
+  $tipo = sanitize_key($atts['tipo']);
+
+  $query = blog_get_custom_post_type($tipo, intval($atts['cantidad']));
 
   ob_start();
 
-  if ($query->have_posts()) :
+  if ($query && $query->have_posts()) :
 ?>
-    <div class="ev-objetos-grid" id="<?php echo esc_attr($atts['tipo']); ?>">
+    <div class="ev-objetos-grid" id="<?php echo esc_attr($tipo); ?>">
       <?php while ($query->have_posts()) : $query->the_post(); ?>
         <?php
-        $post_id    = get_the_ID();
-        $titulo     = get_the_title();
-        $imagen     = get_the_post_thumbnail($post_id, 'medium');
-        $descripcion = ev_get_field('descripcion');
-        $objetivo   = ev_get_field('objetivo');
-        $propuesta  = ev_get_field('propuesta_valor');
-        $proposito  = ev_get_field('proposito');
-        $cliente    = ev_get_field('cliente_potencial');
-        $modal_id   = 'modal-' . $post_id;
-        $tipo       = $atts['tipo'];
+        $post_id = get_the_ID();
 
-        // Inicializar variables
-        $producto_id = '';
-        $payment_url = '';
-        $formato     = [];
+        $titulo      = get_the_title($post_id);
+        $imagen      = get_the_post_thumbnail($post_id, 'medium');
+        $descripcion = function_exists('ev_get_field') ? ev_get_field('descripcion') : '';
+        $objetivo    = function_exists('ev_get_field') ? ev_get_field('objetivo') : '';
+        $propuesta   = function_exists('ev_get_field') ? ev_get_field('propuesta_valor') : '';
+        $proposito   = function_exists('ev_get_field') ? ev_get_field('proposito') : '';
+        $cliente     = function_exists('ev_get_field') ? ev_get_field('cliente_potencial') : '';
 
-        // Lógica según tipo
-        if ($tipo === 'course') {
-          $producto_id = get_post_meta($post_id, '_course_product_id', true);
-          $payment_url = get_post_meta($post_id, 'course_payment_url', true);
-          $formato     = get_post_meta($post_id, 'course_formato', true);
-        } elseif ($tipo === 'program') {
-          // Ruta del propio CPT program
-          $program_url   = get_permalink($post_id);
-          $program_title = get_the_title($post_id);
-        } elseif ($tipo === 'terapia') {
-          // Terapia (como ya funciona)
-          $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, '_linked_product_id', true)));
-        } elseif ($tipo === 'experiencia') {
-          // Experiencia (como tu ejemplo)
-          $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, 'linked_product_id', true)));
+        $modal_id = 'modal-' . $post_id;
+
+        /**
+         * Nuevo flujo:
+         * el modal deriva SIEMPRE al single del CPT.
+         * La venta real ocurre dentro de single-programa.php,
+         * single-curso.php, single-terapia.php o single-experiencia.php.
+         */
+        $cpt_url = get_permalink($post_id);
+
+        $cta_text = trim($atts['cta_text']);
+        if (empty($cta_text)) {
+          $cta_text = 'Conocer';
         }
-
-        // Validación: que exista y sea publicable
-        if (!empty($producto_id) && !get_post_status($producto_id)) {
-          $producto_id = 0;
-        }
-
         ?>
 
         <div class="ev-objeto-card">
           <?php echo $imagen; ?>
+
           <h3><?php echo esc_html($titulo); ?></h3>
+
           <button class="ev-open-modal" data-target="<?php echo esc_attr($modal_id); ?>">
             Ver más
           </button>
@@ -72,7 +67,10 @@ function ev_objetos_shortcode($atts)
         <div id="<?php echo esc_attr($modal_id); ?>" class="ev-modal" aria-hidden="true">
           <div class="ev-modal-content" role="dialog" aria-modal="true" aria-labelledby="<?php echo esc_attr($modal_id); ?>-title">
             <a href="#" class="ev-close-modal" aria-label="Cerrar">×</a>
-            <h2 id="<?php echo esc_attr($modal_id); ?>-title"><?php echo esc_html($titulo); ?></h2>
+
+            <h2 id="<?php echo esc_attr($modal_id); ?>-title">
+              <?php echo esc_html($titulo); ?>
+            </h2>
 
             <?php echo get_the_post_thumbnail($post_id, 'large'); ?>
 
@@ -112,47 +110,15 @@ function ev_objetos_shortcode($atts)
             <?php endif; ?>
 
             <!-- Acción -->
-            <!-- Acción -->
             <div class="ev-modal-section text-center">
-              <?php if ($tipo === 'course' && is_array($formato) && in_array('grabado', $formato, true)) : ?>
-
-                <?php if (!empty($payment_url)) : ?>
-                  <a href="<?php echo esc_url($payment_url); ?>" class="ev-cta-button" target="_blank" rel="noopener">
-                    Ver curso grabado
-                  </a>
-                <?php elseif (!empty($producto_id)) : ?>
-                  <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
-                    Inscribirme ahora
-                  </a>
-                <?php else : ?>
-                  <span class="ev-cta-unavailable">Curso grabado – enlace no disponible</span>
-                <?php endif; ?>
-
-              <?php elseif ($tipo === 'program') : ?>
-
-                <?php
-                $program_url   = !empty($program_url) ? $program_url : get_permalink($post_id);
-                $program_title = !empty($program_title) ? $program_title : get_the_title($post_id);
-                ?>
-
-                <?php if (!empty($program_url)) : ?>
-                  <a href="<?php echo esc_url($program_url); ?>" class="ev-cta-button">
-                    <?php echo esc_html('Adquirir ' . $program_title); ?>
-                  </a>
-                <?php else : ?>
-                  <span class="ev-cta-unavailable">Este programa estará disponible pronto</span>
-                <?php endif; ?>
-
-              <?php elseif (!empty($producto_id)) : ?>
-
-                <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
-                  Adquirir ahora
+              <?php if (!empty($cpt_url)) : ?>
+                <a href="<?php echo esc_url($cpt_url); ?>" class="ev-cta-button">
+                  <?php echo esc_html($cta_text . ' ' . $titulo); ?>
                 </a>
-
               <?php else : ?>
-
-                <span class="ev-cta-unavailable">Este contenido estará disponible pronto</span>
-
+                <span class="ev-cta-unavailable">
+                  Este contenido estará disponible pronto
+                </span>
               <?php endif; ?>
             </div>
           </div>
@@ -163,8 +129,10 @@ function ev_objetos_shortcode($atts)
   endif;
 
   wp_reset_postdata();
+
   return ob_get_clean();
 }
+
 add_shortcode('ev-objetos', 'ev_objetos_shortcode');
 
 function ev_normalize_post_id($raw)
