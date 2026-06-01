@@ -1,278 +1,170 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit;
-}
 
 /**
- * Shortcode: [ev-objetos tipo="program"]
- *
- * Flujo:
- * Catálogo → Card → Modal → Landing CPT → Venta
- *
- * Tipos soportados:
- * - program / programa
- * - course / curso
- * - terapia
- * - experiencia
+ * Shortcode: [ev-objetos tipo="terapia"]
+ * Muestra tarjetas de objetos (terapias, cursos, programas) con modales personalizados.
  */
-function ev_objetos_shortcode($atts = [])
+function ev_objetos_shortcode($atts)
 {
-    $atts = shortcode_atts(
-        [
-            'tipo'           => '',
-            'type'           => '',
-            'posts_per_page' => -1,
-            'orderby'        => 'menu_order',
-            'order'          => 'ASC',
-            'button_text'    => 'Conocer',
-            'class'          => '',
-        ],
-        $atts,
-        'ev-objetos'
-    );
+  $atts = shortcode_atts([
+    'tipo'      => 'terapia',
+    'cantidad'  => -1
+  ], $atts, 'ev-objetos');
 
-    $tipo = !empty($atts['tipo']) ? $atts['tipo'] : $atts['type'];
-    $tipo = sanitize_key($tipo);
+  $query = blog_get_custom_post_type($atts['tipo'], $atts['cantidad']);
 
-    $post_type_candidates = [
-        'program'     => ['program', 'programa'],
-        'programa'    => ['programa', 'program'],
-        'course'      => ['course', 'curso'],
-        'curso'       => ['curso', 'course'],
-        'terapia'     => ['terapia', 'therapy'],
-        'therapy'     => ['therapy', 'terapia'],
-        'experiencia' => ['experiencia', 'experience'],
-        'experience'  => ['experience', 'experiencia'],
-    ];
+  ob_start();
 
-    $candidate_post_types = $post_type_candidates[$tipo] ?? [$tipo];
+  if ($query->have_posts()) :
+?>
+    <div class="ev-objetos-grid" id="<?php echo esc_attr($atts['tipo']); ?>">
+      <?php while ($query->have_posts()) : $query->the_post(); ?>
+        <?php
+        $post_id    = get_the_ID();
+        $titulo     = get_the_title();
+        $imagen     = get_the_post_thumbnail($post_id, 'medium');
+        $descripcion = ev_get_field('descripcion');
+        $objetivo   = ev_get_field('objetivo');
+        $propuesta  = ev_get_field('propuesta_valor');
+        $proposito  = ev_get_field('proposito');
+        $cliente    = ev_get_field('cliente_potencial');
+        $modal_id   = 'modal-' . $post_id;
+        $tipo       = $atts['tipo'];
 
-    $post_types = array_values(array_filter($candidate_post_types, function ($post_type) {
-        return post_type_exists($post_type);
-    }));
+        // Inicializar variables
+        $producto_id = '';
+        $payment_url = '';
+        $formato     = [];
 
-    if (empty($post_types)) {
-        return '';
-    }
-
-    $query = new WP_Query([
-        'post_type'      => $post_types,
-        'post_status'    => 'publish',
-        'posts_per_page' => intval($atts['posts_per_page']),
-        'orderby'        => sanitize_key($atts['orderby']),
-        'order'          => strtoupper($atts['order']) === 'DESC' ? 'DESC' : 'ASC',
-    ]);
-
-    if (!$query->have_posts()) {
-        return '';
-    }
-
-    $safe_get_field = function ($field, $post_id, $default = '') {
-        if (!function_exists('get_field')) {
-            return $default;
+        // Lógica según tipo
+        if ($tipo === 'course') {
+          $producto_id = get_post_meta($post_id, '_course_product_id', true);
+          $payment_url = get_post_meta($post_id, 'course_payment_url', true);
+          $formato     = get_post_meta($post_id, 'course_formato', true);
+        } elseif ($tipo === 'program') {
+          // Ruta del propio CPT program
+          $program_url   = get_permalink($post_id);
+          $program_title = get_the_title($post_id);
+        } elseif ($tipo === 'terapia') {
+          // Terapia (como ya funciona)
+          $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, '_linked_product_id', true)));
+        } elseif ($tipo === 'experiencia') {
+          // Experiencia (como tu ejemplo)
+          $producto_id = absint(ev_normalize_post_id(get_post_meta($post_id, 'linked_product_id', true)));
         }
 
-        $value = get_field($field, $post_id);
-
-        return $value ?: $default;
-    };
-
-    $get_image_url = function ($image, $post_id) {
-        if (is_array($image) && !empty($image['url'])) {
-            return $image['url'];
+        // Validación: que exista y sea publicable
+        if (!empty($producto_id) && !get_post_status($producto_id)) {
+          $producto_id = 0;
         }
 
-        if (is_numeric($image)) {
-            return wp_get_attachment_image_url(absint($image), 'large');
-        }
+        ?>
 
-        if (is_string($image) && !empty($image)) {
-            return $image;
-        }
-
-        if (has_post_thumbnail($post_id)) {
-            return get_the_post_thumbnail_url($post_id, 'large');
-        }
-
-        return '';
-    };
-
-    $wrapper_classes = trim('ev-objetos ev-objetos--' . esc_attr($tipo) . ' ' . esc_attr($atts['class']));
-
-    ob_start();
-    ?>
-
-    <section class="<?php echo esc_attr($wrapper_classes); ?>">
-        <div class="container">
-            <div class="row g-4">
-
-                <?php while ($query->have_posts()) : ?>
-                    <?php
-                    $query->the_post();
-
-                    $post_id   = get_the_ID();
-                    $post_type = get_post_type($post_id);
-
-                    $titulo = $safe_get_field('titulo_landing', $post_id, get_the_title($post_id));
-
-                    $descripcion = $safe_get_field('descripcion', $post_id);
-                    if (empty($descripcion)) {
-                        $descripcion = get_the_excerpt($post_id);
-                    }
-
-                    $objetivo          = $safe_get_field('objetivo', $post_id);
-                    $propuesta_valor   = $safe_get_field('propuesta_valor', $post_id);
-                    $proposito         = $safe_get_field('proposito', $post_id);
-                    $cliente_potencial = $safe_get_field('cliente_potencial', $post_id);
-
-                    $imagen = $safe_get_field('imagen_hero', $post_id);
-                    if (empty($imagen)) {
-                        $imagen = $safe_get_field('imagen', $post_id);
-                    }
-
-                    $image_url = $get_image_url($imagen, $post_id);
-                    $cpt_url   = get_permalink($post_id);
-
-                    $modal_id = 'ev-modal-' . $post_type . '-' . $post_id;
-                    ?>
-
-                    <div class="col-md-6 col-xl-4">
-                        <article class="ev-objeto-card">
-
-                            <?php if ($image_url) : ?>
-                                <figure class="ev-objeto-card__media">
-                                    <img
-                                        src="<?php echo esc_url($image_url); ?>"
-                                        alt="<?php echo esc_attr($titulo); ?>"
-                                        loading="lazy">
-                                </figure>
-                            <?php endif; ?>
-
-                            <div class="ev-objeto-card__body">
-                                <span class="ev-objeto-card__eyebrow">
-                                    <?php echo esc_html(ucfirst($tipo)); ?>
-                                </span>
-
-                                <h3 class="ev-objeto-card__title">
-                                    <?php echo esc_html($titulo); ?>
-                                </h3>
-
-                                <?php if ($descripcion) : ?>
-                                    <div class="ev-objeto-card__excerpt">
-                                        <?php echo wp_kses_post(wp_trim_words(wp_strip_all_tags($descripcion), 24)); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <button
-                                    type="button"
-                                    class="ev-btn ev-btn--primary ev-objeto-card__button"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#<?php echo esc_attr($modal_id); ?>">
-                                    Ver detalles
-                                </button>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div
-                        class="modal fade ev-modal"
-                        id="<?php echo esc_attr($modal_id); ?>"
-                        tabindex="-1"
-                        aria-labelledby="<?php echo esc_attr($modal_id); ?>-label"
-                        aria-hidden="true">
-
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content ev-modal__content">
-
-                                <button
-                                    type="button"
-                                    class="btn-close ev-modal__close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Cerrar">
-                                </button>
-
-                                <?php if ($image_url) : ?>
-                                    <figure class="ev-modal__media">
-                                        <img
-                                            src="<?php echo esc_url($image_url); ?>"
-                                            alt="<?php echo esc_attr($titulo); ?>">
-                                    </figure>
-                                <?php endif; ?>
-
-                                <div class="ev-modal__body">
-                                    <span class="ev-modal__eyebrow">
-                                        <?php echo esc_html(ucfirst($tipo)); ?>
-                                    </span>
-
-                                    <h2 id="<?php echo esc_attr($modal_id); ?>-label" class="ev-modal__title">
-                                        <?php echo esc_html($titulo); ?>
-                                    </h2>
-
-                                    <?php if ($descripcion) : ?>
-                                        <div class="ev-modal__description">
-                                            <?php echo wp_kses_post(wpautop($descripcion)); ?>
-                                        </div>
-                                    <?php endif; ?>
-
-                                    <div class="ev-modal__grid">
-                                        <?php if ($objetivo) : ?>
-                                            <div class="ev-modal__section">
-                                                <h3>Objetivo</h3>
-                                                <?php echo wp_kses_post(wpautop($objetivo)); ?>
-                                            </div>
-                                        <?php endif; ?>
-
-                                        <?php if ($propuesta_valor) : ?>
-                                            <div class="ev-modal__section">
-                                                <h3>Propuesta de valor</h3>
-                                                <?php echo wp_kses_post(wpautop($propuesta_valor)); ?>
-                                            </div>
-                                        <?php endif; ?>
-
-                                        <?php if ($proposito) : ?>
-                                            <div class="ev-modal__section">
-                                                <h3>Propósito</h3>
-                                                <?php echo wp_kses_post(wpautop($proposito)); ?>
-                                            </div>
-                                        <?php endif; ?>
-
-                                        <?php if ($cliente_potencial) : ?>
-                                            <div class="ev-modal__section">
-                                                <h3>Para quién es</h3>
-                                                <?php echo wp_kses_post(wpautop($cliente_potencial)); ?>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-
-                                    <div class="ev-modal__actions">
-                                        <?php if ($cpt_url) : ?>
-                                            <a href="<?php echo esc_url($cpt_url); ?>" class="ev-btn ev-btn--primary">
-                                                <?php echo esc_html($atts['button_text']); ?> <?php echo esc_html($titulo); ?>
-                                            </a>
-                                        <?php else : ?>
-                                            <span class="ev-modal__unavailable">
-                                                Este contenido estará disponible pronto.
-                                            </span>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                <?php endwhile; ?>
-
-            </div>
+        <div class="ev-objeto-card">
+          <?php echo $imagen; ?>
+          <h3><?php echo esc_html($titulo); ?></h3>
+          <button class="ev-open-modal" data-target="<?php echo esc_attr($modal_id); ?>">
+            Ver más
+          </button>
         </div>
-    </section>
 
-    <?php
-    wp_reset_postdata();
+        <!-- Modal -->
+        <div id="<?php echo esc_attr($modal_id); ?>" class="ev-modal" aria-hidden="true">
+          <div class="ev-modal-content" role="dialog" aria-modal="true" aria-labelledby="<?php echo esc_attr($modal_id); ?>-title">
+            <a href="#" class="ev-close-modal" aria-label="Cerrar">×</a>
+            <h2 id="<?php echo esc_attr($modal_id); ?>-title"><?php echo esc_html($titulo); ?></h2>
 
-    return ob_get_clean();
+            <?php echo get_the_post_thumbnail($post_id, 'large'); ?>
+
+            <?php if ($descripcion): ?>
+              <div class="ev-modal-section">
+                <strong>Descripción:</strong>
+                <p><?php echo wp_kses_post($descripcion); ?></p>
+              </div>
+            <?php endif; ?>
+
+            <?php if ($objetivo): ?>
+              <div class="ev-modal-section">
+                <strong>Objetivo:</strong>
+                <p><?php echo wp_kses_post($objetivo); ?></p>
+              </div>
+            <?php endif; ?>
+
+            <?php if ($propuesta): ?>
+              <div class="ev-modal-section">
+                <strong>Propuesta de Valor:</strong>
+                <p><?php echo wp_kses_post($propuesta); ?></p>
+              </div>
+            <?php endif; ?>
+
+            <?php if ($proposito): ?>
+              <div class="ev-modal-section">
+                <strong>Propósito:</strong>
+                <p><?php echo wp_kses_post($proposito); ?></p>
+              </div>
+            <?php endif; ?>
+
+            <?php if ($cliente): ?>
+              <div class="ev-modal-section">
+                <strong>Cliente Ideal:</strong>
+                <p><?php echo wp_kses_post($cliente); ?></p>
+              </div>
+            <?php endif; ?>
+
+            <!-- Acción -->
+            <!-- Acción -->
+            <div class="ev-modal-section text-center">
+              <?php if ($tipo === 'course' && is_array($formato) && in_array('grabado', $formato, true)) : ?>
+
+                <?php if (!empty($payment_url)) : ?>
+                  <a href="<?php echo esc_url($payment_url); ?>" class="ev-cta-button" target="_blank" rel="noopener">
+                    Ver curso grabado
+                  </a>
+                <?php elseif (!empty($producto_id)) : ?>
+                  <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
+                    Inscribirme ahora
+                  </a>
+                <?php else : ?>
+                  <span class="ev-cta-unavailable">Curso grabado – enlace no disponible</span>
+                <?php endif; ?>
+
+              <?php elseif ($tipo === 'program') : ?>
+
+                <?php
+                $program_url   = !empty($program_url) ? $program_url : get_permalink($post_id);
+                $program_title = !empty($program_title) ? $program_title : get_the_title($post_id);
+                ?>
+
+                <?php if (!empty($program_url)) : ?>
+                  <a href="<?php echo esc_url($program_url); ?>" class="ev-cta-button">
+                    <?php echo esc_html('Adquirir ' . $program_title); ?>
+                  </a>
+                <?php else : ?>
+                  <span class="ev-cta-unavailable">Este programa estará disponible pronto</span>
+                <?php endif; ?>
+
+              <?php elseif (!empty($producto_id)) : ?>
+
+                <a href="<?php echo esc_url(get_permalink($producto_id)); ?>" class="ev-cta-button">
+                  Adquirir ahora
+                </a>
+
+              <?php else : ?>
+
+                <span class="ev-cta-unavailable">Este contenido estará disponible pronto</span>
+
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+      <?php endwhile; ?>
+    </div>
+<?php
+  endif;
+
+  wp_reset_postdata();
+  return ob_get_clean();
 }
-
 add_shortcode('ev-objetos', 'ev_objetos_shortcode');
 
 function ev_normalize_post_id($raw)
