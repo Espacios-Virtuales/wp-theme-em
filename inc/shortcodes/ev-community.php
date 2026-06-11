@@ -23,7 +23,7 @@ function community_membership_gallery_shortcode()
 
         $items = [
             $community_items['item_1'] ?? [],
-            $community_items['item_2'] ?? [],
+            /*$community_items['item_2'] ?? [],*/
         ];
         ?>
 
