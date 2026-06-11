@@ -1,82 +1,122 @@
 <?php
-
-// Función para crear el shortcode de comunidad y membresía optimizado
 function community_membership_gallery_shortcode()
 {
-    // Obtener datos de la página con el slug 'membresia-comunidad'
-    $data = blog_get_page(array('membresia-comunidad'));
+    $data = blog_get_page(['membresia-comunidad']);
 
-    if ($data->have_posts()) {
-        ob_start();
+    if (!$data->have_posts()) {
+        return '<p class="text-muted text-center">No se encontró contenido para esta sección.</p>';
+    }
 
-        while ($data->have_posts()) {
-            $data->the_post();
+    ob_start();
 
-            // Obtener los datos necesarios
-            $intro = ev_get_field('introductions', false, true, []);
-            $intro = is_array($intro) ? $intro : [];
-            $description_group = ev_get_field('description_group', false, true, []);
-            $description_group = is_array($description_group) ? $description_group : [];
-            $community_items = ev_get_field('community_comunity_group', false, true, []);
-            $community_items = is_array($community_items) ? $community_items : [];
+    while ($data->have_posts()) {
+        $data->the_post();
 
-            $item_1 = isset($community_items['item_1']) && is_array($community_items['item_1']) ? $community_items['item_1'] : [];
-            $item_2 = isset($community_items['item_2']) && is_array($community_items['item_2']) ? $community_items['item_2'] : [];
+        $intro = ev_get_field('introductions', false, true, []);
+        $intro = is_array($intro) ? $intro : [];
+
+        $description_group = ev_get_field('description_group', false, true, []);
+        $description_group = is_array($description_group) ? $description_group : [];
+
+        $community_items = ev_get_field('community_comunity_group', false, true, []);
+        $community_items = is_array($community_items) ? $community_items : [];
+
+        $items = [
+            $community_items['item_1'] ?? [],
+            $community_items['item_2'] ?? [],
+        ];
         ?>
-            <section class="community-membership py-5" id="community">
-                <div class="container">
-                    <div class="text-center mb-4">
-                        <h2 class="text-gold display-6" data-aos="fade-up"><?php echo esc_html($intro["intro_1"] ?? ''); ?></h2>
-                        <p class="lead text-white" data-aos="fade-up" data-aos-delay="100"><?php echo esc_html($intro["intro_2"] ?? ''); ?></p>
-                    </div>
-                    <?php if ($description_group): ?>
-                        <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="200">
-                            <div class="col-md-4 text-center">
-                                <?php if (!empty($description_group['maureen_image']) && is_array($description_group['maureen_image'])): ?>
-                                    <img src="<?php echo esc_url($description_group['maureen_image']['url'] ?? ''); ?>" alt="<?php echo esc_attr($description_group['maureen_image']['alt'] ?? ''); ?>" class="img-fluid rounded-circle maureen-photo">
-                                <?php endif; ?>
-                            </div>
-                            <div class="col-md-8">
-                                <blockquote class="maureen-thought text-center text-md-start">
-                                    <p class="fs-4 text-dark"><?php echo esc_html($description_group['maureen_thought'] ?? ''); ?></p>
-                                </blockquote>
-                            </div>
-                        </div>
-                    <?php endif; ?>
 
-                    <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
-                        <?php if ($item_1): ?>
-                            <div class="col" data-aos="fade-up" data-aos-delay="300">
-                                <div class="text-center">
-                                    <?php if (!empty($item_1['image']) && is_array($item_1['image'])): ?>
-                                        <img src="<?php echo esc_url($item_1['image']['url'] ?? ''); ?>" alt="<?php echo esc_attr($item_1['image']['alt'] ?? ''); ?>" class="img-fluid rounded community-icon mb-3">
+        <section class="community-membership py-5" id="community">
+            <div class="community-membership__veil"></div>
+
+            <div class="container position-relative">
+                <div class="community-membership__header text-center mb-5">
+                    <span class="community-membership__eyebrow" data-aos="fade-up">
+                        Comunidad viva
+                    </span>
+
+                    <h2 class="text-gold display-6" data-aos="fade-up">
+                        <?php echo esc_html($intro['intro_1'] ?? ''); ?>
+                    </h2>
+
+                    <p class="lead text-white" data-aos="fade-up" data-aos-delay="100">
+                        <?php echo esc_html($intro['intro_2'] ?? ''); ?>
+                    </p>
+                </div>
+
+                <?php if ($description_group): ?>
+                    <div class="community-membership__founder row align-items-center mb-5" data-aos="fade-up" data-aos-delay="200">
+                        <div class="col-md-4 text-center mb-4 mb-md-0">
+                            <?php if (!empty($description_group['maureen_image']) && is_array($description_group['maureen_image'])): ?>
+                                <img
+                                    src="<?php echo esc_url($description_group['maureen_image']['url'] ?? ''); ?>"
+                                    alt="<?php echo esc_attr($description_group['maureen_image']['alt'] ?? 'Maureen Escuela Mística'); ?>"
+                                    class="img-fluid rounded-circle maureen-photo"
+                                >
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="col-md-8">
+                            <blockquote class="maureen-thought text-center text-md-start">
+                                <p class="fs-4 text-dark">
+                                    <?php echo esc_html($description_group['maureen_thought'] ?? ''); ?>
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+                    <?php foreach ($items as $index => $item): ?>
+                        <?php if (!empty($item) && is_array($item)): ?>
+                            <div class="col" data-aos="fade-up" data-aos-delay="<?php echo esc_attr(300 + ($index * 100)); ?>">
+                                <article class="community-card h-100">
+                                    <?php if (!empty($item['image']) && is_array($item['image'])): ?>
+                                        <div class="community-card__image-wrap">
+                                            <img
+                                                src="<?php echo esc_url($item['image']['url'] ?? ''); ?>"
+                                                alt="<?php echo esc_attr($item['image']['alt'] ?? 'Comunidad Escuela Mística'); ?>"
+                                                class="img-fluid rounded community-icon"
+                                            >
+                                        </div>
                                     <?php endif; ?>
-                                    <h5 class="text-gold"><?php echo esc_html($item_1['title'] ?? ''); ?></h5>
-                                    <p class="text-white"><?php echo esc_html($item_1['description'] ?? ''); ?></p>
-                                    <div class="d-flex justify-content-center gap-3 mt-3">
-                                        <div class="custom-rounded-btn ">
+
+                                    <div class="community-card__body">
+                                        <h5 class="text-gold">
+                                            <?php echo esc_html($item['title'] ?? ''); ?>
+                                        </h5>
+
+                                        <p class="text-white">
+                                            <?php echo esc_html($item['description'] ?? ''); ?>
+                                        </p>
+
+                                        <div class="community-card__actions">
                                             <button
                                                 type="button"
-                                                class="d-flex justify-content-center align-items-center w-100 h-100 bg-cyan"
+                                                class="ev-community-cta"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#subscribeModal">
+                                                data-bs-target="#subscribeModal"
+                                            >
                                                 <i class="bi bi-whatsapp"></i>
+                                                <span>Unirme a la comunidad</span>
                                             </button>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         <?php endif; ?>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-            </section>
-    <?php
-        }
+            </div>
+        </section>
 
-        wp_reset_postdata();
-        return ob_get_clean();
-    } else {
-        return '<p class="text-muted text-center">No se encontró contenido para esta sección.</p>';
+        <?php
     }
+
+    wp_reset_postdata();
+
+    return ob_get_clean();
 }
+
 add_shortcode('ev-community_member', 'community_membership_gallery_shortcode');
