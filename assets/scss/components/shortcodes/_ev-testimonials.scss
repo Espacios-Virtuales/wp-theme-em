@@ -1,72 +1,198 @@
 @use "../globals" as *;
 
 .testimonials {
-    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    padding: 96px 0;
     color: #fff;
+    background:
+        radial-gradient(circle at top left, rgba(255, 215, 0, 0.14), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(80, 200, 120, 0.1), transparent 30%),
+        linear-gradient(135deg, rgba(15, 12, 62, 0.97), rgba(72, 61, 139, 0.94));
 
-    .title {
-        margin-bottom: 30px;
+    &__veil {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        background-size: 46px 46px;
+        mask-image: radial-gradient(circle, black 0%, transparent 78%);
+        pointer-events: none;
+    }
+
+    .title,
+    &__header {
+        max-width: 820px;
+        margin-inline: auto;
+        margin-bottom: 48px;
+    }
+
+    &__eyebrow {
+        display: inline-flex;
+        margin-bottom: 0.85rem;
+        padding: 0.35rem 1rem;
+        border: 1px solid rgba(255, 215, 0, 0.42);
+        border-radius: 999px;
+        color: var(--bs-gold);
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(8px);
     }
 
     h2 {
-        font-size: 3rem;
-        color: #FFD700; // Dorado brillante
-        font-family: 'Cinzel', serif;
-        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+        color: #ffd700;
+        font-family: "Cinzel", serif;
+        font-size: clamp(2.1rem, 4vw, 3.4rem);
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.48);
     }
 
-    .carousel-item {
-        .row {
-            justify-content: center;
+    &__intro {
+        max-width: 700px;
+        margin: 1rem auto 0;
+        color: rgba(248, 249, 250, 0.84);
+        font-size: 1.08rem;
+        line-height: 1.7;
+    }
+
+    .testimonials-carousel {
+        padding: 0 4rem 3rem;
+
+        .carousel-inner {
+            overflow: visible;
         }
 
-        .video-container {
-            background-color: #0f0c3e; // Fondo adaptado al tema
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+        .carousel-item {
+            transition: transform 0.55s ease-in-out, opacity 0.55s ease-in-out;
+        }
+    }
 
-            iframe {
-                width: 100%;
-                height: 200px;
-                border: none;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                border-radius: 10px;
+    .testimonial-card {
+        padding: 1rem;
+        border: 1px solid rgba(255, 215, 0, 0.22);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(12px);
+        transition: transform 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease;
 
-                &:hover {
-                    transform: scale(1.05); // Efecto de zoom
-                    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
-                }
+        &:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 215, 0, 0.48);
+            box-shadow: 0 24px 68px rgba(0, 0, 0, 0.32);
+        }
+
+        &__label {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            margin-bottom: 0.8rem;
+            color: rgba(248, 249, 250, 0.88);
+            font-weight: 600;
+
+            i {
+                color: var(--bs-gold);
+                font-size: 1.25rem;
+            }
+
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        &__empty {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: rgba(15, 12, 62, 0.78);
+
+            i {
+                color: var(--bs-gold);
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            p {
+                margin: 0;
+                color: rgba(248, 249, 250, 0.75) !important;
             }
         }
     }
 
-    .carousel-indicators button {
-        background-color: #FFD700;
-        opacity: 0.7;
-        &:hover {
-            opacity: 1;
+    .video-container {
+        background-color: #0f0c3e;
+        border-radius: 18px !important;
+        box-shadow: 0 14px 38px rgba(0, 0, 0, 0.28);
+        overflow: hidden;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 18px;
         }
     }
 
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        background-color: #FFD700;
+    .carousel-indicators {
+        bottom: -0.5rem;
+
+        button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ffd700;
+            opacity: 0.55;
+
+            &.active,
+            &:hover {
+                opacity: 1;
+            }
+        }
     }
 
     .carousel-control-prev,
     .carousel-control-next {
-        background-color: rgba(0, 0, 0, 0.5);
+        width: 3rem;
+        opacity: 1;
+        background-color: transparent;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: rgba(255, 215, 0, 0.95);
+        border-radius: 50%;
+        background-size: 55%;
+        box-shadow: 0 10px 24px rgba(255, 215, 0, 0.22);
     }
 
     @media (max-width: 768px) {
+        padding: 72px 0;
+
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
+        }
+
+        .testimonials-carousel {
+            padding: 0 0 3rem;
+
+            .carousel-control-prev,
+            .carousel-control-next {
+                display: none;
+            }
         }
 
         .video-container {
-            width: 100%; // Ajustar el tamaño del video en pantallas pequeñas
-            margin: 10px 0;
+            width: 100%;
+            margin: 0;
         }
     }
 }
