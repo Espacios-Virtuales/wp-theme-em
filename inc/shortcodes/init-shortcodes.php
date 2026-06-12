@@ -9,6 +9,7 @@ require_once __DIR__ . '/ev-home.php';
 
 // 👤 Página sobre nosotros/mí
 require_once __DIR__ . '/ev-about.php';
+require_once __DIR__ . '/ev-purpose.php';
 
 // 🌱 Comunidad y membresía
 require_once __DIR__ . '/ev-community.php';
