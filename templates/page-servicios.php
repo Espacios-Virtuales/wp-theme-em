@@ -36,7 +36,7 @@ get_header(); ?>
 
 
     <!-- contenido -->
-    <section class="container-fluid p-5">
+    <section class="container-fluid">
         <?php
         while (have_posts()) : the_post();
             the_content(); // Aquí irán los shortcodes [ev-*]
