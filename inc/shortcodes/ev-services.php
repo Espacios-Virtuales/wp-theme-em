@@ -127,10 +127,10 @@ function ev_services_list_shortcode()
         return '<p class="text-muted text-center">No se encontraron servicios disponibles.</p>';
     }
 ?>
-    <section class="services-list py-5" id="servicios">
+    <section class="services-list" id="servicios">
         <div class="services-list__veil"></div>
 
-        <div class="container position-relative">
+        <div class="container-fluid position-relative">
             <div class="services-list__header text-center mb-5">
                 <span class="services-list__eyebrow" data-aos="fade-up">
                     Rutas de acompañamiento
