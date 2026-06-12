@@ -150,34 +150,6 @@
     }
 }
 
-// Estilos para la interactividad de los valores
-.values-section {
-    .card {
-        background-color: #fff;
-        border: 1px solid $primary-opacity-8;
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-        height: 160px;
-
-        &:hover {
-            background-color: $secondary-opacity-5;
-            color: var(--primary);
-        }
-
-        h5 {
-            color: var(--primary);
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.2;
-            font-weight: 600;
-            color: #333333;
-            text-align: center;
-        }
-    }
-}
-
- 
 .identity-section {
     background: linear-gradient(135deg, rgb(28, 28, 60), rgb(59, 44, 109));
     color: #fff;

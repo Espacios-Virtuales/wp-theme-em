@@ -16266,30 +16266,6 @@ body.woocommerce-checkout .wp-block-woocommerce-checkout .wc-block-components-ch
     border-radius: 10px;
   }
 }
-.values-section .card {
-  background-color: #fff;
-  border: 1px solid rgba(72, 61, 139, 0.8);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  height: 160px;
-}
-
-.values-section .card:hover {
-  background-color: rgba(75, 0, 130, 0.5);
-  color: var(--primary);
-}
-
-.values-section .card h5, .values-section .card .h5 {
-  color: var(--primary);
-}
-
-.values-section .card p {
-  font-size: 1.2rem;
-  line-height: 1.2;
-  font-weight: 600;
-  color: #333333;
-  text-align: center;
-}
-
 .identity-section {
   background: linear-gradient(135deg, rgb(28, 28, 60), rgb(59, 44, 109));
   color: #fff;
