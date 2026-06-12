@@ -129,60 +129,123 @@ function ev_about_mission_vision_shortcode()
 {
     $mission_vision_group = ev_get_field('mission_vision_group', false, true, []);
     $mission_vision_group = is_array($mission_vision_group) ? $mission_vision_group : [];
-    ob_start();
-?>
-    <section class="mission-vision-section py-5">
-        <div class="container">
-            <h2 class="text-center text-gold mb-4">Visión & Misión</h2>
 
-            <div id="missionVisionCarousel" class="carousel slide" data-bs-ride="carousel">
+    $vision_image = $mission_vision_group['vision_image'] ?? [];
+    $vision_image = is_array($vision_image) ? $vision_image : [];
+
+    $mission_image = $mission_vision_group['mission_image'] ?? [];
+    $mission_image = is_array($mission_image) ? $mission_image : [];
+
+    ob_start();
+    ?>
+    <section class="mission-vision-section py-5" id="mission-vision">
+        <div class="mission-vision-section__veil"></div>
+
+        <div class="container position-relative">
+            <div class="mission-vision-section__header text-center mb-5">
+                <span class="mission-vision-section__eyebrow" data-aos="fade-up">
+                    Dirección y sentido
+                </span>
+
+                <h2 class="text-center text-gold mb-3" data-aos="fade-up" data-aos-delay="100">
+                    Visión & Misión
+                </h2>
+
+                <p class="mission-vision-section__intro" data-aos="fade-up" data-aos-delay="150">
+                    La visión orienta el horizonte. La misión sostiene el camino cotidiano.
+                </p>
+            </div>
+
+            <div id="missionVisionCarousel" class="carousel slide mission-vision-carousel" data-bs-ride="carousel">
                 <div class="carousel-inner">
+
                     <!-- Visión -->
                     <div class="carousel-item active">
-                        <div class="row align-items-center">
-                            <div class="col-md-6">
-                                <div class="card shadow-lg vision-card">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                                <div class="card shadow-lg vision-card mission-vision-card h-100">
                                     <div class="card-body">
+                                        <div class="mission-vision-card__icon">
+                                            <i class="bi bi-eye"></i>
+                                        </div>
+
                                         <h5 class="text-primary">Visión</h5>
-                                        <p><?php echo esc_html($mission_vision_group['vision_text'] ?? ''); ?></p>
+
+                                        <p>
+                                            <?php echo esc_html($mission_vision_group['vision_text'] ?? ''); ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 text-center">
-                                <img src="<?php echo esc_url($mission_vision_group['vision_image']['url'] ?? ''); ?>" class="img-fluid rounded vision-image my-2" alt="Visión">
+
+                            <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="250">
+                                <?php if (!empty($vision_image['url'])): ?>
+                                    <img
+                                        src="<?php echo esc_url($vision_image['url']); ?>"
+                                        class="img-fluid rounded vision-image mission-vision-image my-2"
+                                        alt="<?php echo esc_attr($vision_image['alt'] ?? 'Visión Escuela Mística'); ?>"
+                                    >
+                                <?php else: ?>
+                                    <div class="mission-vision-symbol">
+                                        <i class="bi bi-stars"></i>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
+
                     <!-- Misión -->
                     <div class="carousel-item">
-                        <div class="row align-items-center">
-                            <div class="col-md-6">
-                                <div class="card shadow-lg mission-card">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                                <div class="card shadow-lg mission-card mission-vision-card h-100">
                                     <div class="card-body">
+                                        <div class="mission-vision-card__icon">
+                                            <i class="bi bi-compass"></i>
+                                        </div>
+
                                         <h5 class="text-primary">Misión</h5>
-                                        <p><?php echo esc_html($mission_vision_group['mission_text'] ?? ''); ?></p>
+
+                                        <p>
+                                            <?php echo esc_html($mission_vision_group['mission_text'] ?? ''); ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 text-center">
-                                <img src="<?php echo esc_url($mission_vision_group['mission_image']['url'] ?? ''); ?>" class="img-fluid rounded mission-image my-2" alt="Misión">
+
+                            <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="250">
+                                <?php if (!empty($mission_image['url'])): ?>
+                                    <img
+                                        src="<?php echo esc_url($mission_image['url']); ?>"
+                                        class="img-fluid rounded mission-image mission-vision-image my-2"
+                                        alt="<?php echo esc_attr($mission_image['alt'] ?? 'Misión Escuela Mística'); ?>"
+                                    >
+                                <?php else: ?>
+                                    <div class="mission-vision-symbol">
+                                        <i class="bi bi-gem"></i>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <!-- Controles -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#missionVisionCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#missionVisionCarousel" data-bs-slide="prev" aria-label="Anterior">
                     <span class="carousel-control-prev-icon"></span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#missionVisionCarousel" data-bs-slide="next">
+
+                <button class="carousel-control-next" type="button" data-bs-target="#missionVisionCarousel" data-bs-slide="next" aria-label="Siguiente">
                     <span class="carousel-control-next-icon"></span>
                 </button>
             </div>
         </div>
     </section>
-<?php
+    <?php
+
     return ob_get_clean();
 }
+
 add_shortcode('ev-about-mission-vision', 'ev_about_mission_vision_shortcode');
 
 // Valores

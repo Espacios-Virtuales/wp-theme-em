@@ -43,24 +43,9 @@ get_header();
     <?php echo do_shortcode('[ev-testimonials]'); ?>
 
     <!-- Llamado a la Acción -->
-    <?php
-    $servicios_page = get_page_by_path('servicios'); 
-    $servicios_url = $servicios_page ? get_permalink($servicios_page->ID) : home_url('/');
-    
-    ?>
-    
-    <?php 
-    while (have_posts()) : the_post();
-        the_content(); // Aquí irán los shortcodes [ev-*]
-    endwhile;
-    ?>
+    <?php echo do_shortcode('[ev-prefooter]'); ?>
 
-    <section class="cta-section bg-primary text-white py-5">
-        <div class="container text-center">
-            <p class="mb-4">Sigue explorando descubre la magia de nuestros servicios en Escuela Mistica</p>
-            <a href="<?php echo esc_url($servicios_url); ?>" class="btn btn-secondary btn-lg text-white">Servicios</a>
-        </div>
-    </section>
+   
 </main>
 
 <?php
