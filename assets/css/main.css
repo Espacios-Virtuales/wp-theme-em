@@ -1,12 +1,12 @@
-/* Error: @use rules must be written before any other rules.
+/* Error: Undefined variable.
  *     ,
- * 208 | @use "../globals" as *;
- *     | ^^^^^^^^^^^^^^^^^^^^^^
+ * 191 |                 color: $accent;
+ *     |                        ^^^^^^^
  *     '
- *   assets/scss/components/landings/_services.scss 208:1  @forward
- *   assets/scss/components/landings/index.scss 4:1        @forward
- *   assets/scss/components/_index.scss 8:1                @import
- *   assets/scss/main.scss 8:9                             root stylesheet */
+ *   assets/scss/components/landings/_services.scss 191:24  @forward
+ *   assets/scss/components/landings/index.scss 4:1         @forward
+ *   assets/scss/components/_index.scss 8:1                 @import
+ *   assets/scss/main.scss 8:9                              root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -16,5 +16,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: 'Error: @use rules must be written before any other rules.\a     \2577 \a 208 \2502  @use "../globals" as *;\a     \2502  ^^^^^^^^^^^^^^^^^^^^^^\a     \2575 \a   assets/scss/components/landings/_services.scss 208:1  @forward\a   assets/scss/components/landings/index.scss 4:1        @forward\a   assets/scss/components/_index.scss 8:1                @import\a   assets/scss/main.scss 8:9                             root stylesheet';
+  content: "Error: Undefined variable.\a     \2577 \a 191 \2502                  color: $accent;\a     \2502                         ^^^^^^^\a     \2575 \a   assets/scss/components/landings/_services.scss 191:24  @forward\a   assets/scss/components/landings/index.scss 4:1         @forward\a   assets/scss/components/_index.scss 8:1                 @import\a   assets/scss/main.scss 8:9                              root stylesheet";
 }
