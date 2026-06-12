@@ -32,10 +32,8 @@ get_header(); ?>
 <div class="page-servicios p-5">
 
     <!-- Main Content -->
+    <?php echo do_shortcode('[ev-services-list]'); ?>
 
-    <section class="services-list mb-5">
-        <?php echo do_shortcode('[ev-services-list]'); ?>
-    </section>
 
     <!-- contenido -->
     <section class="container-fluid p-5">
