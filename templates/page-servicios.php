@@ -25,7 +25,7 @@
 get_header(); ?>
 
 <!-- Hero Section -->
-<section class="hero-section bg-primary mb-5">
+<section class="hero-section bg-primary">
     <?php echo do_shortcode('[ev-services-hero]'); ?>
 </section>
 
