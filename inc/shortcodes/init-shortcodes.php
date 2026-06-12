@@ -29,6 +29,7 @@ require_once __DIR__ . '/ev-testimonials.php';
 require_once __DIR__ . '/ev-objetos.php';
 require_once __DIR__ . '/ev-menu_botones.php';
 require_once __DIR__ . '/ev-seo-intro.php';
+require_once __DIR__ . '/ev-prefooter.php';
 
 // 🧩Tienda
 require_once __DIR__ . '/ev-product-links.php';

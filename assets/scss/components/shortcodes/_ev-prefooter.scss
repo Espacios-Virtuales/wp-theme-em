@@ -1,0 +1,82 @@
+@use "../globals" as *;
+
+.ev-prefooter {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top, rgba(255, 215, 0, 0.16), transparent 38%),
+        linear-gradient(135deg, rgba(15, 12, 62, 0.96), rgba(72, 61, 139, 0.94)) !important;
+
+    &__inner {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem;
+        border: 1px solid rgba(255, 215, 0, 0.25);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(12px);
+    }
+
+    &__eyebrow {
+        display: inline-flex;
+        margin-bottom: 0.9rem;
+        padding: 0.35rem 1rem;
+        border: 1px solid rgba(255, 215, 0, 0.42);
+        border-radius: 999px;
+        color: var(--bs-gold);
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        color: var(--bs-gold);
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        line-height: 1.2;
+    }
+
+    &__description {
+        max-width: 620px;
+        margin-inline: auto;
+        color: rgba(248, 249, 250, 0.88);
+        font-size: 1.08rem;
+        line-height: 1.7;
+    }
+
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        border: 1px solid rgba(255, 215, 0, 0.4);
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--bs-gold), #ffc107) !important;
+        color: #0f0c3e !important;
+        font-weight: 800;
+        box-shadow: 0 14px 32px rgba(255, 215, 0, 0.22);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 42px rgba(255, 215, 0, 0.32);
+        }
+
+        i {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__inner {
+            padding: 2rem 1.2rem;
+            border-radius: 22px;
+        }
+
+        &__description {
+            font-size: 1rem;
+        }
+    }
+}

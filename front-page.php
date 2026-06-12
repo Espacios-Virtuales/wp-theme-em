@@ -46,20 +46,7 @@
  
      </div>
  
-   </main><!-- #main -->   
-<?php
-
-$abou_us_page = get_page_by_path('sobre-nosotros'); 
-$about_us_url = $abou_us_page ? get_permalink($abou_us_page->ID) : home_url('/'); ?>
-
-<!-- Llamado a la Acción -->
-<section class="cta-section bg-primary text-white py-5">
-    <div class="container text-center">
-        <h2 class="h3 mb-4">¿Quieres saber más?</h2>
-        <p class="mb-4">Descubre nuestros valores y propósitos.</p>
-        <a href="<?php echo esc_url($about_us_url); ?>" class="btn btn-secondary btn-lg text-white">Sobre Nosotros</a>
-    </div>
-</section>
+   </main><!-- #main -->  
 
 <?php
 get_footer();
