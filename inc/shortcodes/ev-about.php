@@ -314,51 +314,89 @@ function ev_about_identity_shortcode()
 {
     $identity_group = ev_get_field('identity_group', false, true, []);
     $identity_group = is_array($identity_group) ? $identity_group : [];
+
+    $identity_items = $identity_group['identity_items'] ?? [];
+    $identity_items = is_array($identity_items) ? array_values($identity_items) : [];
+
+    $first_item = !empty($identity_items[0]) && is_array($identity_items[0]) ? $identity_items[0] : [];
+    $slider_items = count($identity_items) > 1 ? array_slice($identity_items, 1) : [];
+
     ob_start();
 ?>
     <section class="identity-section py-5">
-        <div class="container">
-            <h2 class="text-center text-gold mb-4">Nuestra Identidad</h2>
-            <p class="text-center text-muted mb-5"><?php echo esc_html($identity_group['identity_intro'] ?? ''); ?></p>
+        <div class="identity-section__veil"></div>
 
-            <?php if (!empty($identity_group['identity_items']) && is_array($identity_group['identity_items'])) : ?>
-                <?php $first_item = array_shift($identity_group['identity_items']); // Extraer el primer ítem 
-                ?>
+        <div class="container position-relative">
+            <div class="identity-section__header text-center mb-5">
+                <span class="identity-section__eyebrow">Arquetipo y esencia</span>
 
+                <h2 class="text-center text-gold mb-4">Nuestra Identidad</h2>
+
+                <p class="text-center text-muted mb-5">
+                    <?php echo esc_html($identity_group['identity_intro'] ?? ''); ?>
+                </p>
+            </div>
+
+            <?php if (!empty($first_item)) : ?>
                 <!-- Hero de Identidad -->
                 <div class="identity-hero text-center text-light py-5">
                     <div class="hero-content">
-                        <h2 class="hero-title"><?php echo esc_html($first_item['archetype_title'] ?? ''); ?></h2>
-                        <p class="hero-description"><?php echo esc_html($first_item['archetype_description'] ?? ''); ?></p>
+                        <div class="identity-hero__icon">
+                            <i class="bi bi-stars"></i>
+                        </div>
+
+                        <h2 class="hero-title">
+                            <?php echo esc_html($first_item['archetype_title'] ?? ''); ?>
+                        </h2>
+
+                        <p class="hero-description">
+                            <?php echo esc_html($first_item['archetype_description'] ?? ''); ?>
+                        </p>
                     </div>
                 </div>
+            <?php endif; ?>
 
+            <?php if (!empty($slider_items)) : ?>
                 <!-- Slider de Identidad -->
-                <div id="identityCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+                <div id="identityCarousel" class="carousel slide mt-5 identity-carousel" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <?php $index = 0; ?>
-                        <?php foreach ($identity_group['identity_items'] as $item) : ?>
+                        <?php foreach ($slider_items as $item) : ?>
                             <?php if (!is_array($item)) continue; ?>
+
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                                 <div class="card identity-card mx-auto">
                                     <div class="card-body text-center">
-                                        <h5 class="text-primary"><?php echo esc_html($item['archetype_title'] ?? ''); ?></h5>
-                                        <p><?php echo esc_html($item['archetype_description'] ?? ''); ?></p>
+                                        <div class="identity-card__icon">
+                                            <i class="bi bi-gem"></i>
+                                        </div>
+
+                                        <h5 class="text-primary">
+                                            <?php echo esc_html($item['archetype_title'] ?? ''); ?>
+                                        </h5>
+
+                                        <p>
+                                            <?php echo esc_html($item['archetype_description'] ?? ''); ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
+
                             <?php $index++; ?>
                         <?php endforeach; ?>
                     </div>
-                    <!-- Controles del Slider -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#identityCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#identityCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
+
+                    <?php if (count($slider_items) > 1): ?>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#identityCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#identityCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         </div>
@@ -366,4 +404,5 @@ function ev_about_identity_shortcode()
 <?php
     return ob_get_clean();
 }
+
 add_shortcode('ev-about-identity', 'ev_about_identity_shortcode');

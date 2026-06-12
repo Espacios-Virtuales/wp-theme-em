@@ -14935,6 +14935,240 @@ a:active {
     padding: 1.5rem;
   }
 }
+.identity-section {
+  position: relative;
+  overflow: hidden;
+  padding: 96px 0;
+  color: #fff;
+  background: radial-gradient(circle at top left, rgba(255, 215, 0, 0.15), transparent 34%), radial-gradient(circle at bottom right, rgba(80, 200, 120, 0.12), transparent 30%), linear-gradient(135deg, rgb(28, 28, 60), rgb(59, 44, 109));
+}
+
+.identity-section__veil {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(circle, black 0%, transparent 78%);
+  pointer-events: none;
+}
+
+.identity-section__header {
+  max-width: 820px;
+  margin-inline: auto;
+}
+
+.identity-section__header h2, .identity-section__header .h2 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  text-shadow: 0 0 24px rgba(255, 215, 0, 0.2);
+}
+
+.identity-section__header p {
+  max-width: 720px;
+  margin-inline: auto;
+  color: rgba(248, 249, 250, 0.84) !important;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.identity-section__eyebrow {
+  display: inline-flex;
+  margin-bottom: 0.85rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(255, 215, 0, 0.42);
+  border-radius: 999px;
+  color: var(--bs-gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(8px);
+}
+
+.identity-section .identity-hero {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  border: 1px solid rgba(255, 215, 0, 0.24);
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), transparent 42%), rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+  transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
+}
+
+.identity-section .identity-hero:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 215, 0, 0.48);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.36);
+}
+
+.identity-section .identity-hero .hero-content {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.identity-section .identity-hero__icon {
+  width: 72px;
+  height: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  border-radius: 50%;
+  color: #0f0c3e;
+  background: linear-gradient(135deg, var(--bs-gold), #fff3a6);
+  box-shadow: 0 14px 34px rgba(255, 215, 0, 0.24);
+}
+
+.identity-section .identity-hero__icon i {
+  font-size: 2rem;
+}
+
+.identity-section .identity-hero .hero-title {
+  margin-bottom: 1rem;
+  color: #ffd700;
+  font-family: "Cinzel", serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.42);
+}
+
+.identity-section .identity-hero .hero-description {
+  max-width: 760px;
+  margin: 0 auto;
+  color: rgba(248, 249, 250, 0.86);
+  font-size: 1.13rem;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.identity-section .identity-carousel {
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 0 4rem;
+}
+
+.identity-section .identity-carousel .carousel-inner {
+  overflow: visible;
+}
+
+.identity-section .identity-carousel .carousel-item {
+  transition: transform 0.55s ease-in-out, opacity 0.55s ease-in-out;
+}
+
+.identity-section .identity-carousel .carousel-control-prev,
+.identity-section .identity-carousel .carousel-control-next {
+  width: 3rem;
+  opacity: 1;
+}
+
+.identity-section .identity-carousel .carousel-control-prev-icon,
+.identity-section .identity-carousel .carousel-control-next-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 215, 0, 0.95);
+  border-radius: 50%;
+  background-size: 55%;
+  box-shadow: 0 10px 24px rgba(255, 215, 0, 0.22);
+}
+
+.identity-section .identity-card {
+  max-width: 640px;
+  min-height: 280px;
+  border: 1px solid rgba(255, 215, 0, 0.22);
+  border-radius: 28px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+  transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
+}
+
+.identity-section .identity-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 215, 0, 0.48);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+}
+
+.identity-section .identity-card .card-body {
+  min-height: 280px;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.identity-section .identity-card__icon {
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  color: #0f0c3e;
+  background: linear-gradient(135deg, var(--bs-gold), #fff3a6);
+  box-shadow: 0 12px 28px rgba(255, 215, 0, 0.22);
+}
+
+.identity-section .identity-card__icon i {
+  font-size: 1.6rem;
+}
+
+.identity-section .identity-card h5, .identity-section .identity-card .h5 {
+  margin-bottom: 1rem;
+  color: #4b0082 !important;
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.identity-section .identity-card p {
+  margin: 0;
+  color: #333333;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .identity-section {
+    padding: 72px 0;
+  }
+  .identity-section .identity-hero {
+    padding: 2.4rem 1.25rem;
+    border-radius: 24px;
+  }
+  .identity-section .identity-hero .hero-title {
+    font-size: 2rem;
+  }
+  .identity-section .identity-hero .hero-description {
+    font-size: 1rem;
+  }
+  .identity-section .identity-carousel {
+    padding: 0;
+  }
+  .identity-section .identity-carousel .carousel-control-prev,
+  .identity-section .identity-carousel .carousel-control-next {
+    display: none;
+  }
+  .identity-section .identity-card {
+    min-height: auto;
+  }
+  .identity-section .identity-card .card-body {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  .identity-section .identity-card h5, .identity-section .identity-card .h5 {
+    font-size: 1.5rem;
+  }
+  .identity-section .identity-card p {
+    font-size: 1rem;
+  }
+}
 .single-product .product {
   display: flex;
   flex-wrap: wrap;
