@@ -2,38 +2,84 @@
 
 
 // Landing Servicios 
-
 function ev_services_hero_shortcode()
 {
+    $intro = ev_get_field('introductions', false, true, []);
+    $intro = is_array($intro) ? $intro : [];
+
+    $eyebrow = ev_get_field('services_hero_eyebrow', false, true, '');
+    $cta_text = ev_get_field('services_hero_cta_text', false, true, '');
+    $cta_url = ev_get_field('services_hero_cta_url', false, true, '');
+    $secondary_text = ev_get_field('services_hero_secondary_text', false, true, '');
+    $secondary_url = ev_get_field('services_hero_secondary_url', false, true, '');
+    $note = ev_get_field('services_hero_note', false, true, '');
+
+    $eyebrow = !empty($eyebrow) ? $eyebrow : 'Servicios Escuela Mística';
+    $cta_text = !empty($cta_text) ? $cta_text : 'Explorar servicios';
+    $cta_url = !empty($cta_url) ? $cta_url : '#servicios';
+    $secondary_text = !empty($secondary_text) ? $secondary_text : 'Hablar con orientación';
+    $secondary_url = !empty($secondary_url) ? $secondary_url : '#contact';
+    $note = !empty($note) ? $note : 'Terapias, cursos, programas y experiencias para acompañar tu proceso con claridad y cuidado.';
+
     ob_start();
 ?>
     <section class="services-hero py-5 text-center text-light" data-aos="fade-up">
-        <div class="container">
-            <?php
-            $intro = ev_get_field('introductions', false, true, []);
-            $intro = is_array($intro) ? $intro : [];
-            ?>
+        <div class="services-hero__veil"></div>
+
+        <div class="container position-relative">
+            <span class="services-hero__eyebrow" data-aos="fade-up">
+                <?php echo esc_html($eyebrow); ?>
+            </span>
+
             <h1 class="display-4 fw-bold mb-3 text-gold ml9" data-aos="fade-down" data-aos-delay="100">
                 <span class="text-wrapper">
                     <span class="letters"><?php echo esc_html($intro["intro_1"] ?? ''); ?></span>
                 </span>
             </h1>
+
             <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">
                 <?php echo esc_html($intro["intro_2"] ?? ''); ?>
             </p>
 
-            <div class="row justify-content-center mt-5">
-                <div class="col-4 col-md-2" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="bi bi-heart-fill text-warning display-4"></i>
-                    <p class="mt-2">Terapias</p>
+            <p class="services-hero__note" data-aos="fade-up" data-aos-delay="250">
+                <?php echo esc_html($note); ?>
+            </p>
+
+            <div class="services-hero__actions" data-aos="fade-up" data-aos-delay="300">
+                <a href="<?php echo esc_url($cta_url); ?>" class="btn services-hero__primary-btn">
+                    <?php echo esc_html($cta_text); ?>
+                    <i class="bi bi-arrow-right-short"></i>
+                </a>
+
+                <a href="<?php echo esc_url($secondary_url); ?>" class="btn services-hero__secondary-btn">
+                    <i class="bi bi-whatsapp"></i>
+                    <?php echo esc_html($secondary_text); ?>
+                </a>
+            </div>
+
+            <div class="row justify-content-center mt-5 services-hero__pillars">
+                <div class="col-12 col-md-4 col-lg-3 mb-3" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="services-hero__pillar">
+                        <i class="bi bi-heart-fill"></i>
+                        <p>Terapias</p>
+                        <span>Acompañamiento individual</span>
+                    </div>
                 </div>
-                <div class="col-4 col-md-2" data-aos="zoom-in" data-aos-delay="400">
-                    <i class="bi bi-mortarboard-fill text-warning display-4"></i>
-                    <p class="mt-2">Cursos</p>
+
+                <div class="col-12 col-md-4 col-lg-3 mb-3" data-aos="zoom-in" data-aos-delay="450">
+                    <div class="services-hero__pillar">
+                        <i class="bi bi-mortarboard-fill"></i>
+                        <p>Cursos & Talleres</p>
+                        <span>Aprendizaje consciente</span>
+                    </div>
                 </div>
-                <div class="col-4 col-md-2" data-aos="zoom-in" data-aos-delay="500">
-                    <i class="bi bi-arrow-repeat text-warning display-4"></i>
-                    <p class="mt-2">Programas</p>
+
+                <div class="col-12 col-md-4 col-lg-3 mb-3" data-aos="zoom-in" data-aos-delay="550">
+                    <div class="services-hero__pillar">
+                        <i class="bi bi-arrow-repeat"></i>
+                        <p>Programas</p>
+                        <span>Procesos de transformación</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,8 +87,8 @@ function ev_services_hero_shortcode()
 <?php
     return ob_get_clean();
 }
-add_shortcode('ev-services-hero', 'ev_services_hero_shortcode');
 
+add_shortcode('ev-services-hero', 'ev_services_hero_shortcode');
 function ev_services_value_shortcode()
 {
     $values = ev_get_field('values_group', false, true, []); // Group: value_group
