@@ -253,35 +253,71 @@ function ev_about_values_shortcode()
 {
     $values_group = ev_get_field('values_items', false, true, []);
     $values_group = is_array($values_group) ? $values_group : [];
+
     ob_start();
-?>
-    <section class="values-section py-5">
-        <div class="container">
-            <h2 class="text-center text-primary mb-4">Nuestros Valores</h2>
-            <div class="row">
-                <?php
-                $delay = 0;
-                foreach ($values_group as $value): ?>
-                    <?php if (!is_array($value)) continue; ?>
-                    <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="<?php echo esc_attr($delay); ?>">
-                        <div class="card shadow-lg h-100">
-                            <div class="card-body d-flex flex-column justify-content-center">
-                                <h5 class="text-primary text-center mb-3"><?php echo esc_html($value['value_title'] ?? ''); ?></h5>
-                                <p class="text-center text-muted"><?php echo esc_html($value['value_text'] ?? ''); ?></p>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                    $delay += 100;
-                endforeach; ?>
+    ?>
+    <section class="values-section py-5" id="values">
+        <div class="values-section__veil"></div>
+
+        <div class="container position-relative">
+            <div class="values-section__header text-center mb-5">
+                <span class="values-section__eyebrow" data-aos="fade-up">
+                    Marco ético
+                </span>
+
+                <h2 class="text-center text-gold mb-3" data-aos="fade-up" data-aos-delay="100">
+                    Nuestros Valores
+                </h2>
+
+                <p class="values-section__intro" data-aos="fade-up" data-aos-delay="150">
+                    Principios que sostienen la experiencia, el acompañamiento y la coherencia de Escuela Mística.
+                </p>
             </div>
+
+            <?php if (!empty($values_group)): ?>
+                <div class="row g-4">
+                    <?php
+                    $delay = 0;
+                    foreach ($values_group as $index => $value):
+                        if (!is_array($value)) {
+                            continue;
+                        }
+                        ?>
+                        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="<?php echo esc_attr($delay); ?>">
+                            <article class="values-card card shadow-lg h-100">
+                                <div class="card-body d-flex flex-column justify-content-start text-center">
+                                    <div class="values-card__icon">
+                                        <i class="bi bi-gem"></i>
+                                    </div>
+
+                                    <span class="values-card__number">
+                                        <?php echo esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?>
+                                    </span>
+
+                                    <h5 class="text-primary mb-3">
+                                        <?php echo esc_html($value['value_title'] ?? ''); ?>
+                                    </h5>
+
+                                    <p class="text-muted">
+                                        <?php echo esc_html($value['value_text'] ?? ''); ?>
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+                        <?php
+                        $delay += 100;
+                    endforeach;
+                    ?>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
-<?php
+    <?php
+
     return ob_get_clean();
 }
-add_shortcode('ev-about-values', 'ev_about_values_shortcode');
 
+add_shortcode('ev-about-values', 'ev_about_values_shortcode');
 // Identidad
 function ev_about_identity_shortcode()
 {
