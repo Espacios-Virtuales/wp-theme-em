@@ -112,7 +112,7 @@ function ev_objetos_shortcode($atts)
             <!-- Acción -->
             <div class="ev-modal-section text-center">
               <?php if (!empty($cpt_url)) : ?>
-                <a href="<?php echo esc_url($cpt_url); ?>" class="ev-cta-button text-dark">
+                <a href="<?php echo esc_url($cpt_url); ?>" class="ev-cta-button">
                   <?php echo esc_html($cta_text . ' ' . $titulo); ?>
                 </a>
               <?php else : ?>

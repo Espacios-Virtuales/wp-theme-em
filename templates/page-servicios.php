@@ -50,7 +50,6 @@ get_header(); ?>
 
 <?php echo do_shortcode('[ev-prefooter]'); ?>
 
-
 <?php 
 
 

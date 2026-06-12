@@ -127,89 +127,131 @@ function ev_services_list_shortcode()
         return '<p class="text-muted text-center">No se encontraron servicios disponibles.</p>';
     }
 ?>
-    <div class="services-list py-5">
-        <h2 class="text-center text-primary mb-4" data-aos="fade-up">Nuestros Servicios</h2>
-        <div class="row">
-            <?php $delay = 100; ?>
-            <?php foreach ($services_group['services'] as $service): ?>
-                <?php if (!is_array($service)) continue; ?>
+    <section class="services-list py-5" id="servicios">
+        <div class="services-list__veil"></div>
 
-                <?php
-                $modal_id = 'serviceModal_' . uniqid();
-                $title = !empty($service['item_title']) ? esc_html($service['item_title']) : 'Servicio';
-                $description = !empty($service['item_description']) ? esc_html($service['item_description']) : '';
-                $full_description = !empty($service['item_full_description']) ? esc_html($service['item_full_description']) : '';
-                $icon_class = !empty($service['item_icon']) ? esc_attr($service['item_icon']) : 'bi bi-circle';
-                $video_link = !empty($service['item_link']) ? esc_url($service['item_link']) : '';
-                $cta_link = !empty($service['item_cta_link']) ? esc_url($service['item_cta_link']) : '';
-                $cta_text = !empty($service['item_cta_text']) ? esc_html($service['item_cta_text']) : 'Ver Detalles';
-                ?>
+        <div class="container position-relative">
+            <div class="services-list__header text-center mb-5">
+                <span class="services-list__eyebrow" data-aos="fade-up">
+                    Rutas de acompañamiento
+                </span>
 
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="<?php echo $delay; ?>">
-                    <div class="card service-card shadow-lg border-0 h-100 text-center">
-                        <div class="card-body">
-                            <i class="<?php echo $icon_class; ?> text-primary display-4 mb-3"></i>
-                            <h5 class="text-primary"><?php echo $title; ?></h5>
-                            <p class="text-muted"><?php echo $description; ?></p>
-                            <div class="row">
-                                <div class="col">
-                                    <?php if (!empty($video_link)): ?>
-                                        <button
-                                            type="button"
-                                            class="btn btn-outline-primary mt-3 open-video-modal round-circle"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#<?php echo $modal_id; ?>"
-                                            data-video="<?php echo $video_link; ?>">
-                                            <i class="bi bi-play-circle-fill display-5"></i>
-                                        </button>
+                <h2 class="text-center text-primary mb-3" data-aos="fade-up">
+                    Nuestros Servicios
+                </h2>
+
+                <p class="services-list__intro" data-aos="fade-up" data-aos-delay="100">
+                    Elige el camino que mejor conversa con tu momento actual: terapia, formación, programa o experiencia.
+                </p>
+            </div>
+
+            <div class="services-list__items">
+                <?php $delay = 100; ?>
+                <?php $index = 0; ?>
+
+                <?php foreach ($services_group['services'] as $service): ?>
+                    <?php if (!is_array($service)) continue; ?>
+
+                    <?php
+                    $modal_id = 'serviceModal_' . uniqid();
+                    $title = !empty($service['item_title']) ? esc_html($service['item_title']) : 'Servicio';
+                    $description = !empty($service['item_description']) ? esc_html($service['item_description']) : '';
+                    $full_description = !empty($service['item_full_description']) ? esc_html($service['item_full_description']) : '';
+                    $icon_class = !empty($service['item_icon']) ? esc_attr($service['item_icon']) : 'bi bi-circle';
+                    $video_link = !empty($service['item_link']) ? esc_url($service['item_link']) : '';
+                    $cta_link = !empty($service['item_cta_link']) ? esc_url($service['item_cta_link']) : '';
+                    $cta_text = !empty($service['item_cta_text']) ? esc_html($service['item_cta_text']) : 'Ver Detalles';
+
+                    $is_even = $index % 2 === 0;
+                    $layout_class = $is_even ? 'services-list__item--actions-right' : 'services-list__item--actions-left';
+                    ?>
+
+                    <article class="services-list__item <?php echo esc_attr($layout_class); ?>" data-aos="fade-up" data-aos-delay="<?php echo esc_attr($delay); ?>">
+                        <div class="services-list__content">
+                            <div class="services-list__icon">
+                                <i class="<?php echo $icon_class; ?>"></i>
+                            </div>
+
+                            <div>
+                                <span class="services-list__number">
+                                    <?php echo esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?>
+                                </span>
+
+                                <h3><?php echo $title; ?></h3>
+
+                                <?php if ($description): ?>
+                                    <p><?php echo $description; ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="services-list__actions">
+                            <?php if (!empty($video_link)): ?>
+                                <button
+                                    type="button"
+                                    class="btn services-list__action services-list__action--video open-video-modal"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#<?php echo esc_attr($modal_id); ?>"
+                                    data-video="<?php echo esc_url($video_link); ?>">
+                                    <i class="bi bi-play-circle-fill"></i>
+                                    <span>Ver video</span>
+                                </button>
+                            <?php endif; ?>
+
+                            <?php if (!empty($cta_link)): ?>
+                                <a
+                                    class="btn services-list__action services-list__action--cta"
+                                    href="<?php echo esc_url($cta_link); ?>">
+                                    <span><?php echo $cta_text; ?></span>
+                                    <i class="bi bi-arrow-right-circle-fill"></i>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </article>
+
+                    <!-- Modal por servicio -->
+                    <div class="modal fade" id="<?php echo esc_attr($modal_id); ?>" tabindex="-1" aria-labelledby="<?php echo esc_attr($modal_id); ?>_label" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content bg-dark text-white rounded-4 shadow-lg">
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title text-gold" id="<?php echo esc_attr($modal_id); ?>_label"><?php echo $title; ?></h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <?php if ($full_description): ?>
+                                        <p class="mb-4"><?php echo $full_description; ?></p>
+                                    <?php endif; ?>
+
+                                    <?php if ($video_link): ?>
+                                        <div class="ratio ratio-16x9 mb-4">
+                                            <iframe id="videoFrame_<?php echo esc_attr($modal_id); ?>" src="" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <?php if ($cta_link): ?>
+                                        <div class="text-center">
+                                            <a href="<?php echo esc_url($cta_link); ?>" class="btn btn-em-gold btn-lg shadow-sm">
+                                                <?php echo $cta_text; ?>
+                                            </a>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
-                                <div class="col">
-                                    <a
-                                        class="btn btn-outline-primary mt-3 open-video-modal round-circle"
-                                        href="<?php echo $cta_link; ?>">
-                                        <i class="bi bi-arrow-right-circle-fill display-5"></i>
-                                    </a>
-                                </div>
                             </div>
-                            
                         </div>
                     </div>
-                </div>
 
-                <!-- Modal por servicio -->
-                <div class="modal fade" id="<?php echo $modal_id; ?>" tabindex="-1" aria-labelledby="<?php echo $modal_id; ?>_label" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                        <div class="modal-content bg-dark text-white rounded-4 shadow-lg">
-                            <div class="modal-header border-0">
-                                <h5 class="modal-title text-gold" id="<?php echo $modal_id; ?>_label"><?php echo $title; ?></h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                            </div>
-                            <div class="modal-body">
-                                <?php if ($full_description): ?>
-                                    <p class="mb-4"><?php echo $full_description; ?></p>
-                                <?php endif; ?>
-                                <?php if ($video_link): ?>
-                                    <div class="ratio ratio-16x9 mb-4">
-                                        <iframe id="videoFrame_<?php echo $modal_id; ?>" src="" frameborder="0" allowfullscreen allow="autoplay"></iframe>
-                                    </div>
-                                <?php endif; ?>
-                                <?php if ($cta_link): ?>
-                                    <div class="text-center">
-                                        <a href="<?php echo $cta_link; ?>" class="btn btn-em-gold btn-lg shadow-sm">
-                                            <?php echo $cta_text; ?>
-                                        </a>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php $delay += 100; ?>
-            <?php endforeach; ?>
+                    <?php
+                    $delay += 100;
+                    $index++;
+                    ?>
+
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
+    </section>
 <?php
     return ob_get_clean();
 }
+
 add_shortcode('ev-services-list', 'ev_services_list_shortcode');
