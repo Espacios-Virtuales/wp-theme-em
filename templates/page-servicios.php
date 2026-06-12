@@ -29,7 +29,7 @@ get_header(); ?>
     <?php echo do_shortcode('[ev-services-hero]'); ?>
 </section>
 
-<div class="page-servicios p-5">
+<div class="page-servicios">
 
     <!-- Main Content -->
     <?php echo do_shortcode('[ev-services-list]'); ?>
