@@ -131,7 +131,7 @@ function ev_services_list_shortcode()
         <div class="services-list__veil"></div>
 
         <div class="container-fluid position-relative">
-            <div class="services-list__header text-center mb-5">
+            <div class="services-list__header text-center mb-5 container">
                 <span class="services-list__eyebrow" data-aos="fade-up">
                     Rutas de acompañamiento
                 </span>
