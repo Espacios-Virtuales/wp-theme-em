@@ -6,35 +6,31 @@
 
 // 🏠 Página de inicio
 require_once __DIR__ . '/ev-home.php';
+require_once __DIR__ . '/ev-community.php';
+require_once __DIR__ . '/ev-contact.php';
+
 
 // 👤 Página sobre nosotros/mí
 require_once __DIR__ . '/ev-about.php';
-require_once __DIR__ . '/ev-purpose.php';
+//require_once __DIR__ . '/ev-purpose.php';
+require_once __DIR__ . '/ev-testimonials.php';
 
-// 🌱 Comunidad y membresía
-require_once __DIR__ . '/ev-community.php';
+// 💌 Onboarding
 
-// ✨ Servicios
-require_once __DIR__ . '/ev-services.php';
-
-// 💌 Contacto
-require_once __DIR__ . '/ev-contact.php';
 
 // 📅 Eventos
 require_once __DIR__ . '/ev-calendar.php';
-
-// 💬 Testimonios
-require_once __DIR__ . '/ev-testimonials.php';
 
 // 🧩 Componentes compartidos (modales, video, etc.)
 require_once __DIR__ . '/ev-objetos.php';
 require_once __DIR__ . '/ev-menu_botones.php';
 require_once __DIR__ . '/ev-seo-intro.php';
 require_once __DIR__ . '/ev-prefooter.php';
+require_once __DIR__ . '/ev-services.php';
 
-// 🧩Tienda
+// ✨  Catalogo
 require_once __DIR__ . '/ev-product-links.php';
 
-// Marketing
+// 🌱 Marketing
 require_once __DIR__ . '/ev-masterclass-gift.php';
 require_once __DIR__ . '/ev-whatsapp-cta.php';
