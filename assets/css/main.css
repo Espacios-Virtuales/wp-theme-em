@@ -1,9 +1,9 @@
 /* Error: @use rules must be written before any other rules.
  *     ,
- * 214 | @use "../globals" as *;
+ * 208 | @use "../globals" as *;
  *     | ^^^^^^^^^^^^^^^^^^^^^^
  *     '
- *   assets/scss/components/landings/_services.scss 214:1  @forward
+ *   assets/scss/components/landings/_services.scss 208:1  @forward
  *   assets/scss/components/landings/index.scss 4:1        @forward
  *   assets/scss/components/_index.scss 8:1                @import
  *   assets/scss/main.scss 8:9                             root stylesheet */
@@ -16,5 +16,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: 'Error: @use rules must be written before any other rules.\a     \2577 \a 214 \2502  @use "../globals" as *;\a     \2502  ^^^^^^^^^^^^^^^^^^^^^^\a     \2575 \a   assets/scss/components/landings/_services.scss 214:1  @forward\a   assets/scss/components/landings/index.scss 4:1        @forward\a   assets/scss/components/_index.scss 8:1                @import\a   assets/scss/main.scss 8:9                             root stylesheet';
+  content: 'Error: @use rules must be written before any other rules.\a     \2577 \a 208 \2502  @use "../globals" as *;\a     \2502  ^^^^^^^^^^^^^^^^^^^^^^\a     \2575 \a   assets/scss/components/landings/_services.scss 208:1  @forward\a   assets/scss/components/landings/index.scss 4:1        @forward\a   assets/scss/components/_index.scss 8:1                @import\a   assets/scss/main.scss 8:9                             root stylesheet';
 }

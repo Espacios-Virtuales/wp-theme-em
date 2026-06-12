@@ -1,3 +1,6 @@
+@use "../globals" as *;  // trae $text-muted, $primary, breakpoints, etc.
+
+
 .landing-hero {
   position: relative;
   overflow: hidden;
