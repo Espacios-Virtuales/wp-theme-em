@@ -1,38 +1,18 @@
 <?php
 
-function ev_prefooter_shortcode($atts)
+function ev_prefooter_shortcode()
 {
-    $atts = shortcode_atts([
-        'page' => 'sobre-nosotros',
-    ], $atts, 'ev-prefooter');
+    $current_id = get_the_ID();
 
-    $target_page = get_page_by_path($atts['page']);
-    $default_url = $target_page ? get_permalink($target_page->ID) : home_url('/');
+    $title = get_field('prefooter_title', $current_id);
+    $description = get_field('prefooter_description', $current_id);
+    $button_text = get_field('prefooter_button_text', $current_id);
+    $button_url = get_field('prefooter_button_url', $current_id);
 
-    $data = blog_get_page(['pre-footer']);
-
-    $title = '¿Quieres saber más?';
-    $description = 'Descubre nuestros valores, propósito y camino de transformación.';
-    $button_text = 'Sobre Nosotros';
-    $button_url = $default_url;
-
-    if ($data && $data->have_posts()) {
-        while ($data->have_posts()) {
-            $data->the_post();
-
-            $acf_title = ev_get_field('prefooter_title', false, true, '');
-            $acf_description = ev_get_field('prefooter_description', false, true, '');
-            $acf_button_text = ev_get_field('prefooter_button_text', false, true, '');
-            $acf_button_url = ev_get_field('prefooter_button_url', false, true, '');
-
-            $title = !empty($acf_title) ? $acf_title : $title;
-            $description = !empty($acf_description) ? $acf_description : $description;
-            $button_text = !empty($acf_button_text) ? $acf_button_text : $button_text;
-            $button_url = !empty($acf_button_url) ? $acf_button_url : $button_url;
-        }
-
-        wp_reset_postdata();
-    }
+    $title = !empty($title) ? $title : '¿Quieres saber más?';
+    $description = !empty($description) ? $description : 'Descubre nuestros valores, propósito y camino de transformación.';
+    $button_text = !empty($button_text) ? $button_text : 'Sobre Nosotros';
+    $button_url = !empty($button_url) ? $button_url : home_url('/sobre-nosotros/');
 
     ob_start();
     ?>
@@ -52,10 +32,12 @@ function ev_prefooter_shortcode($atts)
                     <?php echo esc_html($description); ?>
                 </p>
 
-                <a href="<?php echo esc_url($button_url); ?>" class="ev-prefooter__button btn btn-secondary btn-lg text-white">
-                    <?php echo esc_html($button_text); ?>
-                    <i class="bi bi-arrow-right-short"></i>
-                </a>
+                <?php if (!empty($button_url) && !empty($button_text)) : ?>
+                    <a href="<?php echo esc_url($button_url); ?>" class="ev-prefooter__button btn btn-secondary btn-lg text-white">
+                        <?php echo esc_html($button_text); ?>
+                        <i class="bi bi-arrow-right-short"></i>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </section>
