@@ -162,8 +162,7 @@ function ev_services_list_shortcode()
                     $cta_link = !empty($service['item_cta_link']) ? esc_url($service['item_cta_link']) : '';
                     $cta_text = !empty($service['item_cta_text']) ? esc_html($service['item_cta_text']) : 'Ver Detalles';
 
-                    $is_even = $index % 2 === 0;
-                    $layout_class = $is_even ? 'services-list__item--actions-right' : 'services-list__item--actions-left';
+                    $layout_class = 'services-list__item--actions-right';
                     ?>
 
                     <article class="services-list__item <?php echo esc_attr($layout_class); ?>" data-aos="fade-up" data-aos-delay="<?php echo esc_attr($delay); ?>">
