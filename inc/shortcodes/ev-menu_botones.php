@@ -39,7 +39,7 @@ function ev_botonera_anclas_shortcode($atts) {
 
     $items = [
         '#terapias'   => 'Terapias',
-        '#cursos'     => 'Cursos',
+        '#talleres'     => 'Talleres',
         '#programas'  => 'Programas',
         '#experiencias' => 'Experiencias',
     ];
