@@ -19,7 +19,7 @@ function ev_services_hero_shortcode()
     $cta_url = !empty($cta_url) ? $cta_url : '#servicios';
     $secondary_text = !empty($secondary_text) ? $secondary_text : 'Hablar con orientación';
     $secondary_url = !empty($secondary_url) ? $secondary_url : '#contact';
-    $note = !empty($note) ? $note : 'Terapias, cursos, programas y experiencias para acompañar tu proceso con claridad y cuidado.';
+    $note = !empty($note) ? $note : 'Terapias, talleres, programas y experiencias para acompañar tu proceso con claridad y cuidado.';
 
     ob_start();
 ?>
@@ -69,7 +69,7 @@ function ev_services_hero_shortcode()
                 <div class="col-12 col-md-4 col-lg-3 mb-3" data-aos="zoom-in" data-aos-delay="450">
                     <div class="services-hero__pillar">
                         <i class="bi bi-mortarboard-fill"></i>
-                        <p>Cursos & Talleres</p>
+                        <p>Talleres</p>
                         <span>Aprendizaje consciente</span>
                     </div>
                 </div>
