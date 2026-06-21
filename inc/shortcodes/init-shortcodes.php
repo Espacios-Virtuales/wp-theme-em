@@ -9,7 +9,6 @@ require_once __DIR__ . '/ev-home.php';
 require_once __DIR__ . '/ev-community.php';
 require_once __DIR__ . '/ev-contact.php';
 
-
 // 👤 Página sobre nosotros/mí
 require_once __DIR__ . '/ev-about.php';
 //require_once __DIR__ . '/ev-purpose.php';
