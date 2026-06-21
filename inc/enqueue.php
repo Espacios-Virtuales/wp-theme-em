@@ -48,6 +48,7 @@ function ev_front_assets() {
     wp_localize_script('ev-forms', 'formData', [
         'jsonUrl' => $theme_dir . '/assets/data/chile-regiones.json',
     ]);
+    wp_enqueue_script('ev-community-onboarding', $theme_dir . '/assets/js/forms/community-onboarding.js', ['ev-forms'], _S_VERSION, true);
 
     // Librerías front
     wp_enqueue_script('anime', 'https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js', ['jquery'], '2.0.2', true);

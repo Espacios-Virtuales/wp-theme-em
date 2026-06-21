@@ -16,7 +16,7 @@ require_once __DIR__ . '/ev-about.php';
 require_once __DIR__ . '/ev-testimonials.php';
 
 // 💌 Onboarding
-
+require_once __DIR__ . '/ev-community-onboarding.php';
 
 // 📅 Eventos
 require_once __DIR__ . '/ev-calendar.php';
