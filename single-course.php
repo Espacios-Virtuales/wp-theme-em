@@ -10,11 +10,7 @@ $ev_get_field = function ($field, $id = null, $default = '') {
 
     $value = get_field($field, $id);
 
-    return (
-        null !== $value &&
-        false !== $value &&
-        '' !== $value
-    ) ? $value : $default;
+    return $value ?: $default;
 };
 
 $post_type = get_post_type($post_id);
@@ -33,12 +29,7 @@ $type_labels = [
 $type_label = $type_labels[$post_type] ?? 'Experiencia';
 
 // Hero ACF
-$titulo = $ev_get_field(
-    'titulo_landing',
-    $post_id,
-    get_the_title($post_id)
-);
-
+$titulo      = $ev_get_field('titulo_landing', $post_id, get_the_title($post_id));
 $subtitulo   = $ev_get_field('subtitulo_landing', $post_id);
 $imagen_hero = $ev_get_field('imagen_hero', $post_id);
 
@@ -52,112 +43,50 @@ $cliente_potencial = $ev_get_field('cliente_potencial', $post_id);
 // Acción principal: WhatsApp
 $whatsapp_url = $ev_get_field('cta_whatsapp_url', $post_id);
 
-if (!$whatsapp_url) {
-    $whatsapp_url = get_post_meta(
-        $post_id,
-        'cta_whatsapp_url',
-        true
-    );
-}
-
-$whatsapp_url = esc_url_raw($whatsapp_url);
-
 $whatsapp_label = $ev_get_field(
     'cta_whatsapp_label',
     $post_id,
     'Consultar por WhatsApp'
 );
 
-// Producto WooCommerce vinculado
-$producto_id = '';
+// Compra nacional: WooCommerce
+$producto_id = get_post_meta($post_id, '_ev_product_id', true);
 
-$product_meta_keys = [
-    '_ev_product_id',
-    '_linked_product_id',
-    '_program_product_id',
-    '_course_product_id',
-    '_therapy_product_id',
-    '_experience_product_id',
-];
+if (!$producto_id) {
+    $possible_product_meta = [
+        '_linked_product_id',
+        '_program_product_id',
+        '_course_product_id',
+        '_therapy_product_id',
+        '_experience_product_id',
+    ];
 
-foreach ($product_meta_keys as $meta_key) {
-    $meta_value = get_post_meta($post_id, $meta_key, true);
+    foreach ($possible_product_meta as $meta_key) {
+        $value = get_post_meta($post_id, $meta_key, true);
 
-    if ($meta_value) {
-        $producto_id = absint($meta_value);
-        break;
-    }
-}
-
-$product_permalink   = '';
-$national_purchase_url = '';
-
-if (
-    $producto_id &&
-    'product' === get_post_type($producto_id) &&
-    'publish' === get_post_status($producto_id)
-) {
-    $product_permalink = get_permalink($producto_id);
-
-    if (
-        function_exists('wc_get_product') &&
-        function_exists('wc_get_checkout_url')
-    ) {
-        $product = wc_get_product($producto_id);
-
-        if (
-            $product &&
-            $product->is_purchasable() &&
-            $product->is_in_stock() &&
-            !$product->is_type('variable')
-        ) {
-            $national_purchase_url = add_query_arg(
-                'add-to-cart',
-                $producto_id,
-                wc_get_checkout_url()
-            );
+        if ($value) {
+            $producto_id = $value;
+            break;
         }
     }
-
-    // Los productos variables requieren seleccionar opciones.
-    if (!$national_purchase_url) {
-        $national_purchase_url = $product_permalink;
-    }
 }
 
-$national_purchase_label = $ev_get_field(
-    'national_purchase_label',
-    $post_id,
-    'Compra nacional'
-);
+$product_permalink = '';
+
+if ($producto_id) {
+    $producto_id = absint($producto_id);
+
+    if (
+        $producto_id &&
+        get_post_status($producto_id) &&
+        get_post_type($producto_id) === 'product'
+    ) {
+        $product_permalink = get_permalink($producto_id);
+    }
+}
 
 // Compra internacional: PayPal
 $payment_url = $ev_get_field('payment_url', $post_id);
-
-if (!$payment_url) {
-    $payment_url = $ev_get_field(
-        'course_payment_url',
-        $post_id
-    );
-}
-
-if (!$payment_url) {
-    $payment_url = get_post_meta(
-        $post_id,
-        'course_payment_url',
-        true
-    );
-}
-
-if (!$payment_url) {
-    $payment_url = get_post_meta(
-        $post_id,
-        '_course_payment_url',
-        true
-    );
-}
-
-$payment_url = esc_url_raw($payment_url);
 
 $payment_label = $ev_get_field(
     'payment_label',
@@ -169,35 +98,21 @@ $payment_label = $ev_get_field(
 $hero_bg = '';
 
 if (
+    !empty($imagen_hero) &&
     is_array($imagen_hero) &&
     !empty($imagen_hero['url'])
 ) {
-    $hero_bg = $imagen_hero['url'];
+    $hero_bg = esc_url($imagen_hero['url']);
 } elseif (is_numeric($imagen_hero)) {
-    $hero_bg = wp_get_attachment_image_url(
-        absint($imagen_hero),
-        'full'
+    $hero_bg = esc_url(
+        wp_get_attachment_image_url(absint($imagen_hero), 'full')
     );
-} elseif (is_string($imagen_hero) && $imagen_hero) {
-    $hero_bg = $imagen_hero;
+} elseif (is_string($imagen_hero) && !empty($imagen_hero)) {
+    $hero_bg = esc_url($imagen_hero);
 }
 
-$hero_bg = $hero_bg ? esc_url_raw($hero_bg) : '';
-
 $has_whatsapp_action = !empty($whatsapp_url);
-$has_purchase_action = (
-    !empty($national_purchase_url) ||
-    !empty($payment_url)
-);
-
-$cards = [
-    'Objetivo'           => $objetivo,
-    'Propuesta de valor' => $propuesta_valor,
-    'Propósito'          => $proposito,
-    'Cliente potencial'  => $cliente_potencial,
-];
-
-$has_cards = (bool) array_filter($cards);
+$has_purchase_action = !empty($product_permalink) || !empty($payment_url);
 ?>
 
 <main class="ev-experience-single ev-experience-single--<?php echo esc_attr($post_type); ?>">
@@ -205,7 +120,7 @@ $has_cards = (bool) array_filter($cards);
     <section
         class="ev-experience-hero"
         <?php if ($hero_bg) : ?>
-            style="<?php echo esc_attr("--ev-hero-bg: url('{$hero_bg}');"); ?>"
+            style="--ev-hero-bg: url('<?php echo esc_url($hero_bg); ?>');"
         <?php endif; ?>
     >
         <div class="ev-experience-hero__overlay"></div>
@@ -228,11 +143,7 @@ $has_cards = (bool) array_filter($cards);
 
                         <?php if ($subtitulo) : ?>
                             <div class="ev-experience-hero__subtitle">
-                                <?php
-                                echo wp_kses_post(
-                                    wpautop($subtitulo)
-                                );
-                                ?>
+                                <?php echo wp_kses_post(wpautop($subtitulo)); ?>
                             </div>
                         <?php endif; ?>
 
@@ -261,59 +172,55 @@ $has_cards = (bool) array_filter($cards);
                     class="ev-experience-richtext ev-experience-richtext--lead"
                     data-aos="fade-up"
                 >
-                    <?php
-                    echo wp_kses_post(
-                        wpautop($descripcion)
-                    );
-                    ?>
+                    <?php echo wp_kses_post(wpautop($descripcion)); ?>
                 </div>
             </div>
         </section>
     <?php endif; ?>
 
-    <?php if ($has_cards) : ?>
-        <section class="ev-experience-section ev-experience-section--grid">
-            <div class="container">
-                <div class="row g-4">
-                    <?php $delay = 0; ?>
+    <section class="ev-experience-section ev-experience-section--grid">
+        <div class="container">
+            <div class="row g-4">
+                <?php
+                $cards = [
+                    'Objetivo'           => $objetivo,
+                    'Propuesta de valor' => $propuesta_valor,
+                    'Propósito'          => $proposito,
+                    'Cliente potencial'  => $cliente_potencial,
+                ];
 
-                    <?php foreach ($cards as $card_title => $card_body) : ?>
-                        <?php if ($card_body) : ?>
-                            <div class="col-md-6 col-xl-3">
-                                <article
-                                    class="ev-experience-card"
-                                    data-aos="fade-up"
-                                    data-aos-delay="<?php echo esc_attr($delay); ?>"
-                                >
-                                    <h3 class="ev-experience-card__title">
-                                        <?php echo esc_html($card_title); ?>
-                                    </h3>
+                $delay = 0;
+                ?>
 
-                                    <div class="ev-experience-card__body">
-                                        <?php
-                                        echo wp_kses_post(
-                                            wpautop($card_body)
-                                        );
-                                        ?>
-                                    </div>
-                                </article>
-                            </div>
+                <?php foreach ($cards as $card_title => $card_body) : ?>
+                    <?php if ($card_body) : ?>
+                        <div class="col-md-6 col-xl-3">
+                            <article
+                                class="ev-experience-card"
+                                data-aos="fade-up"
+                                data-aos-delay="<?php echo esc_attr($delay); ?>"
+                            >
+                                <h3 class="ev-experience-card__title">
+                                    <?php echo esc_html($card_title); ?>
+                                </h3>
 
-                            <?php $delay += 80; ?>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
+                                <div class="ev-experience-card__body">
+                                    <?php echo wp_kses_post(wpautop($card_body)); ?>
+                                </div>
+                            </article>
+                        </div>
+
+                        <?php $delay += 80; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
-        </section>
-    <?php endif; ?>
+        </div>
+    </section>
 
     <?php if ($has_purchase_action) : ?>
         <section class="ev-experience-section ev-experience-section--closing">
             <div class="container">
-                <div
-                    class="ev-experience-closing"
-                    data-aos="zoom-in-up"
-                >
+                <div class="ev-experience-closing" data-aos="zoom-in-up">
                     <h2 class="ev-experience-closing__title">
                         Elige tu forma de acceso
                     </h2>
@@ -323,16 +230,12 @@ $has_cards = (bool) array_filter($cards);
                     </p>
 
                     <div class="ev-experience-closing__actions">
-                        <?php if ($national_purchase_url) : ?>
+                        <?php if ($product_permalink) : ?>
                             <a
                                 class="ev-btn ev-btn--primary"
-                                href="<?php echo esc_url($national_purchase_url); ?>"
+                                href="<?php echo esc_url($product_permalink); ?>"
                             >
-                                <?php
-                                echo esc_html(
-                                    $national_purchase_label
-                                );
-                                ?>
+                                Compra nacional
                             </a>
                         <?php endif; ?>
 

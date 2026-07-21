@@ -29,7 +29,11 @@ $type_labels = [
 $type_label = $type_labels[$post_type] ?? 'Experiencia';
 
 // Hero ACF
-$titulo      = $ev_get_field('titulo_landing', $post_id, get_the_title($post_id));
+$titulo      = $ev_get_field(
+    'titulo_landing',
+    $post_id,
+    get_the_title($post_id)
+);
 $subtitulo   = $ev_get_field('subtitulo_landing', $post_id);
 $imagen_hero = $ev_get_field('imagen_hero', $post_id);
 
@@ -40,11 +44,21 @@ $propuesta_valor   = $ev_get_field('propuesta_valor', $post_id);
 $proposito         = $ev_get_field('proposito', $post_id);
 $cliente_potencial = $ev_get_field('cliente_potencial', $post_id);
 
-// Links / metaboxes
+// Acción principal: WhatsApp
+$whatsapp_url = $ev_get_field('cta_whatsapp_url', $post_id);
+
+$whatsapp_label = $ev_get_field(
+    'cta_whatsapp_label',
+    $post_id,
+    'Consultar por WhatsApp'
+);
+
+// Compra nacional: WooCommerce
 $producto_id = get_post_meta($post_id, '_ev_product_id', true);
 
 if (!$producto_id) {
     $possible_product_meta = [
+        '_linked_product_id',
         '_program_product_id',
         '_course_product_id',
         '_therapy_product_id',
@@ -61,46 +75,68 @@ if (!$producto_id) {
     }
 }
 
-$payment_url = $ev_get_field('payment_url', $post_id);
-
 $product_permalink = '';
-$checkout_url      = '';
 
 if ($producto_id) {
-    $product_permalink = get_permalink(absint($producto_id));
+    $producto_id = absint($producto_id);
 
-    if (function_exists('wc_get_checkout_url')) {
-        $checkout_url = add_query_arg(
-            [
-                'add-to-cart' => absint($producto_id),
-            ],
-            wc_get_checkout_url()
-        );
+    if (
+        $producto_id &&
+        get_post_status($producto_id) &&
+        get_post_type($producto_id) === 'product'
+    ) {
+        $product_permalink = get_permalink($producto_id);
     }
 }
 
+// Compra internacional: PayPal
+$payment_url = $ev_get_field('payment_url', $post_id);
+
+$payment_label = $ev_get_field(
+    'payment_label',
+    $post_id,
+    'Pagar con PayPal'
+);
+
+// Imagen del hero
 $hero_bg = '';
 
-if (!empty($imagen_hero) && is_array($imagen_hero) && !empty($imagen_hero['url'])) {
+if (
+    !empty($imagen_hero) &&
+    is_array($imagen_hero) &&
+    !empty($imagen_hero['url'])
+) {
     $hero_bg = esc_url($imagen_hero['url']);
 } elseif (is_numeric($imagen_hero)) {
-    $hero_bg = esc_url(wp_get_attachment_image_url($imagen_hero, 'full'));
+    $hero_bg = esc_url(
+        wp_get_attachment_image_url(absint($imagen_hero), 'full')
+    );
 } elseif (is_string($imagen_hero) && !empty($imagen_hero)) {
     $hero_bg = esc_url($imagen_hero);
 }
 
+$has_whatsapp_action = !empty($whatsapp_url);
 $has_purchase_action = !empty($product_permalink) || !empty($payment_url);
 ?>
 
 <main class="ev-experience-single ev-experience-single--<?php echo esc_attr($post_type); ?>">
 
-    <section class="ev-experience-hero" <?php if ($hero_bg) : ?>style="--ev-hero-bg: url('<?php echo $hero_bg; ?>');"<?php endif; ?>>
+    <section
+        class="ev-experience-hero"
+        <?php if ($hero_bg) : ?>
+            style="--ev-hero-bg: url('<?php echo esc_url($hero_bg); ?>');"
+        <?php endif; ?>
+    >
         <div class="ev-experience-hero__overlay"></div>
 
         <div class="container ev-experience-hero__inner">
             <div class="row align-items-center g-4">
-                <div class="col-lg-7">
-                    <div class="ev-experience-hero__content" data-aos="fade-up" data-aos-duration="900">
+                <div class="col-lg-8">
+                    <div
+                        class="ev-experience-hero__content"
+                        data-aos="fade-up"
+                        data-aos-duration="900"
+                    >
                         <span class="ev-experience-hero__eyebrow">
                             <?php echo esc_html($type_label); ?>
                         </span>
@@ -115,49 +151,20 @@ $has_purchase_action = !empty($product_permalink) || !empty($payment_url);
                             </div>
                         <?php endif; ?>
 
-                        <?php if ($has_purchase_action) : ?>
+                        <?php if ($has_whatsapp_action) : ?>
                             <div class="ev-experience-hero__actions">
-                                <?php if ($product_permalink) : ?>
-                                    <a class="ev-btn ev-btn--primary" href="<?php echo esc_url($product_permalink); ?>">
-                                        Ver producto
-                                    </a>
-                                <?php endif; ?>
-
-                                <?php if ($payment_url) : ?>
-                                    <a class="ev-btn ev-btn--ghost" href="<?php echo esc_url($payment_url); ?>" target="_blank" rel="noopener noreferrer">
-                                        Pago internacional
-                                    </a>
-                                <?php endif; ?>
+                                <a
+                                    class="ev-btn ev-btn--primary"
+                                    href="<?php echo esc_url($whatsapp_url); ?>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <?php echo esc_html($whatsapp_label); ?>
+                                </a>
                             </div>
                         <?php endif; ?>
                     </div>
                 </div>
-
-                <?php if ($has_purchase_action) : ?>
-                    <div class="col-lg-5">
-                        <aside class="ev-experience-cta-card" data-aos="fade-left" data-aos-duration="1000">
-                            <h2 class="ev-experience-cta-card__title">
-                                Acceso a <?php echo esc_html(strtolower($type_label)); ?>
-                            </h2>
-
-                            <p class="ev-experience-cta-card__text">
-                                Elige tu vía de ingreso según tu territorio. El portal es el mismo; cambia la puerta.
-                            </p>
-
-                            <?php if ($product_permalink) : ?>
-                                <a class="ev-btn ev-btn--secondary w-100" href="<?php echo esc_url($product_permalink); ?>">
-                                    Ver producto nacional
-                                </a>
-                            <?php endif; ?>
-
-                            <?php if ($payment_url) : ?>
-                                <a class="ev-btn ev-btn--paypal w-100" href="<?php echo esc_url($payment_url); ?>" target="_blank" rel="noopener noreferrer">
-                                    Pagar con PayPal
-                                </a>
-                            <?php endif; ?>
-                        </aside>
-                    </div>
-                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -165,7 +172,10 @@ $has_purchase_action = !empty($product_permalink) || !empty($payment_url);
     <?php if ($descripcion) : ?>
         <section class="ev-experience-section ev-experience-section--intro">
             <div class="container">
-                <div class="ev-experience-richtext ev-experience-richtext--lead" data-aos="fade-up">
+                <div
+                    class="ev-experience-richtext ev-experience-richtext--lead"
+                    data-aos="fade-up"
+                >
                     <?php echo wp_kses_post(wpautop($descripcion)); ?>
                 </div>
             </div>
@@ -189,7 +199,11 @@ $has_purchase_action = !empty($product_permalink) || !empty($payment_url);
                 <?php foreach ($cards as $card_title => $card_body) : ?>
                     <?php if ($card_body) : ?>
                         <div class="col-md-6 col-xl-3">
-                            <article class="ev-experience-card" data-aos="fade-up" data-aos-delay="<?php echo esc_attr($delay); ?>">
+                            <article
+                                class="ev-experience-card"
+                                data-aos="fade-up"
+                                data-aos-delay="<?php echo esc_attr($delay); ?>"
+                            >
                                 <h3 class="ev-experience-card__title">
                                     <?php echo esc_html($card_title); ?>
                                 </h3>
@@ -199,6 +213,7 @@ $has_purchase_action = !empty($product_permalink) || !empty($payment_url);
                                 </div>
                             </article>
                         </div>
+
                         <?php $delay += 80; ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -209,25 +224,36 @@ $has_purchase_action = !empty($product_permalink) || !empty($payment_url);
     <?php if ($has_purchase_action) : ?>
         <section class="ev-experience-section ev-experience-section--closing">
             <div class="container">
-                <div class="ev-experience-closing" data-aos="zoom-in-up">
+                <div
+                    class="ev-experience-closing"
+                    data-aos="zoom-in-up"
+                >
                     <h2 class="ev-experience-closing__title">
-                        Cruza el umbral con claridad
+                        Elige tu forma de acceso
                     </h2>
 
                     <p class="ev-experience-closing__text">
-                        Una decisión simple. Un ingreso consciente. Un espacio dispuesto para sostener el proceso.
+                        Selecciona la opción de compra correspondiente a tu territorio.
                     </p>
 
                     <div class="ev-experience-closing__actions">
                         <?php if ($product_permalink) : ?>
-                            <a class="ev-btn ev-btn--primary" href="<?php echo esc_url($product_permalink); ?>">
+                            <a
+                                class="ev-btn ev-btn--primary"
+                                href="<?php echo esc_url($product_permalink); ?>"
+                            >
                                 Compra nacional
                             </a>
                         <?php endif; ?>
 
                         <?php if ($payment_url) : ?>
-                            <a class="ev-btn ev-btn--ghost" href="<?php echo esc_url($payment_url); ?>" target="_blank" rel="noopener noreferrer">
-                                Compra internacional
+                            <a
+                                class="ev-btn ev-btn--ghost"
+                                href="<?php echo esc_url($payment_url); ?>"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <?php echo esc_html($payment_label); ?>
                             </a>
                         <?php endif; ?>
                     </div>
@@ -235,6 +261,7 @@ $has_purchase_action = !empty($product_permalink) || !empty($payment_url);
             </div>
         </section>
     <?php endif; ?>
+
 </main>
 
 <?php get_footer(); ?>
