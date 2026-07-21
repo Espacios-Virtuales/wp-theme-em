@@ -62,7 +62,7 @@ function ev_services_hero_shortcode()
                     <div class="services-hero__pillar">
                         <i class="bi bi-heart-fill"></i>
                         <p>Terapias</p>
-                        <span>Acompañamiento individual</span>
+                        <span>Sesiones individuales</span>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@ function ev_services_hero_shortcode()
                     <div class="services-hero__pillar">
                         <i class="bi bi-mortarboard-fill"></i>
                         <p>Talleres</p>
-                        <span>Aprendizaje consciente</span>
+                        <span>Aprendizaje experiencial</span>
                     </div>
                 </div>
 
@@ -78,7 +78,7 @@ function ev_services_hero_shortcode()
                     <div class="services-hero__pillar">
                         <i class="bi bi-arrow-repeat"></i>
                         <p>Programas</p>
-                        <span>Procesos de transformación</span>
+                        <span>Formación metodológica</span>
                     </div>
                 </div>
             </div>
